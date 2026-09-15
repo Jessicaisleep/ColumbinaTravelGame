@@ -1,0 +1,2210 @@
+[
+  {
+    "file": "assets/manifest.js",
+    "line": 8,
+    "text": " *     nahida-travel/",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "assets/manifest.js",
+    "line": 18,
+    "text": " * 文件名全是**通用名字**，不带角色名 —— 想把主角换成别的角色、",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "assets/manifest.js",
+    "line": 33,
+    "text": "     * 主角立绘",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "assets/manifest.js",
+    "line": 38,
+    "text": "    nahida: {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "assets/manifest.js",
+    "line": 39,
+    "text": "      idle:  '主角-待机',    // 站着，用于发呆/看书/浇水/望着路口",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "assets/manifest.js",
+    "line": 40,
+    "text": "      happy: '主角-开心',    // 微笑，用于玩耍/吃饭/做饭/伸懒腰",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "assets/manifest.js",
+    "line": 41,
+    "text": "      tired: '主角-疲惫'     // 没精神，用于旅途疲惫/落汤鸡/睡觉",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "assets/manifest.js",
+    "line": 72,
+    "text": "     * 规格和主角完全一样：1024×2048 透明 PNG，脚底对齐。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "assets/manifest.js",
+    "line": 99,
+    "text": "     * 尺寸按\"相对主角身高的倍数\"配（见 src/data/home.js 的 toySizeRatio）。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "docs/PLATFORM-BUILD.md",
+    "line": 9,
+    "text": "`public/manifest.webmanifest` references the existing 192/512 PNG icons without copying or modifying them. `public/service-worker.js` uses version `nahida-travel-static-v1`, caches same-origin GET responses only, excludes storage/API data, and is registered only on HTTPS or localhost. `file://` and unsupported browsers continue without PWA.",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "docs/PROJECT-CONVENTIONS.md",
+    "line": 20,
+    "text": "The legacy key `nahida-travel/save/v2` is unchanged. Future schema migrations must be explicit and testable; content version and save schema version are separate. Service-worker cache versions must be bumped when static assets change and must never contain saves.",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "docs/SAVE-DATA.md",
+    "line": 3,
+    "text": "The live game continues to use `src/store.js` and localStorage key `nahida-travel/save/v2`. `src/storage/save-api.js` exposes an ES Module facade for future code but is intentionally not wired into the legacy initializer yet.",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "index.html",
+    "line": 5,
+    "text": "<title>纳西妲的旅行</title>",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "package-lock.json",
+    "line": 2,
+    "text": "  \"name\": \"nahida-travel\",",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "package-lock.json",
+    "line": 8,
+    "text": "      \"name\": \"nahida-travel\",",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "package.json",
+    "line": 2,
+    "text": "  \"name\": \"nahida-travel\",",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "package.json",
+    "line": 5,
+    "text": "  \"description\": \"纳西妲的旅行：保留旧版兼容入口的 Vite HTML5 游戏项目\",",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "public/service-worker.js",
+    "line": 2,
+    "text": "const CACHE_NAME = 'nahida-travel-static-v1';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 1,
+    "text": "﻿# 纳西妲的旅行",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 4,
+    "text": "实际上这个玩法搭起来，主角并不限于纳西妲，可以换成你喜欢的任意角色，地点也不局限于国内，甚至换成提瓦特，或者任意地图都行。而这些只需要随便一个ai助手换个素材的事情。",
+    "terms": [
+      "纳西妲",
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 59,
+    "text": "        纳西妲在里面实时走动、做事",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 88,
+    "text": "**纳西妲有 9 种居家状态**，每 10–40 分钟换一次，状态决定她走到哪里：",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 102,
+    "text": "点纳西妲（或者从别的地方切回来）会触发**和当前状态对应的反应**：",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 190,
+    "text": "- 客人有自己的活动池（玩玩具 / 吃饭 / 看书 / 发呆）和一套**和主角不重样的文案**",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 191,
+    "text": "- **核心约束：两人永远分在画面两侧** —— 主角在左侧做屋里的事，客人就在右侧玩玩具；主角去玩玩具，客人就回屋里。这样不会有图层叠加问题，也不需要处理两人的碰撞",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 192,
+    "text": "- 主角在「发呆」时会触发一组**打招呼对话**（一来一回两条气泡）",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 193,
+    "text": "- 同伴的侧别会在**主角每次换状态时强制重算** —— 否则会出现两人都在右侧（`nature` 自检钉住了这一点）",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 211,
+    "text": "设置里填上 Key 之后，聊天会从\"预设对话\"升级成 **AI 扮演纳西妲**：",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 247,
+    "text": "nahida-travel/",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 254,
+    "text": "│  ├─ 主角-待机 / 开心 / 疲惫",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 298,
+    "text": "背景 → 昼夜/天气调色 → 天气粒子 → 角色投影 → 同伴 → 纳西妲 → 事件贴纸 → 飘浮物 → 统一调色 → 纸纹/颗粒/暗角 → 画框+邮戳+日期戳 → 手写短句+地点标签",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 310,
+    "text": "模块加载 · 数据完整性 · **地理距离**（北京→苏州 900~1200km）· **行程时间**（同城 1h / 48h 封顶）· **旅途模拟**（确定性 / 食物越多走越远 / **最强配置也不够走到漠河** / **漠河需要连续补给** / 落汤鸡必然没到达+下雨+疲惫 / 能触发改道 / 段数上限 / 事件时间戳）· 地区与事件 · 文本（含落汤鸡走专用池）· 种植 · 厨房与出门消耗 · 时间循环 · 玩具（室内外归属 / 重复不重复加入）· **出门保护**（已有行程时不能再出发、不会覆盖旧旅程、也不白扣料理）· **归途收尾**（没到点不结算 / 到点自动弹明信片并进图鉴 / 底部按钮从「旅途中…」归位成「送她出门」/ 顶部倒计时消失）· **玩具摆放**（动态找空位 / 指定被占的槽位会自动改找 / 满了会提示 / 玩玩具时不会踩在别的玩具上 / 同伴也不会 / 吊床是最大的一件）· **素材同步**（新增配角自动收录 / 同步幂等 / 孤儿地区会报告 / 内联坐标生效）· **来访同伴**（侧别永远和主角相反 / 主角换状态后自动重算 / 最多 1 位 / 概率均等 / 文案不重样 / 打招呼只触发一次 / 到点自己走 / 停留时长跟随设置）· **出门等待**（等待面板可关闭 / 有预计用时 / 倒计时条 / activeModal 不再强制接管）· **家的布局**（落点与玩具槽不互相压住 / 玩玩具时不会站在玩具上 / 室外槽避开树、喷泉、田地 / 最大玩具不出画面）· 家（状态机/落点合法性/连跳上限）· **家乡候选**（52 个、无重复、额外城市也能当出发点）· **点击反应**（每个状态都有、动画种类都已实现、睡觉必须是翻身、台词不重复）· **AI 角色扮演**（人设提示词、字数限制、现实词汇拦截、出戏拦截、上下文拼装）· **成就**（定义完整/不重复/分组存在/不重复解锁/埋点正确/统计从图鉴推导正确）· **音效**（14 种全部能播放不抛异常/关闭后是空操作/不需要音频文件）· **图片管线**（清单结构/没有真图时回退/查询不存在返回 null）· 交流 · AI 越界校验 · 明信片合成 · 素材绘制覆盖 · **界面渲染**（11 个界面逐个调用不抛异常 + 8 个弹窗能拼出内容 + **真实点击按钮后弹窗真的出现**）· 存档体积",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 346,
+    "text": "| `主角-待机` / `主角-开心` / `主角-疲惫` | 主角立绘 | **换主角**（换成任何你喜欢的角色） |",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 353,
+    "text": "**所以：想换成别的角色，只需要替换 `主角-*` 这三张图。** 不需要动一行代码。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 356,
+    "text": "> 换主角/家/玩具则是纯粹的换图。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 375,
+    "text": "| 主角立绘（待机/开心/疲惫） | 3 | PNG 透明底，1024×2048 |",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 407,
+    "text": "**但图片素材不在 MIT 范围内：** 纳西妲、派蒙、柯莱等是米哈游的知识产权，",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 436,
+    "text": "**没有单文件版** —— 代码 39 个文件 + 素材 40 张图，直接整个 `nahida-travel` 文件夹拷给别人就能玩。",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 442,
+    "text": "nahida-travel/",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "scripts/check-project.mjs",
+    "line": 29,
+    "text": "    ['legacy save key retained', store.includes('C.SAVE_KEY') && config.includes('nahida-travel/save/v2') && saveApi.includes('nahida-travel/save/v2')],",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/achievements.js",
+    "line": 1,
+    "text": "﻿/* 纳西妲旅行 · 成就系统",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/assets/asset-registry.js",
+    "line": 5,
+    "text": "  groups: Object.freeze(['backgrounds', 'nahida', 'companions', 'toys', 'icons', 'stickers'])",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 图片加载",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 31,
+    "text": "   *   nahida-travel/",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 84,
+    "text": "      if (group === 'nahida' || group === 'companion' || group === 'toy') {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 181,
+    "text": "    for (k in (m.nahida || {})) register('nahida', k, m.nahida[k]);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 204,
+    "text": "  assets.nahida = function (mood) { return ready('nahida', mood); };",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 205,
+    "text": "  /** 纳西妲任意一张可用立绘（优先指定姿态） */",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 206,
+    "text": "  assets.nahidaAny = function (mood) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 207,
+    "text": "    return ready('nahida', mood) || ready('nahida', 'idle') ||",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 208,
+    "text": "           ready('nahida', 'happy') || ready('nahida', 'tired');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 249,
+    "text": "      bg: m.backgrounds, nahida: m.nahida, companion: m.companions,",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 320,
+    "text": "      callNahida: '纳西妲',",
+    "terms": [
+      "nahida",
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 441,
+    "text": "  assets.nahidaIdFor = function (mood) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 442,
+    "text": "    if (ready('nahida', mood)) return mood;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 443,
+    "text": "    if (ready('nahida', 'idle')) return 'idle';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 444,
+    "text": "    if (ready('nahida', 'happy')) return 'happy';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 445,
+    "text": "    if (ready('nahida', 'tired')) return 'tired';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 449,
+    "text": "  assets.drawNahida = function (ctx, cx, baseY, h, flip, mood) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 450,
+    "text": "    var id = assets.nahidaIdFor(mood);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/assets.js",
+    "line": 452,
+    "text": "    return assets.drawSprite(ctx, ready('nahida', id), cx, baseY, h, flip, trimOf('nahida', id));",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/rng.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 种子随机数",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 自检",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 48,
+    "text": "    var badSpot = G.nahidaStates.filter(function (s) { return !G.homeSpots[s.spot]; });",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 479,
+    "text": "      s.home.nahida.stateId = 'play';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 480,
+    "text": "      s.home.nahida.until = T0 + 1e9;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 679,
+    "text": "    ok('访客文案和主角的不重样', (function () {",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 681,
+    "text": "      G.nahidaStates.forEach(function (s) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 718,
+    "text": "    ok('主角在左侧时，客人只做右侧的活动', (function () {",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 720,
+    "text": "      // 让主角处于各种\"左侧\"状态，看客人的活动是不是永远在右边",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 721,
+    "text": "      G.nahidaStates.filter(function (x) { return !x.useToy; }).forEach(function (ns) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 724,
+    "text": "        s.home.nahida.stateId = ns.id;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 725,
+    "text": "        s.home.nahida.since = T0;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 736,
+    "text": "    ok('主角在玩玩具时，客人只做左侧的活动', (function () {",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 740,
+    "text": "      s.home.nahida.stateId = 'play';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 750,
+    "text": "    ok('主角出门时客人不受侧别限制', (function () {",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 763,
+    "text": "    ok('客人和主角的落点不会重合', (function () {",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 765,
+    "text": "      G.nahidaStates.forEach(function (ns) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 768,
+    "text": "        s.home.nahida.stateId = ns.id;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 769,
+    "text": "        s.home.nahida.since = T0;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 803,
+    "text": "      s.home.nahida.until = v.until + 60000;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 811,
+    "text": "      s.home.nahida.stateId = 'idle';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 812,
+    "text": "      s.home.nahida.since = T0;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 816,
+    "text": "      return !!first && first.nahida && first.visitor && second === null;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 819,
+    "text": "    ok('主角每次换状态后，两人都不会在同一侧', (function () {",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 821,
+    "text": "      // 主角换状态时不同步 -> 会出现两个人都在右侧",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 823,
+    "text": "      G.nahidaStates.forEach(function (from) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 826,
+    "text": "        s.home.nahida.stateId = from.id;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 827,
+    "text": "        s.home.nahida.since = T0;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 828,
+    "text": "        s.home.nahida.until = T0 + 1000;     // 让 tick 必然会推进一次",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 833,
+    "text": "        NT.home.tick(s, now);                // 主角换状态",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 836,
+    "text": "        var mine = NT.home.nahidaSide(s);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 839,
+    "text": "          bad.push(from.id + '->' + s.home.nahida.stateId + '/' + v.stateId);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 845,
+    "text": "    ok('主角不在发呆时不打招呼', (function () {",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 848,
+    "text": "      s.home.nahida.stateId = 'read';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 849,
+    "text": "      s.home.nahida.since = T0;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 977,
+    "text": "    ok('每个状态都有台词', G.nahidaStates.every(function (x) { return x.lines && x.lines.length; }));",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 992,
+    "text": "      s.home.nahida.stateId = 'play';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 994,
+    "text": "      s.home.nahida.stateId = 'sleep';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1114,
+    "text": "    ok('缺失字段自动补齐', !!(s17.inventory.ingredients && s17.inventory.rare && s17.farm && s17.home.nahida));",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1141,
+    "text": "    var noPoke = G.nahidaStates.filter(function (x) { return !x.poke || !x.poke.anim || !x.poke.lines || !x.poke.lines.length; });",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1144,
+    "text": "    var badAnim = G.nahidaStates.filter(function (x) { return KNOWN_ANIM.indexOf(x.poke.anim) < 0; });",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1147,
+    "text": "    ok('睡觉的反应是翻身', G.nahidaStateById('sleep').poke.anim === 'roll');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1150,
+    "text": "      G.nahidaStates.forEach(function (x) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1167,
+    "text": "      s.home.nahida.stateId = 'eat';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1402,
+    "text": "        return !!m && !!m.backgrounds && !!m.nahida && !!m.companions && !!m.toys && !!m.stickers;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1405,
+    "text": "        NT.assets.nahida('__none__') === null && NT.assets.companion('__none__') === null);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/core/util.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 通用工具",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/achievements.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 成就定义",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 同伴角色池",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 12,
+    "text": "      callNahida: '小纳西妲',",
+    "terms": [
+      "nahida",
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 28,
+    "text": "      callNahida: '纳西妲大人',",
+    "terms": [
+      "nahida",
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 44,
+    "text": "      callNahida: '纳西妲',",
+    "terms": [
+      "nahida",
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 60,
+    "text": "      callNahida: '小吉祥草王',",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 76,
+    "text": "      callNahida: '纳西妲',",
+    "terms": [
+      "nahida",
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 92,
+    "text": "      callNahida: '小家伙',",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 108,
+    "text": "      callNahida: '草神姐姐',",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 124,
+    "text": "      callNahida: '草、草神大人',",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/data/config.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 全局配置（所有可调数值集中在这里）",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/config.js",
+    "line": 10,
+    "text": "    SAVE_KEY: 'nahida-travel/save/v2',",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/data/config.js",
+    "line": 57,
+    "text": "      /** 纳西妲多久换一次状态（毫秒） */",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/destinations.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 目的地 = 中国各地区",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/events.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 事件池",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/farm.js",
+    "line": 1,
+    "text": "﻿/* 纳西妲旅行 · 种植系统数据",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/geo.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 地理与行程花费",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 家的数据",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 23,
+    "text": "   * 纳西妲会去的位置。坐标是按家-全景.png 实际量出来的（斜俯视玩偶屋视角）。",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 54,
+    "text": "   *   · 主角要站到玩具旁边玩，来访的同伴也要玩 —— 院子里同时有人有玩具",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 55,
+    "text": "   *   · 同伴的立绘有些比主角宽，需要的空档更大",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 73,
+    "text": "  /* ---------------- 纳西妲的居家状态 ---------------- */",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 79,
+    "text": "  NT.data.nahidaStates = [",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 117,
+    "text": "  NT.data.nahidaStateById = function (id) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 118,
+    "text": "    var l = NT.data.nahidaStates;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 157,
+    "text": "   * 每件玩具相对纳西妲身高的显示尺寸（倍数）。",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/home.js",
+    "line": 158,
+    "text": "   * 含义是\"图片内容高度 / 纳西妲身高\"，按各自的真实物理大小估的：",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/journey.js",
+    "line": 1,
+    "text": "﻿/* 纳西妲旅行 · 旅途事件",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/kitchen.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 厨房 / 料理",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/templates.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 文案模板（L1 纯模板渲染层）",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/templates.js",
+    "line": 150,
+    "text": "    '你是《原神》中「纳西妲」的第一人称日记写作者。玩家扮演纳西妲出门旅行，你负责把既定事实写成一段温柔的日记。',",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/templates.js",
+    "line": 173,
+    "text": "        '同伴：柯莱（称呼你为「纳西妲大人」，性格：认真/容易紧张/努力）',",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/templates.js",
+    "line": 192,
+    "text": "    '你在扮演《原神》里的纳西妲，和一直照顾你的「旅行者」在家裡闲聊。',",
+    "terms": [
+      "纳西妲",
+      "旅行者"
+    ]
+  },
+  {
+    "file": "src/data/visitor.js",
+    "line": 5,
+    "text": " * 核心约束：**同伴永远和纳西妲分在画面两侧** ——",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/visitor.js",
+    "line": 6,
+    "text": " *   · 纳西妲在左侧做屋里的事（吃饭/看书/发呆/睡觉） -> 同伴在右侧玩玩具",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/visitor.js",
+    "line": 7,
+    "text": " *   · 纳西妲在右侧玩玩具                            -> 同伴在左侧做屋里的事",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/visitor.js",
+    "line": 8,
+    "text": " *   · 纳西妲出门了（家里没人）                      -> 同伴随便，哪边都行",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/visitor.js",
+    "line": 20,
+    "text": "   * 文案全部和纳西妲的不一样 —— 她是主人，同伴是客人，语气要区分开。",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/visitor.js",
+    "line": 69,
+    "text": "   *   主角的睡觉是单独的立绘资源，所以不受影响。 */",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/data/visitor.js",
+    "line": 105,
+    "text": "   * 打招呼。纳西妲在用「发呆」状态时，如果家里有客人，就会触发一组对话。",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/data/visitor.js",
+    "line": 106,
+    "text": "   * 一条主角的、一条同伴的，先后弹出来。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/engine/gacha.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 抽签与约束",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/engine/journey.js",
+    "line": 1,
+    "text": "﻿/* 纳西妲旅行 · 旅途模拟",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/engine/trip.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 事实卡生成",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/farm.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 种植系统",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/geo.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 定位（可选）",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 家的系统",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 17,
+    "text": "  /* ---------------- 纳西妲的状态机 ---------------- */",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 26,
+    "text": "    var list = NT.data.nahidaStates;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 38,
+    "text": "    var st = NT.data.nahidaStateById(stateId);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 40,
+    "text": "      var r = R.mulberry32(hash('spot', save.home.nahida.since, stateId));",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 51,
+    "text": "    var h = save.home.nahida;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 56,
+    "text": "      h.until = now + stateDurationMs(NT.data.nahidaStateById(h.stateId), save.createdAt);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 59,
+    "text": "    if (!h.until) h.until = h.since + stateDurationMs(NT.data.nahidaStateById(h.stateId), save.createdAt);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 66,
+    "text": "      h.until = h.since + stateDurationMs(NT.data.nahidaStateById(h.stateId), save.createdAt);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 76,
+    "text": "      h.until = now + stateDurationMs(NT.data.nahidaStateById(h.stateId), save.createdAt);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 87,
+    "text": "    return NT.data.nahidaStateById(save.home.nahida.stateId);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 109,
+    "text": "    var id = home._spotIdOf(save, save.home.nahida.stateId);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 119,
+    "text": "    var id = save.home.nahida.prevSpotId;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 125,
+    "text": "    var r = R.mulberry32(hash('line', save.home.nahida.since, st.id));",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 192,
+    "text": "    if (!save.home) save.home = { placed: [], nahida: {} };",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 253,
+    "text": "    var r = R.mulberry32(hash('toy', save.home.nahida.since));",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 261,
+    "text": "    var r = R.mulberry32(hash('toyline', save.home.nahida.since, toy.id));",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 269,
+    "text": "   * 取 0.24 是为了把**来访同伴**也算进去 —— 同伴立绘的身高和主角差不多，",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 342,
+    "text": "   * **核心约束：同伴永远和主角分在画面两侧。**",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 343,
+    "text": "   *   主角在左侧（吃饭/看书/发呆/睡觉…）-> 同伴只在右侧玩玩具",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 344,
+    "text": "   *   主角在右侧（玩玩具）              -> 同伴只做左侧的活动",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 345,
+    "text": "   *   主角出门了（家里没人）            -> 同伴随便",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 349,
+    "text": "  /** 院子里一件玩具都没摆时，同伴在这儿待着（刻意避开主角所有落点） */",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 352,
+    "text": "  /** 主角现在在画面哪一侧：玩玩具 = 右边，其它 = 左边 */",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 353,
+    "text": "  home.nahidaSide = function (save) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 400,
+    "text": "          // 和主角同一套逻辑：在玩具周围找一块不会压到别件玩具的位置",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 411,
+    "text": "      // 注意**不能用 gate**：主角\"望着路口\"就站在那儿，会叠上。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 444,
+    "text": "   * 主角和客人的打招呼。只在主角「发呆」时触发，一次来访只打一次。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 445,
+    "text": "   * @returns {nahida, visitor} 或 null",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 454,
+    "text": "    return pair ? { nahida: pair[0], visitor: pair[1] } : null;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 481,
+    "text": "      var want = home.nahidaSide(save) === 'right' ? 'left' : 'right';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 514,
+    "text": "      // 主角刚换了状态 -> 客人的侧别可能就不对了，**必须立刻重选**。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 515,
+    "text": "      // 不这么做的话会出现\"两个人都在右侧\"（主角跑去玩玩具，客人还在玩）。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 517,
+    "text": "        : (home.nahidaSide(save) === 'right' ? 'left' : 'right');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/home.js",
+    "line": 530,
+    "text": "    // 3) 家里没客人 -> 主角换状态时掷一次骰子",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/legacy-entry.js",
+    "line": 5,
+    "text": "  if (typeof window !== 'undefined') window.__NAHIDA_TRAVEL_LEGACY_ENTRY__ = true;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/render/effects.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 图像后处理",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/render/frames.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 画框与邮戳（程序化绘制，不需要图片素材）",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/render/placeholder.js",
+    "line": 1,
+    "text": "﻿/* 纳西妲旅行 · 程序化占位美术",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/render/placeholder.js",
+    "line": 517,
+    "text": "      // 纳西妲：叶片帽",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/render/placeholder.js",
+    "line": 930,
+    "text": "   * 返回可放置纳西妲与玩具的地面基准线。",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/render/placeholder.js",
+    "line": 1055,
+    "text": "   *  中间一列留给纳西妲，玩具只放两侧和后方，避免压在她身上。 */",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/render/postcard.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 明信片合成管线",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/render/postcard.js",
+    "line": 153,
+    "text": "    // 纳西妲（主角）",
+    "terms": [
+      "纳西妲",
+      "主角"
+    ]
+  },
+  {
+    "file": "src/render/postcard.js",
+    "line": 154,
+    "text": "    var nahidaSprite = { hair: '#f4f2ea', dress: '#8ec96a', accent: '#f7fbe8', skin: '#ffe2cc', hat: 'leaf' };",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/render/postcard.js",
+    "line": 155,
+    "text": "    var nOk = A && A.drawNahida(sctx, charX, feetY, charH, pres.charFlip, fact.moodId);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/render/postcard.js",
+    "line": 157,
+    "text": "      PH.chibi(sctx, charX, feetY, charH, nahidaSprite, fact.moodId, pres.charFlip);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/sfx.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 音效",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/storage/save-api.js",
+    "line": 2,
+    "text": "export const LEGACY_SAVE_KEY = 'nahida-travel/save/v2';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/store.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 存档",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/store.js",
+    "line": 52,
+    "text": "        nahida: { stateId: 'idle', since: Date.now(), until: 0, prevSpotId: 'yard' },",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/text/deepseek.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · L2 AI 增强层（DeepSeek BYOK）",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/text/deepseek.js",
+    "line": 28,
+    "text": "        '（称呼你为「' + res.companion.callNahida + '」，性格：' + res.companion.traits.join('/') + '）');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/text/template-text.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · L1 模板文本渲染（保底层，永不失败）",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/text/template-text.js",
+    "line": 44,
+    "text": "      call: res.companion ? res.companion.callNahida : '',",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/time/clock.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 时间循环",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/time/clock.js",
+    "line": 14,
+    "text": "   * 让纳西妲出发。",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/time/clock.js",
+    "line": 90,
+    "text": "    // 顺带推进纳西妲的状态",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1,
+    "text": "/* 纳西妲旅行 · 界面层",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 2,
+    "text": " * 家是一个 16:9 的全屏世界：纳西妲在里面实时走动做事，两块田直接画在画面里，点一下就操作。",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 203,
+    "text": "    var bub = $('nahida-bubble');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 218,
+    "text": "        var b = $('nahida-bubble');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 224,
+    "text": "  /** 客人说话的气泡（和主角的分开两个元素） */",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 591,
+    "text": "    a.download = 'nahida-travel-save.json';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 652,
+    "text": "      chat: { title: app.chatTopic ? (NT.home.topicById(app.chatTopic) || {}).label || '聊聊' : '和纳西妲说说话', body: app.viewChat },",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 753,
+    "text": "      '<div class=\"bubble\" id=\"nahida-bubble\"></div>' +",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 943,
+    "text": "    // 纳西妲的内容高度。0.22 是照着家里家具的比例定的（约为门高的一半、比桌高一头）",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 969,
+    "text": "      // 玩具：尺寸按\"相对纳西妲身高的倍数\"来（见 data/home.js 的 toySizeRatio）",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 983,
+    "text": "    // --- 前景层（纳西妲），每帧重画 ---",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1023,
+    "text": "    function drawNahida(t) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1037,
+    "text": "        var bubAway = $('nahida-bubble');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1040,
+    "text": "        app._raf = requestAnimationFrame(drawNahida);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1087,
+    "text": "      var bub = $('nahida-bubble');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1161,
+    "text": "      var nOk = NT.assets && NT.assets.drawNahida(fctx, cx, feetY, chH, faceLeft,",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1183,
+    "text": "      app._raf = requestAnimationFrame(drawNahida);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1188,
+    "text": "     * 位置由 home.visitorSpot 给出 —— 那边已经保证了 TA 和主角分在画面两侧。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1277,
+    "text": "    var stKey = st.id + ':' + s.home.nahida.since + ':' + (playingNow ? playingNow.id : '');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1311,
+    "text": "    // ---- 打招呼：主角在发呆、家里有客人，就聊一句（一次来访只触发一次）----",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1314,
+    "text": "      app.setBubble(greet.nahida, 7000, 'ambient');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1321,
+    "text": "    app._raf = requestAnimationFrame(drawNahida);",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1512,
+    "text": "    if (!(A && A.drawNahida(ctx, W * spot.x, H * spot.y, chH, false, mood))) {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1531,
+    "text": "      return app.header('和纳西妲说说话', 'home') +",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1534,
+    "text": "        '<div class=\"say-bubble\">' + esc(NT.home.hello(s, s.home.nahida.since)) + '</div>' +",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1912,
+    "text": "      '<div class=\"hint\">素材用的是通用文件名（主角-*、场景-*、配角-*），' +",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 2000,
+    "text": "    s.home.nahida.stateId = 'play';",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 2001,
+    "text": "    s.home.nahida.until = 0;",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "tools/asset-generator.html",
+    "line": 6,
+    "text": "<title>素材生成器 · 纳西妲旅行</title>",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "tools/make-icon.html",
+    "line": 84,
+    "text": "    var drew = NT.assets && NT.assets.drawNahida(ctx, size / 2, size * 0.95, h, false, 'happy');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "tools/record-demo.ps1",
+    "line": 11,
+    "text": "#  用法（在 nahida-travel 目录下）：",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "tools/record-demo.ps1",
+    "line": 49,
+    "text": "#   click = 点某个元素：CSS 选择器，或者 @nahida 表示点她本人",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "tools/record-demo.ps1",
+    "line": 55,
+    "text": "  @{ t = 3.9;  click = '@nahida' },",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "tools/record-demo.ps1",
+    "line": 129,
+    "text": "  if ($sel -eq '@nahida') {",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 4,
+    "text": "这个文件夹里的图，文件名全是**通用名字**（主角-*、场景-*、配角-* …），",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 8,
+    "text": "  · 想把主角换成别的角色 → 换掉「主角-*」这三张就行",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 29,
+    "text": "一、主角立绘（3 张）",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 31,
+    "text": "文件名：主角-待机 / 主角-开心 / 主角-疲惫",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 36,
+    "text": "  主角-待机    站着，双手自然放下，表情平静",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 39,
+    "text": "  主角-开心    微笑，手稍微抬起来一点",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 42,
+    "text": "  主角-疲惫    眼睛半闭，有点没精神",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 45,
+    "text": "  【可选】主角-坐着",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 56,
+    "text": "要点：· **画面里不要出现人物**（主角和配角是之后贴上去的）",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 72,
+    "text": "尺寸：1024 × 2048（和主角完全一样）",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 73,
+    "text": "要点：**身高比例和主角对齐**，脚底同样贴着图片下边缘；",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 74,
+    "text": "      建议和主角同一批次画，否则拼在一张明信片上会看出来",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 113,
+    "text": "尺寸是按「相对主角身高的倍数」配的，见 src/data/home.js 的 toySizeRatio：",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 128,
+    "text": "      tools/make-icon.html 可以拿主角立绘自动生成 —— 打开它，",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 142,
+    "text": "比如把「主角-待机.png」换成另一个角色的图，",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 153,
+    "text": "  2. 在 nahida-travel/assets/manifest.js 的 companions 里加一行：",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 227,
+    "text": "    nahida-travel/",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 238,
+    "text": "所以整个 nahida-travel 文件夹拷到哪、改名成什么，都不会失效。",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 241,
+    "text": "nahida-travel/assets/manifest.js 里的 dir 字段。",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 258,
+    "text": "放到 nahida-travel/assets/font/ 里，再把 开始游戏.html 里那段",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "开始游戏.html",
+    "line": 8,
+    "text": "<title>纳西妲的旅行</title>",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "开始游戏.html",
+    "line": 561,
+    "text": "          NT.app.save.home.nahida.stateId = Q.get('setstate');",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "开始游戏.html",
+    "line": 562,
+    "text": "          NT.app.save.home.nahida.until = Date.now() + 3600e3;   // 别让它马上又换掉",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "开始游戏.html",
+    "line": 563,
+    "text": "          NT.app.save.home.nahida.since = Date.now();",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "开始游戏.html",
+    "line": 568,
+    "text": "        // 注意要放在 setstate 之后 —— 客人的活动是按主角当时的位置挑的",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "开始游戏.html",
+    "line": 615,
+    "text": "              '\\nstate=' + NT.app.save.home.nahida.stateId +",
+    "terms": [
+      "nahida"
+    ]
+  },
+  {
+    "file": "说明.txt",
+    "line": 2,
+    "text": "  纳西妲的旅行 · 说明",
+    "terms": [
+      "纳西妲"
+    ]
+  },
+  {
+    "file": "说明.txt",
+    "line": 134,
+    "text": "文件名是通用的（主角-*、场景-*、配角-*）。",
+    "terms": [
+      "主角"
+    ]
+  },
+  {
+    "file": "说明.txt",
+    "line": 137,
+    "text": "把「主角-*」换成你喜欢的角色，或者把「场景-*」换成别的世界，",
+    "terms": [
+      "主角"
+    ]
+  }
+]

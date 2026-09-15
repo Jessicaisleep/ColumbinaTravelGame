@@ -1,0 +1,3915 @@
+[
+  {
+    "dialogueId": "protagonist_state_idle_1",
+    "speakerId": "protagonist",
+    "text": "……啊，你来了。",
+    "context": "home-state",
+    "locationId": "home_yard",
+    "trigger": "idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_idle_2",
+    "speakerId": "protagonist",
+    "text": "我在想一件事，想到一半忘了。",
+    "context": "home-state",
+    "locationId": "home_yard",
+    "trigger": "idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_idle_3",
+    "speakerId": "protagonist",
+    "text": "刚才那片云变成了一只兔子，现在散了。",
+    "context": "home-state",
+    "locationId": "home_yard",
+    "trigger": "idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_poke_idle_1",
+    "speakerId": "protagonist",
+    "text": "……嗯？",
+    "context": "poke-response",
+    "locationId": "home_yard",
+    "trigger": "poke:idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_idle_2",
+    "speakerId": "protagonist",
+    "text": "你来了。",
+    "context": "poke-response",
+    "locationId": "home_yard",
+    "trigger": "poke:idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_idle_3",
+    "speakerId": "protagonist",
+    "text": "我刚才在想事情，被你打断了。",
+    "context": "poke-response",
+    "locationId": "home_yard",
+    "trigger": "poke:idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_idle_4",
+    "speakerId": "protagonist",
+    "text": "（慢慢抬起头）",
+    "context": "poke-response",
+    "locationId": "home_yard",
+    "trigger": "poke:idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_state_sleep_1",
+    "speakerId": "protagonist",
+    "text": "（她睡着了，呼吸很轻）",
+    "context": "home-state",
+    "locationId": "home_bed",
+    "trigger": "sleep",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_sleep_2",
+    "speakerId": "protagonist",
+    "text": "（翻了个身，没有醒）",
+    "context": "home-state",
+    "locationId": "home_bed",
+    "trigger": "sleep",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_sleep_3",
+    "speakerId": "protagonist",
+    "text": "……再五分钟……",
+    "context": "home-state",
+    "locationId": "home_bed",
+    "trigger": "sleep",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_poke_sleep_1",
+    "speakerId": "protagonist",
+    "text": "（翻了个身，把脸埋进枕头）",
+    "context": "poke-response",
+    "locationId": "home_bed",
+    "trigger": "poke:sleep",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_sleep_2",
+    "speakerId": "protagonist",
+    "text": "……唔。",
+    "context": "poke-response",
+    "locationId": "home_bed",
+    "trigger": "poke:sleep",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_sleep_3",
+    "speakerId": "protagonist",
+    "text": "（含糊地说了句什么，没听清）",
+    "context": "poke-response",
+    "locationId": "home_bed",
+    "trigger": "poke:sleep",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_sleep_4",
+    "speakerId": "protagonist",
+    "text": "（把被子往上拉了拉）",
+    "context": "poke-response",
+    "locationId": "home_bed",
+    "trigger": "poke:sleep",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_state_eat_1",
+    "speakerId": "protagonist",
+    "text": "刚做好的，还热。你要不要尝一口？",
+    "context": "home-state",
+    "locationId": "home_desk",
+    "trigger": "eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_eat_2",
+    "speakerId": "protagonist",
+    "text": "这个比上次做得好，我记下来了。",
+    "context": "home-state",
+    "locationId": "home_desk",
+    "trigger": "eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_eat_3",
+    "speakerId": "protagonist",
+    "text": "吃东西的时候脑子会停下来，这样很好。",
+    "context": "home-state",
+    "locationId": "home_desk",
+    "trigger": "eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_poke_eat_1",
+    "speakerId": "protagonist",
+    "text": "你要不要尝一口？",
+    "context": "poke-response",
+    "locationId": "home_desk",
+    "trigger": "poke:eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_eat_2",
+    "speakerId": "protagonist",
+    "text": "（把碗往你那边推了推）",
+    "context": "poke-response",
+    "locationId": "home_desk",
+    "trigger": "poke:eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_eat_3",
+    "speakerId": "protagonist",
+    "text": "等我把这口咽下去。",
+    "context": "poke-response",
+    "locationId": "home_desk",
+    "trigger": "poke:eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_eat_4",
+    "speakerId": "protagonist",
+    "text": "还没做好吃的样子，别看了。",
+    "context": "poke-response",
+    "locationId": "home_desk",
+    "trigger": "poke:eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_state_play_1",
+    "speakerId": "protagonist",
+    "text": "一起玩吗？",
+    "context": "home-state",
+    "locationId": "home_lawn",
+    "trigger": "play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_play_2",
+    "speakerId": "protagonist",
+    "text": "刚才那个差点飞出去了。",
+    "context": "home-state",
+    "locationId": "home_lawn",
+    "trigger": "play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_play_3",
+    "speakerId": "protagonist",
+    "text": "再来一次，这次我一定能接住。",
+    "context": "home-state",
+    "locationId": "home_lawn",
+    "trigger": "play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_poke_play_1",
+    "speakerId": "protagonist",
+    "text": "一起！",
+    "context": "poke-response",
+    "locationId": "home_lawn",
+    "trigger": "poke:play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_play_2",
+    "speakerId": "protagonist",
+    "text": "刚才那个你看到了吗？",
+    "context": "poke-response",
+    "locationId": "home_lawn",
+    "trigger": "poke:play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_play_3",
+    "speakerId": "protagonist",
+    "text": "再来一次！",
+    "context": "poke-response",
+    "locationId": "home_lawn",
+    "trigger": "poke:play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_play_4",
+    "speakerId": "protagonist",
+    "text": "（原地蹦了一下）",
+    "context": "poke-response",
+    "locationId": "home_lawn",
+    "trigger": "poke:play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_state_read_1",
+    "speakerId": "protagonist",
+    "text": "这一页我读了三遍，每次理解得都不太一样。",
+    "context": "home-state",
+    "locationId": "home_shelf",
+    "trigger": "read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_read_2",
+    "speakerId": "protagonist",
+    "text": "书里说的事情，和外面看到的对不上。",
+    "context": "home-state",
+    "locationId": "home_shelf",
+    "trigger": "read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_read_3",
+    "speakerId": "protagonist",
+    "text": "你先坐，我看完这段。",
+    "context": "home-state",
+    "locationId": "home_shelf",
+    "trigger": "read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_poke_read_1",
+    "speakerId": "protagonist",
+    "text": "……等一下，这段看完。",
+    "context": "poke-response",
+    "locationId": "home_shelf",
+    "trigger": "poke:read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_read_2",
+    "speakerId": "protagonist",
+    "text": "（从书上面看了你一眼）",
+    "context": "poke-response",
+    "locationId": "home_shelf",
+    "trigger": "poke:read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_read_3",
+    "speakerId": "protagonist",
+    "text": "你也想看？这本有点难。",
+    "context": "poke-response",
+    "locationId": "home_shelf",
+    "trigger": "poke:read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_read_4",
+    "speakerId": "protagonist",
+    "text": "别挡住光。",
+    "context": "poke-response",
+    "locationId": "home_shelf",
+    "trigger": "poke:read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_state_water_1",
+    "speakerId": "protagonist",
+    "text": "土还是湿的，今天不用浇了。",
+    "context": "home-state",
+    "locationId": "home_dry",
+    "trigger": "water",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_water_2",
+    "speakerId": "protagonist",
+    "text": "这棵长得比昨天高了一点，真的。",
+    "context": "home-state",
+    "locationId": "home_dry",
+    "trigger": "water",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_water_3",
+    "speakerId": "protagonist",
+    "text": "水要慢慢浇，一下子倒下去根会松。",
+    "context": "home-state",
+    "locationId": "home_dry",
+    "trigger": "water",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_poke_water_1",
+    "speakerId": "protagonist",
+    "text": "水壶有点重。",
+    "context": "poke-response",
+    "locationId": "home_dry",
+    "trigger": "poke:water",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_water_2",
+    "speakerId": "protagonist",
+    "text": "小心，别站太近。",
+    "context": "poke-response",
+    "locationId": "home_dry",
+    "trigger": "poke:water",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_water_3",
+    "speakerId": "protagonist",
+    "text": "这棵今天已经喝饱了。",
+    "context": "poke-response",
+    "locationId": "home_dry",
+    "trigger": "poke:water",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_water_4",
+    "speakerId": "protagonist",
+    "text": "（往旁边挪了半步，让开水）",
+    "context": "poke-response",
+    "locationId": "home_dry",
+    "trigger": "poke:water",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_state_cook_1",
+    "speakerId": "protagonist",
+    "text": "火候比上次好。",
+    "context": "home-state",
+    "locationId": "home_stove",
+    "trigger": "cook",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_cook_2",
+    "speakerId": "protagonist",
+    "text": "你闻到没有？",
+    "context": "home-state",
+    "locationId": "home_stove",
+    "trigger": "cook",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_cook_3",
+    "speakerId": "protagonist",
+    "text": "等一下就好，别急。",
+    "context": "home-state",
+    "locationId": "home_stove",
+    "trigger": "cook",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_poke_cook_1",
+    "speakerId": "protagonist",
+    "text": "别急，还没好。",
+    "context": "poke-response",
+    "locationId": "home_stove",
+    "trigger": "poke:cook",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_cook_2",
+    "speakerId": "protagonist",
+    "text": "火有点大。",
+    "context": "poke-response",
+    "locationId": "home_stove",
+    "trigger": "poke:cook",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_cook_3",
+    "speakerId": "protagonist",
+    "text": "你来尝尝咸淡？",
+    "context": "poke-response",
+    "locationId": "home_stove",
+    "trigger": "poke:cook",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_cook_4",
+    "speakerId": "protagonist",
+    "text": "（一边说一边搅了两下）",
+    "context": "poke-response",
+    "locationId": "home_stove",
+    "trigger": "poke:cook",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_state_stretch_1",
+    "speakerId": "protagonist",
+    "text": "唔——坐太久了。",
+    "context": "home-state",
+    "locationId": "home_door",
+    "trigger": "stretch",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_stretch_2",
+    "speakerId": "protagonist",
+    "text": "你也起来动一动吧。",
+    "context": "home-state",
+    "locationId": "home_door",
+    "trigger": "stretch",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_stretch_3",
+    "speakerId": "protagonist",
+    "text": "肩膀有点僵。",
+    "context": "home-state",
+    "locationId": "home_door",
+    "trigger": "stretch",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_poke_stretch_1",
+    "speakerId": "protagonist",
+    "text": "……别看我。",
+    "context": "poke-response",
+    "locationId": "home_door",
+    "trigger": "poke:stretch",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_stretch_2",
+    "speakerId": "protagonist",
+    "text": "啊，你什么时候来的。",
+    "context": "poke-response",
+    "locationId": "home_door",
+    "trigger": "poke:stretch",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_stretch_3",
+    "speakerId": "protagonist",
+    "text": "（把手臂放了下来）",
+    "context": "poke-response",
+    "locationId": "home_door",
+    "trigger": "poke:stretch",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_stretch_4",
+    "speakerId": "protagonist",
+    "text": "就是……坐太久了。",
+    "context": "poke-response",
+    "locationId": "home_door",
+    "trigger": "poke:stretch",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_state_lookout_1",
+    "speakerId": "protagonist",
+    "text": "……没什么，就是看看。",
+    "context": "home-state",
+    "locationId": "home_gate",
+    "trigger": "lookout",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_lookout_2",
+    "speakerId": "protagonist",
+    "text": "我在等风把门吹响。",
+    "context": "home-state",
+    "locationId": "home_gate",
+    "trigger": "lookout",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_state_lookout_3",
+    "speakerId": "protagonist",
+    "text": "门口那条路，一直通向很远的地方。",
+    "context": "home-state",
+    "locationId": "home_gate",
+    "trigger": "lookout",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_poke_lookout_1",
+    "speakerId": "protagonist",
+    "text": "……没什么。",
+    "context": "poke-response",
+    "locationId": "home_gate",
+    "trigger": "poke:lookout",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_lookout_2",
+    "speakerId": "protagonist",
+    "text": "（转过身来）你回来了。",
+    "context": "poke-response",
+    "locationId": "home_gate",
+    "trigger": "poke:lookout",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_lookout_3",
+    "speakerId": "protagonist",
+    "text": "我只是看看。",
+    "context": "poke-response",
+    "locationId": "home_gate",
+    "trigger": "poke:lookout",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "protagonist_poke_lookout_4",
+    "speakerId": "protagonist",
+    "text": "（把视线收回来）",
+    "context": "poke-response",
+    "locationId": "home_gate",
+    "trigger": "poke:lookout",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角行为和语气绑定，需按哥伦比娅设定重写}"
+  },
+  {
+    "dialogueId": "player_chat_trip_1",
+    "speakerId": "player",
+    "text": "这次去了哪里？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_trip_1_1",
+    "speakerId": "protagonist",
+    "text": "走了很远。路上碰到了一点事，我写在明信片背面了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_trip_1_2",
+    "speakerId": "protagonist",
+    "text": "本来想去一个地方，后来去了另一个。这样也不错。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_trip_1_3",
+    "speakerId": "protagonist",
+    "text": "一个风很大的地方。我站在那里，帽子差点飞走。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_trip_2",
+    "speakerId": "player",
+    "text": "路上累不累？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_trip_2_1",
+    "speakerId": "protagonist",
+    "text": "累的。但是坐下来歇一会儿就好了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_trip_2_2",
+    "speakerId": "protagonist",
+    "text": "有一段挺难的。不过看到好看的东西就忘了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_trip_2_3",
+    "speakerId": "protagonist",
+    "text": "还好。走得慢一点就不太累。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_trip_3",
+    "speakerId": "player",
+    "text": "带的吃的够吗？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_trip_3_1",
+    "speakerId": "protagonist",
+    "text": "刚好够。差一点就要半路回来了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_trip_3_2",
+    "speakerId": "protagonist",
+    "text": "有剩的。下次可以少带一点。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_trip_3_3",
+    "speakerId": "protagonist",
+    "text": "不够。路上有人分了我一些，不然走不到。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "trip",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_today_1",
+    "speakerId": "player",
+    "text": "今天在做什么？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_today_1_1",
+    "speakerId": "protagonist",
+    "text": "在数院子里有多少种叶子。数到第七种就乱了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_today_1_2",
+    "speakerId": "protagonist",
+    "text": "什么也没做。什么也不做其实挺难的。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_today_1_3",
+    "speakerId": "protagonist",
+    "text": "把书重新排了一遍，按厚度。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_today_2",
+    "speakerId": "player",
+    "text": "睡得好吗？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_today_2_1",
+    "speakerId": "protagonist",
+    "text": "很好。梦到自己在很高的地方，但是一点也不怕。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_today_2_2",
+    "speakerId": "protagonist",
+    "text": "还行。半夜醒了一次，听见外面有虫子在叫。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_today_2_3",
+    "speakerId": "protagonist",
+    "text": "不太好。想事情想到很晚。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_today_3",
+    "speakerId": "player",
+    "text": "有没有想我？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_today_3_1",
+    "speakerId": "protagonist",
+    "text": "……这种问题。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_today_3_2",
+    "speakerId": "protagonist",
+    "text": "门口那条路，我看了好几次。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_today_3_3",
+    "speakerId": "protagonist",
+    "text": "嗯。不过我不会一直看，那样太浪费时间了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "today",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_farm_1",
+    "speakerId": "player",
+    "text": "田里长得怎么样？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_farm_1_1",
+    "speakerId": "protagonist",
+    "text": "旱田那边挺好的，水田的水位要再看一下。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_farm_1_2",
+    "speakerId": "protagonist",
+    "text": "有一棵长得特别快，我怀疑是它偷偷多喝了水。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_farm_1_3",
+    "speakerId": "protagonist",
+    "text": "土有点干。今天得浇一次。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_farm_2",
+    "speakerId": "player",
+    "text": "需要我帮忙吗？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_farm_2_1",
+    "speakerId": "protagonist",
+    "text": "不用。你坐着就好。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_farm_2_2",
+    "speakerId": "protagonist",
+    "text": "那……帮我把那边的工具递一下。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_farm_2_3",
+    "speakerId": "protagonist",
+    "text": "你要是想帮忙，就去看看水田。我总怕水太多。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_farm_3",
+    "speakerId": "player",
+    "text": "种什么比较好？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_farm_3_1",
+    "speakerId": "protagonist",
+    "text": "种你喜欢的。反正都会长。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_farm_3_2",
+    "speakerId": "protagonist",
+    "text": "土豆最省事，埋下去就不用管了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_farm_3_3",
+    "speakerId": "protagonist",
+    "text": "水稻要看着水。如果你没空，就先种旱田的。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "farm",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_home_1",
+    "speakerId": "player",
+    "text": "这个屋子是你自己盖的吗？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_home_1_1",
+    "speakerId": "protagonist",
+    "text": "不是。我来的时候它就在这儿了，我只是把里面收拾了一下。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_home_1_2",
+    "speakerId": "protagonist",
+    "text": "墙有一面塌了，我用木头撑住了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_home_1_3",
+    "speakerId": "protagonist",
+    "text": "屋顶漏过一次雨。后来补好了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_home_2",
+    "speakerId": "player",
+    "text": "玩具好玩吗？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_home_2_1",
+    "speakerId": "protagonist",
+    "text": "很好玩。尤其是那个的。……我说不上来是哪个最好。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_home_2_2",
+    "speakerId": "protagonist",
+    "text": "有一个我怎么都玩不好，但是我不想说。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_home_2_3",
+    "speakerId": "protagonist",
+    "text": "你要不要也试试？",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_home_3",
+    "speakerId": "player",
+    "text": "喜欢这里吗？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_home_3_1",
+    "speakerId": "protagonist",
+    "text": "喜欢。这里安静，而且能看到很远。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_home_3_2",
+    "speakerId": "protagonist",
+    "text": "嗯。有田，有书，还有一条路通向外边。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_home_3_3",
+    "speakerId": "protagonist",
+    "text": "挺好的。就是有时候风有点大。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "home",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_small_1",
+    "speakerId": "player",
+    "text": "你在想什么？",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_small_1_1",
+    "speakerId": "protagonist",
+    "text": "在想一个问题：为什么影子总是比东西本身长一点。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_small_1_2",
+    "speakerId": "protagonist",
+    "text": "在想明天。明天和今天大概差不多，但也不是完全一样。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_small_1_3",
+    "speakerId": "protagonist",
+    "text": "在想你刚才那句问题该怎么回答。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_small_2",
+    "speakerId": "player",
+    "text": "给你讲个事",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_small_2_1",
+    "speakerId": "protagonist",
+    "text": "好，我听着。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_small_2_2",
+    "speakerId": "protagonist",
+    "text": "嗯。你慢慢说。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_small_2_3",
+    "speakerId": "protagonist",
+    "text": "我坐下了，你说吧。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "player_chat_small_3",
+    "speakerId": "player",
+    "text": "摸摸头",
+    "context": "chat-option",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_chat_small_3_1",
+    "speakerId": "protagonist",
+    "text": "……唔。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_small_3_2",
+    "speakerId": "protagonist",
+    "text": "喂。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "protagonist_chat_small_3_3",
+    "speakerId": "protagonist",
+    "text": "这样会乱的。……不过算了。",
+    "context": "chat-reply",
+    "locationId": null,
+    "trigger": "small",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 回复表现原主角性格，不能只替换姓名}"
+  },
+  {
+    "dialogueId": "visitor_arrive_1",
+    "speakerId": "companion_generic",
+    "text": "打扰了——有人在吗？",
+    "context": "visitor-arrive",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_arrive_2",
+    "speakerId": "companion_generic",
+    "text": "我路过，就上来看看。",
+    "context": "visitor-arrive",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_arrive_3",
+    "speakerId": "companion_generic",
+    "text": "门没关，我进来了啊。",
+    "context": "visitor-arrive",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_arrive_4",
+    "speakerId": "companion_generic",
+    "text": "她不在？那我等她。",
+    "context": "visitor-arrive",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_arrive_5",
+    "speakerId": "companion_generic",
+    "text": "带了点东西，放桌上了。",
+    "context": "visitor-arrive",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_arrive_6",
+    "speakerId": "companion_generic",
+    "text": "好久没来了，还是老样子。",
+    "context": "visitor-arrive",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_leave_1",
+    "speakerId": "companion_generic",
+    "text": "我先走了，替我跟她说一声。",
+    "context": "visitor-leave",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_leave_2",
+    "speakerId": "companion_generic",
+    "text": "下次再来。",
+    "context": "visitor-leave",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_leave_3",
+    "speakerId": "companion_generic",
+    "text": "不早了，我该回去了。",
+    "context": "visitor-leave",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_leave_4",
+    "speakerId": "companion_generic",
+    "text": "她回来跟她说我来过。",
+    "context": "visitor-leave",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_leave_5",
+    "speakerId": "companion_generic",
+    "text": "门我带上了。",
+    "context": "visitor-leave",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_alone_1",
+    "speakerId": "companion_generic",
+    "text": "……一个人也挺好。",
+    "context": "visitor-alone",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_alone_2",
+    "speakerId": "companion_generic",
+    "text": "她不在，我就随便看看。",
+    "context": "visitor-alone",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_alone_3",
+    "speakerId": "companion_generic",
+    "text": "这盆花浇过水了。",
+    "context": "visitor-alone",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_alone_4",
+    "speakerId": "companion_generic",
+    "text": "院子里那块地种的是什么？",
+    "context": "visitor-alone",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_alone_5",
+    "speakerId": "companion_generic",
+    "text": "等她回来再说吧。",
+    "context": "visitor-alone",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_greet_1_protagonist",
+    "speakerId": "protagonist",
+    "text": "……啊，你来了。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角待客语气需确认}"
+  },
+  {
+    "dialogueId": "visitor_greet_1_companion",
+    "speakerId": "companion_generic",
+    "text": "嗯，刚到。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_greet_2_protagonist",
+    "speakerId": "protagonist",
+    "text": "外面冷不冷？",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角待客语气需确认}"
+  },
+  {
+    "dialogueId": "visitor_greet_2_companion",
+    "speakerId": "companion_generic",
+    "text": "还好，走了一段就热了。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_greet_3_protagonist",
+    "speakerId": "protagonist",
+    "text": "你坐，我去倒点水。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角待客语气需确认}"
+  },
+  {
+    "dialogueId": "visitor_greet_3_companion",
+    "speakerId": "companion_generic",
+    "text": "不用忙，我坐一会儿就走。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_greet_4_protagonist",
+    "speakerId": "protagonist",
+    "text": "你来得正好，我刚想找人说说话。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角待客语气需确认}"
+  },
+  {
+    "dialogueId": "visitor_greet_4_companion",
+    "speakerId": "companion_generic",
+    "text": "那你说，我听着。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_greet_5_protagonist",
+    "speakerId": "protagonist",
+    "text": "路上顺利吗？",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角待客语气需确认}"
+  },
+  {
+    "dialogueId": "visitor_greet_5_companion",
+    "speakerId": "companion_generic",
+    "text": "顺利。就是绕了点远。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_greet_6_protagonist",
+    "speakerId": "protagonist",
+    "text": "你上次落在这儿的东西还在。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角待客语气需确认}"
+  },
+  {
+    "dialogueId": "visitor_greet_6_companion",
+    "speakerId": "companion_generic",
+    "text": "啊……我还以为丢了。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_greet_7_protagonist",
+    "speakerId": "protagonist",
+    "text": "今天风不错。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角待客语气需确认}"
+  },
+  {
+    "dialogueId": "visitor_greet_7_companion",
+    "speakerId": "companion_generic",
+    "text": "是，所以我才出来的。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_greet_8_protagonist",
+    "speakerId": "protagonist",
+    "text": "要一起出去走走吗？",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 原主角待客语气需确认}"
+  },
+  {
+    "dialogueId": "visitor_greet_8_companion",
+    "speakerId": "companion_generic",
+    "text": "现在？等我把这杯喝完。",
+    "context": "visitor-greeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "protagonist_toy_trampoline_1",
+    "speakerId": "protagonist",
+    "text": "一下比一下高！",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "trampoline",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_trampoline_2",
+    "speakerId": "protagonist",
+    "text": "落下来的时候肚子有点痒。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "trampoline",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_trampoline_3",
+    "speakerId": "protagonist",
+    "text": "你看，我能碰到那片叶子。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "trampoline",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_windmill_1",
+    "speakerId": "protagonist",
+    "text": "它转得比我数得还快。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "windmill",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_windmill_2",
+    "speakerId": "protagonist",
+    "text": "风停了，它也停了。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "windmill",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_windmill_3",
+    "speakerId": "protagonist",
+    "text": "如果是反着转的呢？",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "windmill",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_pool_1",
+    "speakerId": "protagonist",
+    "text": "船沉了。它本来就不是用来浮的。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "pool",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_pool_2",
+    "speakerId": "protagonist",
+    "text": "水是凉的，手放进去很舒服。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "pool",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_pool_3",
+    "speakerId": "protagonist",
+    "text": "我给它搭了个码头。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "pool",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_lantern_1",
+    "speakerId": "protagonist",
+    "text": "里面那点火，其实不烫。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "lantern",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_lantern_2",
+    "speakerId": "protagonist",
+    "text": "挂高一点，这样远处也能看见。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "lantern",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_lantern_3",
+    "speakerId": "protagonist",
+    "text": "晚上的时候，它是这里最亮的东西。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "lantern",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_hammock_1",
+    "speakerId": "protagonist",
+    "text": "晃着晃着就困了。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "hammock",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_hammock_2",
+    "speakerId": "protagonist",
+    "text": "你别推太快，我会掉下去。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "hammock",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_hammock_3",
+    "speakerId": "protagonist",
+    "text": "从下面看，树叶的缝隙是碎的。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "hammock",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_ball_1",
+    "speakerId": "protagonist",
+    "text": "踢起来没什么声音。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "ball",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_ball_2",
+    "speakerId": "protagonist",
+    "text": "接住！……没接住。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "ball",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_ball_3",
+    "speakerId": "protagonist",
+    "text": "它滚到田里去了。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "ball",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_sandbox_1",
+    "speakerId": "protagonist",
+    "text": "我堆了一个塔，有两层。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "sandbox",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_sandbox_2",
+    "speakerId": "protagonist",
+    "text": "沙子下面还是沙子。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "sandbox",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_sandbox_3",
+    "speakerId": "protagonist",
+    "text": "这个形状像不像一座山？",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "sandbox",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_rug_1",
+    "speakerId": "protagonist",
+    "text": "花纹从这边看是一个样子，从那边看又是一个样子。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "rug",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_rug_2",
+    "speakerId": "protagonist",
+    "text": "坐在这里最舒服。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "rug",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_rug_3",
+    "speakerId": "protagonist",
+    "text": "我把书都堆在边上了。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "rug",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_mobile_1",
+    "speakerId": "protagonist",
+    "text": "它响的时候很轻，要安静才听得见。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "mobile",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_mobile_2",
+    "speakerId": "protagonist",
+    "text": "转起来的时候，影子也在转。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "mobile",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "protagonist_toy_mobile_3",
+    "speakerId": "protagonist",
+    "text": "声音像有人在很远的地方敲东西。",
+    "context": "toy-play",
+    "locationId": null,
+    "trigger": "mobile",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/home.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 玩具台词表现原主角行为与语气，需按哥伦比娅设定审查}"
+  },
+  {
+    "dialogueId": "visitor_state_play_1",
+    "speakerId": "companion_generic",
+    "text": "这个我那边没有。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_play_2",
+    "speakerId": "companion_generic",
+    "text": "让我玩一会儿，就一会儿。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_play_3",
+    "speakerId": "companion_generic",
+    "text": "你们家的院子比我想的大。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_play_4",
+    "speakerId": "companion_generic",
+    "text": "我试试能不能把它弄坏……啊，没有。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_play_5",
+    "speakerId": "companion_generic",
+    "text": "她平时也是这么玩的吗？",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_play_6",
+    "speakerId": "companion_generic",
+    "text": "风挺好的，再待一会儿。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "play",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_eat_1",
+    "speakerId": "companion_generic",
+    "text": "我尝一口，就一口。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_eat_2",
+    "speakerId": "companion_generic",
+    "text": "这个比我做的好吃。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_eat_3",
+    "speakerId": "companion_generic",
+    "text": "她不在，我自己动手了啊。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_eat_4",
+    "speakerId": "companion_generic",
+    "text": "碗我洗完再走。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_eat_5",
+    "speakerId": "companion_generic",
+    "text": "有点烫，等一下。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "eat",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_read_1",
+    "speakerId": "companion_generic",
+    "text": "这些书我翻过一本，忘了。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_read_2",
+    "speakerId": "companion_generic",
+    "text": "她做的记号我看不懂。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_read_3",
+    "speakerId": "companion_generic",
+    "text": "安静一会儿挺好。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_read_4",
+    "speakerId": "companion_generic",
+    "text": "这本放反了，我帮你摆正。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_read_5",
+    "speakerId": "companion_generic",
+    "text": "看到一半，等她回来再问她。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "read",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_idle_1",
+    "speakerId": "companion_generic",
+    "text": "她什么时候回来？",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_idle_2",
+    "speakerId": "companion_generic",
+    "text": "我就在这儿站一会儿。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_idle_3",
+    "speakerId": "companion_generic",
+    "text": "门口这条路通向哪儿？",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_idle_4",
+    "speakerId": "companion_generic",
+    "text": "来的时候没注意看，回程再说吧。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "visitor_state_idle_5",
+    "speakerId": "companion_generic",
+    "text": "……我是不是该走了。",
+    "context": "visitor-state",
+    "locationId": null,
+    "trigger": "idle",
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/visitor.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_paimon_catchphrase_1",
+    "speakerId": "paimon",
+    "text": "这个好好吃！",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_paimon_catchphrase_2",
+    "speakerId": "paimon",
+    "text": "派蒙才不是应急食品！",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_paimon_meet_1",
+    "speakerId": "protagonist_narration",
+    "text": "还没走多远就听见有人在喊饿，回头一看是派蒙。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_paimon_meet_2",
+    "speakerId": "protagonist_narration",
+    "text": "她从天上飘下来，第一句话是问这里有没有吃的。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_paimon_affinity_1",
+    "speakerId": "protagonist_narration",
+    "text": "我们分吃了一块饼，她坚持说自己只吃了一口。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_paimon_affinity_2",
+    "speakerId": "protagonist_narration",
+    "text": "她讲了一路的话，我听着听着就走到地方了。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_collei_catchphrase_1",
+    "speakerId": "collei",
+    "text": "我、我可以的！",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_collei_catchphrase_2",
+    "speakerId": "collei",
+    "text": "这个我记下来了。",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_collei_meet_1",
+    "speakerId": "protagonist_narration",
+    "text": "在路口碰到柯莱，她抱着一摞笔记，正对着一棵树发愁。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_collei_meet_2",
+    "speakerId": "protagonist_narration",
+    "text": "她远远看见我，先鞠了个躬，然后才想起来要说话。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_collei_affinity_1",
+    "speakerId": "protagonist_narration",
+    "text": "她把今天的见闻全记进了本子，字写得很小很密。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_collei_affinity_2",
+    "speakerId": "protagonist_narration",
+    "text": "她问我植物的事，我问一句她记一句，比我还认真。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_tighnari_catchphrase_1",
+    "speakerId": "tighnari",
+    "text": "别乱碰，那个有毒。",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_tighnari_catchphrase_2",
+    "speakerId": "tighnari",
+    "text": "……我说了别乱碰。",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_tighnari_meet_1",
+    "speakerId": "protagonist_narration",
+    "text": "在林子边上遇到提纳里，他正在数一种我没见过的花。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_tighnari_meet_2",
+    "speakerId": "protagonist_narration",
+    "text": "他先皱了皱眉，然后还是把水囊递了过来。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_tighnari_affinity_1",
+    "speakerId": "protagonist_narration",
+    "text": "他讲了一路雨林里的植物，讲到一半自己先笑了。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_tighnari_affinity_2",
+    "speakerId": "protagonist_narration",
+    "text": "他嘴上说我走得慢，脚下却一直没走快。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_cyno_catchphrase_1",
+    "speakerId": "cyno",
+    "text": "我讲个笑话。",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_cyno_catchphrase_2",
+    "speakerId": "cyno",
+    "text": "……不好笑吗。",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_cyno_meet_1",
+    "speakerId": "protagonist_narration",
+    "text": "赛诺站在沙丘上，说了一句很冷的笑话，风把它吹散了。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_cyno_meet_2",
+    "speakerId": "protagonist_narration",
+    "text": "他走过来，先说正事，然后才想起来该打个招呼。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_cyno_affinity_1",
+    "speakerId": "protagonist_narration",
+    "text": "他讲了个笑话，我没听懂，他解释了三遍。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_cyno_affinity_2",
+    "speakerId": "protagonist_narration",
+    "text": "他一路都在警惕四周，其实这里什么都没有。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_nilou_catchphrase_1",
+    "speakerId": "nilou",
+    "text": "要看看我新编的舞吗？",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_nilou_catchphrase_2",
+    "speakerId": "nilou",
+    "text": "啊、我不是那个意思……",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_nilou_meet_1",
+    "speakerId": "protagonist_narration",
+    "text": "妮露在水边练舞，看见我之后手忙脚乱地停了下来。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_nilou_meet_2",
+    "speakerId": "protagonist_narration",
+    "text": "她在城门口转圈，转到我面前才停下。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_nilou_affinity_1",
+    "speakerId": "protagonist_narration",
+    "text": "她跳了一段给我看，水花溅到了裙子上。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_nilou_affinity_2",
+    "speakerId": "protagonist_narration",
+    "text": "她说跳舞的时候，脑子里什么都不用想。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_dehya_catchphrase_1",
+    "speakerId": "dehya",
+    "text": "跟紧我。",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_dehya_catchphrase_2",
+    "speakerId": "dehya",
+    "text": "这点路算什么。",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_dehya_meet_1",
+    "speakerId": "protagonist_narration",
+    "text": "迪希雅从沙里站起来，拍了拍身上的土，说正好顺路。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_dehya_meet_2",
+    "speakerId": "protagonist_narration",
+    "text": "她把我往身后一挡，然后才看清前面什么都没有。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_dehya_affinity_1",
+    "speakerId": "protagonist_narration",
+    "text": "她一路都在我外侧走，说是习惯。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_dehya_affinity_2",
+    "speakerId": "protagonist_narration",
+    "text": "她把水囊塞给我，自己一口都没喝。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_klee_catchphrase_1",
+    "speakerId": "klee",
+    "text": "可莉是乖孩子！",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_klee_catchphrase_2",
+    "speakerId": "klee",
+    "text": "轰——！",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_klee_meet_1",
+    "speakerId": "protagonist_narration",
+    "text": "听见一声闷响，循着声音过去，就看见可莉站在一个坑旁边。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_klee_meet_2",
+    "speakerId": "protagonist_narration",
+    "text": "她从草丛里跳出来，把我吓了一跳，她自己也被吓了一跳。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_klee_affinity_1",
+    "speakerId": "protagonist_narration",
+    "text": "她说要送我一颗\"不危险\"的炸弹，我婉拒了。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_klee_affinity_2",
+    "speakerId": "protagonist_narration",
+    "text": "她捡了一兜石头，说每一颗都有名字。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_qiqi_catchphrase_1",
+    "speakerId": "qiqi",
+    "text": "七七……记住了。",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_qiqi_catchphrase_2",
+    "speakerId": "qiqi",
+    "text": "……忘了。",
+    "context": "character-catchphrase",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ]
+  },
+  {
+    "dialogueId": "character_qiqi_meet_1",
+    "speakerId": "protagonist_narration",
+    "text": "七七站在原地，好像在想事情，又好像什么都没在想。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_qiqi_meet_2",
+    "speakerId": "protagonist_narration",
+    "text": "她从背后走过来，我回头的时候她已经站了一会儿了。",
+    "context": "companion-meeting",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角叙述与配角相遇，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_qiqi_affinity_1",
+    "speakerId": "protagonist_narration",
+    "text": "她把我说的话记在小本子上，写完就忘了刚才写了什么。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  },
+  {
+    "dialogueId": "character_qiqi_affinity_2",
+    "speakerId": "protagonist_narration",
+    "text": "她走得很慢，所以我也走得慢，路反而看得更清楚。",
+    "context": "companion-affinity",
+    "locationId": null,
+    "trigger": null,
+    "condition": null,
+    "variables": [],
+    "references": [
+      {
+        "file": "src/data/companions.js"
+      }
+    ],
+    "marker": "{CHARACTER_RELATIONSHIP: 第一人称原主角关系叙述，需确认新关系}"
+  }
+]

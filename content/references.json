@@ -1,0 +1,99 @@
+{
+  "graph": [
+    {
+      "from": "protagonist",
+      "to": "characters",
+      "relation": "relationships-and-addresses"
+    },
+    {
+      "from": "protagonist",
+      "to": "locations",
+      "relation": "travel-home-and-world"
+    },
+    {
+      "from": "protagonist",
+      "to": "dialogues",
+      "relation": "speaker-and-first-person-narration"
+    },
+    {
+      "from": "dialogues",
+      "to": "events",
+      "relation": "triggers-and-narration"
+    },
+    {
+      "from": "events",
+      "to": "postcards",
+      "relation": "fact-to-text-rendering"
+    },
+    {
+      "from": "locations",
+      "to": "postcards",
+      "relation": "destination-and-background"
+    },
+    {
+      "from": "locations",
+      "to": "achievements",
+      "relation": "destination-statistics"
+    },
+    {
+      "from": "characters",
+      "to": "assets",
+      "relation": "sprite"
+    },
+    {
+      "from": "locations",
+      "to": "assets",
+      "relation": "background"
+    },
+    {
+      "from": "protagonist",
+      "to": "ai-prompts",
+      "relation": "persona-and-world"
+    }
+  ],
+  "missing": [
+    {
+      "from": "achievement.reach_kanas",
+      "relation": "references-location",
+      "to": "locations.kanas",
+      "status": "missing-destination",
+      "marker": "{REFERENCE_ERROR: achievement.reach_kanas → locations.kanas 不存在于正式目的地表}"
+    },
+    {
+      "from": "achievement.reach_three",
+      "relation": "references-location",
+      "to": "locations.kanas",
+      "status": "missing-destination",
+      "marker": "{REFERENCE_ERROR: achievement.reach_three → locations.kanas 不存在于正式目的地表}"
+    },
+    {
+      "from": "companionHome.wanderer",
+      "relation": "character",
+      "to": "characters.wanderer",
+      "status": "missing-character",
+      "marker": "{REFERENCE_ERROR: companionHome.wanderer 存在，但 companions 中没有该角色}"
+    },
+    {
+      "from": "companionHome.alhaitham",
+      "relation": "character",
+      "to": "characters.alhaitham",
+      "status": "missing-character",
+      "marker": "{REFERENCE_ERROR: companionHome.alhaitham 存在，但 companions 中没有该角色}"
+    },
+    {
+      "from": "achievement.toy_all.description",
+      "relation": "count",
+      "to": "items.toys",
+      "status": "count-mismatch",
+      "marker": "{TEXT_ERROR: 成就说明写 10 件玩具，实际玩具数为 9}"
+    }
+  ],
+  "counts": {
+    "protagonistReferences": 275,
+    "worldReferences": 22,
+    "projectTextErrors": 0,
+    "externalCopyTableTextErrors": 114,
+    "assets": 41,
+    "missingAssets": 0
+  }
+}

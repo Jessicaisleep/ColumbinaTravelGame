@@ -1,0 +1,498 @@
+{
+  "fields": [
+    {
+      "id": "dry",
+      "name": "旱田",
+      "desc": "土是松的，一脚踩下去会陷一点。"
+    },
+    {
+      "id": "wet",
+      "name": "水田",
+      "desc": "浅浅一层水，能看见底下的泥。"
+    }
+  ],
+  "crops": [
+    {
+      "id": "potato",
+      "name": "土豆",
+      "field": "dry",
+      "growMs": 7200000,
+      "icon": "stone",
+      "yieldItem": "potato",
+      "yieldMin": 2,
+      "yieldMax": 4,
+      "desc": "埋在土里，看不出来熟了没有。"
+    },
+    {
+      "id": "wheat",
+      "name": "小麦",
+      "field": "dry",
+      "growMs": 14400000,
+      "icon": "leaf",
+      "yieldItem": "wheat",
+      "yieldMin": 2,
+      "yieldMax": 3,
+      "desc": "一片一片地倒向同一边。"
+    },
+    {
+      "id": "soybean",
+      "name": "大豆",
+      "field": "dry",
+      "growMs": 10800000,
+      "icon": "seed",
+      "yieldItem": "soybean",
+      "yieldMin": 2,
+      "yieldMax": 4,
+      "desc": "豆荚鼓鼓的，捏一下有响声。"
+    },
+    {
+      "id": "tomato",
+      "name": "番茄",
+      "field": "dry",
+      "growMs": 18000000,
+      "icon": "flower",
+      "yieldItem": "tomato",
+      "yieldMin": 2,
+      "yieldMax": 3,
+      "desc": "红得很快，前一天还是青的。"
+    },
+    {
+      "id": "corn",
+      "name": "玉米",
+      "field": "dry",
+      "growMs": 21600000,
+      "icon": "leaf",
+      "yieldItem": "corn",
+      "yieldMin": 1,
+      "yieldMax": 3,
+      "desc": "长得比人还高，叶子会划手。"
+    },
+    {
+      "id": "wildrice",
+      "name": "茭白",
+      "field": "wet",
+      "growMs": 10800000,
+      "icon": "bamboo",
+      "yieldItem": "wildrice",
+      "yieldMin": 2,
+      "yieldMax": 4,
+      "desc": "站在水里，叶子又长又直。"
+    },
+    {
+      "id": "waterchestnut",
+      "name": "荸荠",
+      "field": "wet",
+      "growMs": 14400000,
+      "icon": "stone",
+      "yieldItem": "waterchestnut",
+      "yieldMin": 2,
+      "yieldMax": 5,
+      "desc": "要伸手到泥里去摸。"
+    },
+    {
+      "id": "rice",
+      "name": "水稻",
+      "field": "wet",
+      "growMs": 21600000,
+      "icon": "leaf",
+      "yieldItem": "rice",
+      "yieldMin": 3,
+      "yieldMax": 5,
+      "desc": "水面上能看见天的倒影。"
+    },
+    {
+      "id": "watercaltrop",
+      "name": "菱角",
+      "field": "wet",
+      "growMs": 18000000,
+      "icon": "star",
+      "yieldItem": "watercaltrop",
+      "yieldMin": 2,
+      "yieldMax": 4,
+      "desc": "浮在水上，翻过来是尖的。"
+    },
+    {
+      "id": "lotus",
+      "name": "莲藕",
+      "field": "wet",
+      "growMs": 28800000,
+      "icon": "flower",
+      "yieldItem": "lotus",
+      "yieldMin": 1,
+      "yieldMax": 3,
+      "desc": "花开了很久，底下才慢慢长起来。"
+    }
+  ],
+  "ingredients": {
+    "potato": "土豆",
+    "wheat": "小麦",
+    "soybean": "大豆",
+    "tomato": "番茄",
+    "corn": "玉米",
+    "wildrice": "茭白",
+    "waterchestnut": "荸荠",
+    "rice": "稻米",
+    "watercaltrop": "菱角",
+    "lotus": "莲藕"
+  },
+  "rareDrops": [
+    {
+      "id": "clover4",
+      "name": "四叶草",
+      "icon": "leaf",
+      "dropChance": 0.07,
+      "foodKm": 120,
+      "scoreBonus": 1,
+      "meetBonus": 0.05,
+      "desc": "运气会好一点。"
+    },
+    {
+      "id": "moonstone",
+      "name": "月光石",
+      "icon": "star",
+      "dropChance": 0.04,
+      "foodKm": 150,
+      "scoreBonus": 1,
+      "meetBonus": 0,
+      "desc": "夜里会有一点亮。"
+    },
+    {
+      "id": "windchime",
+      "name": "风铃",
+      "icon": "bell",
+      "dropChance": 0.045,
+      "foodKm": 100,
+      "scoreBonus": 0,
+      "meetBonus": 0.12,
+      "desc": "响的时候，好像有人要来。"
+    },
+    {
+      "id": "luckycoin",
+      "name": "幸运币",
+      "icon": "key",
+      "dropChance": 0.022,
+      "foodKm": 250,
+      "scoreBonus": 2,
+      "meetBonus": 0.05,
+      "desc": "边缘被磨得很圆。"
+    },
+    {
+      "id": "ancientseed",
+      "name": "古老种子",
+      "icon": "seed",
+      "dropChance": 0.012,
+      "foodKm": 300,
+      "scoreBonus": 2,
+      "meetBonus": 0.08,
+      "desc": "不知道会长出什么。"
+    }
+  ],
+  "dishes": [
+    {
+      "id": "none",
+      "name": "什么都不带",
+      "need": {},
+      "effect": {},
+      "foodKm": 320,
+      "desc": "空着手出门。",
+      "tier": 0
+    },
+    {
+      "id": "riceball",
+      "name": "白饭团",
+      "need": {
+        "rice": 1
+      },
+      "tier": 1,
+      "foodKm": 550,
+      "effect": {
+        "durationBias": "short"
+      },
+      "desc": "捏得很紧，凉了也好吃。"
+    },
+    {
+      "id": "potatocake",
+      "name": "土豆饼",
+      "need": {
+        "potato": 2
+      },
+      "tier": 1,
+      "foodKm": 680,
+      "effect": {
+        "durationBias": "medium"
+      },
+      "desc": "外面焦，里面软。"
+    },
+    {
+      "id": "cornsoup",
+      "name": "玉米浓汤",
+      "need": {
+        "corn": 1,
+        "potato": 1
+      },
+      "tier": 2,
+      "foodKm": 780,
+      "effect": {
+        "durationBias": "medium",
+        "meetBonus": 0.06
+      },
+      "desc": "热的时候最好喝，凉了就有点稠。"
+    },
+    {
+      "id": "soybowl",
+      "name": "茭白炒豆",
+      "need": {
+        "wildrice": 1,
+        "soybean": 1
+      },
+      "tier": 2,
+      "foodKm": 720,
+      "effect": {
+        "meetBonus": 0.14
+      },
+      "desc": "清清爽爽的，路上吃不会腻。"
+    },
+    {
+      "id": "chestnutcake",
+      "name": "荸荠糕",
+      "need": {
+        "waterchestnut": 3
+      },
+      "tier": 2,
+      "foodKm": 640,
+      "effect": {
+        "luck": true,
+        "meetBonus": 0.05
+      },
+      "desc": "半透明的，能看见里面嵌着的小块。"
+    },
+    {
+      "id": "caltrop_rice",
+      "name": "菱角饭",
+      "need": {
+        "watercaltrop": 1,
+        "rice": 1
+      },
+      "tier": 2,
+      "foodKm": 920,
+      "effect": {
+        "scoreBonus": 1
+      },
+      "desc": "菱角剥起来费劲，但是值得。"
+    },
+    {
+      "id": "lotus_soup",
+      "name": "莲藕汤",
+      "need": {
+        "lotus": 1,
+        "potato": 1
+      },
+      "tier": 3,
+      "foodKm": 1150,
+      "effect": {
+        "durationBias": "long",
+        "scoreBonus": 1
+      },
+      "desc": "炖了很久，切开能看见里面的孔。"
+    },
+    {
+      "id": "tricolor",
+      "name": "三色便当",
+      "need": {
+        "rice": 1,
+        "tomato": 1,
+        "corn": 1
+      },
+      "tier": 3,
+      "foodKm": 1350,
+      "effect": {
+        "durationBias": "long",
+        "meetBonus": 0.08,
+        "scoreBonus": 1
+      },
+      "desc": "摆得整整齐齐，打开的时候会亮一下。"
+    },
+    {
+      "id": "lotus_rice",
+      "name": "荷叶饭",
+      "need": {
+        "rice": 2,
+        "lotus": 1
+      },
+      "tier": 4,
+      "foodKm": 1750,
+      "effect": {
+        "scoreBonus": 2,
+        "durationBias": "epic"
+      },
+      "desc": "用叶子包着蒸的，打开有一股清香。"
+    },
+    {
+      "id": "harvest",
+      "name": "五谷丰登",
+      "need": {
+        "wheat": 1,
+        "soybean": 1,
+        "potato": 1,
+        "rice": 1,
+        "corn": 1
+      },
+      "tier": 4,
+      "foodKm": 1950,
+      "effect": {
+        "scoreBonus": 2,
+        "meetBonus": 0.16,
+        "durationBias": "long"
+      },
+      "desc": "把田里能收的都放进去了。"
+    }
+  ],
+  "toys": [
+    {
+      "id": "trampoline",
+      "name": "蹦床",
+      "icon": "star",
+      "rarity": "R",
+      "place": "outdoor",
+      "desc": "绷得很紧的一块布，边上有弹簧。",
+      "playLines": [
+        "一下比一下高！",
+        "落下来的时候肚子有点痒。",
+        "你看，我能碰到那片叶子。"
+      ]
+    },
+    {
+      "id": "windmill",
+      "name": "小风车",
+      "icon": "compass",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "插在土里，有风就转。",
+      "playLines": [
+        "它转得比我数得还快。",
+        "风停了，它也停了。",
+        "如果是反着转的呢？"
+      ]
+    },
+    {
+      "id": "pool",
+      "name": "小水池",
+      "icon": "fish",
+      "rarity": "R",
+      "place": "outdoor",
+      "desc": "浅浅的一池水，边上放着小木船。",
+      "playLines": [
+        "船沉了。它本来就不是用来浮的。",
+        "水是凉的，手放进去很舒服。",
+        "我给它搭了个码头。"
+      ]
+    },
+    {
+      "id": "lantern",
+      "name": "小灯笼",
+      "icon": "lantern",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "天一黑就自己亮起来。",
+      "playLines": [
+        "里面那点火，其实不烫。",
+        "挂高一点，这样远处也能看见。",
+        "晚上的时候，它是这里最亮的东西。"
+      ]
+    },
+    {
+      "id": "hammock",
+      "name": "吊床",
+      "icon": "feather",
+      "rarity": "SR",
+      "place": "outdoor",
+      "desc": "绑在两棵树中间，躺上去会晃。",
+      "playLines": [
+        "晃着晃着就困了。",
+        "你别推太快，我会掉下去。",
+        "从下面看，树叶的缝隙是碎的。"
+      ]
+    },
+    {
+      "id": "ball",
+      "name": "藤球",
+      "icon": "star",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "用藤条编的，很轻。",
+      "playLines": [
+        "踢起来没什么声音。",
+        "接住！……没接住。",
+        "它滚到田里去了。"
+      ]
+    },
+    {
+      "id": "sandbox",
+      "name": "沙坑",
+      "icon": "sand",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "一小块沙地，边上摆着木铲。",
+      "playLines": [
+        "我堆了一个塔，有两层。",
+        "沙子下面还是沙子。",
+        "这个形状像不像一座山？"
+      ]
+    },
+    {
+      "id": "rug",
+      "name": "地毯",
+      "icon": "mask",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "织着看不懂的花纹，踩上去很软。",
+      "playLines": [
+        "花纹从这边看是一个样子，从那边看又是一个样子。",
+        "坐在这里最舒服。",
+        "我把书都堆在边上了。"
+      ]
+    },
+    {
+      "id": "mobile",
+      "name": "小挂饰",
+      "icon": "star",
+      "rarity": "R",
+      "place": "outdoor",
+      "desc": "挂在窗边，有风就会转，还会响。",
+      "playLines": [
+        "它响的时候很轻，要安静才听得见。",
+        "转起来的时候，影子也在转。",
+        "声音像有人在很远的地方敲东西。"
+      ]
+    }
+  ],
+  "travelModes": [
+    {
+      "id": "region",
+      "name": "选地区",
+      "desc": "指定一个省市"
+    },
+    {
+      "id": "bearing",
+      "name": "选方向",
+      "desc": "往东南西北走"
+    },
+    {
+      "id": "random",
+      "name": "随它去",
+      "desc": "去哪都行"
+    }
+  ],
+  "review": "{TEXT_REVIEW: 物品玩法数据暂不改；只需审查名称与世界观适配性}",
+  "references": [
+    {
+      "file": "src/data/farm.js"
+    },
+    {
+      "file": "src/data/kitchen.js"
+    },
+    {
+      "file": "src/data/home.js"
+    }
+  ]
+}

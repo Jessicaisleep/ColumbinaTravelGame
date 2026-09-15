@@ -1,0 +1,236 @@
+{
+  "worldId": "world_pending",
+  "name": null,
+  "background": null,
+  "timePeriod": null,
+  "currentLayers": [
+    {
+      "type": "genshin",
+      "evidence": [
+        "纳西妲",
+        "须弥草神",
+        "小吉祥草王",
+        "哥伦比娅",
+        "派蒙",
+        "柯莱",
+        "提纳里",
+        "赛诺",
+        "妮露",
+        "迪希雅",
+        "可莉",
+        "七七",
+        "旅行者",
+        null,
+        null
+      ],
+      "marker": "{WORLD_CONFIRM: 原神角色与设定是否保留，需要用户确认}"
+    },
+    {
+      "type": "real-world-china",
+      "evidence": [
+        "北京",
+        "哈尔滨",
+        "呼伦贝尔",
+        "吐鲁番",
+        "敦煌",
+        "林芝",
+        "成都",
+        "西安",
+        "张家界",
+        "苏州",
+        "杭州",
+        "厦门",
+        "桂林",
+        "大理",
+        "三亚",
+        "广州",
+        "漠河"
+      ],
+      "marker": "{WORLD_CONFIRM: 17 个现实中国目的地是否保留，需要用户确认}"
+    },
+    {
+      "type": "original-game",
+      "evidence": [
+        "旅行食物里程",
+        "家园农场",
+        "玩具访客",
+        "确定性明信片"
+      ],
+      "marker": "{WORLD_REVIEW: 原创玩法逻辑可保留，但叙事解释需与新世界观一致}"
+    }
+  ],
+  "geographyRules": {
+    "model": "real latitude/longitude and kilometer distance",
+    "sources": [
+      "src/data/geo.js",
+      "src/geo.js"
+    ]
+  },
+  "travelLogic": "现实地理距离 + 食物公里数 + 随机旅途事件",
+  "homeLogic": "16:9 家园，主角状态、农场、厨房、玩具和访客并存",
+  "protagonistRelationship": "{WORLD_REWRITE: 哥伦比娅为何居住于此、与现实地点/原神角色的关系尚未设计}",
+  "aiWorldPrompt": "{AI_WORLD: Prompt 一方面禁止真实地名，事实数据另一方面提供真实目的地，存在直接冲突}",
+  "conflicts": [
+    "{WORLD: 现有内容同时混合现实中国地点和原神角色/神明身份}",
+    "{WORLD_CONFIRM: 当前世界是否继续使用原神世界观，需要确认}",
+    "{WORLD_CONFIRM: 现实世界地理与真实地名是否继续保留，需要确认}"
+  ],
+  "references": [
+    {
+      "file": "assets/manifest.js",
+      "line": 19,
+      "terms": [
+        "提瓦特"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 4,
+      "terms": [
+        "提瓦特"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 8,
+      "terms": [
+        "原神"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 203,
+      "terms": [
+        "原神"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 213,
+      "terms": [
+        "须弥",
+        "草神"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 234,
+      "terms": [
+        "现实世界"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 347,
+      "terms": [
+        "提瓦特"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1160,
+      "terms": [
+        "现实世界"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 60,
+      "terms": [
+        "小吉祥草王"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 108,
+      "terms": [
+        "草神"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 124,
+      "terms": [
+        "草神"
+      ]
+    },
+    {
+      "file": "src/data/templates.js",
+      "line": 150,
+      "terms": [
+        "原神"
+      ]
+    },
+    {
+      "file": "src/data/templates.js",
+      "line": 154,
+      "terms": [
+        "现实世界"
+      ]
+    },
+    {
+      "file": "src/data/templates.js",
+      "line": 192,
+      "terms": [
+        "原神"
+      ]
+    },
+    {
+      "file": "src/data/templates.js",
+      "line": 196,
+      "terms": [
+        "须弥",
+        "草神"
+      ]
+    },
+    {
+      "file": "src/data/templates.js",
+      "line": 202,
+      "terms": [
+        "现实世界"
+      ]
+    },
+    {
+      "file": "src/text/deepseek.js",
+      "line": 13,
+      "terms": [
+        "现实世界"
+      ]
+    },
+    {
+      "file": "src/text/deepseek.js",
+      "line": 18,
+      "terms": [
+        "原神"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1968,
+      "terms": [
+        "原神"
+      ]
+    },
+    {
+      "file": "tools/asset-generator.html",
+      "line": 159,
+      "terms": [
+        "须弥"
+      ]
+    },
+    {
+      "file": "tools/make-icon.html",
+      "line": 30,
+      "terms": [
+        "须弥"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 9,
+      "terms": [
+        "提瓦特"
+      ]
+    }
+  ]
+}

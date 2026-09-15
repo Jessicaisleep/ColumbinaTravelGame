@@ -1,0 +1,5373 @@
+[
+  {
+    "uiTextId": "ui_0001",
+    "text": "<title>纳西妲的旅行</title>",
+    "source": {
+      "file": "index.html",
+      "line": 5
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0002",
+    "text": "这个文件只做一件事：跳转到「开始游戏.html」。",
+    "source": {
+      "file": "index.html",
+      "line": 9
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0003",
+    "text": "为什么要它：",
+    "source": {
+      "file": "index.html",
+      "line": 11
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0004",
+    "text": "· GitHub Pages、大多数静态托管、以及很多人的直觉，默认找的都是 index.html",
+    "source": {
+      "file": "index.html",
+      "line": 12
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0005",
+    "text": "· 但游戏本体放在「开始游戏.html」里，双击更直观",
+    "source": {
+      "file": "index.html",
+      "line": 13
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0006",
+    "text": "· 所以这里做一次瞬间跳转，游戏本体只有一份，不会出现两个文件内容不一致",
+    "source": {
+      "file": "index.html",
+      "line": 14
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0007",
+    "text": "直接双击「开始游戏.html」也一样能玩，不需要经过这里。",
+    "source": {
+      "file": "index.html",
+      "line": 16
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0008",
+    "text": "// 保留 ?selftest=1 之类的参数，跳转后照样能用",
+    "source": {
+      "file": "index.html",
+      "line": 20
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0009",
+    "text": "location.replace('开始游戏.html' + location.search + location.hash);",
+    "source": {
+      "file": "index.html",
+      "line": 21
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0010",
+    "text": "<!-- 标准 ES Module 入口，供 Vite 识别；旧页面跳转逻辑保持不变。 -->",
+    "source": {
+      "file": "index.html",
+      "line": 24
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0011",
+    "text": "<p>正在进入……</p>",
+    "source": {
+      "file": "index.html",
+      "line": 36
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0012",
+    "text": "<p>如果没有自动跳转，<a href=\"开始游戏.html\">点这里</a>。</p>",
+    "source": {
+      "file": "index.html",
+      "line": 37
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0013",
+    "text": "/* 纳西妲旅行 · 成就系统",
+    "source": {
+      "file": "src/achievements.js",
+      "line": 1
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0014",
+    "text": "* 旅行相关的统计直接从图鉴（album）推导 —— 事实卡里本来就记录了所有细节，",
+    "source": {
+      "file": "src/achievements.js",
+      "line": 2
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0015",
+    "text": "* 不需要额外维护一堆计数器；只有种植/聊天/戳她这类\"发生过就没了\"的才单独计数。",
+    "source": {
+      "file": "src/achievements.js",
+      "line": 3
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0016",
+    "text": "/** 补齐 save.stats 里成就需要的计数字段 */",
+    "source": {
+      "file": "src/achievements.js",
+      "line": 11
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0017",
+    "text": "/** 把存档折算成判定用的扁平统计 */",
+    "source": {
+      "file": "src/achievements.js",
+      "line": 24
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0018",
+    "text": "* 判定所有未解锁的成就。",
+    "source": {
+      "file": "src/achievements.js",
+      "line": 66
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0019",
+    "text": "* @returns 本次新解锁的成就定义数组（已写入 save.achievements）",
+    "source": {
+      "file": "src/achievements.js",
+      "line": 67
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0020",
+    "text": "/** 全部成就 + 解锁状态 */",
+    "source": {
+      "file": "src/achievements.js",
+      "line": 88
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0021",
+    "text": "/* ---------------- 埋点 ---------------- */",
+    "source": {
+      "file": "src/achievements.js",
+      "line": 106
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0022",
+    "text": "/* 纳西妲旅行 · 种植系统",
+    "source": {
+      "file": "src/farm.js",
+      "line": 1
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0023",
+    "text": "* 两块田（旱田/水田），作物按真实时间生长，收获进食材背包，",
+    "source": {
+      "file": "src/farm.js",
+      "line": 2
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0024",
+    "text": "* 并有几率掉落稀有道具（只提升稀有明信片概率）。",
+    "source": {
+      "file": "src/farm.js",
+      "line": 3
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0025",
+    "text": "/** 0~1 生长进度 */",
+    "source": {
+      "file": "src/farm.js",
+      "line": 23
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0026",
+    "text": "if (!crop || crop.field !== fieldId) return { ok: false, error: '这块地种不了这个' };",
+    "source": {
+      "file": "src/farm.js",
+      "line": 52
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0027",
+    "text": "if (s.cropId) return { ok: false, error: '这块地还种着东西' };",
+    "source": {
+      "file": "src/farm.js",
+      "line": 54
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0028",
+    "text": "/** 收获。返回 {ingredients, rare}；未成熟返回 null */",
+    "source": {
+      "file": "src/farm.js",
+      "line": 61
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0029",
+    "text": "// 用\"收获时刻 + 田地\"播种随机，保证同一时刻结果稳定",
+    "source": {
+      "file": "src/farm.js",
+      "line": 69
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0030",
+    "text": "// 稀有道具掉落",
+    "source": {
+      "file": "src/farm.js",
+      "line": 78
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0031",
+    "text": "/** 一次性收集所有已成熟的田 */",
+    "source": {
+      "file": "src/farm.js",
+      "line": 100
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0032",
+    "text": "/* 纳西妲旅行 · 定位（可选）",
+    "source": {
+      "file": "src/geo.js",
+      "line": 1
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0033",
+    "text": "* 优先浏览器定位，其次 IP 定位。两者都可能失败（权限 / 跨域 / 离线），",
+    "source": {
+      "file": "src/geo.js",
+      "line": 2
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0034",
+    "text": "* 失败就退回让玩家手动选家乡 —— 绝不阻塞游戏。",
+    "source": {
+      "file": "src/geo.js",
+      "line": 3
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0035",
+    "text": "return Promise.resolve({ error: '这个浏览器不支持网络定位' });",
+    "source": {
+      "file": "src/geo.js",
+      "line": 66
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0036",
+    "text": "return { error: '定位失败（可能是权限被拒、跨域限制或没联网）。手动选一个就好。' };",
+    "source": {
+      "file": "src/geo.js",
+      "line": 73
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0037",
+    "text": "return { error: '定位出错：' + (e && e.message ? e.message : e) };",
+    "source": {
+      "file": "src/geo.js",
+      "line": 75
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0038",
+    "text": "/* 纳西妲旅行 · 家的系统",
+    "source": {
+      "file": "src/home.js",
+      "line": 1
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0039",
+    "text": "* 一个 16:9 的全屏世界：她被看到在做什么、走到哪里；玩具摆在哪里；交流。",
+    "source": {
+      "file": "src/home.js",
+      "line": 2
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0040",
+    "text": "/* ---------------- 纳西妲的状态机 ---------------- */",
+    "source": {
+      "file": "src/home.js",
+      "line": 17
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0041",
+    "text": "if (list[i].id === currentId) w *= 0.2;   // 避免连续同一个状态",
+    "source": {
+      "file": "src/home.js",
+      "line": 29
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0042",
+    "text": "/** 她现在的落点 id（water 状态会在两块田之间轮换） */",
+    "source": {
+      "file": "src/home.js",
+      "line": 36
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0043",
+    "text": "* 推进状态。放置很久后最多推进 maxStateSteps 次，避免一次打开连跳十几次。",
+    "source": {
+      "file": "src/home.js",
+      "line": 47
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0044",
+    "text": "// 她每换一次状态，顺手推进一下家里的客人",
+    "source": {
+      "file": "src/home.js",
+      "line": 81
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0045",
+    "text": "/** 她此刻应该站在哪里。玩耍时会走到那件玩具旁边，而不是站在原地玩。 */",
+    "source": {
+      "file": "src/home.js",
+      "line": 90
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0046",
+    "text": "// 站位交给 playSpot：它会挑一个不会压到别件玩具的位置",
+    "source": {
+      "file": "src/home.js",
+      "line": 98
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0047",
+    "text": "label: t.name + '边', toy: t.id",
+    "source": {
+      "file": "src/home.js",
+      "line": 103
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0048",
+    "text": "/** 她正站在哪件玩具旁边（有的话） */",
+    "source": {
+      "file": "src/home.js",
+      "line": 113
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0049",
+    "text": "/* ---------------- 玩具 ---------------- */",
+    "source": {
+      "file": "src/home.js",
+      "line": 129
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0050",
+    "text": "if (save.toys.indexOf(toyId) >= 0) return false;   // 已经有了",
+    "source": {
+      "file": "src/home.js",
+      "line": 138
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0051",
+    "text": "if (!toy) return { ok: false, error: '没有这个玩具' };",
+    "source": {
+      "file": "src/home.js",
+      "line": 156
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0052",
+    "text": "if (!home.hasToy(save, toyId)) return { ok: false, error: '还没有这个玩具' };",
+    "source": {
+      "file": "src/home.js",
+      "line": 157
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0053",
+    "text": "error: (toy.place === 'indoor' ? '屋里' : '院子和花园') + '的位置满了' +",
+    "source": {
+      "file": "src/home.js",
+      "line": 171
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0054",
+    "text": "'（最多同时摆 ' + NT.data.toySlots.length + ' 件，先收回一件）'",
+    "source": {
+      "file": "src/home.js",
+      "line": 172
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0055",
+    "text": "* 读档时修正玩具摆放。",
+    "source": {
+      "file": "src/home.js",
+      "line": 185
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0056",
+    "text": "* 为什么需要：游戏数据改了之后（某件玩具被删掉、或从室内改成室外），",
+    "source": {
+      "file": "src/home.js",
+      "line": 186
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0057",
+    "text": "* 老存档里记的还是旧槽位编号，不会自动跟着变 —— 结果就是\"灯笼还在屋里\"。",
+    "source": {
+      "file": "src/home.js",
+      "line": 187
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0058",
+    "text": "* 这里统一纠正：删掉失效的、把放错地方的挪到合法空位、去掉重复。",
+    "source": {
+      "file": "src/home.js",
+      "line": 188
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0059",
+    "text": "* @returns 被纠正的条数",
+    "source": {
+      "file": "src/home.js",
+      "line": 189
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0060",
+    "text": "// 有玩具但没摆出来的，只要还有合适的空位就自动补上",
+    "source": {
+      "file": "src/home.js",
+      "line": 215
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0061",
+    "text": "/** 她正在玩的玩具（只有 play 状态才有） */",
+    "source": {
+      "file": "src/home.js",
+      "line": 234
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0062",
+    "text": "// 尽量别连着玩同一件 —— 上次玩过的先排除掉（只剩一件时就还是它）",
+    "source": {
+      "file": "src/home.js",
+      "line": 246
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0063",
+    "text": "/* ---------------- 站在玩具旁边 ---------------- */",
+    "source": {
+      "file": "src/home.js",
+      "line": 265
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0064",
+    "text": "* 她的身体半宽（归一化到画面宽）。0.19 个身高，换算到宽度要乘 9/16。",
+    "source": {
+      "file": "src/home.js",
+      "line": 268
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0065",
+    "text": "* 取 0.24 是为了把**来访同伴**也算进去 —— 同伴立绘的身高和主角差不多，",
+    "source": {
+      "file": "src/home.js",
+      "line": 269
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0066",
+    "text": "* 但不同角色的身体比例不一样，有些（比如带大帽子的）横向会更宽。",
+    "source": {
+      "file": "src/home.js",
+      "line": 270
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0067",
+    "text": "* 一件玩具的横向半径（归一化到画面宽）。",
+    "source": {
+      "file": "src/home.js",
+      "line": 275
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0068",
+    "text": "* 素材基本是方的，但有几件特别宽（吊床约 1.55:1、沙坑 1.6:1），",
+    "source": {
+      "file": "src/home.js",
+      "line": 276
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0069",
+    "text": "* 这里统一按 1.55 估 —— 宁可估宽，免得算漏了重叠。",
+    "source": {
+      "file": "src/home.js",
+      "line": 277
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0070",
+    "text": "* 这个位置和\"除 excludeToy 之外\"的玩具之间还剩多少横向余量。",
+    "source": {
+      "file": "src/home.js",
+      "line": 284
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0071",
+    "text": "* >= 0 表示不重叠；负数表示压上去了。",
+    "source": {
+      "file": "src/home.js",
+      "line": 285
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0072",
+    "text": "* 判定用\"地盘\"模型：她踩在一件玩具上，指的是**脚落在那件玩具的占地里**。",
+    "source": {
+      "file": "src/home.js",
+      "line": 287
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0073",
+    "text": "* 这个视角是从斜上方看的，玩具在地上的占地是一条扁扁的椭圆 ——",
+    "source": {
+      "file": "src/home.js",
+      "line": 288
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0074",
+    "text": "* 所以纵向只要差开一点点（站到它前面或后面）就不算踩上去，",
+    "source": {
+      "file": "src/home.js",
+      "line": 289
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0075",
+    "text": "* 并不是\"纵向重叠就算\"。不这样理解的话，院子里根本站不下人。",
+    "source": {
+      "file": "src/home.js",
+      "line": 290
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0076",
+    "text": "if (Math.abs(y - s2.y) >= 0.042) return;        // 站到它前后去了，不算踩",
+    "source": {
+      "file": "src/home.js",
+      "line": 298
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0077",
+    "text": "* 玩某件玩具时该站哪。",
+    "source": {
+      "file": "src/home.js",
+      "line": 306
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0078",
+    "text": "* **不能简单地\"站玩具右边\"** —— 旁边可能还摆着别的玩具，站过去就压上了。",
+    "source": {
+      "file": "src/home.js",
+      "line": 308
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0079",
+    "text": "* 所以按优先级试几个候选位置，挑第一个不和别的玩具重叠的：",
+    "source": {
+      "file": "src/home.js",
+      "line": 309
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0080",
+    "text": "*   偏好的那一侧 → 另一侧 → 正前方（更靠近镜头）→ 再往外挪",
+    "source": {
+      "file": "src/home.js",
+      "line": 310
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0081",
+    "text": "* @param preferSign +1 优先站右边，-1 优先站左边",
+    "source": {
+      "file": "src/home.js",
+      "line": 312
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0082",
+    "text": "{ x: slot.x, y: slot.y + 0.066 },                    // 站到玩具正前方",
+    "source": {
+      "file": "src/home.js",
+      "line": 322
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0083",
+    "text": "/* ==================== 来访的同伴 ====================",
+    "source": {
+      "file": "src/home.js",
+      "line": 338
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0084",
+    "text": "* 同伴自己跑来家里待一会儿，最多同时 1 位，每个人出现概率相同。",
+    "source": {
+      "file": "src/home.js",
+      "line": 339
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0085",
+    "text": "* 她出门旅行时、在家时都可能来。",
+    "source": {
+      "file": "src/home.js",
+      "line": 340
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0086",
+    "text": "* **核心约束：同伴永远和主角分在画面两侧。**",
+    "source": {
+      "file": "src/home.js",
+      "line": 342
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0087",
+    "text": "*   主角在左侧（吃饭/看书/发呆/睡觉…）-> 同伴只在右侧玩玩具",
+    "source": {
+      "file": "src/home.js",
+      "line": 343
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0088",
+    "text": "*   主角在右侧（玩玩具）              -> 同伴只做左侧的活动",
+    "source": {
+      "file": "src/home.js",
+      "line": 344
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0089",
+    "text": "*   主角出门了（家里没人）            -> 同伴随便",
+    "source": {
+      "file": "src/home.js",
+      "line": 345
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0090",
+    "text": "* 这样两个人的位置永远不会撞上，省掉一堆图层叠加的麻烦。",
+    "source": {
+      "file": "src/home.js",
+      "line": 346
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0091",
+    "text": "/** 院子里一件玩具都没摆时，同伴在这儿待着（刻意避开主角所有落点） */",
+    "source": {
+      "file": "src/home.js",
+      "line": 349
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0092",
+    "text": "var VISITOR_IDLE_SPOT = { x: 0.620, y: 0.862, area: 'garden', label: '院子里' };",
+    "source": {
+      "file": "src/home.js",
+      "line": 350
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0093",
+    "text": "/** 主角现在在画面哪一侧：玩玩具 = 右边，其它 = 左边 */",
+    "source": {
+      "file": "src/home.js",
+      "line": 352
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0094",
+    "text": "/** 当前来访的同伴（已经走了就返回 null）。",
+    "source": {
+      "file": "src/home.js",
+      "line": 357
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0095",
+    "text": "*  now 可传，方便自检用固定时间点测；不传就是现在。 */",
+    "source": {
+      "file": "src/home.js",
+      "line": 358
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0096",
+    "text": "/** 同伴这次玩哪件玩具（没有摆出来的户外玩具就返回 null） */",
+    "source": {
+      "file": "src/home.js",
+      "line": 376
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0097",
+    "text": "/** 同伴此刻站在哪里 */",
+    "source": {
+      "file": "src/home.js",
+      "line": 389
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0098",
+    "text": "// 和主角同一套逻辑：在玩具周围找一块不会压到别件玩具的位置",
+    "source": {
+      "file": "src/home.js",
+      "line": 400
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0099",
+    "text": "label: toy.name + '边', toy: toy.id",
+    "source": {
+      "file": "src/home.js",
+      "line": 405
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0100",
+    "text": "// 院子里一件玩具都没摆 —— 退回自己在院子里找个地方待着。",
+    "source": {
+      "file": "src/home.js",
+      "line": 410
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0101",
+    "text": "// 注意**不能用 gate**：主角\"望着路口\"就站在那儿，会叠上。",
+    "source": {
+      "file": "src/home.js",
+      "line": 411
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0102",
+    "text": "/** 同伴自己嘀咕一句 */",
+    "source": {
+      "file": "src/home.js",
+      "line": 417
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0103",
+    "text": "// 偶尔用一句这个角色自己的口头禅，其余用通用的\"客人\"台词",
+    "source": {
+      "file": "src/home.js",
+      "line": 424
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0104",
+    "text": "* 主角和客人的打招呼。只在主角「发呆」时触发，一次来访只打一次。",
+    "source": {
+      "file": "src/home.js",
+      "line": 444
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0105",
+    "text": "* @returns {nahida, visitor} 或 null",
+    "source": {
+      "file": "src/home.js",
+      "line": 445
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0106",
+    "text": "/* ---------------- 同伴的推进逻辑（内部） ---------------- */",
+    "source": {
+      "file": "src/home.js",
+      "line": 457
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0107",
+    "text": "/** 这次来访待多久（「设置」里可调） */",
+    "source": {
+      "file": "src/home.js",
+      "line": 459
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0108",
+    "text": "/** 同伴多久换一次活动 */",
+    "source": {
+      "file": "src/home.js",
+      "line": 467
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0109",
+    "text": "* 同伴干什么。侧别约束见本段开头的说明。",
+    "source": {
+      "file": "src/home.js",
+      "line": 474
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0110",
+    "text": "pool = NT.data.visitorStates;                       // 家里没人，随便",
+    "source": {
+      "file": "src/home.js",
+      "line": 479
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0111",
+    "text": "* 推进同伴。",
+    "source": {
+      "file": "src/home.js",
+      "line": 491
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0112",
+    "text": "// 1) 到点了 -> 走",
+    "source": {
+      "file": "src/home.js",
+      "line": 501
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0113",
+    "text": "// 2) 家里有客人 -> 推进客人自己的活动",
+    "source": {
+      "file": "src/home.js",
+      "line": 509
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0114",
+    "text": "// 主角刚换了状态 -> 客人的侧别可能就不对了，**必须立刻重选**。",
+    "source": {
+      "file": "src/home.js",
+      "line": 514
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0115",
+    "text": "// 不这么做的话会出现\"两个人都在右侧\"（主角跑去玩玩具，客人还在玩）。",
+    "source": {
+      "file": "src/home.js",
+      "line": 515
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0116",
+    "text": "// 3) 家里没客人 -> 主角换状态时掷一次骰子",
+    "source": {
+      "file": "src/home.js",
+      "line": 530
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0117",
+    "text": "/** 让自检和调试能手动放一位客人进来 */",
+    "source": {
+      "file": "src/home.js",
+      "line": 555
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0118",
+    "text": "/* ---------------- 交流 ---------------- */",
+    "source": {
+      "file": "src/home.js",
+      "line": 574
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0119",
+    "text": "/* 纳西妲旅行 · 界面层",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0120",
+    "text": "* 家是一个 16:9 的全屏世界：纳西妲在里面实时走动做事，两块田直接画在画面里，点一下就操作。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 2
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0121",
+    "text": "app.modal = null;           // 画面内弹窗：kitchen/toys/chat/album/settings/outdoor/waiting/result",
+    "source": {
+      "file": "src/ui.js",
+      "line": 23
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0122",
+    "text": "app._bubble = null;         // { text, until } 人物旁边的气泡",
+    "source": {
+      "file": "src/ui.js",
+      "line": 28
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0123",
+    "text": "/* ---------------- 启动 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 32
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0124",
+    "text": "// 读档时纠正玩具摆放 —— 数据改过之后老存档的槽位可能已经失效",
+    "source": {
+      "file": "src/ui.js",
+      "line": 36
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0125",
+    "text": "// 图片是异步加载的：加载完要重绘一次，否则第一次进游戏看到的还是占位图",
+    "source": {
+      "file": "src/ui.js",
+      "line": 41
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0126",
+    "text": "// 每 20 秒检查一次她的状态（状态本身只持续 1.5~6 分钟，所以能看到她走动）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 61
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0127",
+    "text": "// 她可能已经回来了 —— 必须定时结算，否则要刷新页面才有反应（这是个真 bug）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 65
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0128",
+    "text": "if (app.save.activeTrip) { app.render(); return; }   // 出门时只刷倒计时",
+    "source": {
+      "file": "src/ui.js",
+      "line": 67
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0129",
+    "text": "// 倒计时条每 5 秒刷新一次，秒级跳动太吵，但也不能太慢",
+    "source": {
+      "file": "src/ui.js",
+      "line": 72
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0130",
+    "text": "* 检查她是不是已经回来了。回来了就：结算 → 打开明信片弹窗 → 存盘。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 81
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0131",
+    "text": "* 抽成独立函数有两个原因：",
+    "source": {
+      "file": "src/ui.js",
+      "line": 82
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0132",
+    "text": "*   1. 启动时和每 20 秒的定时器都走同一条路径，不会出现\"两处逻辑不一致\"",
+    "source": {
+      "file": "src/ui.js",
+      "line": 83
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0133",
+    "text": "*   2. 自检可以直接调它，不用等真时间",
+    "source": {
+      "file": "src/ui.js",
+      "line": 84
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0134",
+    "text": "* @returns 完成的那趟行程，或者 null（还没到点）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 85
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0135",
+    "text": "if (r.missed) app._pendingNote = '你很久没有翻开本子了，她还是回来了。';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 93
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0136",
+    "text": "/** 全局点击绑定。抽出来是为了能被自检直接调用（否则测试里点了没反应） */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 98
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0137",
+    "text": "// 浏览器要求 AudioContext 在用户手势里创建",
+    "source": {
+      "file": "src/ui.js",
+      "line": 102
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0138",
+    "text": "* 视口变了要重画。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 110
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0139",
+    "text": "* 画布是按\"挂载那一刻\"的尺寸画的，横竖屏切换、进全屏、拉窗口之后",
+    "source": {
+      "file": "src/ui.js",
+      "line": 112
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0140",
+    "text": "* 尺寸就不对了 —— 轻则拉伸，重则整块是空的（手机上进全屏看到一片绿就是这个）。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 113
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0141",
+    "text": "* resize 在手机上会因为地址栏收起/展开频繁触发，所以先比一下尺寸，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 114
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0142",
+    "text": "* 真的变了才重排，并且加个防抖。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 115
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0143",
+    "text": "// 第一次只记尺寸，不重排 —— 否则刚进页面就白白 render 一次，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 122
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0144",
+    "text": "// 会把\"建议横屏\"那个只出一次的提示立刻顶掉",
+    "source": {
+      "file": "src/ui.js",
+      "line": 123
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0145",
+    "text": "* 竖屏提示「建议横屏」—— 24 小时只出一次。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 139
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0146",
+    "text": "* 之前是写在 render 的 HTML 里，每 render 一次就重新插一个元素、CSS 动画跟着重播，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 141
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0147",
+    "text": "* 结果每点一个按钮它就冒出来一次。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 142
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0148",
+    "text": "* 但只加时间戳还不够 —— render 在启动时会被调用不止一次，元素刚插上就被下一次",
+    "source": {
+      "file": "src/ui.js",
+      "line": 143
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0149",
+    "text": "* render 顶掉了。所以干脆不走 render：这里直接往 body 塞一个，自己定时删。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 144
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0150",
+    "text": "return false;                      // 横屏 / 电脑上不显示，但时间戳已经记下",
+    "source": {
+      "file": "src/ui.js",
+      "line": 157
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0151",
+    "text": "d.textContent = '建议横屏';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 161
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0152",
+    "text": "/** 检查有没有新解锁的成就，有就弹提示 + 响一声 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 171
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0153",
+    "text": "app.toast('🏆 成就达成：' + a.name);",
+    "source": {
+      "file": "src/ui.js",
+      "line": 179
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0154",
+    "text": "/* ---------------- 点击她的实时反应 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 194
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0155",
+    "text": "/** 她说话的唯一出口：人物旁边的气泡。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 198
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0156",
+    "text": "*  kind: 'ambient'（换状态时自动说）/ 'poke'（被戳之后的反应）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 199
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0157",
+    "text": "*  立即写入 DOM（不依赖 rAF —— rAF 被节流时也要能看到），位置交给动画循环跟随。 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 200
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0158",
+    "text": "/** 客人说话的气泡（和主角的分开两个元素） */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 224
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0159",
+    "text": "if (now < app._react.until) return;                  // 冷却：反应没结束就不再触发",
+    "source": {
+      "file": "src/ui.js",
+      "line": 237
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0160",
+    "text": "// 反应做成人物旁边的气泡，比底部那行显眼得多。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 243
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0161",
+    "text": "/* ---------------- 聊天（可选 AI 角色扮演） ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 249
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0162",
+    "text": "// 历史里去掉刚 push 的这句",
+    "source": {
+      "file": "src/ui.js",
+      "line": 264
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0163",
+    "text": "/* ---------------- 行为 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 273
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0164",
+    "text": "/* 田地（在画面里点开） */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 290
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0165",
+    "text": "var msg = '收获 ' + r2.itemName + ' ×' + r2.qty;",
+    "source": {
+      "file": "src/ui.js",
+      "line": 303
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0166",
+    "text": "msg += '，掉出 ' + r2.rare.map(function (x) { return x.name; }).join('、');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 305
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0167",
+    "text": "if (!rs.length) { app.toast('还没有成熟的东西'); NT.sfx.play('error'); }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 315
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0168",
+    "text": "app.toast('收获 ' + rs.map(function (x) { return x.itemName + '×' + x.qty; }).join('、') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 323
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0169",
+    "text": "(rares.length ? '，掉落 ' + rares.join('、') : ''));",
+    "source": {
+      "file": "src/ui.js",
+      "line": 324
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0170",
+    "text": "/* 厨房 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 329
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0171",
+    "text": "if (!dish || !NT.data.canCook(dish, s.inventory.ingredients)) { app.toast('食材不够'); break; }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 332
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0172",
+    "text": "NT.store.save(s); app.toast('做好了：' + dish.name); app.render(); break;",
+    "source": {
+      "file": "src/ui.js",
+      "line": 338
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0173",
+    "text": "/* 玩具 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 341
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0174",
+    "text": "app.toast(rp.ok ? '摆好了' : rp.error);",
+    "source": {
+      "file": "src/ui.js",
+      "line": 344
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0175",
+    "text": "/* 交流 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 350
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0176",
+    "text": "/* 戳她一下 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 370
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0177",
+    "text": "/* 出门 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 373
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0178",
+    "text": "else if (app.outRares.length >= 2) { app.toast('最多带两件'); break; }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 381
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0179",
+    "text": "/* 其他 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 387
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0180",
+    "text": "case 'reset': if (confirm('确定要清空所有记录吗？此操作不可撤销。')) app.resetAll(); break;",
+    "source": {
+      "file": "src/ui.js",
+      "line": 391
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0181",
+    "text": "/* ---------------- 音效映射 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 396
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0182",
+    "text": "/** 包装一层：响音效 + 动作结束后检查成就 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 412
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0183",
+    "text": "* 收起 / 展开下面那一排按钮。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 421
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0184",
+    "text": "* 铺满整屏之后底部那排按钮会压住画面（横屏竖屏都一样），收起来就能看全景。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 423
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0185",
+    "text": "* 右上角的按钮文字会跟着变：展开时显示\"收起\"，收起后显示\"菜单\"。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 424
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0186",
+    "text": "* 全屏 / 横屏按钮 —— 三态循环切换，不是\"锁死\"按钮。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 433
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0187",
+    "text": "*   普通（非全屏） --点--> 全屏 --点--> 全屏 + 横屏 --点--> 回到普通",
+    "source": {
+      "file": "src/ui.js",
+      "line": 435
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0188",
+    "text": "* 按钮上的字就是\"下一戳会干什么\"：全屏 / 横屏 / 退出。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 437
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0189",
+    "text": "* 为什么非得要这个按钮：网页没有资格自己转屏。浏览器规定只有**已经进入全屏**",
+    "source": {
+      "file": "src/ui.js",
+      "line": 439
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0190",
+    "text": "* 才允许锁方向（screen.orientation.lock），而且必须由用户亲手点一下触发。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 440
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0191",
+    "text": "* 所以「转手机自动变横屏」在网页里做不到（除非手机自己开着自动旋转），",
+    "source": {
+      "file": "src/ui.js",
+      "line": 441
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0192",
+    "text": "* 只能让玩家点两下：一下进全屏、一下锁横屏。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 442
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0193",
+    "text": "* 锁不上也不算失败（iOS Safari 不支持锁方向）—— 提示玩家自己把手机横过来。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 444
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0194",
+    "text": "app.fsStage = 0;                     // 0=普通  1=全屏  2=全屏+横屏",
+    "source": {
+      "file": "src/ui.js",
+      "line": 446
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0195",
+    "text": "app.fsLabels = ['全屏', '横屏', '退出'];",
+    "source": {
+      "file": "src/ui.js",
+      "line": 447
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0196",
+    "text": "b.setAttribute('title', '当前：' + (app.fsStage === 0 ? '普通' :",
+    "source": {
+      "file": "src/ui.js",
+      "line": 453
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0197",
+    "text": "(app.fsStage === 1 ? '全屏' : '全屏横屏')) + '　点一下切到下一步');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 454
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0198",
+    "text": "// 玩家用 Esc / 返回手势退出了全屏，状态要跟着归零，否则会错位",
+    "source": {
+      "file": "src/ui.js",
+      "line": 462
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0199",
+    "text": "// ---- 第 1 态：普通 -> 进全屏 ----",
+    "source": {
+      "file": "src/ui.js",
+      "line": 465
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0200",
+    "text": "if (!req) { app.toast('这个浏览器不支持全屏，把手机横过来就行'); return; }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 468
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0201",
+    "text": "var bad1 = function () { app.toast('全屏没打开，把手机横过来'); };",
+    "source": {
+      "file": "src/ui.js",
+      "line": 470
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0202",
+    "text": "// ---- 第 2 态：全屏 -> 再锁横屏 ----",
+    "source": {
+      "file": "src/ui.js",
+      "line": 478
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0203",
+    "text": "var bad2 = function () { app.toast('这个浏览器不给锁方向，把手机横过来'); };",
+    "source": {
+      "file": "src/ui.js",
+      "line": 485
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0204",
+    "text": "} catch (e) { /* 落到下面给提示 */ }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 488
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0205",
+    "text": "app.toast('把手机横过来');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 490
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0206",
+    "text": "// ---- 第 3 态：全屏横屏 -> 全退回普通 ----",
+    "source": {
+      "file": "src/ui.js",
+      "line": 494
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0207",
+    "text": "// 系统手势 / Esc 退出全屏时，把状态和按钮文字一起同步回来",
+    "source": {
+      "file": "src/ui.js",
+      "line": 501
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0208",
+    "text": "if (el) { el.textContent = '定位中…'; el.className = 'test-result'; }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 511
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0209",
+    "text": "app.toast('家乡设为：' + r.regionName + (r.source === 'ip' ? '（IP 定位）' : '（浏览器定位）'));",
+    "source": {
+      "file": "src/ui.js",
+      "line": 521
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0210",
+    "text": "if (!app.outRegion) { app.toast('先选一个地区'); return; }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 531
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0211",
+    "text": "app.modal = 'waiting';     // 出发时自动打开一次；关掉之后靠顶部倒计时条随时点回来",
+    "source": {
+      "file": "src/ui.js",
+      "line": 539
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0212",
+    "text": "/* 说明：以前这里有个 completeNow（\"立即完成旅行\"调试按钮）。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 543
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0213",
+    "text": "调试完成后已经移除，界面上不再有任何调试入口。 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 544
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0214",
+    "text": "NT.store.save(app.save); app.toast('设置已保存'); app.render();",
+    "source": {
+      "file": "src/ui.js",
+      "line": 563
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0215",
+    "text": "if (!key) { app.toast('请先填入 API Key'); return; }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 569
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0216",
+    "text": "if (out) { out.textContent = '测试中…'; out.className = 'test-result'; }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 570
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0217",
+    "text": "if (r.ok) { o.textContent = '连接成功，Key 可用。'; o.className = 'test-result ok'; }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 574
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0218",
+    "text": "o.textContent = '连接失败：' + r.error + '（若是浏览器跨域限制，需要走本地代理或打包成 App）';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 576
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0219",
+    "text": "app.screen = 'chooseHome'; app.viewing = null; app.render(); app.toast('已清空');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 584
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0220",
+    "text": "/* ---------------- 渲染 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 596
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0221",
+    "text": "// 渲染函数一旦抛异常，innerHTML 就什么都不会被写入 —— 表现是\"点了没反应\"。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 602
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0222",
+    "text": "// 所以这里必须捕获并把错误显示出来，否则问题完全静默。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 603
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0223",
+    "text": "box.textContent = '渲染出错：' + (e2 && e2.message ? e2.message : e2);",
+    "source": {
+      "file": "src/ui.js",
+      "line": 617
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0224",
+    "text": "/** 渲染失败时的可见兜底（不要再让错误静默消失） */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 622
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0225",
+    "text": "'<b>这个页面出错了</b>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 630
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0226",
+    "text": "'<button class=\"sbtn\" data-act=\"close-modal\">回到家里</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 633
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0227",
+    "text": "/** 当前应该显示的弹窗。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 637
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0228",
+    "text": "*  注意：她出门时**不再强制接管** —— 以前这里的 return 'waiting' 会把她出门后的",
+    "source": {
+      "file": "src/ui.js",
+      "line": 638
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0229",
+    "text": "*  所有界面都锁死（弹窗关不掉、别的界面进不去）。现在只在出发那一刻自动打开一次，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 639
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0230",
+    "text": "*  关掉之后靠常驻的倒计时条随时点回来。 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 640
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0231",
+    "text": "/** 画面内的半透明弹窗 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 645
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0232",
+    "text": "kitchen: { title: '厨房', body: app.viewKitchen },",
+    "source": {
+      "file": "src/ui.js",
+      "line": 650
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0233",
+    "text": "toys: { title: '玩具箱', body: app.viewToys },",
+    "source": {
+      "file": "src/ui.js",
+      "line": 651
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0234",
+    "text": "chat: { title: app.chatTopic ? (NT.home.topicById(app.chatTopic) || {}).label || '聊聊' : '和纳西妲说说话', body: app.viewChat },",
+    "source": {
+      "file": "src/ui.js",
+      "line": 652
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0235",
+    "text": "album: { title: '明信片册', body: app.viewAlbum },",
+    "source": {
+      "file": "src/ui.js",
+      "line": 653
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0236",
+    "text": "settings: { title: '设置', body: app.viewSettings },",
+    "source": {
+      "file": "src/ui.js",
+      "line": 654
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0237",
+    "text": "outdoor: { title: '出门', body: app.viewOutdoor },",
+    "source": {
+      "file": "src/ui.js",
+      "line": 655
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0238",
+    "text": "store: { title: '仓库', body: app.viewStore },",
+    "source": {
+      "file": "src/ui.js",
+      "line": 656
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0239",
+    "text": "achievements: { title: '成就', body: app.viewAchievements },",
+    "source": {
+      "file": "src/ui.js",
+      "line": 657
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0240",
+    "text": "waiting: { title: '旅途中', body: app.viewWaiting },",
+    "source": {
+      "file": "src/ui.js",
+      "line": 658
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0241",
+    "text": "result: { title: '明信片到了', body: app.viewResult }",
+    "source": {
+      "file": "src/ui.js",
+      "line": 659
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0242",
+    "text": "var closable = true;   // 所有弹窗都能关，包括\"旅途中\"",
+    "source": {
+      "file": "src/ui.js",
+      "line": 662
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0243",
+    "text": "(closable ? '<button class=\"sbtn small\" data-act=\"close-modal\">关闭</button>' : '') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 666
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0244",
+    "text": "/** 顶栏：所有页面现在都装在画面内的弹窗里，标题由弹窗自己画，这里不再需要 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 683
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0245",
+    "text": "/* ---------------- 首次选家乡 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 686
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0246",
+    "text": "'<small>' + (d.isDestination ? dirName(d.bearing) : '城市') + '</small></button>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 693
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0247",
+    "text": "'<h2>她住在哪里？</h2>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 696
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0248",
+    "text": "'<div class=\"hint\" style=\"margin-top:0\">家乡决定\"走多远\"和\"往哪个方向\"。' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 697
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0249",
+    "text": "'选一个离你近的，或者点下面的自动定位。共 ' + cities.length + ' 个可选。</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 698
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0250",
+    "text": "'<button class=\"btn-ghost\" data-act=\"auto-locate\" style=\"width:100%;margin-top:14px\">自动定位</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 699
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0251",
+    "text": "'<div class=\"label\">选一个家乡</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 701
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0252",
+    "text": "'<div class=\"hint\">这个选择之后可以在设置里改。</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 703
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0253",
+    "text": "return ({ n: '北方', s: '南方', e: '东部', w: '西部', c: '中部' })[b] || '';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 708
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0254",
+    "text": "/* ---------------- 家 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 711
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0255",
+    "text": "// 来访的同伴（可能没有）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 722
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0256",
+    "text": "// 手机上这一层负责横向滚动（宽屏上 display:contents，等于不存在）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 733
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0257",
+    "text": "? '<span class=\"state-badge away\">旅途中</span><span class=\"state-spot\">她不在家</span>'",
+    "source": {
+      "file": "src/ui.js",
+      "line": 740
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0258",
+    "text": "'<span class=\"state-spot\">在' + esc(spot ? spot.label : '') + '</span>') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 742
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0259",
+    "text": "(visitor ? '<span class=\"visitor-chip\">' + esc(visitor.comp.name) + '来串门 · ' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 743
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0260",
+    "text": "// 右上角一组按钮。用 flex 排，别各自算 right，省得改一个就要动一串",
+    "source": {
+      "file": "src/ui.js",
+      "line": 746
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0261",
+    "text": "// 右上角就两个：全屏/横屏（手机才有）和设置。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 747
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0262",
+    "text": "// 要收的是**底边那排按钮**，所以收起按钮在下面，不在这儿。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 748
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0263",
+    "text": "'<button class=\"stage-gear w stage-fsbtn\" data-act=\"fullscreen\" title=\"全屏 / 横屏\">全屏</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 750
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0264",
+    "text": "'<button class=\"stage-gear\" data-act=\"modal\" data-arg=\"settings\" title=\"设置\">⚙</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 751
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0265",
+    "text": "// 她在家 -> 淡出的提示；她出门了 -> 常驻的回家倒计时（独立元素，不继承提示的淡出动画）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 755
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0266",
+    "text": "' title=\"查看旅途详情\">' + app.countdownHTML() + '</div>'",
+    "source": {
+      "file": "src/ui.js",
+      "line": 758
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0267",
+    "text": ": '<div class=\"stage-hint\">点她一下试试</div>') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 759
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0268",
+    "text": "'</div>' +                       // 收掉 .stage-scroll",
+    "source": {
+      "file": "src/ui.js",
+      "line": 762
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0269",
+    "text": "// 「建议横屏」不写在这里 —— 它不参与 render，由 maybeShowRotateHint 单独插",
+    "source": {
+      "file": "src/ui.js",
+      "line": 763
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0270",
+    "text": "// 她出门了就把按钮换成\"旅途中\"，点它打开旅途面板，而不是又送一次",
+    "source": {
+      "file": "src/ui.js",
+      "line": 766
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0271",
+    "text": "? '<button class=\"sbtn busy\" data-act=\"modal\" data-arg=\"waiting\">旅途中…</button>'",
+    "source": {
+      "file": "src/ui.js",
+      "line": 768
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0272",
+    "text": ": '<button class=\"sbtn go\" data-act=\"modal\" data-arg=\"outdoor\">送她出门</button>') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 769
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0273",
+    "text": "'<button class=\"sbtn' + (ready ? ' hot' : '') + '\" data-act=\"harvest-all\">收全部</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 770
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0274",
+    "text": "'<button class=\"sbtn\" data-act=\"modal\" data-arg=\"kitchen\">厨房' + badge(cookable) + '</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 771
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0275",
+    "text": "'<button class=\"sbtn\" data-act=\"modal\" data-arg=\"toys\">玩具' + badge((s.toys || []).length) + '</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 772
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0276",
+    "text": "'<button class=\"sbtn\" data-act=\"modal\" data-arg=\"store\">仓库' + badge(storeCount(s)) + '</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 773
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0277",
+    "text": "'<button class=\"sbtn\" data-act=\"modal\" data-arg=\"achievements\">成就' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 774
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0278",
+    "text": "'<button class=\"sbtn\" data-act=\"modal\" data-arg=\"chat\">聊聊</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 776
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0279",
+    "text": "'<button class=\"sbtn\" data-act=\"modal\" data-arg=\"album\">明信片' + badge((s.album || []).length) + '</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 777
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0280",
+    "text": "// 收起/展开底边那排按钮。**必须放在 .home-controls 外面**，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 780
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0281",
+    "text": "// 否则它自己也跟着收起来，就再也点不开了。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 781
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0282",
+    "text": "' title=\"收起 / 展开下面的菜单\">' + (app.barHidden ? '菜单 ▲' : '收起 ▼') + '</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 783
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0283",
+    "text": "/** 田地就地操作面板（浮在画面里） */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 789
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0284",
+    "text": "body = '<div class=\"label\">种什么？</div><div class=\"chips\">' + crops + '</div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 801
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0285",
+    "text": "'<div class=\"grow-sub\">' + (st.state === 'ready' ? '已经熟了' : '还要 ' + U.humanMs(st.remainMs)) + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 806
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0286",
+    "text": "(st.state === 'ready' ? '<button class=\"sbtn go\" data-act=\"harvest\" data-arg=\"' + fieldId + '\">收获</button>' : '') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 807
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0287",
+    "text": "'<button class=\"sbtn small\" data-act=\"close-field\">关闭</button></div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 812
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0288",
+    "text": "/** 仓库里一共有多少件东西（食材 + 料理 + 稀有道具） */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 817
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0289",
+    "text": "/** 仓库：食材 / 料理 / 稀有道具，以及\"稀有道具从哪来\" */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 826
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0290",
+    "text": "/* --- 食材 --- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 831
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0291",
+    "text": ": '<div class=\"muted\">还没有食材。去院子里的两块田种点什么。</div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 837
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0292",
+    "text": "/* --- 料理 --- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 839
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0293",
+    "text": ": '<div class=\"muted\">还没有做好的食物。去厨房用食材做。</div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 846
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0294",
+    "text": "/* --- 稀有道具（含来源与效果） --- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 848
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0295",
+    "text": "(own ? '<span class=\"drop-own\">持有 ×' + own + '</span>' : '<span class=\"drop-none\">还没有</span>') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 853
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0296",
+    "text": "'<div class=\"drop-eff\">出门带上它：行程 +' + r.foodKm + 'km' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 856
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0297",
+    "text": "(r.scoreBonus ? '　稀有度 +' + r.scoreBonus : '') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 857
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0298",
+    "text": "(r.meetBonus ? '　遇同伴 +' + Math.round(r.meetBonus * 100) + '%' : '') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 858
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0299",
+    "text": "'<div class=\"drop-src\">获得方式：收获作物时 ' + (r.dropChance * 100).toFixed(1) + '% 几率掉落</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 860
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0300",
+    "text": "return '<div class=\"label\" style=\"margin-top:0\">食材</div>' + ingHtml +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 864
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0301",
+    "text": "'<div class=\"label\">料理</div>' + dishHtml +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 865
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0302",
+    "text": "'<div class=\"label\">稀有道具</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 866
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0303",
+    "text": "'它们不影响明信片内容，只提高\"走多远\"和\"拿到稀有明信片的概率\"。种地收获时随机掉，' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 868
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0304",
+    "text": "'出门时可以带上（最多两件，会消耗掉）。</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 869
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0305",
+    "text": "/** 成就 */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 873
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0306",
+    "text": "return '<div class=\"ach-total\">已解锁 <b>' + p.unlocked + ' / ' + p.total + '</b>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 894
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0307",
+    "text": "(p.unlocked === p.total ? '　全部达成 🎉' : '') + '</div>' + groups;",
+    "source": {
+      "file": "src/ui.js",
+      "line": 895
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0308",
+    "text": "/* ---- 家的实时绘制 ---- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 898
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0309",
+    "text": "// 手机上画面比屏幕宽、靠 .stage-wrap 横向拖。render 会重建 DOM，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 904
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0310",
+    "text": "// 滚动位置会被清零 —— 手感就是\"怎么滑都滑不过去\"。所以位置要跨渲染保住。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 905
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0311",
+    "text": "// 注意：mountHome 是在 innerHTML 之后同步跑的，这时还没布局，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 906
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0312",
+    "text": "// 直接设 scrollLeft 会被丢掉，所以下一帧再补一次。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 907
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0313",
+    "text": "// 竖屏提示只在本次会话里尝试一次（它自己按 24 小时判断要不要真显示）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 918
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0314",
+    "text": "// --- 画布按实际显示尺寸渲染，保证清晰；比例全部是相对的，所以尺寸可以随便换 ---",
+    "source": {
+      "file": "src/ui.js",
+      "line": 921
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0315",
+    "text": "// 浮层字号跟着舞台缩放。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 930
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0316",
+    "text": "// 窄屏（手机）要把下限抬到 16px：手机舞台只有 600 上下宽，按宽/62 算出来是 10px，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 931
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0317",
+    "text": "// 而徽章、气泡这些浮层都是 .72em / .76em —— 实际只有 7px 左右，根本看不清。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 932
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0318",
+    "text": "// 全屏/横屏按钮上的字要跟着当前状态走（全屏 -> 横屏 -> 退出 循环）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 937
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0319",
+    "text": "// 纳西妲的内容高度。0.22 是照着家里家具的比例定的（约为门高的一半、比桌高一头）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 943
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0320",
+    "text": "// --- 背景层（含田与玩具） ---",
+    "source": {
+      "file": "src/ui.js",
+      "line": 946
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0321",
+    "text": "// --- 背景层（家的底图 + 玩具） ---",
+    "source": {
+      "file": "src/ui.js",
+      "line": 957
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0322",
+    "text": "// 抽成函数是因为：图片是异步加载的，加载完必须重画一次，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 958
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0323",
+    "text": "// 否则第一次进游戏看到的永远是代码画的占位图。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 959
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0324",
+    "text": "// 玩具：尺寸按\"相对纳西妲身高的倍数\"来（见 data/home.js 的 toySizeRatio）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 969
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0325",
+    "text": "// --- 前景层（纳西妲），每帧重画 ---",
+    "source": {
+      "file": "src/ui.js",
+      "line": 983
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0326",
+    "text": "/** 被戳之后的短动画：返回 {rot,sx,sy,dx,dy,flip} */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 994
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0327",
+    "text": "/** 走路时脚下的小尘土（左右脚各一下） */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1017
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0328",
+    "text": "// dt 必须夹在 [0, 0.1]：标签页切回来时 rAF 时间戳会跳，负数 dt 会让动画倒退",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1024
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0329",
+    "text": "// 素材是异步加载的：只要有新图加载完就重画一次背景层。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1028
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0330",
+    "text": "// 这样\"图片加载好了但画面还是占位图\"在结构上不可能发生 ——",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1029
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0331",
+    "text": "// 不依赖 app.render() 被谁调用、也不受 screen / activeTrip 状态影响。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1030
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0332",
+    "text": "// 她出门了 —— 家里没人，但**客人还是可能来**，所以循环不能停：",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1033
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0333",
+    "text": "// 清掉她的图层，只画客人。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1034
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0334",
+    "text": "var speed = 0.11;                        // 每秒走场景宽度的比例",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1048
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0335",
+    "text": "// 每半个周期（= 一步）扬一次土",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1055
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0336",
+    "text": "// --- 走路：上下起伏 + 左右轻微摇摆 + 前倾 ---",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1071
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0337",
+    "text": "bob = Math.abs(Math.sin(anim.phase)) * chH * 0.045;      // 每步一次起伏",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1074
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0338",
+    "text": "sway = Math.sin(anim.phase) * chH * 0.012;               // 身体左右晃",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1075
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0339",
+    "text": "lean = anim.facing * 0.045;                              // 前倾一点点",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1076
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0340",
+    "text": "bob = Math.sin(anim.phase) * chH * 0.012;                // 站着时的呼吸感",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1080
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0341",
+    "text": "// --- 气泡跟着她走 ---",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1086
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0342",
+    "text": "// 影子",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1107
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0343",
+    "text": "// 尘土",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1116
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0344",
+    "text": "// 走路：左右摇摆 + 前倾 + 轻微挤压",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1135
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0345",
+    "text": "// 躺着只在\"已经走到床上\"之后才生效。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1153
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0346",
+    "text": "// 走路途中保持站着，否则她会横着飘过去 —— 这是之前的 bug。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1154
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0347",
+    "text": "// 玩耍时手里的那个玩具。如果她已经站到那件玩具旁边了就不再画（会重复）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1167
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0348",
+    "text": "// 来访的同伴（画在同一层，但走了自己的一套位置和动画）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1180
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0349",
+    "text": "* 画来访的同伴。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1187
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0350",
+    "text": "* 位置由 home.visitorSpot 给出 —— 那边已经保证了 TA 和主角分在画面两侧。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1188
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0351",
+    "text": "var vchH = chH * 0.94;                       // 客人比主人略矮一点点",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1224
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0352",
+    "text": "// 影子",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1231
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0353",
+    "text": "// 本体：有真立绘就用真立绘，否则程序化。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1240
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0354",
+    "text": "// 注意：访客的活动池里**没有\"睡觉\"** —— 访客只有一张睁眼立绘、身高还各不相同，",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1241
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0355",
+    "text": "// 躺下必然违和。所以这里不处理躺姿，也不需要。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1242
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0356",
+    "text": "// 气泡跟着 TA 走",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1255
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0357",
+    "text": "// 她换状态时，用气泡开口说一句 —— 她的台词只从气泡出，底部不再重复一行",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1275
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0358",
+    "text": "// 状态变了就换台词；但如果是\"戳她\"的反应气泡还没消失，就别打断它",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1281
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0359",
+    "text": "// ---- 来访同伴：来了 / 换活动 / 走了 ----",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1287
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0360",
+    "text": "app._vSeen = vTag;                     // 刚到，说一句\"打扰了\"",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1295
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0361",
+    "text": "// 走的时候用 toast 提示，因为气泡是挂在人身上的，人走了气泡也没了",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1302
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0362",
+    "text": "{ name: '客人' };",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1305
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0363",
+    "text": "app.toast(lastComp.name + '走了：' + NT.home.visitorLeaveLine(s));",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1306
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0364",
+    "text": "// ---- 打招呼：主角在发呆、家里有客人，就聊一句（一次来访只触发一次）----",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1311
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0365",
+    "text": "// 动画循环一直跑（她出门时也要画来访的客人）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1320
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0366",
+    "text": "// --- 点击：先判田，再判她 ---",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1323
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0367",
+    "text": "if (app.fieldSheet) { app.fieldSheet = null; app.render(); return; }  // 面板开着就先关",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1329
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0368",
+    "text": "// 点击区域按家-全景.png 里那四小块田的实际位置量出来的",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1331
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0369",
+    "text": "// （上面两块 = 旱田，下面两块 = 水田）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1332
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0370",
+    "text": "/* ---------------- 厨房 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1348
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0371",
+    "text": "(have ? '<span class=\"own\">已有 ' + have + '</span>' : '') + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1363
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0372",
+    "text": "'<div class=\"dish-eff\">能走 ' + d.foodKm + ' 公里　·　' + effectText(d.effect) + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1366
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0373",
+    "text": "(can ? '做一份' : '食材不够') + '</button></div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1368
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0374",
+    "text": "return app.header('厨房', 'home') + '<div class=\"pad\"><div class=\"dishes\">' + cards + '</div></div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1370
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0375",
+    "text": "if (e.scoreBonus) out.push('稀有度 +' + e.scoreBonus);",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1375
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0376",
+    "text": "if (e.meetBonus) out.push('遇到同伴 +' + Math.round(e.meetBonus * 100) + '%');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1376
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0377",
+    "text": "if (e.luck) out.push('好运');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1377
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0378",
+    "text": "if (e.weatherBias) out.push('偏好' + e.weatherBias.map(function (w) {",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1378
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0379",
+    "text": "return out.length ? out.join(' · ') : '没有额外效果';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1381
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0380",
+    "text": "/* ---------------- 玩具 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1384
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0381",
+    "text": "// 按 place 分别统计空位（现在内置玩具全是室外的，但规则保留着）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1391
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0382",
+    "text": "'<span>摆放位置 <b>' + placedCount + ' / ' + slots.length + '</b>　都在右边的院子里</span>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1404
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0383",
+    "text": "(isFull ? '<span class=\"cap-full\">满了，要摆新的得先收回一件</span>' : '') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1405
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0384",
+    "text": "return app.header('玩具箱', 'home') + head +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1409
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0385",
+    "text": "'<div class=\"pad empty\">还没有玩具。<br>她旅行回来的时候，偶尔会带一个。</div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1410
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0386",
+    "text": "act = '<button class=\"btn-ghost\" data-act=\"take-toy\" data-arg=\"' + id + '\">收回</button>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1421
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0387",
+    "text": "act = '<button class=\"btn-ghost\" disabled>没空位了</button>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1423
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0388",
+    "text": "act = '<button class=\"btn-ghost\" data-act=\"place-toy\" data-arg=\"' + id + '\">摆出来</button>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1425
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0389",
+    "text": "(placed ? '<span class=\"toy-on\">已摆出来</span>'",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1432
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0390",
+    "text": "(blocked ? '没空位了' : '还有 ' + left + ' 个位置') + '</span>') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1434
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0391",
+    "text": "return app.header('玩具箱', 'home') + head +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1439
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0392",
+    "text": "'玩具都摆在右边的院子里。摆好的玩具会出现在家里，她玩耍时会走过去玩。' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1441
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0393",
+    "text": "'位置有限，<b>最多同时摆 ' + slots.length + ' 件</b>。' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1442
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0394",
+    "text": "// 有真素材就用真的 —— 和摆在家里看到的同一张图。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1454
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0395",
+    "text": "// 以前这里无条件调 placeholder.toy，所以玩具箱里全是代码画的图标。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1455
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0396",
+    "text": "slots[i].innerHTML = '';      // 重画时先清掉旧的，免得叠加",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1461
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0397",
+    "text": "/* ---------------- 交流 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1469
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0398",
+    "text": "* 聊天面板顶上那张插图：**家里的真实画面**（背景 + 摆出来的玩具 + 她本人）。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1472
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0399",
+    "text": "* 以前这里是无条件调 NT.placeholder.homeWorld / chibi 的 ——",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1474
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0400",
+    "text": "* 所以不管素材装没装，看到的永远是代码画的占位图。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1475
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0401",
+    "text": "* 现在和主舞台一个规矩：有真素材就用真的，缺哪张才用占位图补哪张。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1476
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0402",
+    "text": "* 素材是异步加载的，第一次画很可能还没加载完，所以没画到真图时",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1478
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0403",
+    "text": "* 等 onSettled 再补画一次（retried 防止加载失败时无限递归）。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1479
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0404",
+    "text": "var W = 1280, H = 720, chH = H * 0.25;   // 和主舞台同一个比例",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1482
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0405",
+    "text": "// 摆出来的玩具，和家里看到的一致",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1498
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0406",
+    "text": "// 她本人：画在她此刻站的地方",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1508
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0407",
+    "text": "return app.header('和纳西妲说说话', 'home') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1531
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0408",
+    "text": "'<div class=\"label\">聊点什么</div><div class=\"topics\">' + topics + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1535
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0409",
+    "text": "? '已接入 AI —— 她会按自己的人设回应你，也会记得刚才聊了什么。'",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1537
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0410",
+    "text": ": '现在是预设对话。在设置里接入 API 之后，她会由 AI 扮演，回应跟着内容走。') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1538
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0411",
+    "text": "'<div class=\"label\">你要说</div><div class=\"say-opts\">' + opts + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1554
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0412",
+    "text": "'placeholder=\"或者自己打一句，回车发送\"><button class=\"sbtn go\" data-act=\"send-free\">说</button></div>'",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1557
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0413",
+    "text": "'<button class=\"btn-ghost\" style=\"margin-top:14px\" data-act=\"chat-back\">换个话题</button></div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1559
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0414",
+    "text": "/* ---------------- 出门 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1577
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0415",
+    "text": "detail = '<div class=\"label\">去哪个地区</div><div class=\"chips regions\">' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1589
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0416",
+    "text": "detail = '<div class=\"label\">往哪边走</div><div class=\"chips\">' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1598
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0417",
+    "text": "'<div class=\"hint\" style=\"margin-top:10px\">方向只决定她一开始往哪走。路上可能被同伴邀请、看到宣传画而改道。</div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1604
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0418",
+    "text": "detail = '<div class=\"hint\" style=\"margin-top:16px\">不指定方向和地方，走到哪算哪。</div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1606
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0419",
+    "text": "'<small>' + have + ' · 能走 ' + d.foodKm + 'km</small></button>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1615
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0420",
+    "text": ": '<span class=\"muted\">还没有稀有道具。它们是<b>收获作物时随机掉落</b>的，' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1626
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0421",
+    "text": "'先去院子里的田种点东西。「仓库」里能看到详细的掉落和效果。</span>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1627
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0422",
+    "text": "return app.header('出门', 'home') + '<div class=\"pad\">' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1632
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0423",
+    "text": "'<div class=\"hint\" style=\"margin:0 0 14px\">家乡：<b>' + esc(homeName) + '</b>　' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1633
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0424",
+    "text": "'这次能走 <b>' + totalKm + '</b> 公里（' + NT.data.distanceTier(totalKm).name + '）</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1634
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0425",
+    "text": "'<div class=\"label\">怎么走</div><div class=\"chips\">' + modes + '</div>' + detail +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1635
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0426",
+    "text": "'<div class=\"label\">带什么吃的</div><div class=\"chips\">' + dishes + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1636
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0427",
+    "text": "'<div class=\"label\">带上道具（最多两件）</div><div class=\"chips\">' + rares + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1637
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0428",
+    "text": "'<button class=\"btn btn-primary\" style=\"margin-top:20px\" data-act=\"depart\">出发</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1638
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0429",
+    "text": "'<div class=\"hint\">食物决定她能走多远。不够就会半路折返；路上也可能遇到补给或意外。' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1639
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0430",
+    "text": "'最长 48 小时一定回家。</div></div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1640
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0431",
+    "text": "/* ---------------- 等待 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1643
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0432",
+    "text": "* 画面顶部那条常驻状态条。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1646
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0433",
+    "text": "*   · 她在家   -> \"点她一下试试\"",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1647
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0434",
+    "text": "*   · 她出门了 -> 回家倒计时，点一下能重新打开旅途面板",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1648
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0435",
+    "text": "if (!t) return '点她一下试试';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1652
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0436",
+    "text": "return '<span class=\"cd-dot\"></span>她还有 <b>' + U.humanMs(remain) + '</b> 回来' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1654
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0437",
+    "text": "'<span class=\"cd-eta\">约 ' + U.clockTime(t.dueAt) + '</span>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1655
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0438",
+    "text": "'<span class=\"cd-more\">查看旅途 ›</span>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1656
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0439",
+    "text": ": '<div class=\"muted small\">还没有消息。</div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1673
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0440",
+    "text": "// 明确给出\"还要多久 / 大概几点回来\" —— 这样关掉网页去干别的也心里有数",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1675
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0441",
+    "text": "return app.header('旅途中') + '<div class=\"pad waiting\">' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1679
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0442",
+    "text": "'<div class=\"wait-eta-main\">还要 <b>' + U.humanMs(remain) + '</b></div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1682
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0443",
+    "text": "'<div class=\"wait-eta-sub\">' + (sameDay ? '大约今天 ' : '大约明天 ') + esc(eta) +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1683
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0444",
+    "text": "' 回来　·　关掉网页也算数，到点回来看就好</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1684
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0445",
+    "text": "'<div class=\"wait-detail\">带的 ' + esc(t.dishName) + ' · 能走 ' + t.journey.budgetKm + ' 公里　' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1687
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0446",
+    "text": "'目标 ' + esc(res.target ? res.target.name : '') + '（' + t.journey.costKm + 'km）</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1688
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0447",
+    "text": "'<div class=\"label\" style=\"text-align:left\">路上（已经发生的）</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1689
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0448",
+    "text": "'<button class=\"btn-ghost\" data-act=\"close-modal\">回家里等</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1692
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0449",
+    "text": "'<button class=\"btn-ghost\" data-act=\"modal\" data-arg=\"album\">明信片册</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1693
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0450",
+    "text": "// 这个地区有真背景图就用真的 —— 以前无条件画占位图，所以旅途中看到的是假风景",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1704
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0451",
+    "text": "/* ---------------- 结果 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1719
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0452",
+    "text": "var outcome = j.soaked ? '落汤鸡'",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1730
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0453",
+    "text": ": (!j.reached ? '半路折返' : (j.redirected ? '中途改道' : '到达'));",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1731
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0454",
+    "text": "? '<div class=\"toy-gain\">带回了一个 <b>' + res.toy.name + '</b>　「' + esc(res.toy.playLines[0]) + '」</div>' : '';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1742
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0455",
+    "text": "? '<div class=\"used\">用掉了：' + t.rareItemNames.join('、') + '</div>' : '';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1744
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0456",
+    "text": "return app.header('明信片到了') + note +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1746
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0457",
+    "text": "'<div class=\"journey-stat\">走了 ' + (j.traveledKm || 0) + ' km / 预算 ' + (j.budgetKm || 0) +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1754
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0458",
+    "text": "' km　·　' + (t.durationMs / 3600e3).toFixed(1) + ' 小时</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1755
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0459",
+    "text": "? '同行：<b>' + res.companion.name + '</b>　「' + esc(res.companion.catchphrases[0] || '') + '」'",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1760
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0460",
+    "text": ": '独自一人') + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1761
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0461",
+    "text": "'<div class=\"label\" style=\"text-align:left\">旅途日志</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1762
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0462",
+    "text": "'<div class=\"steps\">' + (steps || '<div class=\"muted small\">这次没走远。</div>') + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1763
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0463",
+    "text": "'<div class=\"label\" style=\"text-align:left\">明信片内容</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1764
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0464",
+    "text": "'<button class=\"btn btn-primary\" data-act=\"close-modal\">继续</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1771
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0465",
+    "text": "'<button class=\"btn-ghost\" data-act=\"modal\" data-arg=\"album\">明信片册</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1772
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0466",
+    "text": "// 明信片到家的音效（同一张只响一次）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1778
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0467",
+    "text": "// 明信片尽量画大一点：屏幕越宽给得越大，最多 620 CSS 像素宽",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1786
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0468",
+    "text": "// 画布分辨率 = 显示尺寸 × 设备像素比 × 超采样系数。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1792
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0469",
+    "text": "// 多渲染 20% 再让浏览器缩小，边缘会更干净（相当于抗锯齿超采样）。",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1793
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0470",
+    "text": "srcEl.textContent = t.text.source === 'deepseek' ? '文案：AI 生成' : '文案：本地模板';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1808
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0471",
+    "text": "s2.textContent = out.source === 'deepseek' ? '文案：AI 生成'",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1823
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0472",
+    "text": ": '文案：本地模板' + (out.error ? '（AI 失败，已回退）' : '');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1824
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0473",
+    "text": "/* ---------------- 明信片册 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1837
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0474",
+    "text": "return app.header('明信片册', 'home') + '<div class=\"pad empty\">还没有明信片。<br>先送她出门吧。</div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1842
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0475",
+    "text": "return app.header('明信片册 (' + list.length + ')', 'home') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1844
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0476",
+    "text": "(j.soaked ? ' · 落水' : (!j.reached ? ' · 折返' : '')) + '</span></button>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1854
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0477",
+    "text": "// 缩略图也要按设备像素比渲染，不然高分屏上会糊",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1863
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0478",
+    "text": "/* ---------------- 设置 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1882
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0479",
+    "text": "return app.header('设置', 'home') + '<div class=\"pad\">' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1890
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0480",
+    "text": "'<div class=\"group\"><div class=\"label\">家乡</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1891
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0481",
+    "text": "'<div class=\"hint\">决定\"走多远\"和方向。换家乡会改变所有行程距离。</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1892
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0482",
+    "text": "'<button class=\"btn-ghost\" data-act=\"auto-locate\" style=\"width:100%\">自动定位</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1894
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0483",
+    "text": "'<div class=\"group\"><div class=\"label\">音效</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1896
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0484",
+    "text": "'<div class=\"hint\">音效是用 Web Audio 现场合成的，不需要任何音频素材文件。</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1897
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0485",
+    "text": "(st.sound !== false ? ' checked' : '') + '><span>开启音效</span></label></div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1899
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0486",
+    "text": "'<div class=\"group\"><div class=\"label\">来访同伴</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1900
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0487",
+    "text": "'<div class=\"hint\">同伴会自己跑来家里待一会儿。她在家的日子会来，' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1901
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0488",
+    "text": "'她出门旅行的时候也可能来。最多同时 1 位。</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1902
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0489",
+    "text": "'<div class=\"label\" style=\"margin-top:.7em\">每次待多久</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1903
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0490",
+    "text": "'<div class=\"group\"><div class=\"label\">图片素材</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1911
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0491",
+    "text": "'<div class=\"hint\">素材用的是通用文件名（主角-*、场景-*、配角-*），' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1912
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0492",
+    "text": "'换成别的角色或地图只要替换图片，不用改代码。' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1913
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0493",
+    "text": "'标准和尺寸见「图片素材」文件夹里的 素材标准.txt。' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1914
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0494",
+    "text": "'没做的会继续用代码画的占位图。</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1915
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0495",
+    "text": "return '<div class=\"asset-stat\">已加载 <b>' + a.ready + ' / ' + a.total + '</b>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1919
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0496",
+    "text": "(a.ready === 0 ? '　（全部还是占位图）' : '') + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1920
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0497",
+    "text": "(names.length ? '<div class=\"asset-names\">已生效：' + esc(names.join('、')) + '</div>' : '');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1921
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0498",
+    "text": "// 素材体检：只在真的对不上时才出现，正常玩家看不到",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1924
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0499",
+    "text": "lines.push('配角清单里多出来的（已自动收录，会正常出现）：' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1931
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0500",
+    "text": "lines.push('有图、但还没在 destinations.js 里定义的地区：' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1935
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0501",
+    "text": "'（这些不会出现在旅行目的地里）');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1937
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0502",
+    "text": "lines.push('还没配图的：' + rep.missingImages.join('、') + '（这些会用代码画的占位图）');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1940
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0503",
+    "text": "lines.push('缺坐标的：' + rep.noGeo.join('、') +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1943
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0504",
+    "text": "'（在 destinations.js 里给它们写上 lat / lng 才会算对距离）');",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1944
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0505",
+    "text": "return '<div class=\"group\"><div class=\"label\">素材体检</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1947
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0506",
+    "text": "'<div class=\"group\"><div class=\"label\">AI 文案（可选）</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1952
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0507",
+    "text": "'<div class=\"hint\">不填也能玩。Key 只保存在你自己的浏览器里，不会上传到任何服务器。</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1953
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0508",
+    "text": "'<span>启用 AI 文案</span></label>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1955
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0509",
+    "text": "'<div class=\"row\"><button class=\"btn-ghost\" data-act=\"test-api\">测试连接</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1958
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0510",
+    "text": "'<button class=\"btn btn-primary\" data-act=\"save-settings\">保存</button></div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1959
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0511",
+    "text": "'<div class=\"group\"><div class=\"label\">数据</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1961
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0512",
+    "text": "'<div class=\"hint\">明信片 ' + app.save.album.length + ' 张 · 玩具 ' + (app.save.toys || []).length +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1962
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0513",
+    "text": "' 件 · 存档 ' + sizeKb + ' KB' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1963
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0514",
+    "text": "(NT.store.isMemoryOnly() ? '<br>浏览器不允许本地存储，本次进度不会被保存' : '') + '</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1964
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0515",
+    "text": "'<div class=\"row\"><button class=\"btn-ghost\" data-act=\"export\">导出存档</button>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1965
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0516",
+    "text": "'<button class=\"btn-ghost danger\" data-act=\"reset\">清空全部</button></div></div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1966
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0517",
+    "text": "'<div class=\"group about\"><div class=\"label\">关于</div>' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1967
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0518",
+    "text": "'<div class=\"hint\">非商业同人作品。角色来自《原神》，版权归米哈游所有。' +",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1968
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0519",
+    "text": "'本项目仅供学习交流，不作任何商业用途。</div></div></div>';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1969
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0520",
+    "text": "/* ---------------- 试玩注入 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1972
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0521",
+    "text": "// 走正规入口摆放，槽位会自动匹配室内/室外（不要直接写 slot，否则可能摆错地方）",
+    "source": {
+      "file": "src/ui.js",
+      "line": 1981
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0522",
+    "text": "/* ---------------- 工具 ---------------- */",
+    "source": {
+      "file": "src/ui.js",
+      "line": 2006
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0523",
+    "text": "return h >= 1 ? h + ' 小时' : Math.round(ms / 60000) + ' 分';",
+    "source": {
+      "file": "src/ui.js",
+      "line": 2014
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0524",
+    "text": "<title>纳西妲的旅行</title>",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 8
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0525",
+    "text": "<!-- 第一阶段 ES Module 兼容入口；旧脚本仍按原顺序加载并负责游戏初始化。 -->",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 9
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0526",
+    "text": "/* 字体：优先用你自己放进去的开源字体，找不到就回退到系统字体。",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 19
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0527",
+    "text": "本项目不打包任何字体文件，所以没有字体授权风险。",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 20
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0528",
+    "text": "想让所有平台显示一致，把 OFL 授权的字体（推荐霞鹜文楷 LXGW WenKai）",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 21
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0529",
+    "text": "放进 assets/font/，再取消下面这段注释即可。 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 22
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0530",
+    "text": "/* ---- 家：真·全屏 16:9 世界，控件全部在画面里 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 68
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0531",
+    "text": "/* 这一层只在手机竖屏时用来横向滚动（见下面的媒体查询）；",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 72
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0532",
+    "text": "宽屏上 display:contents 等于它不存在，不影响原来的布局 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 73
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0533",
+    "text": "/* 收起来：铺满整屏后底部这排会压住画面，收起来能看全景 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 94
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0534",
+    "text": "/* 收起 / 展开底边那排按钮。它在 .home-controls 外面，",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 97
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0535",
+    "text": "所以菜单收起来之后它还留在屏幕上，能再点开。 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 98
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0536",
+    "text": "/* 她说的话：人物旁边的气泡（比底部那行显眼） */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 120
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0537",
+    "text": "/* 田地就地操作面板：小一点、放到田的上方，别挡住人物 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 131
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0538",
+    "text": "/* 画面内的半透明弹窗：不切屏，宽度约一半到四分之三，带滚动条 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 145
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0539",
+    "text": "/* 窄屏 / 竖屏：画面铺满整屏，控件浮在画面上 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 161
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0540",
+    "text": "/* 9:16 的手机要\"全屏\"，就只能在两种\"不满\"里选一个：",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 163
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0541",
+    "text": "按宽度铺 → 高度只占屏幕四分之一，上下全黑；",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 164
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0542",
+    "text": "按高度铺 → 高度撑满整屏，但 16:9 会横向溢出，得左右拖。",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 165
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0543",
+    "text": "这里选后者（玩家要的全屏），溢出的部分用手指横向拖查看。",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 166
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0544",
+    "text": "另外 stage 的浮层字号是 clamp(宽/62, 9, 20)，按宽度铺时会被下限卡在 9px，",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 167
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0545",
+    "text": "徽章实际只有 7px —— 这也是按高度铺的另一个理由。 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 168
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0546",
+    "text": "/* 气泡跟着人物走，所以要留在画面里一起滚 —— 不能固定 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 176
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0547",
+    "text": "/* 竖屏提示：出现在屏幕正中，几秒后自己淡掉。",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 180
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0548",
+    "text": "不挡操作（pointer-events:none）、不强制旋转 —— 爱竖屏就竖屏。 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 181
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0549",
+    "text": "/* ---- 首次选家乡 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 212
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0550",
+    "text": "/* ---- 厨房 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 216
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0551",
+    "text": "/* ---- 玩具 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 229
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0552",
+    "text": "/* 仓库：稀有道具条目 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 237
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0553",
+    "text": "/* ---- 交流 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 249
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0554",
+    "text": "/* ---- 旅途日志 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 273
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0555",
+    "text": "/* ---- 等待 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 286
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0556",
+    "text": "/* ---- 结果 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 293
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0557",
+    "text": "/* ---- 图鉴 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 325
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0558",
+    "text": "/* ---- 设置 ---- */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 337
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0559",
+    "text": "/* 家：右上角一组按钮（收起菜单 / 全屏 / 设置）。",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 349
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0560",
+    "text": "用 flex 排，别让每个按钮各自算 right —— 那样加一个就要改一串坐标。 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 350
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0561",
+    "text": ".stage-gear.w{width:auto;padding:0 .7em;white-space:nowrap}   /* 带字的按钮 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 358
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0562",
+    "text": "/* 全屏/横屏按钮：只在手机窄屏显示（电脑上画面本来就铺满，不需要） */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 359
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0563",
+    "text": "/* 成就 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 365
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0564",
+    "text": "/* 素材体检：只在数据表和素材对不上时才出现 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 386
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0565",
+    "text": "/* 她出门时那个按钮的状态 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 389
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0566",
+    "text": "/* 玩具箱：摆放上限 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 393
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0567",
+    "text": "/* 顶部状态条：她出门时换成回家的倒计时，点一下能打开旅途面板。",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 402
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0568",
+    "text": "这是独立元素，不复用 .stage-hint —— 那条提示带\"9 秒后淡出\"的动画，倒计时不能淡出。 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 403
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0569",
+    "text": "/* 等待面板：预计用时 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 417
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0570",
+    "text": "/* 面板要塞进 16:9 的舞台里，所以预览图不能太大，否则下面的内容会被挤出屏幕 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 422
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0571",
+    "text": "/* 来访同伴的气泡（深色底，所以字也要改成浅色，否则看不见） */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 429
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0572",
+    "text": "/* 顶部左侧：同伴来访提示 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 435
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0573",
+    "text": "/* 她出门时顶部的标记 */",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 438
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0574",
+    "text": "手机：把浮层钉在屏幕上（不跟着画面横向滚走）。",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 458
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0575",
+    "text": "**这一块必须放在所有基础规则之后** —— .stage-gear / .stage-fsbtn /",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 459
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0576",
+    "text": ".stage-countdown 的基础规则定义在上面更靠后的位置，同优先级下后面的赢，",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 460
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0577",
+    "text": "写在前面会被它们覆盖掉（之前 .stage-gear 就因此跑到了屏幕外点不到）。",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 461
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0578",
+    "text": "<!-- 依赖顺序不可调整：后加载的模块在 IIFE 阶段就会取用前面的命名空间 -->",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 487
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0579",
+    "text": "if (el) el.textContent = '===SELFTEST-BEGIN===\\n自检崩溃: ' + (e && e.stack || e) + '\\n===SELFTEST-END===';",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 532
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0580",
+    "text": "// 调试：?poke=1 自动戳她一下，方便截图看气泡",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 551
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0581",
+    "text": "// 调试：?walk=1 把她挪到最左边，逼她走一段（用来看走路动画）",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 553
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0582",
+    "text": "// 调试：?setstate=read 直接把她设成某个状态（用来核对落点）",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 559
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0583",
+    "text": "NT.app.save.home.nahida.until = Date.now() + 3600e3;   // 别让它马上又换掉",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 562
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0584",
+    "text": "if (NT.app._anim) NT.app._anim = null;                 // 让她直接出现在新位置",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 564
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0585",
+    "text": "// 调试：?visitor=1 强制放一位客人进来（看同伴的表现）",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 567
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0586",
+    "text": "// 注意要放在 setstate 之后 —— 客人的活动是按主角当时的位置挑的",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 568
+    },
+    "protagonistRelated": true,
+    "marker": "{TEXT_REVIEW: UI 行包含原主角名称、ID或角色指代，需逐项分类}"
+  },
+  {
+    "uiTextId": "ui_0587",
+    "text": "// 调试：?trip=1 立刻出发一趟（看等待面板和顶部倒计时）",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 574
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0588",
+    "text": "//       &due=8 让她 8 秒后就回来（用来验证\"结算→弹明信片→按钮归位\"整条链路）",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 575
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0589",
+    "text": "// 把到达时间和\"剩余时长\"一起压缩，否则进度条会显示还没走多远",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 584
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0590",
+    "text": "NT.app.toast('出发失败：' + dr.error);",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 594
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0591",
+    "text": "// 调试：?probe=1 把素材加载状态和玩具摆放打到页面上",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 598
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0592",
+    "text": "return c.id + (c.auto ? '(自动)' : '');",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 618
+    },
+    "protagonistRelated": false
+  },
+  {
+    "uiTextId": "ui_0593",
+    "text": "'<div class=\"pad\" style=\"padding-top:60px;color:#d98b7a\"><b>启动失败</b>' +",
+    "source": {
+      "file": "开始游戏.html",
+      "line": 631
+    },
+    "protagonistRelated": false
+  }
+]

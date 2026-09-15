@@ -1,0 +1,2224 @@
+{
+  "id": "columbina",
+  "name": "哥伦比娅",
+  "displayName": "哥伦比娅",
+  "status": "planned-single-source-not-wired",
+  "original": {
+    "inferredId": "nahida",
+    "name": "纳西妲",
+    "aliases": [
+      "纳西妲",
+      "小纳西妲",
+      "纳西妲大人",
+      "小吉祥草王",
+      "草神",
+      "草神姐姐",
+      "她",
+      "主角",
+      "旅行者"
+    ],
+    "identity": "《原神》须弥的草神/小吉祥草王",
+    "personality": [
+      "智慧",
+      "温和",
+      "好奇",
+      "说话简短克制",
+      "偶尔带学究气",
+      "轻微幽默感"
+    ],
+    "voice": "第一人称、温柔、好奇、短句、克制",
+    "stateDataPath": "NT.data.nahidaStates",
+    "saveDataPath": "home.nahida",
+    "assetDataPath": "NT.assetManifest.nahida"
+  },
+  "mappings": [
+    {
+      "from": "nahida",
+      "to": "columbina",
+      "marker": "{PROTAGONIST_MAPPING: nahida → columbina；需迁移逻辑、资源和存档兼容}"
+    },
+    {
+      "from": "纳西妲",
+      "to": "哥伦比娅",
+      "marker": "{PROTAGONIST_MAPPING: 纳西妲 → 哥伦比娅；仅纯名称位置可直接替换}"
+    },
+    {
+      "from": "主角",
+      "to": "哥伦比娅",
+      "marker": "{PROTAGONIST_MAPPING: 通用角色标签需改为统一 protagonist 引用}"
+    },
+    {
+      "from": "旅行者",
+      "to": null,
+      "marker": "{CHARACTER_RELATIONSHIP: 旅行者在现有 AI Prompt 中是照顾主角的人，不能直接等同哥伦比娅}"
+    }
+  ],
+  "assets": [
+    {
+      "mood": "idle",
+      "assetId": "protagonist_idle",
+      "originalAssetId": "nahida_idle",
+      "pathStem": "图片素材/主角-待机",
+      "marker": "{ASSET_REPLACE: 当前idle主角立绘表现原主角，需要制作哥伦比娅版本}"
+    },
+    {
+      "mood": "happy",
+      "assetId": "protagonist_happy",
+      "originalAssetId": "nahida_happy",
+      "pathStem": "图片素材/主角-开心",
+      "marker": "{ASSET_REPLACE: 当前happy主角立绘表现原主角，需要制作哥伦比娅版本}"
+    },
+    {
+      "mood": "tired",
+      "assetId": "protagonist_tired",
+      "originalAssetId": "nahida_tired",
+      "pathStem": "图片素材/主角-疲惫",
+      "marker": "{ASSET_REPLACE: 当前tired主角立绘表现原主角，需要制作哥伦比娅版本}"
+    }
+  ],
+  "behaviors": [
+    {
+      "id": "idle",
+      "name": "发呆",
+      "mood": "idle",
+      "weight": 13,
+      "spot": "yard",
+      "dwell": 2.5,
+      "lines": [
+        "……啊，你来了。",
+        "我在想一件事，想到一半忘了。",
+        "刚才那片云变成了一只兔子，现在散了。"
+      ],
+      "poke": {
+        "anim": "perk",
+        "lines": [
+          "……嗯？",
+          "你来了。",
+          "我刚才在想事情，被你打断了。",
+          "（慢慢抬起头）"
+        ]
+      }
+    },
+    {
+      "id": "sleep",
+      "name": "睡觉",
+      "mood": "tired",
+      "weight": 7,
+      "spot": "bed",
+      "dwell": 6,
+      "lie": true,
+      "lines": [
+        "（她睡着了，呼吸很轻）",
+        "（翻了个身，没有醒）",
+        "……再五分钟……"
+      ],
+      "poke": {
+        "anim": "roll",
+        "lines": [
+          "（翻了个身，把脸埋进枕头）",
+          "……唔。",
+          "（含糊地说了句什么，没听清）",
+          "（把被子往上拉了拉）"
+        ]
+      }
+    },
+    {
+      "id": "eat",
+      "name": "吃饭",
+      "mood": "happy",
+      "weight": 11,
+      "spot": "desk",
+      "dwell": 2.5,
+      "lines": [
+        "刚做好的，还热。你要不要尝一口？",
+        "这个比上次做得好，我记下来了。",
+        "吃东西的时候脑子会停下来，这样很好。"
+      ],
+      "poke": {
+        "anim": "offer",
+        "lines": [
+          "你要不要尝一口？",
+          "（把碗往你那边推了推）",
+          "等我把这口咽下去。",
+          "还没做好吃的样子，别看了。"
+        ]
+      }
+    },
+    {
+      "id": "play",
+      "name": "玩耍",
+      "mood": "happy",
+      "weight": 25,
+      "spot": "lawn",
+      "dwell": 2.5,
+      "useToy": true,
+      "lines": [
+        "一起玩吗？",
+        "刚才那个差点飞出去了。",
+        "再来一次，这次我一定能接住。"
+      ],
+      "poke": {
+        "anim": "bounce",
+        "lines": [
+          "一起！",
+          "刚才那个你看到了吗？",
+          "再来一次！",
+          "（原地蹦了一下）"
+        ]
+      }
+    },
+    {
+      "id": "read",
+      "name": "看书",
+      "mood": "idle",
+      "weight": 10,
+      "spot": "shelf",
+      "dwell": 3,
+      "lines": [
+        "这一页我读了三遍，每次理解得都不太一样。",
+        "书里说的事情，和外面看到的对不上。",
+        "你先坐，我看完这段。"
+      ],
+      "poke": {
+        "anim": "lookup",
+        "lines": [
+          "……等一下，这段看完。",
+          "（从书上面看了你一眼）",
+          "你也想看？这本有点难。",
+          "别挡住光。"
+        ]
+      }
+    },
+    {
+      "id": "water",
+      "name": "浇水",
+      "mood": "idle",
+      "weight": 11,
+      "spot": "dry",
+      "dwell": 2,
+      "altSpot": "wet",
+      "lines": [
+        "土还是湿的，今天不用浇了。",
+        "这棵长得比昨天高了一点，真的。",
+        "水要慢慢浇，一下子倒下去根会松。"
+      ],
+      "poke": {
+        "anim": "wave",
+        "lines": [
+          "水壶有点重。",
+          "小心，别站太近。",
+          "这棵今天已经喝饱了。",
+          "（往旁边挪了半步，让开水）"
+        ]
+      }
+    },
+    {
+      "id": "cook",
+      "name": "做饭",
+      "mood": "happy",
+      "weight": 9,
+      "spot": "stove",
+      "dwell": 2.5,
+      "lines": [
+        "火候比上次好。",
+        "你闻到没有？",
+        "等一下就好，别急。"
+      ],
+      "poke": {
+        "anim": "stir",
+        "lines": [
+          "别急，还没好。",
+          "火有点大。",
+          "你来尝尝咸淡？",
+          "（一边说一边搅了两下）"
+        ]
+      }
+    },
+    {
+      "id": "stretch",
+      "name": "伸懒腰",
+      "mood": "happy",
+      "weight": 5,
+      "spot": "door",
+      "dwell": 1.5,
+      "lines": [
+        "唔——坐太久了。",
+        "你也起来动一动吧。",
+        "肩膀有点僵。"
+      ],
+      "poke": {
+        "anim": "shy",
+        "lines": [
+          "……别看我。",
+          "啊，你什么时候来的。",
+          "（把手臂放了下来）",
+          "就是……坐太久了。"
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "name": "望着路口",
+      "mood": "idle",
+      "weight": 9,
+      "spot": "gate",
+      "dwell": 2.5,
+      "lines": [
+        "……没什么，就是看看。",
+        "我在等风把门吹响。",
+        "门口那条路，一直通向很远的地方。"
+      ],
+      "poke": {
+        "anim": "turn",
+        "lines": [
+          "……没什么。",
+          "（转过身来）你回来了。",
+          "我只是看看。",
+          "（把视线收回来）"
+        ]
+      }
+    }
+  ],
+  "review": [
+    "{PROTAGONIST_REWRITE: 原主角身份、性格、语气、兴趣与行为需要基于用户确认的哥伦比娅设定重写}",
+    "{WORLD_CONFIRM: 哥伦比娅与现实地点、原神角色及现有家园的关系尚未确定}",
+    "{LOGIC_REVIEW: nahidaStates、home.nahida、assetManifest.nahida 与渲染变量需迁移到统一 protagonist.id}",
+    "{SAVE_MIGRATION: 旧存档 home.nahida 字段必须兼容读取，禁止直接改键导致丢档}",
+    "{AI_PROMPT_REWRITE: 日记和聊天 Prompt 明确绑定纳西妲/须弥草神，需整体重写而非替换姓名}"
+  ],
+  "references": [
+    {
+      "file": "assets/manifest.js",
+      "line": 8,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "assets/manifest.js",
+      "line": 18,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "assets/manifest.js",
+      "line": 33,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "assets/manifest.js",
+      "line": 38,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "assets/manifest.js",
+      "line": 39,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "assets/manifest.js",
+      "line": 40,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "assets/manifest.js",
+      "line": 41,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "assets/manifest.js",
+      "line": 72,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "assets/manifest.js",
+      "line": 99,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "docs/PLATFORM-BUILD.md",
+      "line": 9,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "docs/PROJECT-CONVENTIONS.md",
+      "line": 20,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "docs/SAVE-DATA.md",
+      "line": 3,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "index.html",
+      "line": 5,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 2,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 8,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "package.json",
+      "line": 2,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "package.json",
+      "line": 5,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "public/service-worker.js",
+      "line": 2,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 4,
+      "terms": [
+        "纳西妲",
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 59,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 88,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 102,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 190,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 191,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 192,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 193,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 211,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 247,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 254,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 298,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 310,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 346,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 353,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 356,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 375,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 407,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 436,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 442,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "scripts/check-project.mjs",
+      "line": 29,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/achievements.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/assets/asset-registry.js",
+      "line": 5,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 31,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 84,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 181,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 204,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 205,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 206,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 207,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 208,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 249,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 320,
+      "terms": [
+        "nahida",
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 441,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 442,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 443,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 444,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 445,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 449,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 450,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/assets.js",
+      "line": 452,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/rng.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 48,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 479,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 480,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 679,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 681,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 718,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 720,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 721,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 724,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 725,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 736,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 740,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 750,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 763,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 765,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 768,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 769,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 803,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 811,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 812,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 816,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 819,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 821,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 823,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 826,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 827,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 828,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 833,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 836,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 839,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 845,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 848,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 849,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 977,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 992,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 994,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1114,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1141,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1144,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1147,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1150,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1167,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1402,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/selftest.js",
+      "line": 1405,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/core/util.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/achievements.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 12,
+      "terms": [
+        "nahida",
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 28,
+      "terms": [
+        "nahida",
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 44,
+      "terms": [
+        "nahida",
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 60,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 76,
+      "terms": [
+        "nahida",
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 92,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 108,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/data/companions.js",
+      "line": 124,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/data/config.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/config.js",
+      "line": 10,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/data/config.js",
+      "line": 57,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/destinations.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/events.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/farm.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/geo.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 23,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 54,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 55,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 73,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 79,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 117,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 118,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 157,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/home.js",
+      "line": 158,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/journey.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/kitchen.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/templates.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/templates.js",
+      "line": 150,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/templates.js",
+      "line": 173,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/templates.js",
+      "line": 192,
+      "terms": [
+        "纳西妲",
+        "旅行者"
+      ]
+    },
+    {
+      "file": "src/data/visitor.js",
+      "line": 5,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/visitor.js",
+      "line": 6,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/visitor.js",
+      "line": 7,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/visitor.js",
+      "line": 8,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/visitor.js",
+      "line": 20,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/visitor.js",
+      "line": 69,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/data/visitor.js",
+      "line": 105,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/data/visitor.js",
+      "line": 106,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/engine/gacha.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/engine/journey.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/engine/trip.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/farm.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/geo.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 17,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 26,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 38,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 40,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 51,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 56,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 59,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 66,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 76,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 87,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 109,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 119,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 125,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 192,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 253,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 261,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 269,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 342,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 343,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 344,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 345,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 349,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 352,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 353,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 400,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 411,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 444,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 445,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 454,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 481,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 514,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 515,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 517,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/home.js",
+      "line": 530,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/legacy-entry.js",
+      "line": 5,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/render/effects.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/render/frames.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/render/placeholder.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/render/placeholder.js",
+      "line": 517,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/render/placeholder.js",
+      "line": 930,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/render/placeholder.js",
+      "line": 1055,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/render/postcard.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/render/postcard.js",
+      "line": 153,
+      "terms": [
+        "纳西妲",
+        "主角"
+      ]
+    },
+    {
+      "file": "src/render/postcard.js",
+      "line": 154,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/render/postcard.js",
+      "line": 155,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/render/postcard.js",
+      "line": 157,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/sfx.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/storage/save-api.js",
+      "line": 2,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/store.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/store.js",
+      "line": 52,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/text/deepseek.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/text/deepseek.js",
+      "line": 28,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/text/template-text.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/text/template-text.js",
+      "line": 44,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/time/clock.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/time/clock.js",
+      "line": 14,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/time/clock.js",
+      "line": 90,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 2,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 203,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 218,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 224,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 591,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 652,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 753,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 943,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 969,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 983,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1023,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1037,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1040,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1087,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1161,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1183,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1188,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1277,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1311,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1314,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1321,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1512,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1531,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1534,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 1912,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 2000,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "src/ui.js",
+      "line": 2001,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "tools/asset-generator.html",
+      "line": 6,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "tools/make-icon.html",
+      "line": 84,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "tools/record-demo.ps1",
+      "line": 11,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "tools/record-demo.ps1",
+      "line": 49,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "tools/record-demo.ps1",
+      "line": 55,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "tools/record-demo.ps1",
+      "line": 129,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 4,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 8,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 29,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 31,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 36,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 39,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 42,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 45,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 56,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 72,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 73,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 74,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 113,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 128,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 142,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 153,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 227,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 238,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 241,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "图片素材/素材标准.txt",
+      "line": 258,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "开始游戏.html",
+      "line": 8,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "开始游戏.html",
+      "line": 561,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "开始游戏.html",
+      "line": 562,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "开始游戏.html",
+      "line": 563,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "开始游戏.html",
+      "line": 568,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "开始游戏.html",
+      "line": 615,
+      "terms": [
+        "nahida"
+      ]
+    },
+    {
+      "file": "说明.txt",
+      "line": 2,
+      "terms": [
+        "纳西妲"
+      ]
+    },
+    {
+      "file": "说明.txt",
+      "line": 134,
+      "terms": [
+        "主角"
+      ]
+    },
+    {
+      "file": "说明.txt",
+      "line": 137,
+      "terms": [
+        "主角"
+      ]
+    }
+  ]
+}

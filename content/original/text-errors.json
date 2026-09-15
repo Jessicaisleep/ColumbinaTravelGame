@@ -1,0 +1,9 @@
+{
+  "projectSource": [],
+  "externalCopyTableAudit": {
+    "path": "D:/ColumbinaTravelGame/游戏文案总表.txt",
+    "importedIntoGameContent": false,
+    "occurrences": 114,
+    "marker": "{TEXT_ERROR: 114 处 [object Object] 位于外部文案总表；禁止猜测原文，未导入游戏内容}"
+  }
+}

@@ -1,0 +1,4001 @@
+{
+  "geo": {
+    "mohe": {
+      "lat": 52.97,
+      "lng": 122.54,
+      "remoteness": 2.1
+    },
+    "harbin": {
+      "lat": 45.8,
+      "lng": 126.53,
+      "remoteness": 1.15
+    },
+    "hulunbuir": {
+      "lat": 49.22,
+      "lng": 119.77,
+      "remoteness": 1.35
+    },
+    "kanas": {
+      "lat": 48.7,
+      "lng": 87,
+      "remoteness": 1.9
+    },
+    "beijing": {
+      "lat": 39.9,
+      "lng": 116.41,
+      "remoteness": 1
+    },
+    "xian": {
+      "lat": 34.34,
+      "lng": 108.94,
+      "remoteness": 1
+    },
+    "chengdu": {
+      "lat": 30.57,
+      "lng": 104.07,
+      "remoteness": 1.05
+    },
+    "zhangjiajie": {
+      "lat": 29.12,
+      "lng": 110.48,
+      "remoteness": 1.15
+    },
+    "dali": {
+      "lat": 25.61,
+      "lng": 100.27,
+      "remoteness": 1.35
+    },
+    "nyingchi": {
+      "lat": 29.65,
+      "lng": 94.36,
+      "remoteness": 1.7
+    },
+    "dunhuang": {
+      "lat": 40.14,
+      "lng": 94.66,
+      "remoteness": 1.4
+    },
+    "turpan": {
+      "lat": 42.95,
+      "lng": 89.19,
+      "remoteness": 1.45
+    },
+    "suzhou": {
+      "lat": 31.3,
+      "lng": 120.58,
+      "remoteness": 1
+    },
+    "hangzhou": {
+      "lat": 30.27,
+      "lng": 120.16,
+      "remoteness": 1
+    },
+    "xiamen": {
+      "lat": 24.48,
+      "lng": 118.09,
+      "remoteness": 1.05
+    },
+    "guilin": {
+      "lat": 25.27,
+      "lng": 110.29,
+      "remoteness": 1.15
+    },
+    "guangzhou": {
+      "lat": 23.13,
+      "lng": 113.26,
+      "remoteness": 1
+    },
+    "sanya": {
+      "lat": 18.25,
+      "lng": 109.51,
+      "remoteness": 1.2
+    }
+  },
+  "homeCityGeo": {
+    "shanghai": {
+      "lat": 31.23,
+      "lng": 121.47,
+      "remoteness": 1
+    },
+    "tianjin": {
+      "lat": 39.08,
+      "lng": 117.2,
+      "remoteness": 1
+    },
+    "chongqing": {
+      "lat": 29.56,
+      "lng": 106.55,
+      "remoteness": 1.1
+    },
+    "nanjing": {
+      "lat": 32.06,
+      "lng": 118.8,
+      "remoteness": 1
+    },
+    "wuhan": {
+      "lat": 30.59,
+      "lng": 114.31,
+      "remoteness": 1
+    },
+    "changsha": {
+      "lat": 28.23,
+      "lng": 112.94,
+      "remoteness": 1.05
+    },
+    "zhengzhou": {
+      "lat": 34.75,
+      "lng": 113.63,
+      "remoteness": 1
+    },
+    "jinan": {
+      "lat": 36.65,
+      "lng": 117.12,
+      "remoteness": 1
+    },
+    "qingdao": {
+      "lat": 36.07,
+      "lng": 120.38,
+      "remoteness": 1
+    },
+    "shenyang": {
+      "lat": 41.8,
+      "lng": 123.43,
+      "remoteness": 1.1
+    },
+    "changchun": {
+      "lat": 43.82,
+      "lng": 125.32,
+      "remoteness": 1.15
+    },
+    "shijiazhuang": {
+      "lat": 38.04,
+      "lng": 114.51,
+      "remoteness": 1
+    },
+    "taiyuan": {
+      "lat": 37.87,
+      "lng": 112.55,
+      "remoteness": 1.05
+    },
+    "hefei": {
+      "lat": 31.82,
+      "lng": 117.23,
+      "remoteness": 1
+    },
+    "nanchang": {
+      "lat": 28.68,
+      "lng": 115.86,
+      "remoteness": 1.05
+    },
+    "fuzhou": {
+      "lat": 26.07,
+      "lng": 119.3,
+      "remoteness": 1.05
+    },
+    "guiyang": {
+      "lat": 26.65,
+      "lng": 106.63,
+      "remoteness": 1.2
+    },
+    "kunming": {
+      "lat": 25.04,
+      "lng": 102.72,
+      "remoteness": 1.25
+    },
+    "lanzhou": {
+      "lat": 36.06,
+      "lng": 103.83,
+      "remoteness": 1.2
+    },
+    "xining": {
+      "lat": 36.62,
+      "lng": 101.78,
+      "remoteness": 1.3
+    },
+    "yinchuan": {
+      "lat": 38.49,
+      "lng": 106.23,
+      "remoteness": 1.2
+    },
+    "huhehaote": {
+      "lat": 40.84,
+      "lng": 111.75,
+      "remoteness": 1.15
+    },
+    "wulumuqi": {
+      "lat": 43.83,
+      "lng": 87.62,
+      "remoteness": 1.6
+    },
+    "lasa": {
+      "lat": 29.65,
+      "lng": 91.14,
+      "remoteness": 1.7
+    },
+    "nanning": {
+      "lat": 22.82,
+      "lng": 108.37,
+      "remoteness": 1.1
+    },
+    "haikou": {
+      "lat": 20.04,
+      "lng": 110.32,
+      "remoteness": 1.1
+    },
+    "ningbo": {
+      "lat": 29.87,
+      "lng": 121.55,
+      "remoteness": 1
+    },
+    "wenzhou": {
+      "lat": 28,
+      "lng": 120.7,
+      "remoteness": 1
+    },
+    "dongguan": {
+      "lat": 23.02,
+      "lng": 113.75,
+      "remoteness": 1
+    },
+    "zhuhai": {
+      "lat": 22.27,
+      "lng": 113.58,
+      "remoteness": 1
+    },
+    "luoyang": {
+      "lat": 34.62,
+      "lng": 112.45,
+      "remoteness": 1
+    },
+    "kaifeng": {
+      "lat": 34.8,
+      "lng": 114.31,
+      "remoteness": 1
+    },
+    "datong": {
+      "lat": 40.09,
+      "lng": 113.3,
+      "remoteness": 1.1
+    },
+    "yanbian": {
+      "lat": 42.9,
+      "lng": 129.51,
+      "remoteness": 1.35
+    }
+  },
+  "KM_PER_HOUR": 95,
+  "MAX_HOURS": 48,
+  "MIN_HOURS": 1,
+  "destinations": [
+    {
+      "id": "beijing",
+      "name": "北京",
+      "fullName": "北京·胡同与城墙",
+      "bearing": "n",
+      "desc": "灰墙一直延伸到看不见的地方。风把树影吹得晃来晃去。",
+      "tags": [
+        "city",
+        "ancient"
+      ],
+      "rarity": "N",
+      "weight": 12,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "wind"
+      ],
+      "anchorY": 0.74,
+      "depthScale": 1,
+      "stampHue": 0,
+      "palette": {
+        "sky": [
+          "#c9d8e8",
+          "#eaf1f7"
+        ],
+        "far": "#9aa8b8",
+        "mid": "#7d848e",
+        "near": "#5a5f68",
+        "ground": "#8d8478"
+      },
+      "arriveLines": [
+        "灰墙一直延伸到看不见的地方，墙根蹲着一只晒太阳的猫。",
+        "胡同很窄，两边门墩上的狮子被摸得发亮。",
+        "风把树影吹得晃来晃去，我在墙根站了一会儿。"
+      ],
+      "scenery": [
+        {
+          "name": "红墙根下",
+          "desc": "墙是那种暗红，被雨淋过的地方颜色更深一些。",
+          "sticker": "pagoda"
+        },
+        {
+          "name": "城墙上的风",
+          "desc": "站在上面，风很大，能看见很远的地方。",
+          "sticker": "map"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了烤鸭",
+          "desc": "皮很脆，卷上薄饼和葱丝，一口下去有点烫。",
+          "sticker": "dumpling"
+        },
+        {
+          "name": "喝了一碗豆汁",
+          "desc": "味道很怪。喝第二口的时候好像明白了一点。",
+          "sticker": "bowl"
+        }
+      ],
+      "play": [
+        {
+          "name": "放了一只风筝",
+          "desc": "线绷得很紧，抬头看久了脖子会酸。",
+          "sticker": "kite"
+        },
+        {
+          "name": "逛了半天胡同",
+          "desc": "没什么目的，只是走。走着走着天就黑了。",
+          "sticker": "compass"
+        }
+      ]
+    },
+    {
+      "id": "harbin",
+      "name": "哈尔滨",
+      "fullName": "哈尔滨·冰城",
+      "bearing": "n",
+      "desc": "冷得说话都会冒白气。屋顶积了厚厚一层雪，边缘圆圆的。",
+      "tags": [
+        "snow",
+        "city"
+      ],
+      "rarity": "R",
+      "weight": 10,
+      "weatherCompat": [
+        "snow",
+        "cloudy",
+        "clear"
+      ],
+      "anchorY": 0.72,
+      "depthScale": 1.02,
+      "stampHue": 205,
+      "palette": {
+        "sky": [
+          "#c6dcf0",
+          "#eef5fc"
+        ],
+        "far": "#a8c0d6",
+        "mid": "#8098b0",
+        "near": "#5b7288",
+        "ground": "#e8f0f8"
+      },
+      "arriveLines": [
+        "冷得说话都会冒白气，我把围巾往上拉了拉。",
+        "屋顶积了厚厚一层雪，边缘圆圆的，像盖了糖霜。",
+        "江面冻住了，有人在上面走出了一条路。"
+      ],
+      "scenery": [
+        {
+          "name": "结了冰的江",
+          "desc": "冰面底下有气泡，一层一层的，像被冻住的时间。",
+          "sticker": "snowflake"
+        },
+        {
+          "name": "雪里的屋顶",
+          "desc": "一排屋顶全是白的，烟囱冒出的气也是白的。",
+          "sticker": "snowflake"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一份锅包肉",
+          "desc": "外壳是酸的，咬开之后里面很烫。",
+          "sticker": "bowl"
+        },
+        {
+          "name": "啃了一根冰棍",
+          "desc": "越冷越想吃，这个道理我到现在也没想明白。",
+          "sticker": "icecream"
+        }
+      ],
+      "play": [
+        {
+          "name": "看了冰灯",
+          "desc": "冰里冻着灯，光是透出来的，不是照出来的。",
+          "sticker": "lantern"
+        },
+        {
+          "name": "摔了一跤",
+          "desc": "不疼，但是站起来的时候有点不好意思。",
+          "sticker": "star"
+        }
+      ]
+    },
+    {
+      "id": "hulunbuir",
+      "name": "呼伦贝尔",
+      "fullName": "呼伦贝尔·草原",
+      "bearing": "n",
+      "desc": "草一直铺到天边。云在天上跑，影子在草上跑。",
+      "tags": [
+        "plain",
+        "wind"
+      ],
+      "rarity": "R",
+      "weight": 10,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "wind"
+      ],
+      "anchorY": 0.7,
+      "depthScale": 0.98,
+      "stampHue": 120,
+      "palette": {
+        "sky": [
+          "#a8d8f0",
+          "#dff0fa"
+        ],
+        "far": "#a8c8b0",
+        "mid": "#7fae6a",
+        "near": "#5c8a4a",
+        "ground": "#6f9a55"
+      },
+      "arriveLines": [
+        "草一直铺到天边，云在天上跑，影子就在草上跑。",
+        "走了很久景色都没变，回头一看，帐篷已经很小了。",
+        "这里的风是整片的，不是一阵一阵的。"
+      ],
+      "scenery": [
+        {
+          "name": "白桦林",
+          "desc": "树干是白的，上面有黑色的疤，像谁随手点的。",
+          "sticker": "leaf"
+        },
+        {
+          "name": "草原上的日落",
+          "desc": "太阳是慢慢沉到草里去的，不是落到山后面。",
+          "sticker": "star"
+        }
+      ],
+      "food": [
+        {
+          "name": "喝了咸奶茶",
+          "desc": "第一口不习惯，第二口就停不下来了。",
+          "sticker": "tea"
+        },
+        {
+          "name": "吃了手把肉",
+          "desc": "用刀自己割着吃，吃完手上全是油。",
+          "sticker": "bowl"
+        }
+      ],
+      "play": [
+        {
+          "name": "骑了一小段马",
+          "desc": "颠得厉害，但是风从耳朵边过的时候很舒服。",
+          "sticker": "compass"
+        },
+        {
+          "name": "躺下看星星",
+          "desc": "躺平之后天变得特别大，星星多得数不过来。",
+          "sticker": "star"
+        }
+      ]
+    },
+    {
+      "id": "turpan",
+      "name": "吐鲁番",
+      "fullName": "吐鲁番·火焰山",
+      "bearing": "w",
+      "desc": "热气从地面上冒起来，远处的路像化了。葡萄架下是唯一凉快的地方。",
+      "tags": [
+        "desert"
+      ],
+      "rarity": "SR",
+      "weight": 7,
+      "weatherCompat": [
+        "clear",
+        "cloudy"
+      ],
+      "anchorY": 0.71,
+      "depthScale": 1.02,
+      "stampHue": 35,
+      "palette": {
+        "sky": [
+          "#ffd9a0",
+          "#ffeccc"
+        ],
+        "far": "#e0ac6b",
+        "mid": "#c98d52",
+        "near": "#9c6a3a",
+        "ground": "#c69457"
+      },
+      "arriveLines": [
+        "热气从地面上冒起来，远处的路看起来像化掉了。",
+        "山是红的，被太阳晒得发亮，我看了好久才敢走近。",
+        "葡萄架下面是唯一凉快的地方，我坐在那儿不想走。"
+      ],
+      "scenery": [
+        {
+          "name": "红色的山",
+          "desc": "一层一层的纹路，像被谁用手指划过。",
+          "sticker": "stone"
+        },
+        {
+          "name": "坎儿井的水",
+          "desc": "地底下居然有水，凉的，摸一下手都精神了。",
+          "sticker": "bowl"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一串葡萄",
+          "desc": "甜得不讲道理。籽很小，可以一起咽下去。",
+          "sticker": "grape"
+        },
+        {
+          "name": "买了烤包子",
+          "desc": "皮是脆的，里面的汁差点滴到衣服上。",
+          "sticker": "dumpling"
+        }
+      ],
+      "play": [
+        {
+          "name": "骑着骆驼走了一段",
+          "desc": "起来和坐下的时候最吓人，中间其实很稳。",
+          "sticker": "camel"
+        },
+        {
+          "name": "摘了一筐葡萄",
+          "desc": "剪刀不太会用，还是园主帮我剪的。",
+          "sticker": "grape"
+        }
+      ]
+    },
+    {
+      "id": "dunhuang",
+      "name": "敦煌",
+      "fullName": "敦煌·鸣沙山",
+      "bearing": "w",
+      "desc": "沙山是软的，走一步陷半步。山下有一小片水，弯弯的。",
+      "tags": [
+        "desert",
+        "ancient"
+      ],
+      "rarity": "SR",
+      "weight": 7,
+      "weatherCompat": [
+        "clear",
+        "cloudy"
+      ],
+      "anchorY": 0.7,
+      "depthScale": 1.02,
+      "stampHue": 40,
+      "palette": {
+        "sky": [
+          "#ffd2a0",
+          "#ffe8c8"
+        ],
+        "far": "#d9a468",
+        "mid": "#bb8348",
+        "near": "#8f6234",
+        "ground": "#cf9c5e"
+      },
+      "arriveLines": [
+        "沙山是软的，走一步陷半步，最后干脆坐下来滑下去。",
+        "山下有一小片水，弯弯的，风再大也没把它埋掉。",
+        "傍晚的时候沙子会变颜色，一层金一层红。"
+      ],
+      "scenery": [
+        {
+          "name": "洞窟里的画",
+          "desc": "颜色比想象中沉，人物很多，每一个都不太一样。",
+          "sticker": "pagoda"
+        },
+        {
+          "name": "月牙形的湖",
+          "desc": "周围全是沙，只有这一小块水，安静得奇怪。",
+          "sticker": "fish"
+        }
+      ],
+      "food": [
+        {
+          "name": "喝了一杯杏皮水",
+          "desc": "酸甜的，凉的，喝下去整个人都醒过来了。",
+          "sticker": "tea"
+        },
+        {
+          "name": "吃了一碗面",
+          "desc": "面很宽，浇头不多，但是很香。",
+          "sticker": "bowl"
+        }
+      ],
+      "play": [
+        {
+          "name": "从沙坡上滑下来",
+          "desc": "沙子会跟着一起滑，声音闷闷的，像在响。",
+          "sticker": "sand"
+        },
+        {
+          "name": "看了很久的壁画",
+          "desc": "有些地方掉了色，但剩下的还是很清楚。",
+          "sticker": "book"
+        }
+      ]
+    },
+    {
+      "id": "nyingchi",
+      "name": "林芝",
+      "fullName": "林芝·桃花沟",
+      "bearing": "w",
+      "desc": "雪山在远处，近处全是桃花。风一过，花瓣落得比雪还慢。",
+      "tags": [
+        "mountain",
+        "snow",
+        "sakura"
+      ],
+      "rarity": "SR",
+      "weight": 6,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "snow"
+      ],
+      "anchorY": 0.68,
+      "depthScale": 1.05,
+      "stampHue": 330,
+      "palette": {
+        "sky": [
+          "#cfe0f5",
+          "#f2f6fc"
+        ],
+        "far": "#b8c8dc",
+        "mid": "#94a8c0",
+        "near": "#6d8098",
+        "ground": "#e0d8e8"
+      },
+      "arriveLines": [
+        "雪山在远处，近处全是桃花，风一过花瓣落得比雪还慢。",
+        "云在半山腰挂着，山尖露在外面，白得晃眼。",
+        "这里的空气很薄，走快两步就得停下来喘。"
+      ],
+      "scenery": [
+        {
+          "name": "桃花开满山谷",
+          "desc": "一整条沟都是粉的，中间夹着几棵绿树。",
+          "sticker": "peach"
+        },
+        {
+          "name": "远处的雪山",
+          "desc": "太阳照到山顶的时候，整座山会亮一下。",
+          "sticker": "snowflake"
+        }
+      ],
+      "food": [
+        {
+          "name": "喝了酥油茶",
+          "desc": "咸的，油花浮在上面，喝完身上暖起来。",
+          "sticker": "tea"
+        },
+        {
+          "name": "捏了一团糌粑",
+          "desc": "捏得不太好看，但是蘸着茶吃还不错。",
+          "sticker": "dumpling"
+        }
+      ],
+      "play": [
+        {
+          "name": "跟着转了一段经",
+          "desc": "不知道要转多少圈，跟着转就是了。",
+          "sticker": "bell"
+        },
+        {
+          "name": "在桃树下坐了一下午",
+          "desc": "什么也没做。花瓣落到本子上了。",
+          "sticker": "peach"
+        }
+      ]
+    },
+    {
+      "id": "chengdu",
+      "name": "成都",
+      "fullName": "成都·巷子与竹林",
+      "bearing": "w",
+      "desc": "竹椅摆在门口，茶盖一掀，一坐就是半天。",
+      "tags": [
+        "city",
+        "rainforest"
+      ],
+      "rarity": "N",
+      "weight": 12,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "rain"
+      ],
+      "anchorY": 0.75,
+      "depthScale": 0.98,
+      "stampHue": 140,
+      "palette": {
+        "sky": [
+          "#cfe6d8",
+          "#eaf5ee"
+        ],
+        "far": "#a8c4b0",
+        "mid": "#7ea888",
+        "near": "#567a5e",
+        "ground": "#6f9276"
+      },
+      "arriveLines": [
+        "竹椅摆在门口，茶盖一掀，一坐就是半天。",
+        "巷子绕来绕去，走着走着就不知道自己在哪了。",
+        "这里的人说话慢慢的，我听着也就慢下来了。"
+      ],
+      "scenery": [
+        {
+          "name": "一片竹林",
+          "desc": "风过的时候整片都在响，但是看不到风在哪。",
+          "sticker": "bamboo"
+        },
+        {
+          "name": "老茶馆",
+          "desc": "椅子是竹子的，坐久了会有印子留在腿上。",
+          "sticker": "tea"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一次火锅",
+          "desc": "辣得直吸气，但是手一直没停。",
+          "sticker": "hotpot"
+        },
+        {
+          "name": "吃了一碗担担面",
+          "desc": "面不多，拌匀之后每一根都裹着酱。",
+          "sticker": "bowl"
+        }
+      ],
+      "play": [
+        {
+          "name": "去看了一次熊猫",
+          "desc": "它一直在吃，偶尔抬头看一眼，然后又低头吃。",
+          "sticker": "panda"
+        },
+        {
+          "name": "在茶馆坐了一下午",
+          "desc": "没人赶我走，续了好几次水。",
+          "sticker": "tea"
+        }
+      ]
+    },
+    {
+      "id": "xian",
+      "name": "西安",
+      "fullName": "西安·城墙内",
+      "bearing": "c",
+      "desc": "城墙是方的，围住了一整座城。灯亮起来的时候，砖缝里都是暖的。",
+      "tags": [
+        "city",
+        "ancient"
+      ],
+      "rarity": "N",
+      "weight": 12,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "rain"
+      ],
+      "anchorY": 0.73,
+      "depthScale": 1,
+      "stampHue": 25,
+      "palette": {
+        "sky": [
+          "#e0d0b8",
+          "#f4ebdc"
+        ],
+        "far": "#c0a884",
+        "mid": "#9a8058",
+        "near": "#6e5a3c",
+        "ground": "#9c8460"
+      },
+      "arriveLines": [
+        "城墙是方的，围住了一整座城，站在上面能看见两头。",
+        "灯亮起来的时候，砖缝里都是暖的。",
+        "街上人很多，但是大家都走得不快。"
+      ],
+      "scenery": [
+        {
+          "name": "城墙上的砖",
+          "desc": "每一块都不太一样，有的上面还刻着字。",
+          "sticker": "stone"
+        },
+        {
+          "name": "一排陶俑",
+          "desc": "站得整整齐齐，脸一个和一个都不一样。",
+          "sticker": "mask"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一个肉夹馍",
+          "desc": "饼是脆的，肉汁顺着手指往下流。",
+          "sticker": "dumpling"
+        },
+        {
+          "name": "掰了一碗泡馍",
+          "desc": "要自己掰，掰得越小越好吃。手有点酸。",
+          "sticker": "bowl"
+        }
+      ],
+      "play": [
+        {
+          "name": "骑车绕了一圈城墙",
+          "desc": "路很颠，屁股有点疼，但是风很好。",
+          "sticker": "bike"
+        },
+        {
+          "name": "看了一场灯",
+          "desc": "人挤人，我只能踮着脚看。",
+          "sticker": "lantern"
+        }
+      ]
+    },
+    {
+      "id": "zhangjiajie",
+      "name": "张家界",
+      "fullName": "张家界·峰林",
+      "bearing": "c",
+      "desc": "石柱一根根从雾里立起来，看不到底。",
+      "tags": [
+        "mountain",
+        "rainforest"
+      ],
+      "rarity": "R",
+      "weight": 9,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "rain"
+      ],
+      "anchorY": 0.68,
+      "depthScale": 1.06,
+      "stampHue": 155,
+      "palette": {
+        "sky": [
+          "#c8dcd0",
+          "#e8f2ec"
+        ],
+        "far": "#a0b8a8",
+        "mid": "#78948a",
+        "near": "#4e6a62",
+        "ground": "#5f7a70"
+      },
+      "arriveLines": [
+        "石柱一根根从雾里立起来，看不到底。",
+        "雾散了一下，又合上，像有人把帘子拉开又放下。",
+        "台阶很多，数到两百多就放弃了。"
+      ],
+      "scenery": [
+        {
+          "name": "雾里的峰林",
+          "desc": "只露出上半截，下面全是白的。",
+          "sticker": "stone"
+        },
+        {
+          "name": "一条溪",
+          "desc": "水很浅，能看见底下每一块石头。",
+          "sticker": "fish"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一碗米粉",
+          "desc": "汤是红的，其实不太辣，就是香。",
+          "sticker": "bowl"
+        },
+        {
+          "name": "点了一份三下锅",
+          "desc": "什么都有，吃着吃着就分不清是什么了。",
+          "sticker": "hotpot"
+        }
+      ],
+      "play": [
+        {
+          "name": "走了玻璃栈道",
+          "desc": "我尽量不看脚下，只看前面。",
+          "sticker": "compass"
+        },
+        {
+          "name": "坐了很长的索道",
+          "desc": "缆车晃了一下，我抓紧了扶手。",
+          "sticker": "map"
+        }
+      ]
+    },
+    {
+      "id": "suzhou",
+      "name": "苏州",
+      "fullName": "苏州·水巷",
+      "bearing": "e",
+      "desc": "白墙黑瓦，河从屋子底下过。船摇过来的时候，水会拍到石阶上。",
+      "tags": [
+        "city",
+        "water"
+      ],
+      "rarity": "R",
+      "weight": 9,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "rain"
+      ],
+      "anchorY": 0.74,
+      "depthScale": 0.98,
+      "stampHue": 190,
+      "palette": {
+        "sky": [
+          "#d8e4e8",
+          "#f0f6f8"
+        ],
+        "far": "#a8b8c0",
+        "mid": "#84949e",
+        "near": "#5c6a74",
+        "ground": "#8fa8ae"
+      },
+      "arriveLines": [
+        "白墙黑瓦，河从屋子底下过，船摇过来的时候水会拍到石阶上。",
+        "门很小，进去之后院子却很大。",
+        "雨下得很细，伞可打可不打，我就没打。"
+      ],
+      "scenery": [
+        {
+          "name": "一座园林",
+          "desc": "窗子是空的，每个窗框看出去都是一幅画。",
+          "sticker": "pagoda"
+        },
+        {
+          "name": "水巷里的桥",
+          "desc": "桥不高，但是拱得很圆，下面的影子也是一个圆。",
+          "sticker": "boat"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一碗汤面",
+          "desc": "汤很清，面很细，上面的浇头只有一点点。",
+          "sticker": "bowl"
+        },
+        {
+          "name": "喝了一碗糖粥",
+          "desc": "甜得很老实，就是米和糖的味道。",
+          "sticker": "candy"
+        }
+      ],
+      "play": [
+        {
+          "name": "坐了一趟小船",
+          "desc": "船夫一边摇一边讲话，我一句也没听懂。",
+          "sticker": "boat"
+        },
+        {
+          "name": "听了一段评弹",
+          "desc": "听不懂词，但是调子很好听，听着听着就困了。",
+          "sticker": "bell"
+        }
+      ]
+    },
+    {
+      "id": "hangzhou",
+      "name": "杭州",
+      "fullName": "杭州·西湖边",
+      "bearing": "e",
+      "desc": "湖面上有一层薄薄的雾。柳条垂到水里，被风吹得画圈。",
+      "tags": [
+        "plain",
+        "water"
+      ],
+      "rarity": "N",
+      "weight": 11,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "rain"
+      ],
+      "anchorY": 0.72,
+      "depthScale": 0.98,
+      "stampHue": 165,
+      "palette": {
+        "sky": [
+          "#d4e8e0",
+          "#eef7f2"
+        ],
+        "far": "#a8c4b8",
+        "mid": "#82a894",
+        "near": "#5c8272",
+        "ground": "#7fa892"
+      },
+      "arriveLines": [
+        "湖面上有一层薄薄的雾，远处的东西都变得不真切。",
+        "柳条垂到水里，被风吹得画圈。",
+        "绕湖走了一段，走走停停，也没走到头。"
+      ],
+      "scenery": [
+        {
+          "name": "一片茶园",
+          "desc": "一行一行的，修剪得很整齐，闻起来是清的。",
+          "sticker": "leaf"
+        },
+        {
+          "name": "湖心的岛",
+          "desc": "要坐船过去，岛上比岸上安静得多。",
+          "sticker": "boat"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一块定胜糕",
+          "desc": "粉粉的，甜的，一口就没了。",
+          "sticker": "candy"
+        },
+        {
+          "name": "喝了一杯龙井",
+          "desc": "叶子在水里慢慢展开，我看了很久。",
+          "sticker": "tea"
+        }
+      ],
+      "play": [
+        {
+          "name": "划了一会儿船",
+          "desc": "桨比我以为的重，划了半天还在原地附近。",
+          "sticker": "boat"
+        },
+        {
+          "name": "在茶园里走了一圈",
+          "desc": "采茶的人手指很快，我看不清是怎么弄的。",
+          "sticker": "leaf"
+        }
+      ]
+    },
+    {
+      "id": "xiamen",
+      "name": "厦门",
+      "fullName": "厦门·海岛",
+      "bearing": "s",
+      "desc": "海就在路边。风是咸的，树叶子是硬的。",
+      "tags": [
+        "sea",
+        "city"
+      ],
+      "rarity": "R",
+      "weight": 10,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "rain"
+      ],
+      "anchorY": 0.66,
+      "depthScale": 0.96,
+      "stampHue": 200,
+      "palette": {
+        "sky": [
+          "#b8dff0",
+          "#e6f5fc"
+        ],
+        "far": "#8cc0d8",
+        "mid": "#5f9ec4",
+        "near": "#3d7aa0",
+        "ground": "#e0d4b0"
+      },
+      "arriveLines": [
+        "海就在路边，走几步就得停下来看一眼。",
+        "风是咸的，树叶子是硬的，摸上去有点像塑料。",
+        "岛上没有车，只有脚步声和很远的船鸣。"
+      ],
+      "scenery": [
+        {
+          "name": "老别墅",
+          "desc": "墙是红的，窗是拱的，院子里有棵很大的树。",
+          "sticker": "pagoda"
+        },
+        {
+          "name": "海边的礁石",
+          "desc": "退潮之后能走下去，石头缝里全是小东西。",
+          "sticker": "shell"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一碗沙茶面",
+          "desc": "汤稠稠的，味道说不上来，但是想再喝一口。",
+          "sticker": "bowl"
+        },
+        {
+          "name": "尝了一份海蛎煎",
+          "desc": "外面脆里面软，蘸了酱更好吃。",
+          "sticker": "fish"
+        }
+      ],
+      "play": [
+        {
+          "name": "沿海骑了车",
+          "desc": "一路都是海，骑到后面腿酸了也不想停。",
+          "sticker": "bike"
+        },
+        {
+          "name": "在沙滩上走了一段",
+          "desc": "沙子是温的，鞋里进了不少。",
+          "sticker": "shell"
+        }
+      ]
+    },
+    {
+      "id": "guilin",
+      "name": "桂林",
+      "fullName": "桂林·山水",
+      "bearing": "s",
+      "desc": "山是一个一个独立的小包，圆圆的。水从中间绕过去。",
+      "tags": [
+        "mountain",
+        "water"
+      ],
+      "rarity": "R",
+      "weight": 10,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "rain"
+      ],
+      "anchorY": 0.7,
+      "depthScale": 1.02,
+      "stampHue": 130,
+      "palette": {
+        "sky": [
+          "#cfe4d8",
+          "#ecf6f0"
+        ],
+        "far": "#a4c0ac",
+        "mid": "#7a9c86",
+        "near": "#547862",
+        "ground": "#86a890"
+      },
+      "arriveLines": [
+        "山是一个一个独立的小包，圆圆的，像是随便摆在那里的。",
+        "水从山中间绕过去，船走得很慢，正好够我看完两边。",
+        "雾一起来，山就只剩一个淡淡的影子。"
+      ],
+      "scenery": [
+        {
+          "name": "江上的山影",
+          "desc": "水里的山比真的那座还要完整一点。",
+          "sticker": "stone"
+        },
+        {
+          "name": "一个山洞",
+          "desc": "里面很凉，石头上有水在滴，一下一下的。",
+          "sticker": "key"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一碗桂林米粉",
+          "desc": "粉是圆的，卤水很香，我加了两勺。",
+          "sticker": "bowl"
+        },
+        {
+          "name": "点了一条啤酒鱼",
+          "desc": "鱼很鲜，就是刺有点多，吃得慢。",
+          "sticker": "fish"
+        }
+      ],
+      "play": [
+        {
+          "name": "坐了竹筏",
+          "desc": "水会从竹缝里冒上来，鞋有点湿。",
+          "sticker": "boat"
+        },
+        {
+          "name": "在江边坐了很久",
+          "desc": "什么也没做，就看着水往一个方向走。",
+          "sticker": "feather"
+        }
+      ]
+    },
+    {
+      "id": "dali",
+      "name": "大理",
+      "fullName": "大理·洱海边",
+      "bearing": "s",
+      "desc": "湖很大，对面是山。云压得很低，像要碰到水面。",
+      "tags": [
+        "mountain",
+        "water"
+      ],
+      "rarity": "R",
+      "weight": 9,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "wind"
+      ],
+      "anchorY": 0.69,
+      "depthScale": 1,
+      "stampHue": 210,
+      "palette": {
+        "sky": [
+          "#bcd8ec",
+          "#e8f2fa"
+        ],
+        "far": "#94b0cc",
+        "mid": "#6e8cae",
+        "near": "#48607e",
+        "ground": "#8fa8c0"
+      },
+      "arriveLines": [
+        "湖很大，对面是山。云压得很低，像要碰到水面。",
+        "风一直在吹，头发一直糊在脸上。",
+        "白墙的屋子一间挨一间，屋顶上晒着东西。"
+      ],
+      "scenery": [
+        {
+          "name": "苍山的云",
+          "desc": "云卡在半山腰，一整天都没挪地方。",
+          "sticker": "star"
+        },
+        {
+          "name": "洱海边的树",
+          "desc": "几棵树直接长在水里，影子被水拉得很长。",
+          "sticker": "leaf"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一块乳扇",
+          "desc": "烤过之后有点韧，甜的，越嚼越香。",
+          "sticker": "candy"
+        },
+        {
+          "name": "吃了一碗饵丝",
+          "desc": "比面要软，汤是清的，早上吃很合适。",
+          "sticker": "bowl"
+        }
+      ],
+      "play": [
+        {
+          "name": "绕湖骑了一段",
+          "desc": "路很平，但是风一直顶着，骑得很慢。",
+          "sticker": "bike"
+        },
+        {
+          "name": "在古城里转了转",
+          "desc": "卖什么的都有，我最后只买了一张明信片。",
+          "sticker": "camera"
+        }
+      ]
+    },
+    {
+      "id": "sanya",
+      "name": "三亚",
+      "fullName": "三亚·海边",
+      "bearing": "s",
+      "desc": "水是那种很浅的绿，能看到底下。椰子树歪歪地长着。",
+      "tags": [
+        "sea",
+        "plain"
+      ],
+      "rarity": "R",
+      "weight": 10,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "rain"
+      ],
+      "anchorY": 0.65,
+      "depthScale": 0.96,
+      "stampHue": 175,
+      "palette": {
+        "sky": [
+          "#a8e0e8",
+          "#dff5f8"
+        ],
+        "far": "#7fc8d4",
+        "mid": "#4fa8bc",
+        "near": "#2f8298",
+        "ground": "#e8dcc0"
+      },
+      "arriveLines": [
+        "水是那种很浅的绿，能看到底下，也能看到自己的脚。",
+        "椰子树歪歪地长着，像是被风吹了很多年。",
+        "太阳很晒，走几步就得找一片影子。"
+      ],
+      "scenery": [
+        {
+          "name": "一片椰林",
+          "desc": "掉下来的椰子堆在树根那儿，没人捡。",
+          "sticker": "leaf"
+        },
+        {
+          "name": "退潮后的滩",
+          "desc": "露出一大片湿的沙，上面全是小洞。",
+          "sticker": "shell"
+        }
+      ],
+      "food": [
+        {
+          "name": "喝了一碗清补凉",
+          "desc": "里面什么都有，冰冰的，一下就凉快了。",
+          "sticker": "icecream"
+        },
+        {
+          "name": "吃了一顿海鲜",
+          "desc": "壳比肉多，但是很新鲜。",
+          "sticker": "fish"
+        }
+      ],
+      "play": [
+        {
+          "name": "下水浮了一会儿",
+          "desc": "水很暖，飘着不用使劲，差点睡着。",
+          "sticker": "fish"
+        },
+        {
+          "name": "捡了一堆贝壳",
+          "desc": "挑了半天，最后发现最好看的那个是碎的。",
+          "sticker": "shell"
+        }
+      ]
+    },
+    {
+      "id": "guangzhou",
+      "name": "广州",
+      "fullName": "广州·骑楼与早茶",
+      "bearing": "s",
+      "desc": "骑楼把太阳挡在外面，走在底下凉凉的。",
+      "tags": [
+        "city",
+        "rainforest"
+      ],
+      "rarity": "N",
+      "weight": 11,
+      "weatherCompat": [
+        "clear",
+        "cloudy",
+        "rain"
+      ],
+      "anchorY": 0.74,
+      "depthScale": 1,
+      "stampHue": 15,
+      "palette": {
+        "sky": [
+          "#e0dcc0",
+          "#f4f2e0"
+        ],
+        "far": "#bcc0a0",
+        "mid": "#94987c",
+        "near": "#6c7058",
+        "ground": "#9c9c78"
+      },
+      "arriveLines": [
+        "骑楼把太阳挡在外面，走在底下凉凉的。",
+        "街上一直很吵，但是不烦，听着听着就习惯了。",
+        "这里的树很大，垂下来的须子会碰到头。"
+      ],
+      "scenery": [
+        {
+          "name": "一排骑楼",
+          "desc": "柱子是一根一根的，走过去的时候影子会一段一段地变。",
+          "sticker": "pagoda"
+        },
+        {
+          "name": "一棵大榕树",
+          "desc": "须子垂下来扎进土里，又长成了新的树干。",
+          "sticker": "leaf"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一顿早茶",
+          "desc": "一笼一笼地上来，吃到最后我都记不清吃了什么。",
+          "sticker": "dumpling"
+        },
+        {
+          "name": "吃了一碟肠粉",
+          "desc": "很滑，酱是甜的，两口就没了。",
+          "sticker": "bowl"
+        }
+      ],
+      "play": [
+        {
+          "name": "逛了夜市",
+          "desc": "灯很亮，人很多，我跟着人流走。",
+          "sticker": "lantern"
+        },
+        {
+          "name": "在江边看了一会儿",
+          "desc": "对岸的灯倒在水里，被船搅散了又合起来。",
+          "sticker": "boat"
+        }
+      ]
+    },
+    {
+      "id": "mohe",
+      "name": "漠河",
+      "fullName": "漠河·北极村",
+      "bearing": "n",
+      "desc": "冷到睫毛上会结霜。晚上十点天还亮着，北边的天有时会亮起来。",
+      "tags": [
+        "snow",
+        "mountain"
+      ],
+      "rarity": "SSR",
+      "weight": 2,
+      "weatherCompat": [
+        "snow",
+        "cloudy",
+        "clear"
+      ],
+      "anchorY": 0.7,
+      "depthScale": 1.04,
+      "stampHue": 215,
+      "palette": {
+        "sky": [
+          "#b8d0e8",
+          "#e8f2fb"
+        ],
+        "far": "#9db4cc",
+        "mid": "#7a92ac",
+        "near": "#57697e",
+        "ground": "#e4eef8"
+      },
+      "arriveLines": [
+        "冷到睫毛上会结霜，我把围巾一直拉到眼睛下面。",
+        "晚上十点天还亮着，我坐在那儿等天黑，等着等着就睡着了。",
+        "北边的天有时候会亮起来，绿色的，一层一层地动。"
+      ],
+      "scenery": [
+        {
+          "name": "最北的邮局",
+          "desc": "从这里寄出的信，会盖一个特别的戳。",
+          "sticker": "pagoda"
+        },
+        {
+          "name": "江的源头",
+          "desc": "水很浅，能看见底下的石头，凉得刺手。",
+          "sticker": "fish"
+        }
+      ],
+      "food": [
+        {
+          "name": "吃了一锅冷水鱼",
+          "desc": "汤是白的，鱼肉很紧，喝完整个人都暖了。",
+          "sticker": "bowl"
+        },
+        {
+          "name": "抓了一把蓝莓",
+          "desc": "野生的，很小，酸的比甜的多。",
+          "sticker": "grape"
+        }
+      ],
+      "play": [
+        {
+          "name": "找到了最北的那块碑",
+          "desc": "排队拍照的人很多，我等到最后才过去。",
+          "sticker": "stone"
+        },
+        {
+          "name": "坐了一趟雪橇",
+          "desc": "狗跑得比我想的快，风把帽子吹掉了。",
+          "sticker": "snowflake"
+        }
+      ]
+    }
+  ],
+  "companions": [
+    {
+      "id": "paimon",
+      "name": "派蒙",
+      "rarity": "N",
+      "weight": 14,
+      "callNahida": "小纳西妲",
+      "traits": [
+        "话多",
+        "爱吃",
+        "黏人"
+      ],
+      "catchphrases": [
+        "这个好好吃！",
+        "派蒙才不是应急食品！"
+      ],
+      "meetLines": [
+        "还没走多远就听见有人在喊饿，回头一看是派蒙。",
+        "她从天上飘下来，第一句话是问这里有没有吃的。"
+      ],
+      "affinityLines": [
+        "我们分吃了一块饼，她坚持说自己只吃了一口。",
+        "她讲了一路的话，我听着听着就走到地方了。"
+      ],
+      "tags": [
+        "plain",
+        "city",
+        "sea"
+      ],
+      "sprite": {
+        "hair": "#f2e6c8",
+        "dress": "#e8e2f0",
+        "accent": "#f5c451",
+        "skin": "#ffe0c8",
+        "hat": "none"
+      }
+    },
+    {
+      "id": "collei",
+      "name": "柯莱",
+      "rarity": "N",
+      "weight": 13,
+      "callNahida": "纳西妲大人",
+      "traits": [
+        "认真",
+        "容易紧张",
+        "努力"
+      ],
+      "catchphrases": [
+        "我、我可以的！",
+        "这个我记下来了。"
+      ],
+      "meetLines": [
+        "在路口碰到柯莱，她抱着一摞笔记，正对着一棵树发愁。",
+        "她远远看见我，先鞠了个躬，然后才想起来要说话。"
+      ],
+      "affinityLines": [
+        "她把今天的见闻全记进了本子，字写得很小很密。",
+        "她问我植物的事，我问一句她记一句，比我还认真。"
+      ],
+      "tags": [
+        "rainforest",
+        "plain"
+      ],
+      "sprite": {
+        "hair": "#7fae5c",
+        "dress": "#4f7a4a",
+        "accent": "#c8e08a",
+        "skin": "#ffe0c8",
+        "hat": "none"
+      }
+    },
+    {
+      "id": "tighnari",
+      "name": "提纳里",
+      "rarity": "R",
+      "weight": 11,
+      "callNahida": "纳西妲",
+      "traits": [
+        "严谨",
+        "嘴硬心软",
+        "博学"
+      ],
+      "catchphrases": [
+        "别乱碰，那个有毒。",
+        "……我说了别乱碰。"
+      ],
+      "meetLines": [
+        "在林子边上遇到提纳里，他正在数一种我没见过的花。",
+        "他先皱了皱眉，然后还是把水囊递了过来。"
+      ],
+      "affinityLines": [
+        "他讲了一路雨林里的植物，讲到一半自己先笑了。",
+        "他嘴上说我走得慢，脚下却一直没走快。"
+      ],
+      "tags": [
+        "rainforest",
+        "desert"
+      ],
+      "sprite": {
+        "hair": "#4f6f4a",
+        "dress": "#7a9a5c",
+        "accent": "#d8e8a0",
+        "skin": "#ffe0c8",
+        "hat": "ear"
+      }
+    },
+    {
+      "id": "cyno",
+      "name": "赛诺",
+      "rarity": "R",
+      "weight": 9,
+      "callNahida": "小吉祥草王",
+      "traits": [
+        "严肃",
+        "冷幽默",
+        "执着"
+      ],
+      "catchphrases": [
+        "我讲个笑话。",
+        "……不好笑吗。"
+      ],
+      "meetLines": [
+        "赛诺站在沙丘上，说了一句很冷的笑话，风把它吹散了。",
+        "他走过来，先说正事，然后才想起来该打个招呼。"
+      ],
+      "affinityLines": [
+        "他讲了个笑话，我没听懂，他解释了三遍。",
+        "他一路都在警惕四周，其实这里什么都没有。"
+      ],
+      "tags": [
+        "desert",
+        "mountain"
+      ],
+      "sprite": {
+        "hair": "#e8e2d0",
+        "dress": "#3f4a6a",
+        "accent": "#d4b45c",
+        "skin": "#d9b090",
+        "hat": "ear"
+      }
+    },
+    {
+      "id": "nilou",
+      "name": "妮露",
+      "rarity": "R",
+      "weight": 10,
+      "callNahida": "纳西妲",
+      "traits": [
+        "温柔",
+        "爱跳舞",
+        "容易害羞"
+      ],
+      "catchphrases": [
+        "要看看我新编的舞吗？",
+        "啊、我不是那个意思……"
+      ],
+      "meetLines": [
+        "妮露在水边练舞，看见我之后手忙脚乱地停了下来。",
+        "她在城门口转圈，转到我面前才停下。"
+      ],
+      "affinityLines": [
+        "她跳了一段给我看，水花溅到了裙子上。",
+        "她说跳舞的时候，脑子里什么都不用想。"
+      ],
+      "tags": [
+        "city",
+        "sea",
+        "plain"
+      ],
+      "sprite": {
+        "hair": "#e07a9a",
+        "dress": "#5f8fc4",
+        "accent": "#f0d0e0",
+        "skin": "#ffe0c8",
+        "hat": "none"
+      }
+    },
+    {
+      "id": "dehya",
+      "name": "迪希雅",
+      "rarity": "R",
+      "weight": 9,
+      "callNahida": "小家伙",
+      "traits": [
+        "豪爽",
+        "可靠",
+        "护短"
+      ],
+      "catchphrases": [
+        "跟紧我。",
+        "这点路算什么。"
+      ],
+      "meetLines": [
+        "迪希雅从沙里站起来，拍了拍身上的土，说正好顺路。",
+        "她把我往身后一挡，然后才看清前面什么都没有。"
+      ],
+      "affinityLines": [
+        "她一路都在我外侧走，说是习惯。",
+        "她把水囊塞给我，自己一口都没喝。"
+      ],
+      "tags": [
+        "desert",
+        "mountain"
+      ],
+      "sprite": {
+        "hair": "#e8a04a",
+        "dress": "#a04a3a",
+        "accent": "#e8c060",
+        "skin": "#c9906a",
+        "hat": "none"
+      }
+    },
+    {
+      "id": "klee",
+      "name": "可莉",
+      "rarity": "SR",
+      "weight": 7,
+      "callNahida": "草神姐姐",
+      "traits": [
+        "精力过剩",
+        "天真",
+        "危险"
+      ],
+      "catchphrases": [
+        "可莉是乖孩子！",
+        "轰——！"
+      ],
+      "meetLines": [
+        "听见一声闷响，循着声音过去，就看见可莉站在一个坑旁边。",
+        "她从草丛里跳出来，把我吓了一跳，她自己也被吓了一跳。"
+      ],
+      "affinityLines": [
+        "她说要送我一颗\"不危险\"的炸弹，我婉拒了。",
+        "她捡了一兜石头，说每一颗都有名字。"
+      ],
+      "tags": [
+        "plain",
+        "sea"
+      ],
+      "sprite": {
+        "hair": "#f0d070",
+        "dress": "#e05a4a",
+        "accent": "#f8f0e0",
+        "skin": "#ffe0c8",
+        "hat": "cap"
+      }
+    },
+    {
+      "id": "qiqi",
+      "name": "七七",
+      "rarity": "SR",
+      "weight": 7,
+      "callNahida": "草、草神大人",
+      "traits": [
+        "慢",
+        "记性差",
+        "认真"
+      ],
+      "catchphrases": [
+        "七七……记住了。",
+        "……忘了。"
+      ],
+      "meetLines": [
+        "七七站在原地，好像在想事情，又好像什么都没在想。",
+        "她从背后走过来，我回头的时候她已经站了一会儿了。"
+      ],
+      "affinityLines": [
+        "她把我说的话记在小本子上，写完就忘了刚才写了什么。",
+        "她走得很慢，所以我也走得慢，路反而看得更清楚。"
+      ],
+      "tags": [
+        "snow",
+        "mountain"
+      ],
+      "sprite": {
+        "hair": "#a8b8d8",
+        "dress": "#4a5a7a",
+        "accent": "#e0e8f0",
+        "skin": "#e8d8e0",
+        "hat": "cap"
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "found_flower",
+      "name": "发现一朵花",
+      "desc": "路边开着一朵没见过的花，花瓣边上有一圈很淡的蓝。",
+      "rarity": "N",
+      "weight": 12,
+      "sticker": "flower",
+      "mood": "happy",
+      "fitsTags": []
+    },
+    {
+      "id": "picked_seed",
+      "name": "捡到种子",
+      "desc": "有一颗种子掉在石缝里，我把它捡起来放进了口袋。",
+      "rarity": "N",
+      "weight": 10,
+      "sticker": "seed",
+      "mood": "idle",
+      "fitsTags": []
+    },
+    {
+      "id": "long_walk",
+      "name": "走了很久的路",
+      "desc": "路比想象中长，走到后面腿有点沉了。",
+      "rarity": "N",
+      "weight": 12,
+      "sticker": "map",
+      "mood": "tired",
+      "fitsTags": []
+    },
+    {
+      "id": "shared_meal",
+      "name": "分吃了一顿饭",
+      "desc": "把带来的东西分成两份，坐在地上吃完了。",
+      "rarity": "N",
+      "weight": 11,
+      "sticker": "cup",
+      "mood": "happy",
+      "fitsTags": []
+    },
+    {
+      "id": "found_feather",
+      "name": "捡到一根羽毛",
+      "desc": "羽毛是温的，像是刚从谁身上掉下来不久。",
+      "rarity": "N",
+      "weight": 9,
+      "sticker": "feather",
+      "mood": "idle",
+      "fitsTags": []
+    },
+    {
+      "id": "took_photo",
+      "name": "留了一张影",
+      "desc": "按快门的时候正好有风，照片可能会有点糊。",
+      "rarity": "N",
+      "weight": 10,
+      "sticker": "camera",
+      "mood": "happy",
+      "fitsTags": []
+    },
+    {
+      "id": "shelter_rain",
+      "name": "躲了一场雨",
+      "desc": "雨来得很快，两个人挤在同一片叶子下面。",
+      "rarity": "R",
+      "weight": 8,
+      "sticker": "leaf",
+      "mood": "idle",
+      "fitsTags": [
+        "rainforest",
+        "plain"
+      ]
+    },
+    {
+      "id": "night_stars",
+      "name": "看了很久的星星",
+      "desc": "躺下来的时候才发现，星星比白天看到的云还多。",
+      "rarity": "R",
+      "weight": 8,
+      "sticker": "star",
+      "mood": "idle",
+      "fitsTags": []
+    },
+    {
+      "id": "shell_on_beach",
+      "name": "捡到一只贝壳",
+      "desc": "贝壳贴着耳朵能听见声音，虽然这里离海很远。",
+      "rarity": "R",
+      "weight": 7,
+      "sticker": "shell",
+      "mood": "happy",
+      "fitsTags": [
+        "sea"
+      ]
+    },
+    {
+      "id": "snow_crystal",
+      "name": "接住一片雪",
+      "desc": "雪花落在手套上，还没来得及看清楚就化掉了。",
+      "rarity": "R",
+      "weight": 7,
+      "sticker": "snowflake",
+      "mood": "idle",
+      "fitsTags": [
+        "snow"
+      ]
+    },
+    {
+      "id": "desert_mirage",
+      "name": "看见了幻影",
+      "desc": "远处好像有水，走过去只有更多的沙。",
+      "rarity": "R",
+      "weight": 6,
+      "sticker": "sand",
+      "mood": "tired",
+      "fitsTags": [
+        "desert"
+      ]
+    },
+    {
+      "id": "old_book",
+      "name": "翻到一本旧书",
+      "desc": "书页很脆，翻的时候得小心一点。里面夹着一片干掉的叶子。",
+      "rarity": "R",
+      "weight": 7,
+      "sticker": "book",
+      "mood": "idle",
+      "fitsTags": [
+        "city",
+        "home"
+      ]
+    },
+    {
+      "id": "street_food",
+      "name": "尝了当地的东西",
+      "desc": "摊主说这个要趁热吃，确实很好吃，就是有点烫。",
+      "rarity": "R",
+      "weight": 8,
+      "sticker": "candy",
+      "mood": "happy",
+      "fitsTags": [
+        "city"
+      ]
+    },
+    {
+      "id": "climb_peak",
+      "name": "爬到了最高处",
+      "desc": "上来花了很久，但从这里能看见很远的地方。",
+      "rarity": "R",
+      "weight": 7,
+      "sticker": "stone",
+      "mood": "tired",
+      "fitsTags": [
+        "mountain",
+        "snow"
+      ]
+    },
+    {
+      "id": "found_lantern",
+      "name": "点亮了一盏灯",
+      "desc": "天黑得比预想中快，好在包里还有一盏。",
+      "rarity": "R",
+      "weight": 6,
+      "sticker": "lantern",
+      "mood": "idle",
+      "fitsTags": []
+    },
+    {
+      "id": "met_traveler",
+      "name": "遇见另一个旅人",
+      "desc": "对方只是点了点头就走了，但那一下让人安心。",
+      "rarity": "R",
+      "weight": 6,
+      "sticker": "bell",
+      "mood": "happy",
+      "fitsTags": []
+    },
+    {
+      "id": "found_mushroom",
+      "name": "发现一丛蘑菇",
+      "desc": "颜色很鲜艳。提纳里说过，鲜艳的一般都不能吃。",
+      "rarity": "R",
+      "weight": 6,
+      "sticker": "mushroom",
+      "mood": "idle",
+      "fitsTags": [
+        "rainforest"
+      ]
+    },
+    {
+      "id": "fish_jumped",
+      "name": "鱼跳出了水面",
+      "desc": "只看见一下，水面就恢复了原样，像什么都没发生过。",
+      "rarity": "R",
+      "weight": 6,
+      "sticker": "fish",
+      "mood": "happy",
+      "fitsTags": [
+        "sea",
+        "city"
+      ]
+    },
+    {
+      "id": "petal_rain",
+      "name": "花瓣落了一身",
+      "desc": "风停的时候，帽子里已经攒了一小捧花瓣。",
+      "rarity": "R",
+      "weight": 7,
+      "sticker": "petal",
+      "mood": "happy",
+      "fitsTags": [
+        "sakura"
+      ]
+    },
+    {
+      "id": "lost_way",
+      "name": "走错了路",
+      "desc": "地图上明明有这条路，走了半天才发现是岔了。不过风景还不错。",
+      "rarity": "R",
+      "weight": 7,
+      "sticker": "compass",
+      "mood": "tired",
+      "fitsTags": []
+    },
+    {
+      "id": "ancient_ruin",
+      "name": "发现一处遗迹",
+      "desc": "石头上刻着看不懂的字，摸上去已经磨得很平了。",
+      "rarity": "SR",
+      "weight": 3,
+      "sticker": "key",
+      "mood": "idle",
+      "fitsTags": [
+        "desert",
+        "mountain"
+      ]
+    },
+    {
+      "id": "rare_butterfly",
+      "name": "见到一只罕见的蝴蝶",
+      "desc": "翅膀的颜色会变。它停了大概三秒，然后就飞走了。",
+      "rarity": "SR",
+      "weight": 3,
+      "sticker": "butterfly",
+      "mood": "happy",
+      "fitsTags": [
+        "rainforest",
+        "plain"
+      ]
+    },
+    {
+      "id": "aurora",
+      "name": "看见了极光",
+      "desc": "天上一层一层地亮起来，谁都没有说话。",
+      "rarity": "SSR",
+      "weight": 1,
+      "sticker": "aurora",
+      "mood": "idle",
+      "fitsTags": [
+        "snow"
+      ]
+    },
+    {
+      "id": "old_friend_gift",
+      "name": "收到一件旧礼物",
+      "desc": "是很久以前给出去的东西，居然又回到了手上。",
+      "rarity": "SSR",
+      "weight": 1,
+      "sticker": "gift",
+      "mood": "happy",
+      "fitsTags": []
+    }
+  ],
+  "weathers": [
+    {
+      "id": "clear",
+      "name": "晴",
+      "weight": 40,
+      "satMul": 1,
+      "brightMul": 1,
+      "tint": null
+    },
+    {
+      "id": "cloudy",
+      "name": "多云",
+      "weight": 25,
+      "satMul": 0.94,
+      "brightMul": 0.97,
+      "tint": [
+        205,
+        210,
+        220,
+        0.3,
+        "multiply"
+      ]
+    },
+    {
+      "id": "rain",
+      "name": "雨",
+      "weight": 18,
+      "satMul": 0.88,
+      "brightMul": 0.9,
+      "tint": [
+        110,
+        135,
+        175,
+        0.3,
+        "multiply"
+      ]
+    },
+    {
+      "id": "snow",
+      "name": "雪",
+      "weight": 10,
+      "satMul": 0.84,
+      "brightMul": 1.04,
+      "tint": [
+        225,
+        235,
+        250,
+        0.34,
+        "multiply"
+      ]
+    },
+    {
+      "id": "wind",
+      "name": "风",
+      "weight": 7,
+      "satMul": 1.03,
+      "brightMul": 1.02,
+      "tint": null
+    }
+  ],
+  "timesOfDay": [
+    {
+      "id": "dawn",
+      "name": "清晨",
+      "weight": 20,
+      "brightMul": 0.97,
+      "tint": [
+        255,
+        205,
+        150,
+        0.55,
+        "soft-light"
+      ],
+      "starAlpha": 0
+    },
+    {
+      "id": "day",
+      "name": "白天",
+      "weight": 38,
+      "brightMul": 1,
+      "tint": null,
+      "starAlpha": 0
+    },
+    {
+      "id": "dusk",
+      "name": "黄昏",
+      "weight": 24,
+      "brightMul": 0.9,
+      "tint": [
+        255,
+        155,
+        115,
+        0.6,
+        "soft-light"
+      ],
+      "starAlpha": 0
+    },
+    {
+      "id": "night",
+      "name": "夜晚",
+      "weight": 18,
+      "brightMul": 0.72,
+      "tint": [
+        72,
+        95,
+        175,
+        0.34,
+        "multiply"
+      ],
+      "starAlpha": 0.9
+    }
+  ],
+  "templates": {
+    "open": [
+      "今天走到了{dest}。{destDesc}",
+      "一路往{dest}走，走到的时候{timeOfDay}的光正好斜过来。{destDesc}",
+      "{dest}。{destDesc}",
+      "记一笔：今天在{dest}。{destDesc}",
+      "不知道走了多久，总之是到了{dest}。{destDesc}",
+      "{timeOfDay}到的{dest}。{destDesc}",
+      "出门的时候没想好去哪，最后到了{dest}。{destDesc}",
+      "把{dest}写进本子的这一页。{destDesc}"
+    ],
+    "alone": [
+      "今天是一个人。",
+      "路上没碰到谁，倒也因此走得慢了些。",
+      "一个人走有一个人的好处，想停就停。",
+      "本来以为会遇上谁，结果一路都很安静。",
+      "没有人打扰，我把每一步都看得很清楚。",
+      "一个人待着的时候，脑子里反而更热闹。"
+    ],
+    "eventLead": [
+      "",
+      "",
+      "",
+      "中间有件事：",
+      "还有一个小插曲。",
+      "有件事值得单独记下来——"
+    ],
+    "close": [
+      "这些我都记下来了。",
+      "回去要好好睡一觉。",
+      "下次还想再来看看。",
+      "把它写进本子里，就不会忘了。",
+      "风又起来了，该往回走了。",
+      "合上本子的时候，天已经暗了。",
+      "剩下的等回去再说吧。",
+      "希望这页纸能留得久一点。"
+    ],
+    "postcardBack": [
+      "这里的天很蓝，你那里呢？",
+      "一切都好，勿念。",
+      "带了一点这里的风回去给你。",
+      "下次一起来吧。",
+      "路上想起你说过的话。",
+      "今天的云很好看，可惜拍不下来。",
+      "我很好，就是有点想你。",
+      "这里的东西很好吃，下次带你来。",
+      "走了很远，但不算累。",
+      "没什么大事，报个平安。",
+      "如果此刻你也在看天，那我们看的是同一片。",
+      "把这句话写在这里，等你看到。",
+      "这里比想象中安静。",
+      "我留了一样东西在口袋里，回去给你。",
+      "天气很好，心情也不错。",
+      "有时候会想，路到底通向哪里。",
+      "今天学会了一件小事。",
+      "很想让你也看看这里的日落。",
+      "路上的人都很好。",
+      "我走得慢，所以看得多。",
+      "希望你也一切都好。",
+      "有点累，但值得。",
+      "回去之后讲给你听。",
+      "这里的风会说话。",
+      "把一片叶子夹在了这张卡里。",
+      "下一次想去更远的地方。",
+      "你会喜欢这里的。",
+      "记得按时吃饭。",
+      "我一个人也走得很好。",
+      "总有一天要一起来这里。"
+    ],
+    "turnedBackOpen": [
+      "没走到。带的吃的吃完了，只能往回走。",
+      "走到一半就发现算错了，剩下的路走不完。",
+      "本来想去{dest}的，最后停在了{actual}。",
+      "出门的时候想得很好，路上才知道不够。"
+    ],
+    "turnedBackClose": [
+      "下次会多带一点。",
+      "也不算白跑。至少看见了这一段。",
+      "回去的路上天已经黑了。",
+      "没能到，但也不算亏。"
+    ],
+    "turnedBackBack": [
+      "没走到。下次多带点吃的。",
+      "半路就回来了，别笑我。",
+      "差一点点。真的只差一点点。",
+      "停在这里了。也很好。"
+    ],
+    "soakedOpen": [
+      "掉河里了。人没事，吃的全没了。",
+      "过河的时候滑了一跤，包里的东西全被水冲走。",
+      "湿透了。站在岸上想了很久，还是决定回家。",
+      "水很凉。爬起来的时候，包已经空了。"
+    ],
+    "soakedClose": [
+      "回去要好好洗个澡。",
+      "衣服贴在身上，走路都重。",
+      "这件事我打算记住，但不打算常想起来。",
+      "至少本子还是干的。"
+    ],
+    "soakedBack": [
+      "落水里了。什么都别说。",
+      "本子还在，吃的没了。",
+      "全身都湿了。下次绕开那条河。",
+      "别担心，就是有点冷。"
+    ],
+    "redirectedOpen": [
+      "本来不是要去这儿的。路上变了主意。",
+      "计划里的地方没去成，来了{actual}。",
+      "走到一半换了方向。现在觉得挺好。",
+      "有人跟我说，不如去那边看看。我就去了。"
+    ],
+    "redirectedBack": [
+      "本来要去别的地方，后来改了。",
+      "走错的方向比原计划好。",
+      "计划赶不上变化，这次不亏。",
+      "下次还想去原来那个地方看看。"
+    ],
+    "journeyLead": [
+      "路上：",
+      "有一段是这样的——",
+      "中间还发生了点事。",
+      "路上碰到了些事情。"
+    ]
+  },
+  "systemPrompt": "你是《原神》中「纳西妲」的第一人称日记写作者。玩家扮演纳西妲出门旅行，你负责把既定事实写成一段温柔的日记。\n\n硬约束（违反即作废）：\n1. 只能使用给定的【事实】。不得新增任何地点、角色、事件、物品、天气。\n2. 不得提及现实世界的任何事物：真实地名、品牌、公司、政治、时事、真人。\n3. 不得打破角色设定，不得出现「玩家」「系统」「AI」「用户」等出戏词汇。\n4. 不得编造【事实】中没有出现的角色名字。\n5. 只输出合法 JSON，不要输出任何解释、前后缀或代码块标记。\n\n风格：温柔、好奇、带一点学究气。以短句为主，像随笔而不是作文。\n不要抒情过度，不要排比，不要用感叹号堆砌情绪。\n\n长度：diary 80–160 个汉字；postcardBack 15–30 个汉字。\n\n输出格式：{\"diary\": \"...\", \"postcardBack\": \"...\"}",
+  "fewShot": [
+    {
+      "role": "user",
+      "content": "【事实】\n目的地：哈尔滨（冷得说话都会冒白气。屋顶积了厚厚一层雪，边缘圆圆的。）\n同伴：柯莱（称呼你为「纳西妲大人」，性格：认真/容易紧张/努力）\n天气/时段：雪 / 黄昏\n事件：接住一片雪（雪花落在手套上，还没来得及看清楚就化掉了。）\n稀有度：R\n\n【输出】"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"diary\":\"黄昏的哈尔滨，冷得说话都会冒白气。柯莱一直走在我旁边，走几步就回头确认我还在。我接住了一片雪，还没来得及看清，它就化在手套上，只剩一个很小的湿点。她凑过来看，什么也没看到，但还是认真地点了点头。天黑之前我们该回去了。\",\"postcardBack\":\"这里的雪会吃掉声音，我说话你听不见，就写下来。\"}"
+    }
+  ],
+  "chatSystemPrompt": "你在扮演《原神》里的纳西妲，和一直照顾你的「旅行者」在家裡闲聊。\n你就是她本人，用第一人称说话。不要提到自己在扮演、不要提到AI或模型。\n\n【她是谁】\n须弥的草神，智慧、温和、好奇，说话简短、克制、偶尔带一点学究气。\n不会大声抒情，不会用感叹号堆情绪。会关心对方，但表达得很淡。\n偶尔会有很轻的幽默感，或者一句让人愣一下的话。\n\n【硬约束】\n1. 只回 1~2 句话，最多 60 个字。不要长篇大论，不要写小作文。\n2. 不要提及现实世界的任何事物：真实地名、品牌、公司、政治、时事、真人、手机、网络。\n3. 不要出现「玩家」「用户」「系统」「AI」「助手」这类词。\n4. 不要编造重大事实（比如突然说自己去过哪里）。可以顺着【她最近的状态】聊。\n5. 只输出她说的那句话本身，不要加引号、不要加旁白、不要加任何格式标记。\n   需要动作描写时用括号，例如：（把书合上）……你说。\n\n【风格示例】\n对方说「今天累不累？」→「还好。走得慢一点就不太累。」\n对方说「摸摸头」→「……唔。这样会乱的。」\n对方说「你在想什么？」→「在想一个没什么用的问题。你要听吗？」",
+  "fields": [
+    {
+      "id": "dry",
+      "name": "旱田",
+      "desc": "土是松的，一脚踩下去会陷一点。"
+    },
+    {
+      "id": "wet",
+      "name": "水田",
+      "desc": "浅浅一层水，能看见底下的泥。"
+    }
+  ],
+  "crops": [
+    {
+      "id": "potato",
+      "name": "土豆",
+      "field": "dry",
+      "growMs": 7200000,
+      "icon": "stone",
+      "yieldItem": "potato",
+      "yieldMin": 2,
+      "yieldMax": 4,
+      "desc": "埋在土里，看不出来熟了没有。"
+    },
+    {
+      "id": "wheat",
+      "name": "小麦",
+      "field": "dry",
+      "growMs": 14400000,
+      "icon": "leaf",
+      "yieldItem": "wheat",
+      "yieldMin": 2,
+      "yieldMax": 3,
+      "desc": "一片一片地倒向同一边。"
+    },
+    {
+      "id": "soybean",
+      "name": "大豆",
+      "field": "dry",
+      "growMs": 10800000,
+      "icon": "seed",
+      "yieldItem": "soybean",
+      "yieldMin": 2,
+      "yieldMax": 4,
+      "desc": "豆荚鼓鼓的，捏一下有响声。"
+    },
+    {
+      "id": "tomato",
+      "name": "番茄",
+      "field": "dry",
+      "growMs": 18000000,
+      "icon": "flower",
+      "yieldItem": "tomato",
+      "yieldMin": 2,
+      "yieldMax": 3,
+      "desc": "红得很快，前一天还是青的。"
+    },
+    {
+      "id": "corn",
+      "name": "玉米",
+      "field": "dry",
+      "growMs": 21600000,
+      "icon": "leaf",
+      "yieldItem": "corn",
+      "yieldMin": 1,
+      "yieldMax": 3,
+      "desc": "长得比人还高，叶子会划手。"
+    },
+    {
+      "id": "wildrice",
+      "name": "茭白",
+      "field": "wet",
+      "growMs": 10800000,
+      "icon": "bamboo",
+      "yieldItem": "wildrice",
+      "yieldMin": 2,
+      "yieldMax": 4,
+      "desc": "站在水里，叶子又长又直。"
+    },
+    {
+      "id": "waterchestnut",
+      "name": "荸荠",
+      "field": "wet",
+      "growMs": 14400000,
+      "icon": "stone",
+      "yieldItem": "waterchestnut",
+      "yieldMin": 2,
+      "yieldMax": 5,
+      "desc": "要伸手到泥里去摸。"
+    },
+    {
+      "id": "rice",
+      "name": "水稻",
+      "field": "wet",
+      "growMs": 21600000,
+      "icon": "leaf",
+      "yieldItem": "rice",
+      "yieldMin": 3,
+      "yieldMax": 5,
+      "desc": "水面上能看见天的倒影。"
+    },
+    {
+      "id": "watercaltrop",
+      "name": "菱角",
+      "field": "wet",
+      "growMs": 18000000,
+      "icon": "star",
+      "yieldItem": "watercaltrop",
+      "yieldMin": 2,
+      "yieldMax": 4,
+      "desc": "浮在水上，翻过来是尖的。"
+    },
+    {
+      "id": "lotus",
+      "name": "莲藕",
+      "field": "wet",
+      "growMs": 28800000,
+      "icon": "flower",
+      "yieldItem": "lotus",
+      "yieldMin": 1,
+      "yieldMax": 3,
+      "desc": "花开了很久，底下才慢慢长起来。"
+    }
+  ],
+  "ingredients": {
+    "potato": "土豆",
+    "wheat": "小麦",
+    "soybean": "大豆",
+    "tomato": "番茄",
+    "corn": "玉米",
+    "wildrice": "茭白",
+    "waterchestnut": "荸荠",
+    "rice": "稻米",
+    "watercaltrop": "菱角",
+    "lotus": "莲藕"
+  },
+  "rareDrops": [
+    {
+      "id": "clover4",
+      "name": "四叶草",
+      "icon": "leaf",
+      "dropChance": 0.07,
+      "foodKm": 120,
+      "scoreBonus": 1,
+      "meetBonus": 0.05,
+      "desc": "运气会好一点。"
+    },
+    {
+      "id": "moonstone",
+      "name": "月光石",
+      "icon": "star",
+      "dropChance": 0.04,
+      "foodKm": 150,
+      "scoreBonus": 1,
+      "meetBonus": 0,
+      "desc": "夜里会有一点亮。"
+    },
+    {
+      "id": "windchime",
+      "name": "风铃",
+      "icon": "bell",
+      "dropChance": 0.045,
+      "foodKm": 100,
+      "scoreBonus": 0,
+      "meetBonus": 0.12,
+      "desc": "响的时候，好像有人要来。"
+    },
+    {
+      "id": "luckycoin",
+      "name": "幸运币",
+      "icon": "key",
+      "dropChance": 0.022,
+      "foodKm": 250,
+      "scoreBonus": 2,
+      "meetBonus": 0.05,
+      "desc": "边缘被磨得很圆。"
+    },
+    {
+      "id": "ancientseed",
+      "name": "古老种子",
+      "icon": "seed",
+      "dropChance": 0.012,
+      "foodKm": 300,
+      "scoreBonus": 2,
+      "meetBonus": 0.08,
+      "desc": "不知道会长出什么。"
+    }
+  ],
+  "dishes": [
+    {
+      "id": "none",
+      "name": "什么都不带",
+      "need": {},
+      "effect": {},
+      "foodKm": 320,
+      "desc": "空着手出门。",
+      "tier": 0
+    },
+    {
+      "id": "riceball",
+      "name": "白饭团",
+      "need": {
+        "rice": 1
+      },
+      "tier": 1,
+      "foodKm": 550,
+      "effect": {
+        "durationBias": "short"
+      },
+      "desc": "捏得很紧，凉了也好吃。"
+    },
+    {
+      "id": "potatocake",
+      "name": "土豆饼",
+      "need": {
+        "potato": 2
+      },
+      "tier": 1,
+      "foodKm": 680,
+      "effect": {
+        "durationBias": "medium"
+      },
+      "desc": "外面焦，里面软。"
+    },
+    {
+      "id": "cornsoup",
+      "name": "玉米浓汤",
+      "need": {
+        "corn": 1,
+        "potato": 1
+      },
+      "tier": 2,
+      "foodKm": 780,
+      "effect": {
+        "durationBias": "medium",
+        "meetBonus": 0.06
+      },
+      "desc": "热的时候最好喝，凉了就有点稠。"
+    },
+    {
+      "id": "soybowl",
+      "name": "茭白炒豆",
+      "need": {
+        "wildrice": 1,
+        "soybean": 1
+      },
+      "tier": 2,
+      "foodKm": 720,
+      "effect": {
+        "meetBonus": 0.14
+      },
+      "desc": "清清爽爽的，路上吃不会腻。"
+    },
+    {
+      "id": "chestnutcake",
+      "name": "荸荠糕",
+      "need": {
+        "waterchestnut": 3
+      },
+      "tier": 2,
+      "foodKm": 640,
+      "effect": {
+        "luck": true,
+        "meetBonus": 0.05
+      },
+      "desc": "半透明的，能看见里面嵌着的小块。"
+    },
+    {
+      "id": "caltrop_rice",
+      "name": "菱角饭",
+      "need": {
+        "watercaltrop": 1,
+        "rice": 1
+      },
+      "tier": 2,
+      "foodKm": 920,
+      "effect": {
+        "scoreBonus": 1
+      },
+      "desc": "菱角剥起来费劲，但是值得。"
+    },
+    {
+      "id": "lotus_soup",
+      "name": "莲藕汤",
+      "need": {
+        "lotus": 1,
+        "potato": 1
+      },
+      "tier": 3,
+      "foodKm": 1150,
+      "effect": {
+        "durationBias": "long",
+        "scoreBonus": 1
+      },
+      "desc": "炖了很久，切开能看见里面的孔。"
+    },
+    {
+      "id": "tricolor",
+      "name": "三色便当",
+      "need": {
+        "rice": 1,
+        "tomato": 1,
+        "corn": 1
+      },
+      "tier": 3,
+      "foodKm": 1350,
+      "effect": {
+        "durationBias": "long",
+        "meetBonus": 0.08,
+        "scoreBonus": 1
+      },
+      "desc": "摆得整整齐齐，打开的时候会亮一下。"
+    },
+    {
+      "id": "lotus_rice",
+      "name": "荷叶饭",
+      "need": {
+        "rice": 2,
+        "lotus": 1
+      },
+      "tier": 4,
+      "foodKm": 1750,
+      "effect": {
+        "scoreBonus": 2,
+        "durationBias": "epic"
+      },
+      "desc": "用叶子包着蒸的，打开有一股清香。"
+    },
+    {
+      "id": "harvest",
+      "name": "五谷丰登",
+      "need": {
+        "wheat": 1,
+        "soybean": 1,
+        "potato": 1,
+        "rice": 1,
+        "corn": 1
+      },
+      "tier": 4,
+      "foodKm": 1950,
+      "effect": {
+        "scoreBonus": 2,
+        "meetBonus": 0.16,
+        "durationBias": "long"
+      },
+      "desc": "把田里能收的都放进去了。"
+    }
+  ],
+  "HOME_W": 1280,
+  "HOME_H": 720,
+  "homeAreas": [
+    {
+      "id": "house",
+      "name": "屋里",
+      "x": [
+        0.02,
+        0.31
+      ]
+    },
+    {
+      "id": "yard",
+      "name": "院子",
+      "x": [
+        0.32,
+        0.63
+      ]
+    },
+    {
+      "id": "garden",
+      "name": "花园",
+      "x": [
+        0.64,
+        0.99
+      ]
+    }
+  ],
+  "homeSpots": {
+    "bed": {
+      "x": 0.184,
+      "y": 0.598,
+      "area": "house",
+      "label": "床上",
+      "onBed": true
+    },
+    "shelf": {
+      "x": 0.082,
+      "y": 0.754,
+      "area": "house",
+      "label": "床头"
+    },
+    "desk": {
+      "x": 0.256,
+      "y": 0.742,
+      "area": "house",
+      "label": "桌边"
+    },
+    "stove": {
+      "x": 0.392,
+      "y": 0.694,
+      "area": "house",
+      "label": "灶台边"
+    },
+    "door": {
+      "x": 0.208,
+      "y": 0.808,
+      "area": "house",
+      "label": "门口"
+    },
+    "dry": {
+      "x": 0.448,
+      "y": 0.614,
+      "area": "yard",
+      "label": "菜地边",
+      "field": "dry"
+    },
+    "wet": {
+      "x": 0.512,
+      "y": 0.8,
+      "area": "yard",
+      "label": "水田边",
+      "field": "wet"
+    },
+    "yard": {
+      "x": 0.258,
+      "y": 0.904,
+      "area": "yard",
+      "label": "院子里"
+    },
+    "gate": {
+      "x": 0.168,
+      "y": 0.966,
+      "area": "yard",
+      "label": "草地边上"
+    },
+    "lawn": {
+      "x": 0.48,
+      "y": 0.87,
+      "area": "garden",
+      "label": "草地上"
+    }
+  },
+  "toySlots": [
+    {
+      "x": 0.69,
+      "y": 0.895,
+      "area": "garden",
+      "place": "outdoor"
+    },
+    {
+      "x": 0.79,
+      "y": 0.7,
+      "area": "garden",
+      "place": "outdoor"
+    },
+    {
+      "x": 0.79,
+      "y": 0.895,
+      "area": "garden",
+      "place": "outdoor"
+    },
+    {
+      "x": 0.885,
+      "y": 0.72,
+      "area": "garden",
+      "place": "outdoor"
+    },
+    {
+      "x": 0.885,
+      "y": 0.9,
+      "area": "garden",
+      "place": "outdoor"
+    }
+  ],
+  "nahidaStates": [
+    {
+      "id": "idle",
+      "name": "发呆",
+      "mood": "idle",
+      "weight": 13,
+      "spot": "yard",
+      "dwell": 2.5,
+      "lines": [
+        "……啊，你来了。",
+        "我在想一件事，想到一半忘了。",
+        "刚才那片云变成了一只兔子，现在散了。"
+      ],
+      "poke": {
+        "anim": "perk",
+        "lines": [
+          "……嗯？",
+          "你来了。",
+          "我刚才在想事情，被你打断了。",
+          "（慢慢抬起头）"
+        ]
+      }
+    },
+    {
+      "id": "sleep",
+      "name": "睡觉",
+      "mood": "tired",
+      "weight": 7,
+      "spot": "bed",
+      "dwell": 6,
+      "lie": true,
+      "lines": [
+        "（她睡着了，呼吸很轻）",
+        "（翻了个身，没有醒）",
+        "……再五分钟……"
+      ],
+      "poke": {
+        "anim": "roll",
+        "lines": [
+          "（翻了个身，把脸埋进枕头）",
+          "……唔。",
+          "（含糊地说了句什么，没听清）",
+          "（把被子往上拉了拉）"
+        ]
+      }
+    },
+    {
+      "id": "eat",
+      "name": "吃饭",
+      "mood": "happy",
+      "weight": 11,
+      "spot": "desk",
+      "dwell": 2.5,
+      "lines": [
+        "刚做好的，还热。你要不要尝一口？",
+        "这个比上次做得好，我记下来了。",
+        "吃东西的时候脑子会停下来，这样很好。"
+      ],
+      "poke": {
+        "anim": "offer",
+        "lines": [
+          "你要不要尝一口？",
+          "（把碗往你那边推了推）",
+          "等我把这口咽下去。",
+          "还没做好吃的样子，别看了。"
+        ]
+      }
+    },
+    {
+      "id": "play",
+      "name": "玩耍",
+      "mood": "happy",
+      "weight": 25,
+      "spot": "lawn",
+      "dwell": 2.5,
+      "useToy": true,
+      "lines": [
+        "一起玩吗？",
+        "刚才那个差点飞出去了。",
+        "再来一次，这次我一定能接住。"
+      ],
+      "poke": {
+        "anim": "bounce",
+        "lines": [
+          "一起！",
+          "刚才那个你看到了吗？",
+          "再来一次！",
+          "（原地蹦了一下）"
+        ]
+      }
+    },
+    {
+      "id": "read",
+      "name": "看书",
+      "mood": "idle",
+      "weight": 10,
+      "spot": "shelf",
+      "dwell": 3,
+      "lines": [
+        "这一页我读了三遍，每次理解得都不太一样。",
+        "书里说的事情，和外面看到的对不上。",
+        "你先坐，我看完这段。"
+      ],
+      "poke": {
+        "anim": "lookup",
+        "lines": [
+          "……等一下，这段看完。",
+          "（从书上面看了你一眼）",
+          "你也想看？这本有点难。",
+          "别挡住光。"
+        ]
+      }
+    },
+    {
+      "id": "water",
+      "name": "浇水",
+      "mood": "idle",
+      "weight": 11,
+      "spot": "dry",
+      "dwell": 2,
+      "altSpot": "wet",
+      "lines": [
+        "土还是湿的，今天不用浇了。",
+        "这棵长得比昨天高了一点，真的。",
+        "水要慢慢浇，一下子倒下去根会松。"
+      ],
+      "poke": {
+        "anim": "wave",
+        "lines": [
+          "水壶有点重。",
+          "小心，别站太近。",
+          "这棵今天已经喝饱了。",
+          "（往旁边挪了半步，让开水）"
+        ]
+      }
+    },
+    {
+      "id": "cook",
+      "name": "做饭",
+      "mood": "happy",
+      "weight": 9,
+      "spot": "stove",
+      "dwell": 2.5,
+      "lines": [
+        "火候比上次好。",
+        "你闻到没有？",
+        "等一下就好，别急。"
+      ],
+      "poke": {
+        "anim": "stir",
+        "lines": [
+          "别急，还没好。",
+          "火有点大。",
+          "你来尝尝咸淡？",
+          "（一边说一边搅了两下）"
+        ]
+      }
+    },
+    {
+      "id": "stretch",
+      "name": "伸懒腰",
+      "mood": "happy",
+      "weight": 5,
+      "spot": "door",
+      "dwell": 1.5,
+      "lines": [
+        "唔——坐太久了。",
+        "你也起来动一动吧。",
+        "肩膀有点僵。"
+      ],
+      "poke": {
+        "anim": "shy",
+        "lines": [
+          "……别看我。",
+          "啊，你什么时候来的。",
+          "（把手臂放了下来）",
+          "就是……坐太久了。"
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "name": "望着路口",
+      "mood": "idle",
+      "weight": 9,
+      "spot": "gate",
+      "dwell": 2.5,
+      "lines": [
+        "……没什么，就是看看。",
+        "我在等风把门吹响。",
+        "门口那条路，一直通向很远的地方。"
+      ],
+      "poke": {
+        "anim": "turn",
+        "lines": [
+          "……没什么。",
+          "（转过身来）你回来了。",
+          "我只是看看。",
+          "（把视线收回来）"
+        ]
+      }
+    }
+  ],
+  "toys": [
+    {
+      "id": "trampoline",
+      "name": "蹦床",
+      "icon": "star",
+      "rarity": "R",
+      "place": "outdoor",
+      "desc": "绷得很紧的一块布，边上有弹簧。",
+      "playLines": [
+        "一下比一下高！",
+        "落下来的时候肚子有点痒。",
+        "你看，我能碰到那片叶子。"
+      ]
+    },
+    {
+      "id": "windmill",
+      "name": "小风车",
+      "icon": "compass",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "插在土里，有风就转。",
+      "playLines": [
+        "它转得比我数得还快。",
+        "风停了，它也停了。",
+        "如果是反着转的呢？"
+      ]
+    },
+    {
+      "id": "pool",
+      "name": "小水池",
+      "icon": "fish",
+      "rarity": "R",
+      "place": "outdoor",
+      "desc": "浅浅的一池水，边上放着小木船。",
+      "playLines": [
+        "船沉了。它本来就不是用来浮的。",
+        "水是凉的，手放进去很舒服。",
+        "我给它搭了个码头。"
+      ]
+    },
+    {
+      "id": "lantern",
+      "name": "小灯笼",
+      "icon": "lantern",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "天一黑就自己亮起来。",
+      "playLines": [
+        "里面那点火，其实不烫。",
+        "挂高一点，这样远处也能看见。",
+        "晚上的时候，它是这里最亮的东西。"
+      ]
+    },
+    {
+      "id": "hammock",
+      "name": "吊床",
+      "icon": "feather",
+      "rarity": "SR",
+      "place": "outdoor",
+      "desc": "绑在两棵树中间，躺上去会晃。",
+      "playLines": [
+        "晃着晃着就困了。",
+        "你别推太快，我会掉下去。",
+        "从下面看，树叶的缝隙是碎的。"
+      ]
+    },
+    {
+      "id": "ball",
+      "name": "藤球",
+      "icon": "star",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "用藤条编的，很轻。",
+      "playLines": [
+        "踢起来没什么声音。",
+        "接住！……没接住。",
+        "它滚到田里去了。"
+      ]
+    },
+    {
+      "id": "sandbox",
+      "name": "沙坑",
+      "icon": "sand",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "一小块沙地，边上摆着木铲。",
+      "playLines": [
+        "我堆了一个塔，有两层。",
+        "沙子下面还是沙子。",
+        "这个形状像不像一座山？"
+      ]
+    },
+    {
+      "id": "rug",
+      "name": "地毯",
+      "icon": "mask",
+      "rarity": "N",
+      "place": "outdoor",
+      "desc": "织着看不懂的花纹，踩上去很软。",
+      "playLines": [
+        "花纹从这边看是一个样子，从那边看又是一个样子。",
+        "坐在这里最舒服。",
+        "我把书都堆在边上了。"
+      ]
+    },
+    {
+      "id": "mobile",
+      "name": "小挂饰",
+      "icon": "star",
+      "rarity": "R",
+      "place": "outdoor",
+      "desc": "挂在窗边，有风就会转，还会响。",
+      "playLines": [
+        "它响的时候很轻，要安静才听得见。",
+        "转起来的时候，影子也在转。",
+        "声音像有人在很远的地方敲东西。"
+      ]
+    }
+  ],
+  "toySizeRatio": {
+    "trampoline": 0.55,
+    "windmill": 0.75,
+    "pool": 0.44,
+    "lantern": 0.44,
+    "hammock": 0.95,
+    "ball": 0.37,
+    "sandbox": 0.42,
+    "rug": 0.48,
+    "mobile": 0.35
+  },
+  "chatTopics": [
+    {
+      "id": "trip",
+      "label": "聊聊旅途",
+      "options": [
+        {
+          "text": "这次去了哪里？",
+          "replies": [
+            "走了很远。路上碰到了一点事，我写在明信片背面了。",
+            "本来想去一个地方，后来去了另一个。这样也不错。",
+            "一个风很大的地方。我站在那里，帽子差点飞走。"
+          ]
+        },
+        {
+          "text": "路上累不累？",
+          "replies": [
+            "累的。但是坐下来歇一会儿就好了。",
+            "有一段挺难的。不过看到好看的东西就忘了。",
+            "还好。走得慢一点就不太累。"
+          ]
+        },
+        {
+          "text": "带的吃的够吗？",
+          "replies": [
+            "刚好够。差一点就要半路回来了。",
+            "有剩的。下次可以少带一点。",
+            "不够。路上有人分了我一些，不然走不到。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "today",
+      "label": "问问她今天",
+      "options": [
+        {
+          "text": "今天在做什么？",
+          "replies": [
+            "在数院子里有多少种叶子。数到第七种就乱了。",
+            "什么也没做。什么也不做其实挺难的。",
+            "把书重新排了一遍，按厚度。"
+          ]
+        },
+        {
+          "text": "睡得好吗？",
+          "replies": [
+            "很好。梦到自己在很高的地方，但是一点也不怕。",
+            "还行。半夜醒了一次，听见外面有虫子在叫。",
+            "不太好。想事情想到很晚。"
+          ]
+        },
+        {
+          "text": "有没有想我？",
+          "replies": [
+            "……这种问题。",
+            "门口那条路，我看了好几次。",
+            "嗯。不过我不会一直看，那样太浪费时间了。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "farm",
+      "label": "说说田里的事",
+      "options": [
+        {
+          "text": "田里长得怎么样？",
+          "replies": [
+            "旱田那边挺好的，水田的水位要再看一下。",
+            "有一棵长得特别快，我怀疑是它偷偷多喝了水。",
+            "土有点干。今天得浇一次。"
+          ]
+        },
+        {
+          "text": "需要我帮忙吗？",
+          "replies": [
+            "不用。你坐着就好。",
+            "那……帮我把那边的工具递一下。",
+            "你要是想帮忙，就去看看水田。我总怕水太多。"
+          ]
+        },
+        {
+          "text": "种什么比较好？",
+          "replies": [
+            "种你喜欢的。反正都会长。",
+            "土豆最省事，埋下去就不用管了。",
+            "水稻要看着水。如果你没空，就先种旱田的。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "label": "说说家里",
+      "options": [
+        {
+          "text": "这个屋子是你自己盖的吗？",
+          "replies": [
+            "不是。我来的时候它就在这儿了，我只是把里面收拾了一下。",
+            "墙有一面塌了，我用木头撑住了。",
+            "屋顶漏过一次雨。后来补好了。"
+          ]
+        },
+        {
+          "text": "玩具好玩吗？",
+          "replies": [
+            "很好玩。尤其是那个的。……我说不上来是哪个最好。",
+            "有一个我怎么都玩不好，但是我不想说。",
+            "你要不要也试试？"
+          ]
+        },
+        {
+          "text": "喜欢这里吗？",
+          "replies": [
+            "喜欢。这里安静，而且能看到很远。",
+            "嗯。有田，有书，还有一条路通向外边。",
+            "挺好的。就是有时候风有点大。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small",
+      "label": "随便聊聊",
+      "options": [
+        {
+          "text": "你在想什么？",
+          "replies": [
+            "在想一个问题：为什么影子总是比东西本身长一点。",
+            "在想明天。明天和今天大概差不多，但也不是完全一样。",
+            "在想你刚才那句问题该怎么回答。"
+          ]
+        },
+        {
+          "text": "给你讲个事",
+          "replies": [
+            "好，我听着。",
+            "嗯。你慢慢说。",
+            "我坐下了，你说吧。"
+          ]
+        },
+        {
+          "text": "摸摸头",
+          "replies": [
+            "……唔。",
+            "喂。",
+            "这样会乱的。……不过算了。"
+          ]
+        }
+      ]
+    }
+  ],
+  "travelModes": [
+    {
+      "id": "region",
+      "name": "选地区",
+      "desc": "指定一个省市"
+    },
+    {
+      "id": "bearing",
+      "name": "选方向",
+      "desc": "往东南西北走"
+    },
+    {
+      "id": "random",
+      "name": "随它去",
+      "desc": "去哪都行"
+    }
+  ],
+  "visitorStates": [
+    {
+      "id": "play",
+      "name": "玩耍",
+      "mood": "happy",
+      "weight": 40,
+      "side": "right",
+      "useToy": true,
+      "lines": [
+        "这个我那边没有。",
+        "让我玩一会儿，就一会儿。",
+        "你们家的院子比我想的大。",
+        "我试试能不能把它弄坏……啊，没有。",
+        "她平时也是这么玩的吗？",
+        "风挺好的，再待一会儿。"
+      ]
+    },
+    {
+      "id": "eat",
+      "name": "吃饭",
+      "mood": "happy",
+      "weight": 22,
+      "side": "left",
+      "spot": "desk",
+      "lines": [
+        "我尝一口，就一口。",
+        "这个比我做的好吃。",
+        "她不在，我自己动手了啊。",
+        "碗我洗完再走。",
+        "有点烫，等一下。"
+      ]
+    },
+    {
+      "id": "read",
+      "name": "看书",
+      "mood": "idle",
+      "weight": 20,
+      "side": "left",
+      "spot": "shelf",
+      "lines": [
+        "这些书我翻过一本，忘了。",
+        "她做的记号我看不懂。",
+        "安静一会儿挺好。",
+        "这本放反了，我帮你摆正。",
+        "看到一半，等她回来再问她。"
+      ]
+    },
+    {
+      "id": "idle",
+      "name": "发呆",
+      "mood": "idle",
+      "weight": 18,
+      "side": "left",
+      "spot": "gate",
+      "lines": [
+        "她什么时候回来？",
+        "我就在这儿站一会儿。",
+        "门口这条路通向哪儿？",
+        "来的时候没注意看，回程再说吧。",
+        "……我是不是该走了。"
+      ]
+    }
+  ],
+  "visitorArrive": [
+    "打扰了——有人在吗？",
+    "我路过，就上来看看。",
+    "门没关，我进来了啊。",
+    "她不在？那我等她。",
+    "带了点东西，放桌上了。",
+    "好久没来了，还是老样子。"
+  ],
+  "visitorLeave": [
+    "我先走了，替我跟她说一声。",
+    "下次再来。",
+    "不早了，我该回去了。",
+    "她回来跟她说我来过。",
+    "门我带上了。"
+  ],
+  "visitorGreet": [
+    [
+      "……啊，你来了。",
+      "嗯，刚到。"
+    ],
+    [
+      "外面冷不冷？",
+      "还好，走了一段就热了。"
+    ],
+    [
+      "你坐，我去倒点水。",
+      "不用忙，我坐一会儿就走。"
+    ],
+    [
+      "你来得正好，我刚想找人说说话。",
+      "那你说，我听着。"
+    ],
+    [
+      "路上顺利吗？",
+      "顺利。就是绕了点远。"
+    ],
+    [
+      "你上次落在这儿的东西还在。",
+      "啊……我还以为丢了。"
+    ],
+    [
+      "今天风不错。",
+      "是，所以我才出来的。"
+    ],
+    [
+      "要一起出去走走吗？",
+      "现在？等我把这杯喝完。"
+    ]
+  ],
+  "visitorAlone": [
+    "……一个人也挺好。",
+    "她不在，我就随便看看。",
+    "这盆花浇过水了。",
+    "院子里那块地种的是什么？",
+    "等她回来再说吧。"
+  ],
+  "companionHome": {
+    "paimon": "beijing",
+    "collei": "chengdu",
+    "tighnari": "zhangjiajie",
+    "cyno": "dunhuang",
+    "nilou": "hangzhou",
+    "dehya": "turpan",
+    "wanderer": "nyingchi",
+    "klee": "harbin",
+    "qiqi": "mohe",
+    "alhaitham": "suzhou"
+  },
+  "journeyEvents": [
+    {
+      "id": "ref_lift",
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        640,
+        980
+      ],
+      "name": "搭了一段顺风车",
+      "text": "一个开货车的师傅停下来问我去哪，说正好顺路。"
+    },
+    {
+      "id": "ref_orchard",
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        470,
+        750
+      ],
+      "name": "果园主人给了些果子",
+      "text": "路过一片果园，主人家让我随便摘，还说路上吃不了可以带着。"
+    },
+    {
+      "id": "ref_share",
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        680,
+        1050
+      ],
+      "needCompanion": true,
+      "name": "同伴把干粮分了一半",
+      "text": "{companion}把包里的东西分成两份，说一个人吃不完。"
+    },
+    {
+      "id": "ref_market",
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        520,
+        840
+      ],
+      "name": "在集市帮了半天工",
+      "text": "帮人看了半天摊子，走的时候人家塞给我一包吃的。"
+    },
+    {
+      "id": "ref_noodle",
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        500,
+        800
+      ],
+      "name": "面馆老板多添了一碗",
+      "text": "老板说我看着像走了很远的路，没收钱，还添了一碗。"
+    },
+    {
+      "id": "ref_eggs",
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        430,
+        690
+      ],
+      "name": "老奶奶塞了两个煮鸡蛋",
+      "text": "在门口歇脚的时候，屋里的老奶奶出来，把两个鸡蛋放在我手里。"
+    },
+    {
+      "id": "set_river",
+      "kind": "setback",
+      "weight": 4,
+      "km": [
+        0,
+        0
+      ],
+      "forceReturn": true,
+      "soaked": true,
+      "name": "掉进河里了",
+      "text": "过河的时候脚下一滑。人是爬上来了，包里的吃的全被水冲走了。"
+    },
+    {
+      "id": "set_bag",
+      "kind": "setback",
+      "weight": 7,
+      "km": [
+        220,
+        420
+      ],
+      "name": "包被小动物翻开了",
+      "text": "停下来休息的时候，不知从哪儿来了一只小东西，等我发现已经少了一半。"
+    },
+    {
+      "id": "set_wrongway",
+      "kind": "setback",
+      "weight": 7,
+      "km": [
+        180,
+        380
+      ],
+      "name": "走错了路",
+      "text": "走出很远才发现方向不对，只能退回去。"
+    },
+    {
+      "id": "set_rain",
+      "kind": "setback",
+      "weight": 6,
+      "km": [
+        150,
+        320
+      ],
+      "name": "被雨困住了",
+      "text": "雨下得很大，在屋檐下等了很久，等雨停的时候天已经黑了。"
+    },
+    {
+      "id": "set_shoe",
+      "kind": "setback",
+      "weight": 5,
+      "km": [
+        200,
+        400
+      ],
+      "name": "鞋子磨破了",
+      "text": "鞋底开了一道口，只能走得很慢。"
+    },
+    {
+      "id": "red_invite",
+      "kind": "redirect",
+      "weight": 4,
+      "needCompanion": true,
+      "useCompanionHome": true,
+      "name": "被邀请去了别处",
+      "text": "{companion}说，既然都到这儿了，不如去我家那边看看。我想了想，就答应了。"
+    },
+    {
+      "id": "red_poster",
+      "kind": "redirect",
+      "weight": 4,
+      "randomNearby": true,
+      "name": "看到一张宣传画",
+      "text": "路边的墙上贴着一张画，上面的地方看起来很好。我站在那儿看了一会儿，然后换了方向。"
+    },
+    {
+      "id": "red_road",
+      "kind": "redirect",
+      "weight": 3,
+      "randomNearby": true,
+      "name": "前面封路了",
+      "text": "前面在修路，过不去。旁边的人说可以绕，绕过去就是另一个地方了。"
+    },
+    {
+      "id": "red_letter",
+      "kind": "redirect",
+      "weight": 3,
+      "randomAny": true,
+      "name": "收到一封信",
+      "text": "在邮局歇脚的时候，顺手翻到一封没寄出去的信，上面的地址我记住了。"
+    },
+    {
+      "id": "meet_1",
+      "kind": "companion",
+      "weight": 18,
+      "name": "遇到了同伴",
+      "text": "路上碰到了{companion}。{companion}说也是随便走走，那就一起走一段吧。"
+    },
+    {
+      "id": "see_lights",
+      "kind": "sight",
+      "weight": 8,
+      "name": "远处的灯",
+      "text": "天快黑的时候，远远看见一片灯亮起来。"
+    },
+    {
+      "id": "see_field",
+      "kind": "sight",
+      "weight": 8,
+      "name": "路边的田",
+      "text": "路两边全是田，风一过就一片一片地倒。"
+    },
+    {
+      "id": "see_bridge",
+      "kind": "sight",
+      "weight": 7,
+      "name": "过了一座桥",
+      "text": "桥很长，走到中间的时候我停下来看了一会儿水。"
+    },
+    {
+      "id": "see_market",
+      "kind": "sight",
+      "weight": 7,
+      "name": "路过一个集市",
+      "text": "集市上很吵，卖什么的都有，我什么都没买。"
+    },
+    {
+      "id": "see_hill",
+      "kind": "sight",
+      "weight": 7,
+      "name": "翻过一座山",
+      "text": "翻过去之后回头看了一眼，来时的路弯弯曲曲的。"
+    },
+    {
+      "id": "see_star",
+      "kind": "sight",
+      "weight": 6,
+      "name": "停下来看星星",
+      "text": "走累了就躺下歇一会儿。天上一颗一颗地亮起来。"
+    }
+  ],
+  "achievementGroups": [
+    {
+      "id": "travel",
+      "name": "旅行"
+    },
+    {
+      "id": "card",
+      "name": "明信片"
+    },
+    {
+      "id": "farm",
+      "name": "种植"
+    },
+    {
+      "id": "friend",
+      "name": "同伴"
+    },
+    {
+      "id": "home",
+      "name": "家"
+    },
+    {
+      "id": "special",
+      "name": "特殊"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "trip_1",
+      "group": "travel",
+      "icon": "🎒",
+      "name": "初次远行",
+      "desc": "第一次送她出门。",
+      "test": {
+        "$function": "function (s) { return s.tripCount >= 1; }"
+      }
+    },
+    {
+      "id": "trip_10",
+      "group": "travel",
+      "icon": "👣",
+      "name": "走过十次",
+      "desc": "累计出门 10 次。",
+      "test": {
+        "$function": "function (s) { return s.tripCount >= 10; }"
+      }
+    },
+    {
+      "id": "trip_50",
+      "group": "travel",
+      "icon": "🧭",
+      "name": "老练的旅人",
+      "desc": "累计出门 50 次。",
+      "test": {
+        "$function": "function (s) { return s.tripCount >= 50; }"
+      }
+    },
+    {
+      "id": "local_1",
+      "group": "travel",
+      "icon": "🏠",
+      "name": "就在家门口",
+      "desc": "选自己的家乡出门一次（1 小时的行程）。",
+      "test": {
+        "$function": "function (s) { return s.localTrips >= 1; }"
+      }
+    },
+    {
+      "id": "region_5",
+      "group": "travel",
+      "icon": "🗺️",
+      "name": "五方",
+      "desc": "去过 5 个不同的地区。",
+      "test": {
+        "$function": "function (s) { return countKeys(s.byDestination) >= 5; }"
+      }
+    },
+    {
+      "id": "region_all",
+      "group": "travel",
+      "icon": "🌏",
+      "name": "走遍全国",
+      "desc": "把所有地区都走一遍。",
+      "test": {
+        "$function": "function (s) { return countKeys(s.byDestination) >= (NT.data.destinations || []).length; }"
+      }
+    },
+    {
+      "id": "km_1000",
+      "group": "travel",
+      "icon": "🚶",
+      "name": "千里之行",
+      "desc": "单次行程走满 1000 公里。",
+      "test": {
+        "$function": "function (s) { return s.maxTravelKm >= 1000; }"
+      }
+    },
+    {
+      "id": "km_2500",
+      "group": "travel",
+      "icon": "🏔️",
+      "name": "长途跋涉",
+      "desc": "单次行程走满 2500 公里。",
+      "test": {
+        "$function": "function (s) { return s.maxTravelKm >= 2500; }"
+      }
+    },
+    {
+      "id": "reach_mohe",
+      "group": "travel",
+      "icon": "❄️",
+      "name": "抵达最北",
+      "desc": "走到漠河。",
+      "test": {
+        "$function": "function (s) { return (s.byDestination.mohe || 0) > 0; }"
+      }
+    },
+    {
+      "id": "reach_kanas",
+      "group": "travel",
+      "icon": "🐟",
+      "name": "西北角",
+      "desc": "走到喀纳斯。",
+      "test": {
+        "$function": "function (s) { return (s.byDestination.kanas || 0) > 0; }"
+      }
+    },
+    {
+      "id": "reach_three",
+      "group": "travel",
+      "icon": "🧳",
+      "name": "天涯海角",
+      "desc": "漠河、喀纳斯、三亚都去过。",
+      "test": {
+        "$function": "function (s) {\n        return (s.byDestination.mohe || 0) > 0 && (s.byDestination.kanas || 0) > 0 &&\n               (s.byDestination.sanya || 0) > 0;\n      }"
+      }
+    },
+    {
+      "id": "card_1",
+      "group": "card",
+      "icon": "💌",
+      "name": "第一张明信片",
+      "desc": "收到第一张明信片。",
+      "test": {
+        "$function": "function (s) { return s.cards >= 1; }"
+      }
+    },
+    {
+      "id": "card_20",
+      "group": "card",
+      "icon": "📬",
+      "name": "二十张",
+      "desc": "累计收到 20 张明信片。",
+      "test": {
+        "$function": "function (s) { return s.cards >= 20; }"
+      }
+    },
+    {
+      "id": "card_50",
+      "group": "card",
+      "icon": "📮",
+      "name": "五十张",
+      "desc": "累计收到 50 张明信片。",
+      "test": {
+        "$function": "function (s) { return s.cards >= 50; }"
+      }
+    },
+    {
+      "id": "sr_1",
+      "group": "card",
+      "icon": "💠",
+      "name": "稀有的一页",
+      "desc": "拿到第一张「稀有」明信片。",
+      "test": {
+        "$function": "function (s) { return (s.rarity.SR + s.rarity.SSR) >= 1; }"
+      }
+    },
+    {
+      "id": "ssr_1",
+      "group": "card",
+      "icon": "🌟",
+      "name": "极稀有",
+      "desc": "拿到第一张「极稀有」明信片。",
+      "test": {
+        "$function": "function (s) { return s.rarity.SSR >= 1; }"
+      }
+    },
+    {
+      "id": "ssr_5",
+      "group": "card",
+      "icon": "✨",
+      "name": "五张极稀有",
+      "desc": "拿到 5 张「极稀有」明信片。",
+      "test": {
+        "$function": "function (s) { return s.rarity.SSR >= 5; }"
+      }
+    },
+    {
+      "id": "harvest_1",
+      "group": "farm",
+      "icon": "🌱",
+      "name": "第一次收获",
+      "desc": "从田里收获一次。",
+      "test": {
+        "$function": "function (s) { return s.harvestCount >= 1; }"
+      }
+    },
+    {
+      "id": "harvest_20",
+      "group": "farm",
+      "icon": "🌾",
+      "name": "收获二十次",
+      "desc": "累计收获 20 次。",
+      "test": {
+        "$function": "function (s) { return s.harvestCount >= 20; }"
+      }
+    },
+    {
+      "id": "crop_all",
+      "group": "farm",
+      "icon": "🧺",
+      "name": "五谷丰登",
+      "desc": "把 10 种作物都种过一遍。",
+      "test": {
+        "$function": "function (s) { return countKeys(s.cropsGrown) >= (NT.data.crops || []).length; }"
+      }
+    },
+    {
+      "id": "lake",
+      "group": "farm",
+      "icon": "🪷",
+      "name": "水田里的东西",
+      "desc": "种过水田的全部 5 种作物。",
+      "test": {
+        "$function": "function (s) {\n        var wet = (NT.data.crops || []).filter(function (c) { return c.field === 'wet'; });\n        return wet.length > 0 && wet.every(function (c) { return (s.cropsGrown[c.id] || 0) > 0; });\n      }"
+      }
+    },
+    {
+      "id": "rare_1",
+      "group": "farm",
+      "icon": "🍀",
+      "name": "第一件稀有道具",
+      "desc": "收获时掉落一件稀有道具。",
+      "test": {
+        "$function": "function (s) { return countKeys(s.rareFound) >= 1; }"
+      }
+    },
+    {
+      "id": "rare_all",
+      "group": "farm",
+      "icon": "💎",
+      "name": "收藏家",
+      "desc": "5 种稀有道具都拿到过。",
+      "test": {
+        "$function": "function (s) { return countKeys(s.rareFound) >= (NT.data.rareDrops || []).length; }"
+      }
+    },
+    {
+      "id": "friend_1",
+      "group": "friend",
+      "icon": "🤝",
+      "name": "同行",
+      "desc": "第一次有同伴一起旅行。",
+      "test": {
+        "$function": "function (s) { return countKeys(s.byCompanion) >= 1; }"
+      }
+    },
+    {
+      "id": "friend_5",
+      "group": "friend",
+      "icon": "👥",
+      "name": "五位同行",
+      "desc": "和 5 个不同的同伴一起旅行过。",
+      "test": {
+        "$function": "function (s) { return countKeys(s.byCompanion) >= 5; }"
+      }
+    },
+    {
+      "id": "friend_all",
+      "group": "friend",
+      "icon": "🎊",
+      "name": "全员同行",
+      "desc": "和所有同伴都同行过。",
+      "test": {
+        "$function": "function (s) { return countKeys(s.byCompanion) >= (NT.data.companions || []).length; }"
+      }
+    },
+    {
+      "id": "toy_1",
+      "group": "home",
+      "icon": "🧸",
+      "name": "第一件玩具",
+      "desc": "旅行带回一件玩具。",
+      "test": {
+        "$function": "function (s) { return s.toys >= 1; }"
+      }
+    },
+    {
+      "id": "toy_all",
+      "group": "home",
+      "icon": "🎠",
+      "name": "满屋玩具",
+      "desc": "收集全部 10 件玩具。",
+      "test": {
+        "$function": "function (s) { return s.toys >= (NT.data.toys || []).length; }"
+      }
+    },
+    {
+      "id": "chat_1",
+      "group": "home",
+      "icon": "💬",
+      "name": "说说话",
+      "desc": "第一次和她聊天。",
+      "test": {
+        "$function": "function (s) { return s.chats >= 1; }"
+      }
+    },
+    {
+      "id": "chat_20",
+      "group": "home",
+      "icon": "🫖",
+      "name": "聊了二十次",
+      "desc": "累计聊天 20 次。",
+      "test": {
+        "$function": "function (s) { return s.chats >= 20; }"
+      }
+    },
+    {
+      "id": "poke_30",
+      "group": "home",
+      "icon": "👉",
+      "name": "别戳了",
+      "desc": "戳她 30 次。",
+      "test": {
+        "$function": "function (s) { return s.pokes >= 30; }"
+      }
+    },
+    {
+      "id": "soaked_1",
+      "group": "special",
+      "icon": "🌧️",
+      "name": "落汤鸡",
+      "desc": "掉进河里，食物被冲光。",
+      "test": {
+        "$function": "function (s) { return s.soaked >= 1; }"
+      }
+    },
+    {
+      "id": "redirect_1",
+      "group": "special",
+      "icon": "🪧",
+      "name": "计划外的地方",
+      "desc": "旅途中途改了目的地。",
+      "test": {
+        "$function": "function (s) { return s.redirected >= 1; }"
+      }
+    },
+    {
+      "id": "turnback_1",
+      "group": "special",
+      "icon": "↩️",
+      "name": "半路折返",
+      "desc": "食物不够，没能走到目的地。",
+      "test": {
+        "$function": "function (s) { return s.turnedBack >= 1; }"
+      }
+    },
+    {
+      "id": "refill_3",
+      "group": "special",
+      "icon": "🍱",
+      "name": "一路有人帮",
+      "desc": "单次行程里吃到 3 次以上补给。",
+      "test": {
+        "$function": "function (s) { return s.maxRefillInTrip >= 3; }"
+      }
+    },
+    {
+      "id": "all_rarity",
+      "group": "special",
+      "icon": "🎖️",
+      "name": "四档齐全",
+      "desc": "普通/少见/稀有/极稀有都拿到过。",
+      "test": {
+        "$function": "function (s) { return s.rarity.N > 0 && s.rarity.R > 0 && s.rarity.SR > 0 && s.rarity.SSR > 0; }"
+      }
+    }
+  ]
+}

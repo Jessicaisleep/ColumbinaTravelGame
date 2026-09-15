@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-09-15T13:09:10.307Z",
+  "counts": {
+    "sourceFiles": 123,
+    "chineseTextLines": 3116,
+    "protagonistReferences": 275,
+    "characterRecords": 12,
+    "playableCompanions": 8,
+    "destinations": 17,
+    "locationRecords": 62,
+    "dialogues": 251,
+    "events": 46,
+    "achievements": 36,
+    "assets": 41,
+    "missingAssets": 0,
+    "textObjectObjectErrors": 0,
+    "externalCopyTableObjectObjectErrors": 114,
+    "missingReferences": 5
+  },
+  "assertions": {
+    "allDialoguesHaveUniqueId": true,
+    "allDialoguesHaveSpeaker": true,
+    "allDialogueVariablesParse": true,
+    "allManifestAssetsTracked": true,
+    "protagonistReferencesRecorded": true,
+    "orphanKanasRecorded": true
+  }
+}

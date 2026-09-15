@@ -1,0 +1,740 @@
+[
+  {
+    "path": ".gitignore",
+    "type": "none",
+    "bytes": 208,
+    "sha256": "0733b71f1ad0d7c608acb5edec981844aee97a21a0678b5e9617d78e9c83e4fe"
+  },
+  {
+    "path": ".idea/.gitignore",
+    "type": "none",
+    "bytes": 257,
+    "sha256": "fa68341b0a4afd1753695723c6f1e0f9b0411d4d32c014822245354a9dc82137"
+  },
+  {
+    "path": ".idea/modules.xml",
+    "type": "xml",
+    "bytes": 285,
+    "sha256": "093847bd0bc0550f3fef592a302d25d77d27b8f45a01f8cfd1f0711e1a9d07fe"
+  },
+  {
+    "path": ".idea/nahida-travel.iml",
+    "type": "iml",
+    "bytes": 344,
+    "sha256": "c96ea0b5b29abb7d5807671dd208fd63f63694dd236335d2fe8c074e89e94aa6"
+  },
+  {
+    "path": ".idea/workspace.xml",
+    "type": "xml",
+    "bytes": 2395,
+    "sha256": "60d1a84b00b548dcf02cf98b92703bfe1e1be5f92384cece8768834851950fd6"
+  },
+  {
+    "path": "assets/manifest.js",
+    "type": "js",
+    "bytes": 5462,
+    "sha256": "694ae86b3af50d5e194c7b2744e75a3646605a6043fd328122db138b0cb8adff"
+  },
+  {
+    "path": "docs/ach.jpg",
+    "type": "jpg",
+    "bytes": 48285,
+    "sha256": "c4f38115b636fe9bd5bc56e88e879be0a7e04e3c7b88b645abcb6750260c5e25"
+  },
+  {
+    "path": "docs/album.jpg",
+    "type": "jpg",
+    "bytes": 75454,
+    "sha256": "3081570276bdfe558d77e875996589c713ab91e284082904c5dd397b92a7c559"
+  },
+  {
+    "path": "docs/chat.jpg",
+    "type": "jpg",
+    "bytes": 61193,
+    "sha256": "8180f0377b54bf60ae597af6e8cc914ba08cf33ef43c77dbcbe931b766ab8db7"
+  },
+  {
+    "path": "docs/countdown.jpg",
+    "type": "jpg",
+    "bytes": 175556,
+    "sha256": "36f56a8e01f2d6f61591b3a39d251d9b6ab5866beba7c7781459a51762cc0e24"
+  },
+  {
+    "path": "docs/kitchen.jpg",
+    "type": "jpg",
+    "bytes": 51344,
+    "sha256": "ba2c4d80ba01790402047448863043bf8b65833543bb7df8c47d13327727855e"
+  },
+  {
+    "path": "docs/PLATFORM-BUILD.md",
+    "type": "md",
+    "bytes": 1515,
+    "sha256": "2e61c991d836ccf8d223c90c267867f97e208f2bd93ffb89424db2896d385acd"
+  },
+  {
+    "path": "docs/postcard.jpg",
+    "type": "jpg",
+    "bytes": 79941,
+    "sha256": "1a86d9d967778ed10fe47ca8dc1325f04646705fd28cb0695251c597b9d9a6e5"
+  },
+  {
+    "path": "docs/PROJECT-CONVENTIONS.md",
+    "type": "md",
+    "bytes": 1541,
+    "sha256": "56024d770e86fa769c07d5fa5e937ccb03ce47bc12cb2a8ac48abfc8dad36def"
+  },
+  {
+    "path": "docs/SAVE-DATA.md",
+    "type": "md",
+    "bytes": 758,
+    "sha256": "2a71d7e13b0bbb2992ccc8b95f1081f05f6b0a2a0b96951d71f877a78026501a"
+  },
+  {
+    "path": "docs/screenshot.jpg",
+    "type": "jpg",
+    "bytes": 174554,
+    "sha256": "d34283d2f9411ebdbf7e765540bb086a189ea87e2e923f8c3c460b675e8dd84f"
+  },
+  {
+    "path": "docs/settings.jpg",
+    "type": "jpg",
+    "bytes": 48817,
+    "sha256": "fb26fd7298ee792491a924ebfa0219c733b663b62204ad3943b42cfb4e2ca082"
+  },
+  {
+    "path": "docs/settle.jpg",
+    "type": "jpg",
+    "bytes": 81291,
+    "sha256": "4a620630e8602ff38c25cb9e15699652f0dfe273320d171eb21af1216a2e8897"
+  },
+  {
+    "path": "docs/toys.jpg",
+    "type": "jpg",
+    "bytes": 59585,
+    "sha256": "f61a5a38170183145155ff7bb70f4d9a6f0765fdb733064aca1fb599fb1d650f"
+  },
+  {
+    "path": "docs/travel.jpg",
+    "type": "jpg",
+    "bytes": 55263,
+    "sha256": "a6b71204b7f8b9848622b48a0875418e98edeb4a2282c23b6ea31287bec01588"
+  },
+  {
+    "path": "docs/visitor.jpg",
+    "type": "jpg",
+    "bytes": 180380,
+    "sha256": "29bf9735f586352d122f6211a506eb41943e0c3a42228d56efb5645cfd0128e7"
+  },
+  {
+    "path": "docs/visitor2.jpg",
+    "type": "jpg",
+    "bytes": 177427,
+    "sha256": "5a3b1ac3390d1033b1a2f12a3f50843963d7ba2273f53a6bf9a376ee34a01b0f"
+  },
+  {
+    "path": "docs/visitor3.jpg",
+    "type": "jpg",
+    "bytes": 179018,
+    "sha256": "c43365c9a9e7fd23ce4236157cf5fd7c7ec8e2d3f6a52ef0c211af8127621d09"
+  },
+  {
+    "path": "docs/waiting.jpg",
+    "type": "jpg",
+    "bytes": 52615,
+    "sha256": "ee057798666cc29308b6505763d645c6e59d3c6c883130aa534d71f9ea4c3f57"
+  },
+  {
+    "path": "index.html",
+    "type": "html",
+    "bytes": 1436,
+    "sha256": "fb1ff55beb21515ea63b6d76139a95c3f7b6335771af8caebc486d385d46d37d"
+  },
+  {
+    "path": "LICENSE",
+    "type": "none",
+    "bytes": 2074,
+    "sha256": "f8beaa6da86ae2a4b77b639284040aa9d4acff3732c0d272ca56bfb9eefa28e8"
+  },
+  {
+    "path": "package-lock.json",
+    "type": "json",
+    "bytes": 22767,
+    "sha256": "51a779b905ce96486a35d19debe29359973cded0bd6ff8b328f60ea20c3cf3a0"
+  },
+  {
+    "path": "package.json",
+    "type": "json",
+    "bytes": 953,
+    "sha256": "d045075e805bbaeb6b74829dee47d9e6510d717514d3fc17e4836a61ef53fc4d"
+  },
+  {
+    "path": "public/manifest.webmanifest",
+    "type": "webmanifest",
+    "bytes": 413,
+    "sha256": "aaa7bed6fa2ef67aafe57b81fe1185dc09f0680fdac185c83ebb9a5b1b706879"
+  },
+  {
+    "path": "public/service-worker.js",
+    "type": "js",
+    "bytes": 990,
+    "sha256": "385a9384bfb31501ea04ac3ab8c0a25f9aee688ef9ae1dabd83e521cbfd1cf59"
+  },
+  {
+    "path": "README.md",
+    "type": "md",
+    "bytes": 28743,
+    "sha256": "8badd26b60711fd8448e424b30c8256849a76be6f2c46f4d939c69d8d58aed34"
+  },
+  {
+    "path": "scripts/check-project.mjs",
+    "type": "mjs",
+    "bytes": 2373,
+    "sha256": "7bca71123a07c42795c4f1de0f7bc4281c238eb498ea8bae960385ae51093f8e"
+  },
+  {
+    "path": "scripts/copy-legacy.mjs",
+    "type": "mjs",
+    "bytes": 818,
+    "sha256": "bb071a3abc77c13d752b5c037333eb8d1f8d1115003cf8557204e9109f2a8e91"
+  },
+  {
+    "path": "scripts/platform-not-ready.mjs",
+    "type": "mjs",
+    "bytes": 307,
+    "sha256": "3617f55b65c89b19984e7dcf1e50fc98bdd003172d4e0f47a9b5c8a7158b5447"
+  },
+  {
+    "path": "src/achievements.js",
+    "type": "js",
+    "bytes": 4113,
+    "sha256": "4f21f9fd6dda2d9e6f6af8d089e85ab063db82a1820f24b8902537ce82070b8c"
+  },
+  {
+    "path": "src/assets/asset-registry.js",
+    "type": "js",
+    "bytes": 346,
+    "sha256": "983f1e2e810b01f0677df3ef9a4eb564ea75ced439d5b3e56bd0cf44f90d252a"
+  },
+  {
+    "path": "src/assets.js",
+    "type": "js",
+    "bytes": 17286,
+    "sha256": "c1bf8328300144f9a337ae5be0a229c27bd678aa715b5b184ed1aca8b49ca719"
+  },
+  {
+    "path": "src/core/rng.js",
+    "type": "js",
+    "bytes": 2015,
+    "sha256": "6e7f6dee5b7701af9ba7c2a569bbfd0ff1af1a466f431e8eb92fbee5c7ec76f2"
+  },
+  {
+    "path": "src/core/selftest.js",
+    "type": "js",
+    "bytes": 65812,
+    "sha256": "41e80ba73fe2c3e3d5a5b82ee000cd7729d0dd2d1847a70e82ebea05c39211da"
+  },
+  {
+    "path": "src/core/util.js",
+    "type": "js",
+    "bytes": 3287,
+    "sha256": "3b04fcae4004548eaab49a751f2815b6a488af2f22665392bdc767f1bfabca16"
+  },
+  {
+    "path": "src/data/achievements.js",
+    "type": "js",
+    "bytes": 8130,
+    "sha256": "ba49e794a56fe9a43530aba73b4469a3b31a15b8ce61e8d75a7068b0e420bb34"
+  },
+  {
+    "path": "src/data/companions.js",
+    "type": "js",
+    "bytes": 6349,
+    "sha256": "f64acd8c80146d51c80b26b29a16c79c50524c60aa51862f2224e7a873a745cf"
+  },
+  {
+    "path": "src/data/config.js",
+    "type": "js",
+    "bytes": 3064,
+    "sha256": "575724e9273d6bc851235eaa94da7bfab80972f14715bf89a5584ca0c66338a4"
+  },
+  {
+    "path": "src/data/destinations.js",
+    "type": "js",
+    "bytes": 26183,
+    "sha256": "39336709da620e20d594e3f2d977d16e24148bff197a386fcf4def7f16ae16ef"
+  },
+  {
+    "path": "src/data/events.js",
+    "type": "js",
+    "bytes": 7198,
+    "sha256": "f35701c43dcf15e8dd1ff4c2f19dab7e55a2162fdd52679134d26f101fd7793a"
+  },
+  {
+    "path": "src/data/farm.js",
+    "type": "js",
+    "bytes": 4598,
+    "sha256": "aff6c964eef319668fa1f6ddeba18730a09611c79bb3408809d19b31b4b95455"
+  },
+  {
+    "path": "src/data/geo.js",
+    "type": "js",
+    "bytes": 10374,
+    "sha256": "57985ea6e64a6e2416151e0eb8c43d660739b5ab3243304246cf8f7f1e381ad8"
+  },
+  {
+    "path": "src/data/home.js",
+    "type": "js",
+    "bytes": 15884,
+    "sha256": "a7d58ccebd3356b974b50dc86f305d8f1f06e009f3499e144e9b0198cf7a983c"
+  },
+  {
+    "path": "src/data/journey.js",
+    "type": "js",
+    "bytes": 5734,
+    "sha256": "abc820898da7a3a48bdf61631d1d0792cc265f6468dd7e8f37305d6697eea239"
+  },
+  {
+    "path": "src/data/kitchen.js",
+    "type": "js",
+    "bytes": 3553,
+    "sha256": "41ac33723559b336a7e7694818e613c7cef68d52d4a9cb825e680abcdafb5cc7"
+  },
+  {
+    "path": "src/data/templates.js",
+    "type": "js",
+    "bytes": 9354,
+    "sha256": "b0d770671529203cda8de71498d04667bda2757d3cc030c368717885f43776e7"
+  },
+  {
+    "path": "src/data/visitor.js",
+    "type": "js",
+    "bytes": 4978,
+    "sha256": "4170e969043d9e95ab5fbdab6656154d7d5f4f9ad67ebf8b35fed071d5cb0c46"
+  },
+  {
+    "path": "src/engine/gacha.js",
+    "type": "js",
+    "bytes": 9343,
+    "sha256": "39efbbcad2c1f9098cd1c33fa17f6cae37bda3cd87e8d37ba708ebe95b8bf24f"
+  },
+  {
+    "path": "src/engine/journey.js",
+    "type": "js",
+    "bytes": 9499,
+    "sha256": "129b4368e2cff95dc88cf923cdd6d03fe194f3fd94909ccec4c4b7dfec3cdb4e"
+  },
+  {
+    "path": "src/engine/trip.js",
+    "type": "js",
+    "bytes": 7939,
+    "sha256": "8fe58998634e137f87495f3d288ee3f7573dee094f43c3398f1c6fa3821c0b0c"
+  },
+  {
+    "path": "src/farm.js",
+    "type": "js",
+    "bytes": 3779,
+    "sha256": "01df644de4a9d1cac60e39093e48577f10be2ebb64b211d1164b995286a6e140"
+  },
+  {
+    "path": "src/geo.js",
+    "type": "js",
+    "bytes": 2788,
+    "sha256": "81d2da410ecbee8b914b5d6f657f4902231be1995087ed66f8cbfc5a35494727"
+  },
+  {
+    "path": "src/home.js",
+    "type": "js",
+    "bytes": 21911,
+    "sha256": "096cf1d9b318a82e6f425712d72a4d2c59b52722c79c634c3f2a1d1ba52e948d"
+  },
+  {
+    "path": "src/legacy-entry.js",
+    "type": "js",
+    "bytes": 418,
+    "sha256": "8cd97e72bbdd6e341f74f3c9d57ef23a38da48bddf24103042cfe51bc641eba9"
+  },
+  {
+    "path": "src/main.js",
+    "type": "js",
+    "bytes": 293,
+    "sha256": "edc2ca8d07066657dce1abcf138d1c2b96396a0512fe3d830e52e132c131dfb3"
+  },
+  {
+    "path": "src/pwa/registerServiceWorker.js",
+    "type": "js",
+    "bytes": 618,
+    "sha256": "4f93cd6247ebdb966807e5c2ecad13d5379d4c8e20eacc7ca81c2d5e748da99e"
+  },
+  {
+    "path": "src/render/effects.js",
+    "type": "js",
+    "bytes": 10018,
+    "sha256": "d92c3992b636f03683f336c89ccd9205a884edc5ab1107f5ab26dd3623e82c5a"
+  },
+  {
+    "path": "src/render/frames.js",
+    "type": "js",
+    "bytes": 7027,
+    "sha256": "14244033659e27a9df23bd524296b2d1287354ae5854c5eace82f5cb7c3318d2"
+  },
+  {
+    "path": "src/render/placeholder.js",
+    "type": "js",
+    "bytes": 66419,
+    "sha256": "2765ed9744a3077172307548df1c0bf8239d80a456021376ff8df583937e2cec"
+  },
+  {
+    "path": "src/render/postcard.js",
+    "type": "js",
+    "bytes": 13545,
+    "sha256": "3f6311ad59eceea593116d616353e70cf3ac869fd6e1af4cfb08075bc68888ab"
+  },
+  {
+    "path": "src/sfx.js",
+    "type": "js",
+    "bytes": 4301,
+    "sha256": "579d941ba6101572aec644aa01d7456aa97cfa48322498b6db98da13b5631db9"
+  },
+  {
+    "path": "src/storage/save-api.js",
+    "type": "js",
+    "bytes": 921,
+    "sha256": "21b4cb3bc0b66e0bcd4cf7f2a19ca39954d9e74a75c52ea9f7da9a571eaf7546"
+  },
+  {
+    "path": "src/store.js",
+    "type": "js",
+    "bytes": 3796,
+    "sha256": "33974291a0a8672287d5ec178af93fa5bc81218cbea5c54ec39b5116bc0752e3"
+  },
+  {
+    "path": "src/text/deepseek.js",
+    "type": "js",
+    "bytes": 10193,
+    "sha256": "186c604386d82c0de9ff22ae3fa8167e9fdf5208d8284d29bbbee95b42e74f7f"
+  },
+  {
+    "path": "src/text/template-text.js",
+    "type": "js",
+    "bytes": 3859,
+    "sha256": "46d1126055bc126d52e4859a2433a54de38982b676474a6fa69e7b91bc11f811"
+  },
+  {
+    "path": "src/time/clock.js",
+    "type": "js",
+    "bytes": 4306,
+    "sha256": "38d369f8325fb347841c8bd20ad018c0086429c305b00b329dc8b103b8336483"
+  },
+  {
+    "path": "src/ui.js",
+    "type": "js",
+    "bytes": 90468,
+    "sha256": "971fa67cbd5f969ed6bdb66635196970475780cba47bbb5ed0861d55ef6be216"
+  },
+  {
+    "path": "tools/asset-generator.html",
+    "type": "html",
+    "bytes": 11892,
+    "sha256": "3b3dd947eb23533fca80396cd47e5983cea472749ea1e4c6e6981d436b2336da"
+  },
+  {
+    "path": "tools/home-grid.html",
+    "type": "html",
+    "bytes": 1377,
+    "sha256": "461dd4e716c6ebac423b62a41ed98efadacd569e30f3cb82b9c3b3e95e651fbf"
+  },
+  {
+    "path": "tools/make-icon.html",
+    "type": "html",
+    "bytes": 3792,
+    "sha256": "ab53e1da5d4626e935317e0086f88d1b21c782a472624964f9dc00f3c5aa66f5"
+  },
+  {
+    "path": "tools/preview.html",
+    "type": "html",
+    "bytes": 5629,
+    "sha256": "449ea06cefcc1dd2be343e8c5b35717256582b95c612bb01a8c0d57fc7d994c8"
+  },
+  {
+    "path": "tools/record-demo.ps1",
+    "type": "ps1",
+    "bytes": 14798,
+    "sha256": "556bc65b349487caca590df41273048be699e0acbb9364b7a46f7c313f03f590"
+  },
+  {
+    "path": "tools/toy-sheet.html",
+    "type": "html",
+    "bytes": 1022,
+    "sha256": "294d4e3460fe03c4307aaa418d0946be3be85dbece17844b7eda99ff2ad90beb"
+  },
+  {
+    "path": "vite.config.js",
+    "type": "js",
+    "bytes": 592,
+    "sha256": "12acdc4de64cfb5134ec1a66c41dda4382367a4e6da44b31c62e61ae0b792347"
+  },
+  {
+    "path": "图片素材/主角-开心.png",
+    "type": "png",
+    "bytes": 1744974,
+    "sha256": "b52b0f0ee55d5b0bfd83bc4c22bbb227fedf2249502448bb71e854e36290cb5d"
+  },
+  {
+    "path": "图片素材/主角-待机.png",
+    "type": "png",
+    "bytes": 1772628,
+    "sha256": "7e72877a6e4b39e9546560d3918755e015aad19e81f3feaefee610c52bd966d6"
+  },
+  {
+    "path": "图片素材/主角-疲惫.png",
+    "type": "png",
+    "bytes": 1532560,
+    "sha256": "b600a001c6171c871afb1d42b728f58f3d711a3515d7472ebbceb8cfb3fb5cda"
+  },
+  {
+    "path": "图片素材/图标-192.png",
+    "type": "png",
+    "bytes": 45035,
+    "sha256": "e233741d482f5906481e3a4e8f985a43899981103a4aeab82e6c2cad35e03dfa"
+  },
+  {
+    "path": "图片素材/图标-512.png",
+    "type": "png",
+    "bytes": 271541,
+    "sha256": "df175b44d9471a61564f5606f7808d48e8a3baa276e2cb0e4a78eecd462aff60"
+  },
+  {
+    "path": "图片素材/场景-三亚.jpeg",
+    "type": "jpeg",
+    "bytes": 2765780,
+    "sha256": "9e67893801bbd3c8b4f2a40010e5af142c0f9f3892cd8cdfe05cf870ed4ed7b7"
+  },
+  {
+    "path": "图片素材/场景-北京.png",
+    "type": "png",
+    "bytes": 2942819,
+    "sha256": "04360c0aab46f93810f68a77fb7714f0d04552836b9883d85122f8050b93e1a1"
+  },
+  {
+    "path": "图片素材/场景-厦门.png",
+    "type": "png",
+    "bytes": 2906489,
+    "sha256": "80278af2100a891a282a7ca0053b2fecfacdab4e462633068630a005ce7afdea"
+  },
+  {
+    "path": "图片素材/场景-吐鲁番.jpeg",
+    "type": "jpeg",
+    "bytes": 2632650,
+    "sha256": "2a226ede2f6d6ce99fb81181a0ba6f4d54d1b068c5593022671632793c4a1e70"
+  },
+  {
+    "path": "图片素材/场景-呼伦贝尔.jpeg",
+    "type": "jpeg",
+    "bytes": 2345832,
+    "sha256": "b7bb9be94c6d54a49540f9c20cbf8adf637bef76dbd98d6c17ead3e02d2a5961"
+  },
+  {
+    "path": "图片素材/场景-哈尔滨.jpeg",
+    "type": "jpeg",
+    "bytes": 2764969,
+    "sha256": "60f14f52af7546ccde8cdd8f2872bbad648a5f5784178e25a683b3b3a7487ab3"
+  },
+  {
+    "path": "图片素材/场景-大理.png",
+    "type": "png",
+    "bytes": 2545206,
+    "sha256": "f68b9230108ad8e3a02ca9035b81abdfb15137288e34259876d53aa1cb2276ea"
+  },
+  {
+    "path": "图片素材/场景-广州.jpeg",
+    "type": "jpeg",
+    "bytes": 3245091,
+    "sha256": "9f005c0376f0ed89ae896a44ced18092c192fa2a107da021629568acc2f253c7"
+  },
+  {
+    "path": "图片素材/场景-张家界.jpeg",
+    "type": "jpeg",
+    "bytes": 2774590,
+    "sha256": "9c02392a7af122d12ef51e8c58334f70020367f833598faf2b50980045ddc42c"
+  },
+  {
+    "path": "图片素材/场景-成都.jpeg",
+    "type": "jpeg",
+    "bytes": 3217966,
+    "sha256": "7af8e26812ad486fbb80114f673743654963c267967e7577335da534d42a7e2b"
+  },
+  {
+    "path": "图片素材/场景-敦煌.jpeg",
+    "type": "jpeg",
+    "bytes": 2527165,
+    "sha256": "5d83b7d36e3bda261c2a8804a259b05d49b22620852f24115c5b7796844a0f5f"
+  },
+  {
+    "path": "图片素材/场景-杭州.jpeg",
+    "type": "jpeg",
+    "bytes": 2725365,
+    "sha256": "395438ffa42c4e9e9aa40332f993b6df15588bb3b0803cb00bf36f8179939d51"
+  },
+  {
+    "path": "图片素材/场景-林芝.jpeg",
+    "type": "jpeg",
+    "bytes": 2649913,
+    "sha256": "cbb6cb234f98e21feb2ba6ddd76a3c700a09c02f25be016e3127b5061adadce4"
+  },
+  {
+    "path": "图片素材/场景-桂林.jpeg",
+    "type": "jpeg",
+    "bytes": 2789530,
+    "sha256": "e5f4b47434185435c7fb1ccee40312e0e7546b091543f9c6de1af181593e4dc3"
+  },
+  {
+    "path": "图片素材/场景-漠河.jpeg",
+    "type": "jpeg",
+    "bytes": 2769780,
+    "sha256": "6df8fea7ebeef07bb8724784ad5e618c5d0411b77350dbfa0ad88cef20dfa530"
+  },
+  {
+    "path": "图片素材/场景-苏州.jpeg",
+    "type": "jpeg",
+    "bytes": 3160611,
+    "sha256": "9e89db5379606a46f6a20eb8a0b6484ebef777f9fc8d8c82818d510d3cddf64f"
+  },
+  {
+    "path": "图片素材/场景-西安.jpeg",
+    "type": "jpeg",
+    "bytes": 2855575,
+    "sha256": "09a5eebfacb5cfd39787fb02dadd4e36d039a1969ac7df73f4806069551f0434"
+  },
+  {
+    "path": "图片素材/家.png",
+    "type": "png",
+    "bytes": 12095237,
+    "sha256": "5dc6025fa2717dd56aa85a2eac648e9cc33ff4738ff4a49de8194fc253980810"
+  },
+  {
+    "path": "图片素材/未使用/玩具-秋千.png",
+    "type": "png",
+    "bytes": 251764,
+    "sha256": "3815a9500b8391cab59c967dea0b27e4ea287124f7f5dc6c9dc5e22687932682"
+  },
+  {
+    "path": "图片素材/玩具-吊床.png",
+    "type": "png",
+    "bytes": 211159,
+    "sha256": "7789fc303ff823dfc69e8e1e55c1ad5730b3324921558660b9be1ee13f86c66d"
+  },
+  {
+    "path": "图片素材/玩具-地毯.png",
+    "type": "png",
+    "bytes": 219441,
+    "sha256": "adddf6463044fbc98fce7855ff02acf3f8ba1c9f1b3a45fcb61718a874c308e0"
+  },
+  {
+    "path": "图片素材/玩具-小挂饰.png",
+    "type": "png",
+    "bytes": 222848,
+    "sha256": "665102851faef47d90b7576899f9d451232f78d95988cda9924121e69f476de8"
+  },
+  {
+    "path": "图片素材/玩具-小水池.png",
+    "type": "png",
+    "bytes": 244028,
+    "sha256": "f9ce47e4a09f27f0acfbee4d0e8c679a1bfb66896cf9fb5cdadd27474315bd0a"
+  },
+  {
+    "path": "图片素材/玩具-小灯笼.png",
+    "type": "png",
+    "bytes": 196571,
+    "sha256": "a9a5436b3ffadc747de8f7c46eb5a42bce4cdcf9e828eedef86ab8c3d6f37a24"
+  },
+  {
+    "path": "图片素材/玩具-小风车.png",
+    "type": "png",
+    "bytes": 238397,
+    "sha256": "b7aaff20052e9e63cd562156ded1764ba23488e2e86a1a7f4674a0ee25dc32f3"
+  },
+  {
+    "path": "图片素材/玩具-沙坑.png",
+    "type": "png",
+    "bytes": 244401,
+    "sha256": "408cd056529b1350cfab78b79450b2286813e88825329812b3d0bd6e78196294"
+  },
+  {
+    "path": "图片素材/玩具-藤球.png",
+    "type": "png",
+    "bytes": 417925,
+    "sha256": "65438f353a65e0850d024989691857de836688623b0ec999740b5938ace55dbf"
+  },
+  {
+    "path": "图片素材/玩具-蹦床.png",
+    "type": "png",
+    "bytes": 178622,
+    "sha256": "31dbae8e06c257ca27bae5048c6df593ffe8992b22e93987525f748adedcdb7a"
+  },
+  {
+    "path": "图片素材/素材标准.txt",
+    "type": "txt",
+    "bytes": 11704,
+    "sha256": "82b1fba34acb16536e1605e74f687cdf45dc33efc26bdb962d1f357e25d4749e"
+  },
+  {
+    "path": "图片素材/配角-七七.png",
+    "type": "png",
+    "bytes": 1556954,
+    "sha256": "df8dfadc4abd3ec61cf2624692d74080d80d7dd5d844aff796980f9a3d6b8a36"
+  },
+  {
+    "path": "图片素材/配角-可莉.png",
+    "type": "png",
+    "bytes": 1991736,
+    "sha256": "127b645cfbd9db39973e2892b1c156b85ea0d2a4b0b10997856b0cdce4c07d71"
+  },
+  {
+    "path": "图片素材/配角-妮露.png",
+    "type": "png",
+    "bytes": 2178259,
+    "sha256": "c38b55a012d77e7c82aa5274acddaa9ea8f37961fb40f499c193c6b22ac15bac"
+  },
+  {
+    "path": "图片素材/配角-提纳里.png",
+    "type": "png",
+    "bytes": 1830916,
+    "sha256": "1897e0e1e942c8c012075823727a29d29e1c5870095cb8c39a4ba5b5479adc9a"
+  },
+  {
+    "path": "图片素材/配角-柯莱.png",
+    "type": "png",
+    "bytes": 2090485,
+    "sha256": "078cb233585e9c1ca5c19650cf8537081a18ecfd6b9ad0d0a14ea225b25561b3"
+  },
+  {
+    "path": "图片素材/配角-派蒙.png",
+    "type": "png",
+    "bytes": 2093916,
+    "sha256": "2dc2dc6e732ddbb5f45b92fb59fb953ae37fcdb38d2e6a121426bb38faab2c79"
+  },
+  {
+    "path": "图片素材/配角-赛诺.png",
+    "type": "png",
+    "bytes": 1993655,
+    "sha256": "819be823277462c0b53d8238b26bfde78412babdb64dc6c858079f3cee679305"
+  },
+  {
+    "path": "图片素材/配角-迪希雅.png",
+    "type": "png",
+    "bytes": 2418622,
+    "sha256": "f250c3b9cc971d43c009f80ac2e58a6309762ff1a7d8b3e771bbeba6158f2cde"
+  },
+  {
+    "path": "开始游戏.html",
+    "type": "html",
+    "bytes": 35518,
+    "sha256": "e4c9e254ccbb5b125740e99d243bc5ab9941e5a7e8ff502e14b377353c6429a9"
+  },
+  {
+    "path": "说明.txt",
+    "type": "txt",
+    "bytes": 6584,
+    "sha256": "19cf2fae5a3097497c43b22faf7d0bd35dbaab5bad01055d8f3eeb43a94c290e"
+  }
+]

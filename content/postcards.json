@@ -1,0 +1,239 @@
+{
+  "templates": {
+    "open": [
+      "今天走到了{dest}。{destDesc}",
+      "一路往{dest}走，走到的时候{timeOfDay}的光正好斜过来。{destDesc}",
+      "{dest}。{destDesc}",
+      "记一笔：今天在{dest}。{destDesc}",
+      "不知道走了多久，总之是到了{dest}。{destDesc}",
+      "{timeOfDay}到的{dest}。{destDesc}",
+      "出门的时候没想好去哪，最后到了{dest}。{destDesc}",
+      "把{dest}写进本子的这一页。{destDesc}"
+    ],
+    "alone": [
+      "今天是一个人。",
+      "路上没碰到谁，倒也因此走得慢了些。",
+      "一个人走有一个人的好处，想停就停。",
+      "本来以为会遇上谁，结果一路都很安静。",
+      "没有人打扰，我把每一步都看得很清楚。",
+      "一个人待着的时候，脑子里反而更热闹。"
+    ],
+    "eventLead": [
+      "",
+      "",
+      "",
+      "中间有件事：",
+      "还有一个小插曲。",
+      "有件事值得单独记下来——"
+    ],
+    "close": [
+      "这些我都记下来了。",
+      "回去要好好睡一觉。",
+      "下次还想再来看看。",
+      "把它写进本子里，就不会忘了。",
+      "风又起来了，该往回走了。",
+      "合上本子的时候，天已经暗了。",
+      "剩下的等回去再说吧。",
+      "希望这页纸能留得久一点。"
+    ],
+    "postcardBack": [
+      "这里的天很蓝，你那里呢？",
+      "一切都好，勿念。",
+      "带了一点这里的风回去给你。",
+      "下次一起来吧。",
+      "路上想起你说过的话。",
+      "今天的云很好看，可惜拍不下来。",
+      "我很好，就是有点想你。",
+      "这里的东西很好吃，下次带你来。",
+      "走了很远，但不算累。",
+      "没什么大事，报个平安。",
+      "如果此刻你也在看天，那我们看的是同一片。",
+      "把这句话写在这里，等你看到。",
+      "这里比想象中安静。",
+      "我留了一样东西在口袋里，回去给你。",
+      "天气很好，心情也不错。",
+      "有时候会想，路到底通向哪里。",
+      "今天学会了一件小事。",
+      "很想让你也看看这里的日落。",
+      "路上的人都很好。",
+      "我走得慢，所以看得多。",
+      "希望你也一切都好。",
+      "有点累，但值得。",
+      "回去之后讲给你听。",
+      "这里的风会说话。",
+      "把一片叶子夹在了这张卡里。",
+      "下一次想去更远的地方。",
+      "你会喜欢这里的。",
+      "记得按时吃饭。",
+      "我一个人也走得很好。",
+      "总有一天要一起来这里。"
+    ],
+    "turnedBackOpen": [
+      "没走到。带的吃的吃完了，只能往回走。",
+      "走到一半就发现算错了，剩下的路走不完。",
+      "本来想去{dest}的，最后停在了{actual}。",
+      "出门的时候想得很好，路上才知道不够。"
+    ],
+    "turnedBackClose": [
+      "下次会多带一点。",
+      "也不算白跑。至少看见了这一段。",
+      "回去的路上天已经黑了。",
+      "没能到，但也不算亏。"
+    ],
+    "turnedBackBack": [
+      "没走到。下次多带点吃的。",
+      "半路就回来了，别笑我。",
+      "差一点点。真的只差一点点。",
+      "停在这里了。也很好。"
+    ],
+    "soakedOpen": [
+      "掉河里了。人没事，吃的全没了。",
+      "过河的时候滑了一跤，包里的东西全被水冲走。",
+      "湿透了。站在岸上想了很久，还是决定回家。",
+      "水很凉。爬起来的时候，包已经空了。"
+    ],
+    "soakedClose": [
+      "回去要好好洗个澡。",
+      "衣服贴在身上，走路都重。",
+      "这件事我打算记住，但不打算常想起来。",
+      "至少本子还是干的。"
+    ],
+    "soakedBack": [
+      "落水里了。什么都别说。",
+      "本子还在，吃的没了。",
+      "全身都湿了。下次绕开那条河。",
+      "别担心，就是有点冷。"
+    ],
+    "redirectedOpen": [
+      "本来不是要去这儿的。路上变了主意。",
+      "计划里的地方没去成，来了{actual}。",
+      "走到一半换了方向。现在觉得挺好。",
+      "有人跟我说，不如去那边看看。我就去了。"
+    ],
+    "redirectedBack": [
+      "本来要去别的地方，后来改了。",
+      "走错的方向比原计划好。",
+      "计划赶不上变化，这次不亏。",
+      "下次还想去原来那个地方看看。"
+    ],
+    "journeyLead": [
+      "路上：",
+      "有一段是这样的——",
+      "中间还发生了点事。",
+      "路上碰到了些事情。"
+    ]
+  },
+  "destinations": [
+    {
+      "locationId": "beijing",
+      "name": "北京",
+      "description": "灰墙一直延伸到看不见的地方。风把树影吹得晃来晃去。",
+      "image": "background_beijing"
+    },
+    {
+      "locationId": "harbin",
+      "name": "哈尔滨",
+      "description": "冷得说话都会冒白气。屋顶积了厚厚一层雪，边缘圆圆的。",
+      "image": "background_harbin"
+    },
+    {
+      "locationId": "hulunbuir",
+      "name": "呼伦贝尔",
+      "description": "草一直铺到天边。云在天上跑，影子在草上跑。",
+      "image": "background_hulunbuir"
+    },
+    {
+      "locationId": "turpan",
+      "name": "吐鲁番",
+      "description": "热气从地面上冒起来，远处的路像化了。葡萄架下是唯一凉快的地方。",
+      "image": "background_turpan"
+    },
+    {
+      "locationId": "dunhuang",
+      "name": "敦煌",
+      "description": "沙山是软的，走一步陷半步。山下有一小片水，弯弯的。",
+      "image": "background_dunhuang"
+    },
+    {
+      "locationId": "nyingchi",
+      "name": "林芝",
+      "description": "雪山在远处，近处全是桃花。风一过，花瓣落得比雪还慢。",
+      "image": "background_nyingchi"
+    },
+    {
+      "locationId": "chengdu",
+      "name": "成都",
+      "description": "竹椅摆在门口，茶盖一掀，一坐就是半天。",
+      "image": "background_chengdu"
+    },
+    {
+      "locationId": "xian",
+      "name": "西安",
+      "description": "城墙是方的，围住了一整座城。灯亮起来的时候，砖缝里都是暖的。",
+      "image": "background_xian"
+    },
+    {
+      "locationId": "zhangjiajie",
+      "name": "张家界",
+      "description": "石柱一根根从雾里立起来，看不到底。",
+      "image": "background_zhangjiajie"
+    },
+    {
+      "locationId": "suzhou",
+      "name": "苏州",
+      "description": "白墙黑瓦，河从屋子底下过。船摇过来的时候，水会拍到石阶上。",
+      "image": "background_suzhou"
+    },
+    {
+      "locationId": "hangzhou",
+      "name": "杭州",
+      "description": "湖面上有一层薄薄的雾。柳条垂到水里，被风吹得画圈。",
+      "image": "background_hangzhou"
+    },
+    {
+      "locationId": "xiamen",
+      "name": "厦门",
+      "description": "海就在路边。风是咸的，树叶子是硬的。",
+      "image": "background_xiamen"
+    },
+    {
+      "locationId": "guilin",
+      "name": "桂林",
+      "description": "山是一个一个独立的小包，圆圆的。水从中间绕过去。",
+      "image": "background_guilin"
+    },
+    {
+      "locationId": "dali",
+      "name": "大理",
+      "description": "湖很大，对面是山。云压得很低，像要碰到水面。",
+      "image": "background_dali"
+    },
+    {
+      "locationId": "sanya",
+      "name": "三亚",
+      "description": "水是那种很浅的绿，能看到底下。椰子树歪歪地长着。",
+      "image": "background_sanya"
+    },
+    {
+      "locationId": "guangzhou",
+      "name": "广州",
+      "description": "骑楼把太阳挡在外面，走在底下凉凉的。",
+      "image": "background_guangzhou"
+    },
+    {
+      "locationId": "mohe",
+      "name": "漠河",
+      "description": "冷到睫毛上会结霜。晚上十点天还亮着，北边的天有时会亮起来。",
+      "image": "background_mohe"
+    }
+  ],
+  "renderingReferences": [
+    {
+      "file": "src/text/template-text.js"
+    },
+    {
+      "file": "src/render/postcard.js"
+    }
+  ],
+  "marker": "{TEXT_REVIEW: 第一人称日记/明信片语气需按哥伦比娅设定整体审查}"
+}

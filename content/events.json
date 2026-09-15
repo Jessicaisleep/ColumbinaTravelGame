@@ -1,0 +1,984 @@
+[
+  {
+    "eventId": "found_flower",
+    "category": "destination-event",
+    "name": "发现一朵花",
+    "description": "路边开着一朵没见过的花，花瓣边上有一圈很淡的蓝。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "N",
+      "mood": "happy",
+      "weight": 12
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "picked_seed",
+    "category": "destination-event",
+    "name": "捡到种子",
+    "description": "有一颗种子掉在石缝里，我把它捡起来放进了口袋。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "N",
+      "mood": "idle",
+      "weight": 10
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "long_walk",
+    "category": "destination-event",
+    "name": "走了很久的路",
+    "description": "路比想象中长，走到后面腿有点沉了。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "N",
+      "mood": "tired",
+      "weight": 12
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "shared_meal",
+    "category": "destination-event",
+    "name": "分吃了一顿饭",
+    "description": "把带来的东西分成两份，坐在地上吃完了。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "N",
+      "mood": "happy",
+      "weight": 11
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "found_feather",
+    "category": "destination-event",
+    "name": "捡到一根羽毛",
+    "description": "羽毛是温的，像是刚从谁身上掉下来不久。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "N",
+      "mood": "idle",
+      "weight": 9
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "took_photo",
+    "category": "destination-event",
+    "name": "留了一张影",
+    "description": "按快门的时候正好有风，照片可能会有点糊。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "N",
+      "mood": "happy",
+      "weight": 10
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "shelter_rain",
+    "category": "destination-event",
+    "name": "躲了一场雨",
+    "description": "雨来得很快，两个人挤在同一片叶子下面。",
+    "conditions": {
+      "fitsTags": [
+        "rainforest",
+        "plain"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "idle",
+      "weight": 8
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "night_stars",
+    "category": "destination-event",
+    "name": "看了很久的星星",
+    "description": "躺下来的时候才发现，星星比白天看到的云还多。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "idle",
+      "weight": 8
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "shell_on_beach",
+    "category": "destination-event",
+    "name": "捡到一只贝壳",
+    "description": "贝壳贴着耳朵能听见声音，虽然这里离海很远。",
+    "conditions": {
+      "fitsTags": [
+        "sea"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "happy",
+      "weight": 7
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "snow_crystal",
+    "category": "destination-event",
+    "name": "接住一片雪",
+    "description": "雪花落在手套上，还没来得及看清楚就化掉了。",
+    "conditions": {
+      "fitsTags": [
+        "snow"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "idle",
+      "weight": 7
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "desert_mirage",
+    "category": "destination-event",
+    "name": "看见了幻影",
+    "description": "远处好像有水，走过去只有更多的沙。",
+    "conditions": {
+      "fitsTags": [
+        "desert"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "tired",
+      "weight": 6
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "old_book",
+    "category": "destination-event",
+    "name": "翻到一本旧书",
+    "description": "书页很脆，翻的时候得小心一点。里面夹着一片干掉的叶子。",
+    "conditions": {
+      "fitsTags": [
+        "city",
+        "home"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "idle",
+      "weight": 7
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "street_food",
+    "category": "destination-event",
+    "name": "尝了当地的东西",
+    "description": "摊主说这个要趁热吃，确实很好吃，就是有点烫。",
+    "conditions": {
+      "fitsTags": [
+        "city"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "happy",
+      "weight": 8
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "climb_peak",
+    "category": "destination-event",
+    "name": "爬到了最高处",
+    "description": "上来花了很久，但从这里能看见很远的地方。",
+    "conditions": {
+      "fitsTags": [
+        "mountain",
+        "snow"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "tired",
+      "weight": 7
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "found_lantern",
+    "category": "destination-event",
+    "name": "点亮了一盏灯",
+    "description": "天黑得比预想中快，好在包里还有一盏。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "idle",
+      "weight": 6
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "met_traveler",
+    "category": "destination-event",
+    "name": "遇见另一个旅人",
+    "description": "对方只是点了点头就走了，但那一下让人安心。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "happy",
+      "weight": 6
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "found_mushroom",
+    "category": "destination-event",
+    "name": "发现一丛蘑菇",
+    "description": "颜色很鲜艳。提纳里说过，鲜艳的一般都不能吃。",
+    "conditions": {
+      "fitsTags": [
+        "rainforest"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "idle",
+      "weight": 6
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "fish_jumped",
+    "category": "destination-event",
+    "name": "鱼跳出了水面",
+    "description": "只看见一下，水面就恢复了原样，像什么都没发生过。",
+    "conditions": {
+      "fitsTags": [
+        "sea",
+        "city"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "happy",
+      "weight": 6
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "petal_rain",
+    "category": "destination-event",
+    "name": "花瓣落了一身",
+    "description": "风停的时候，帽子里已经攒了一小捧花瓣。",
+    "conditions": {
+      "fitsTags": [
+        "sakura"
+      ]
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "happy",
+      "weight": 7
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "lost_way",
+    "category": "destination-event",
+    "name": "走错了路",
+    "description": "地图上明明有这条路，走了半天才发现是岔了。不过风景还不错。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "R",
+      "mood": "tired",
+      "weight": 7
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "ancient_ruin",
+    "category": "destination-event",
+    "name": "发现一处遗迹",
+    "description": "石头上刻着看不懂的字，摸上去已经磨得很平了。",
+    "conditions": {
+      "fitsTags": [
+        "desert",
+        "mountain"
+      ]
+    },
+    "effects": {
+      "rarity": "SR",
+      "mood": "idle",
+      "weight": 3
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "rare_butterfly",
+    "category": "destination-event",
+    "name": "见到一只罕见的蝴蝶",
+    "description": "翅膀的颜色会变。它停了大概三秒，然后就飞走了。",
+    "conditions": {
+      "fitsTags": [
+        "rainforest",
+        "plain"
+      ]
+    },
+    "effects": {
+      "rarity": "SR",
+      "mood": "happy",
+      "weight": 3
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "aurora",
+    "category": "destination-event",
+    "name": "看见了极光",
+    "description": "天上一层一层地亮起来，谁都没有说话。",
+    "conditions": {
+      "fitsTags": [
+        "snow"
+      ]
+    },
+    "effects": {
+      "rarity": "SSR",
+      "mood": "idle",
+      "weight": 1
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "old_friend_gift",
+    "category": "destination-event",
+    "name": "收到一件旧礼物",
+    "description": "是很久以前给出去的东西，居然又回到了手上。",
+    "conditions": {
+      "fitsTags": []
+    },
+    "effects": {
+      "rarity": "SSR",
+      "mood": "happy",
+      "weight": 1
+    },
+    "references": [
+      {
+        "file": "src/data/events.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称事件语气与新主角兼容性需审查}"
+  },
+  {
+    "eventId": "ref_lift",
+    "category": "journey-event",
+    "name": "搭了一段顺风车",
+    "description": "一个开货车的师傅停下来问我去哪，说正好顺路。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        640,
+        980
+      ]
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "ref_orchard",
+    "category": "journey-event",
+    "name": "果园主人给了些果子",
+    "description": "路过一片果园，主人家让我随便摘，还说路上吃不了可以带着。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        470,
+        750
+      ]
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "ref_share",
+    "category": "journey-event",
+    "name": "同伴把干粮分了一半",
+    "description": "{companion}把包里的东西分成两份，说一个人吃不完。",
+    "conditions": {
+      "needCompanion": true
+    },
+    "effects": {
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        680,
+        1050
+      ],
+      "needCompanion": true
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "ref_market",
+    "category": "journey-event",
+    "name": "在集市帮了半天工",
+    "description": "帮人看了半天摊子，走的时候人家塞给我一包吃的。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        520,
+        840
+      ]
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "ref_noodle",
+    "category": "journey-event",
+    "name": "面馆老板多添了一碗",
+    "description": "老板说我看着像走了很远的路，没收钱，还添了一碗。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        500,
+        800
+      ]
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "ref_eggs",
+    "category": "journey-event",
+    "name": "老奶奶塞了两个煮鸡蛋",
+    "description": "在门口歇脚的时候，屋里的老奶奶出来，把两个鸡蛋放在我手里。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "refill",
+      "weight": 9,
+      "km": [
+        430,
+        690
+      ]
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "set_river",
+    "category": "journey-event",
+    "name": "掉进河里了",
+    "description": "过河的时候脚下一滑。人是爬上来了，包里的吃的全被水冲走了。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "setback",
+      "weight": 4,
+      "km": [
+        0,
+        0
+      ],
+      "forceReturn": true,
+      "soaked": true
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "set_bag",
+    "category": "journey-event",
+    "name": "包被小动物翻开了",
+    "description": "停下来休息的时候，不知从哪儿来了一只小东西，等我发现已经少了一半。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "setback",
+      "weight": 7,
+      "km": [
+        220,
+        420
+      ]
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "set_wrongway",
+    "category": "journey-event",
+    "name": "走错了路",
+    "description": "走出很远才发现方向不对，只能退回去。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "setback",
+      "weight": 7,
+      "km": [
+        180,
+        380
+      ]
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "set_rain",
+    "category": "journey-event",
+    "name": "被雨困住了",
+    "description": "雨下得很大，在屋檐下等了很久，等雨停的时候天已经黑了。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "setback",
+      "weight": 6,
+      "km": [
+        150,
+        320
+      ]
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "set_shoe",
+    "category": "journey-event",
+    "name": "鞋子磨破了",
+    "description": "鞋底开了一道口，只能走得很慢。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "setback",
+      "weight": 5,
+      "km": [
+        200,
+        400
+      ]
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "red_invite",
+    "category": "journey-event",
+    "name": "被邀请去了别处",
+    "description": "{companion}说，既然都到这儿了，不如去我家那边看看。我想了想，就答应了。",
+    "conditions": {
+      "needCompanion": true
+    },
+    "effects": {
+      "kind": "redirect",
+      "weight": 4,
+      "needCompanion": true,
+      "useCompanionHome": true
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "red_poster",
+    "category": "journey-event",
+    "name": "看到一张宣传画",
+    "description": "路边的墙上贴着一张画，上面的地方看起来很好。我站在那儿看了一会儿，然后换了方向。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "redirect",
+      "weight": 4,
+      "randomNearby": true
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "red_road",
+    "category": "journey-event",
+    "name": "前面封路了",
+    "description": "前面在修路，过不去。旁边的人说可以绕，绕过去就是另一个地方了。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "redirect",
+      "weight": 3,
+      "randomNearby": true
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "red_letter",
+    "category": "journey-event",
+    "name": "收到一封信",
+    "description": "在邮局歇脚的时候，顺手翻到一封没寄出去的信，上面的地址我记住了。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "redirect",
+      "weight": 3,
+      "randomAny": true
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "meet_1",
+    "category": "journey-event",
+    "name": "遇到了同伴",
+    "description": "路上碰到了{companion}。{companion}说也是随便走走，那就一起走一段吧。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "companion",
+      "weight": 18
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "see_lights",
+    "category": "journey-event",
+    "name": "远处的灯",
+    "description": "天快黑的时候，远远看见一片灯亮起来。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "sight",
+      "weight": 8
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "see_field",
+    "category": "journey-event",
+    "name": "路边的田",
+    "description": "路两边全是田，风一过就一片一片地倒。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "sight",
+      "weight": 8
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "see_bridge",
+    "category": "journey-event",
+    "name": "过了一座桥",
+    "description": "桥很长，走到中间的时候我停下来看了一会儿水。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "sight",
+      "weight": 7
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "see_market",
+    "category": "journey-event",
+    "name": "路过一个集市",
+    "description": "集市上很吵，卖什么的都有，我什么都没买。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "sight",
+      "weight": 7
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "see_hill",
+    "category": "journey-event",
+    "name": "翻过一座山",
+    "description": "翻过去之后回头看了一眼，来时的路弯弯曲曲的。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "sight",
+      "weight": 7
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  },
+  {
+    "eventId": "see_star",
+    "category": "journey-event",
+    "name": "停下来看星星",
+    "description": "走累了就躺下歇一会儿。天上一颗一颗地亮起来。",
+    "conditions": {
+      "needCompanion": false
+    },
+    "effects": {
+      "kind": "sight",
+      "weight": 6
+    },
+    "references": [
+      {
+        "file": "src/data/journey.js"
+      }
+    ],
+    "marker": "{TEXT_REVIEW: 第一人称旅途叙述与哥伦比娅行为设定需审查}"
+  }
+]

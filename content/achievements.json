@@ -1,0 +1,553 @@
+[
+  {
+    "achievementId": "trip_1",
+    "groupId": "travel",
+    "name": "初次远行",
+    "description": "第一次送她出门。",
+    "icon": "🎒",
+    "conditionSource": "function (s) { return s.tripCount >= 1; }",
+    "protagonistBinding": true,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "trip_10",
+    "groupId": "travel",
+    "name": "走过十次",
+    "description": "累计出门 10 次。",
+    "icon": "👣",
+    "conditionSource": "function (s) { return s.tripCount >= 10; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "trip_50",
+    "groupId": "travel",
+    "name": "老练的旅人",
+    "description": "累计出门 50 次。",
+    "icon": "🧭",
+    "conditionSource": "function (s) { return s.tripCount >= 50; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "local_1",
+    "groupId": "travel",
+    "name": "就在家门口",
+    "description": "选自己的家乡出门一次（1 小时的行程）。",
+    "icon": "🏠",
+    "conditionSource": "function (s) { return s.localTrips >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "region_5",
+    "groupId": "travel",
+    "name": "五方",
+    "description": "去过 5 个不同的地区。",
+    "icon": "🗺️",
+    "conditionSource": "function (s) { return countKeys(s.byDestination) >= 5; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "region_all",
+    "groupId": "travel",
+    "name": "走遍全国",
+    "description": "把所有地区都走一遍。",
+    "icon": "🌏",
+    "conditionSource": "function (s) { return countKeys(s.byDestination) >= (NT.data.destinations || []).length; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "km_1000",
+    "groupId": "travel",
+    "name": "千里之行",
+    "description": "单次行程走满 1000 公里。",
+    "icon": "🚶",
+    "conditionSource": "function (s) { return s.maxTravelKm >= 1000; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "km_2500",
+    "groupId": "travel",
+    "name": "长途跋涉",
+    "description": "单次行程走满 2500 公里。",
+    "icon": "🏔️",
+    "conditionSource": "function (s) { return s.maxTravelKm >= 2500; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "reach_mohe",
+    "groupId": "travel",
+    "name": "抵达最北",
+    "description": "走到漠河。",
+    "icon": "❄️",
+    "conditionSource": "function (s) { return (s.byDestination.mohe || 0) > 0; }",
+    "protagonistBinding": false,
+    "locationReferences": [
+      "mohe"
+    ],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "reach_kanas",
+    "groupId": "travel",
+    "name": "西北角",
+    "description": "走到喀纳斯。",
+    "icon": "🐟",
+    "conditionSource": "function (s) { return (s.byDestination.kanas || 0) > 0; }",
+    "protagonistBinding": false,
+    "locationReferences": [
+      "kanas"
+    ],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ],
+    "marker": "{REFERENCE_ERROR: reach_kanas → locations.kanas 不存在于正式 destinations}"
+  },
+  {
+    "achievementId": "reach_three",
+    "groupId": "travel",
+    "name": "天涯海角",
+    "description": "漠河、喀纳斯、三亚都去过。",
+    "icon": "🧳",
+    "conditionSource": "function (s) {\n        return (s.byDestination.mohe || 0) > 0 && (s.byDestination.kanas || 0) > 0 &&\n               (s.byDestination.sanya || 0) > 0;\n      }",
+    "protagonistBinding": false,
+    "locationReferences": [
+      "mohe",
+      "kanas",
+      "sanya"
+    ],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ],
+    "marker": "{REFERENCE_ERROR: reach_three → locations.kanas 不存在于正式 destinations}"
+  },
+  {
+    "achievementId": "card_1",
+    "groupId": "card",
+    "name": "第一张明信片",
+    "description": "收到第一张明信片。",
+    "icon": "💌",
+    "conditionSource": "function (s) { return s.cards >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "card_20",
+    "groupId": "card",
+    "name": "二十张",
+    "description": "累计收到 20 张明信片。",
+    "icon": "📬",
+    "conditionSource": "function (s) { return s.cards >= 20; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "card_50",
+    "groupId": "card",
+    "name": "五十张",
+    "description": "累计收到 50 张明信片。",
+    "icon": "📮",
+    "conditionSource": "function (s) { return s.cards >= 50; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "sr_1",
+    "groupId": "card",
+    "name": "稀有的一页",
+    "description": "拿到第一张「稀有」明信片。",
+    "icon": "💠",
+    "conditionSource": "function (s) { return (s.rarity.SR + s.rarity.SSR) >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "ssr_1",
+    "groupId": "card",
+    "name": "极稀有",
+    "description": "拿到第一张「极稀有」明信片。",
+    "icon": "🌟",
+    "conditionSource": "function (s) { return s.rarity.SSR >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "ssr_5",
+    "groupId": "card",
+    "name": "五张极稀有",
+    "description": "拿到 5 张「极稀有」明信片。",
+    "icon": "✨",
+    "conditionSource": "function (s) { return s.rarity.SSR >= 5; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "harvest_1",
+    "groupId": "farm",
+    "name": "第一次收获",
+    "description": "从田里收获一次。",
+    "icon": "🌱",
+    "conditionSource": "function (s) { return s.harvestCount >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "harvest_20",
+    "groupId": "farm",
+    "name": "收获二十次",
+    "description": "累计收获 20 次。",
+    "icon": "🌾",
+    "conditionSource": "function (s) { return s.harvestCount >= 20; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "crop_all",
+    "groupId": "farm",
+    "name": "五谷丰登",
+    "description": "把 10 种作物都种过一遍。",
+    "icon": "🧺",
+    "conditionSource": "function (s) { return countKeys(s.cropsGrown) >= (NT.data.crops || []).length; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "lake",
+    "groupId": "farm",
+    "name": "水田里的东西",
+    "description": "种过水田的全部 5 种作物。",
+    "icon": "🪷",
+    "conditionSource": "function (s) {\n        var wet = (NT.data.crops || []).filter(function (c) { return c.field === 'wet'; });\n        return wet.length > 0 && wet.every(function (c) { return (s.cropsGrown[c.id] || 0) > 0; });\n      }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "rare_1",
+    "groupId": "farm",
+    "name": "第一件稀有道具",
+    "description": "收获时掉落一件稀有道具。",
+    "icon": "🍀",
+    "conditionSource": "function (s) { return countKeys(s.rareFound) >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "rare_all",
+    "groupId": "farm",
+    "name": "收藏家",
+    "description": "5 种稀有道具都拿到过。",
+    "icon": "💎",
+    "conditionSource": "function (s) { return countKeys(s.rareFound) >= (NT.data.rareDrops || []).length; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "friend_1",
+    "groupId": "friend",
+    "name": "同行",
+    "description": "第一次有同伴一起旅行。",
+    "icon": "🤝",
+    "conditionSource": "function (s) { return countKeys(s.byCompanion) >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "friend_5",
+    "groupId": "friend",
+    "name": "五位同行",
+    "description": "和 5 个不同的同伴一起旅行过。",
+    "icon": "👥",
+    "conditionSource": "function (s) { return countKeys(s.byCompanion) >= 5; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "friend_all",
+    "groupId": "friend",
+    "name": "全员同行",
+    "description": "和所有同伴都同行过。",
+    "icon": "🎊",
+    "conditionSource": "function (s) { return countKeys(s.byCompanion) >= (NT.data.companions || []).length; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "toy_1",
+    "groupId": "home",
+    "name": "第一件玩具",
+    "description": "旅行带回一件玩具。",
+    "icon": "🧸",
+    "conditionSource": "function (s) { return s.toys >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "toy_all",
+    "groupId": "home",
+    "name": "满屋玩具",
+    "description": "收集全部 10 件玩具。",
+    "icon": "🎠",
+    "conditionSource": "function (s) { return s.toys >= (NT.data.toys || []).length; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ],
+    "marker": "{TEXT_ERROR: 说明写“全部 10 件玩具”，但 NT.data.toys 实际为 9 件}"
+  },
+  {
+    "achievementId": "chat_1",
+    "groupId": "home",
+    "name": "说说话",
+    "description": "第一次和她聊天。",
+    "icon": "💬",
+    "conditionSource": "function (s) { return s.chats >= 1; }",
+    "protagonistBinding": true,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "chat_20",
+    "groupId": "home",
+    "name": "聊了二十次",
+    "description": "累计聊天 20 次。",
+    "icon": "🫖",
+    "conditionSource": "function (s) { return s.chats >= 20; }",
+    "protagonistBinding": true,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "poke_30",
+    "groupId": "home",
+    "name": "别戳了",
+    "description": "戳她 30 次。",
+    "icon": "👉",
+    "conditionSource": "function (s) { return s.pokes >= 30; }",
+    "protagonistBinding": true,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "soaked_1",
+    "groupId": "special",
+    "name": "落汤鸡",
+    "description": "掉进河里，食物被冲光。",
+    "icon": "🌧️",
+    "conditionSource": "function (s) { return s.soaked >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "redirect_1",
+    "groupId": "special",
+    "name": "计划外的地方",
+    "description": "旅途中途改了目的地。",
+    "icon": "🪧",
+    "conditionSource": "function (s) { return s.redirected >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "turnback_1",
+    "groupId": "special",
+    "name": "半路折返",
+    "description": "食物不够，没能走到目的地。",
+    "icon": "↩️",
+    "conditionSource": "function (s) { return s.turnedBack >= 1; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "refill_3",
+    "groupId": "special",
+    "name": "一路有人帮",
+    "description": "单次行程里吃到 3 次以上补给。",
+    "icon": "🍱",
+    "conditionSource": "function (s) { return s.maxRefillInTrip >= 3; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  },
+  {
+    "achievementId": "all_rarity",
+    "groupId": "special",
+    "name": "四档齐全",
+    "description": "普通/少见/稀有/极稀有都拿到过。",
+    "icon": "🎖️",
+    "conditionSource": "function (s) { return s.rarity.N > 0 && s.rarity.R > 0 && s.rarity.SR > 0 && s.rarity.SSR > 0; }",
+    "protagonistBinding": false,
+    "locationReferences": [],
+    "references": [
+      {
+        "file": "src/data/achievements.js"
+      }
+    ]
+  }
+]

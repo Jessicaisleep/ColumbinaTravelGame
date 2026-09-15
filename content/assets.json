@@ -1,0 +1,737 @@
+[
+  {
+    "assetId": "protagonist_idle",
+    "path": "图片素材/主角-待机.png",
+    "fileType": "png",
+    "currentUse": "protagonist",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "protagonist",
+    "locationId": null,
+    "exists": true,
+    "bytes": 1772628,
+    "sha256": "7e72877a6e4b39e9546560d3918755e015aad19e81f3feaefee610c52bd966d6",
+    "needsReplacement": true,
+    "replacementReason": "当前立绘表现原主角，需换为哥伦比娅",
+    "marker": "{ASSET_REPLACE: 当前图片表现原主角，需要替换为哥伦比娅}"
+  },
+  {
+    "assetId": "protagonist_happy",
+    "path": "图片素材/主角-开心.png",
+    "fileType": "png",
+    "currentUse": "protagonist",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "protagonist",
+    "locationId": null,
+    "exists": true,
+    "bytes": 1744974,
+    "sha256": "b52b0f0ee55d5b0bfd83bc4c22bbb227fedf2249502448bb71e854e36290cb5d",
+    "needsReplacement": true,
+    "replacementReason": "当前立绘表现原主角，需换为哥伦比娅",
+    "marker": "{ASSET_REPLACE: 当前图片表现原主角，需要替换为哥伦比娅}"
+  },
+  {
+    "assetId": "protagonist_tired",
+    "path": "图片素材/主角-疲惫.png",
+    "fileType": "png",
+    "currentUse": "protagonist",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "protagonist",
+    "locationId": null,
+    "exists": true,
+    "bytes": 1532560,
+    "sha256": "b600a001c6171c871afb1d42b728f58f3d711a3515d7472ebbceb8cfb3fb5cda",
+    "needsReplacement": true,
+    "replacementReason": "当前立绘表现原主角，需换为哥伦比娅",
+    "marker": "{ASSET_REPLACE: 当前图片表现原主角，需要替换为哥伦比娅}"
+  },
+  {
+    "assetId": "companion_paimon",
+    "path": "图片素材/配角-派蒙.png",
+    "fileType": "png",
+    "currentUse": "companion",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "paimon",
+    "locationId": null,
+    "exists": true,
+    "bytes": 2093916,
+    "sha256": "2dc2dc6e732ddbb5f45b92fb59fb953ae37fcdb38d2e6a121426bb38faab2c79",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: companion资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "companion_collei",
+    "path": "图片素材/配角-柯莱.png",
+    "fileType": "png",
+    "currentUse": "companion",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "collei",
+    "locationId": null,
+    "exists": true,
+    "bytes": 2090485,
+    "sha256": "078cb233585e9c1ca5c19650cf8537081a18ecfd6b9ad0d0a14ea225b25561b3",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: companion资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "companion_tighnari",
+    "path": "图片素材/配角-提纳里.png",
+    "fileType": "png",
+    "currentUse": "companion",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "tighnari",
+    "locationId": null,
+    "exists": true,
+    "bytes": 1830916,
+    "sha256": "1897e0e1e942c8c012075823727a29d29e1c5870095cb8c39a4ba5b5479adc9a",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: companion资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "companion_cyno",
+    "path": "图片素材/配角-赛诺.png",
+    "fileType": "png",
+    "currentUse": "companion",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "cyno",
+    "locationId": null,
+    "exists": true,
+    "bytes": 1993655,
+    "sha256": "819be823277462c0b53d8238b26bfde78412babdb64dc6c858079f3cee679305",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: companion资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "companion_nilou",
+    "path": "图片素材/配角-妮露.png",
+    "fileType": "png",
+    "currentUse": "companion",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "nilou",
+    "locationId": null,
+    "exists": true,
+    "bytes": 2178259,
+    "sha256": "c38b55a012d77e7c82aa5274acddaa9ea8f37961fb40f499c193c6b22ac15bac",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: companion资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "companion_dehya",
+    "path": "图片素材/配角-迪希雅.png",
+    "fileType": "png",
+    "currentUse": "companion",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "dehya",
+    "locationId": null,
+    "exists": true,
+    "bytes": 2418622,
+    "sha256": "f250c3b9cc971d43c009f80ac2e58a6309762ff1a7d8b3e771bbeba6158f2cde",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: companion资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "companion_klee",
+    "path": "图片素材/配角-可莉.png",
+    "fileType": "png",
+    "currentUse": "companion",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "klee",
+    "locationId": null,
+    "exists": true,
+    "bytes": 1991736,
+    "sha256": "127b645cfbd9db39973e2892b1c156b85ea0d2a4b0b10997856b0cdce4c07d71",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: companion资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "companion_qiqi",
+    "path": "图片素材/配角-七七.png",
+    "fileType": "png",
+    "currentUse": "companion",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": "qiqi",
+    "locationId": null,
+    "exists": true,
+    "bytes": 1556954,
+    "sha256": "df8dfadc4abd3ec61cf2624692d74080d80d7dd5d844aff796980f9a3d6b8a36",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: companion资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_beijing",
+    "path": "图片素材/场景-北京.png",
+    "fileType": "png",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "beijing",
+    "exists": true,
+    "bytes": 2942819,
+    "sha256": "04360c0aab46f93810f68a77fb7714f0d04552836b9883d85122f8050b93e1a1",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_harbin",
+    "path": "图片素材/场景-哈尔滨.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "harbin",
+    "exists": true,
+    "bytes": 2764969,
+    "sha256": "60f14f52af7546ccde8cdd8f2872bbad648a5f5784178e25a683b3b3a7487ab3",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_hulunbuir",
+    "path": "图片素材/场景-呼伦贝尔.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "hulunbuir",
+    "exists": true,
+    "bytes": 2345832,
+    "sha256": "b7bb9be94c6d54a49540f9c20cbf8adf637bef76dbd98d6c17ead3e02d2a5961",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_turpan",
+    "path": "图片素材/场景-吐鲁番.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "turpan",
+    "exists": true,
+    "bytes": 2632650,
+    "sha256": "2a226ede2f6d6ce99fb81181a0ba6f4d54d1b068c5593022671632793c4a1e70",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_dunhuang",
+    "path": "图片素材/场景-敦煌.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "dunhuang",
+    "exists": true,
+    "bytes": 2527165,
+    "sha256": "5d83b7d36e3bda261c2a8804a259b05d49b22620852f24115c5b7796844a0f5f",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_nyingchi",
+    "path": "图片素材/场景-林芝.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "nyingchi",
+    "exists": true,
+    "bytes": 2649913,
+    "sha256": "cbb6cb234f98e21feb2ba6ddd76a3c700a09c02f25be016e3127b5061adadce4",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_chengdu",
+    "path": "图片素材/场景-成都.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "chengdu",
+    "exists": true,
+    "bytes": 3217966,
+    "sha256": "7af8e26812ad486fbb80114f673743654963c267967e7577335da534d42a7e2b",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_xian",
+    "path": "图片素材/场景-西安.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "xian",
+    "exists": true,
+    "bytes": 2855575,
+    "sha256": "09a5eebfacb5cfd39787fb02dadd4e36d039a1969ac7df73f4806069551f0434",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_zhangjiajie",
+    "path": "图片素材/场景-张家界.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "zhangjiajie",
+    "exists": true,
+    "bytes": 2774590,
+    "sha256": "9c02392a7af122d12ef51e8c58334f70020367f833598faf2b50980045ddc42c",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_suzhou",
+    "path": "图片素材/场景-苏州.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "suzhou",
+    "exists": true,
+    "bytes": 3160611,
+    "sha256": "9e89db5379606a46f6a20eb8a0b6484ebef777f9fc8d8c82818d510d3cddf64f",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_hangzhou",
+    "path": "图片素材/场景-杭州.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "hangzhou",
+    "exists": true,
+    "bytes": 2725365,
+    "sha256": "395438ffa42c4e9e9aa40332f993b6df15588bb3b0803cb00bf36f8179939d51",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_xiamen",
+    "path": "图片素材/场景-厦门.png",
+    "fileType": "png",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "xiamen",
+    "exists": true,
+    "bytes": 2906489,
+    "sha256": "80278af2100a891a282a7ca0053b2fecfacdab4e462633068630a005ce7afdea",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_guilin",
+    "path": "图片素材/场景-桂林.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "guilin",
+    "exists": true,
+    "bytes": 2789530,
+    "sha256": "e5f4b47434185435c7fb1ccee40312e0e7546b091543f9c6de1af181593e4dc3",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_dali",
+    "path": "图片素材/场景-大理.png",
+    "fileType": "png",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "dali",
+    "exists": true,
+    "bytes": 2545206,
+    "sha256": "f68b9230108ad8e3a02ca9035b81abdfb15137288e34259876d53aa1cb2276ea",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_sanya",
+    "path": "图片素材/场景-三亚.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "sanya",
+    "exists": true,
+    "bytes": 2765780,
+    "sha256": "9e67893801bbd3c8b4f2a40010e5af142c0f9f3892cd8cdfe05cf870ed4ed7b7",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_guangzhou",
+    "path": "图片素材/场景-广州.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "guangzhou",
+    "exists": true,
+    "bytes": 3245091,
+    "sha256": "9f005c0376f0ed89ae896a44ced18092c192fa2a107da021629568acc2f253c7",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "background_mohe",
+    "path": "图片素材/场景-漠河.jpeg",
+    "fileType": "jpeg",
+    "currentUse": "background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "mohe",
+    "exists": true,
+    "bytes": 2769780,
+    "sha256": "6df8fea7ebeef07bb8724784ad5e618c5d0411b77350dbfa0ad88cef20dfa530",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "toy_trampoline",
+    "path": "图片素材/玩具-蹦床.png",
+    "fileType": "png",
+    "currentUse": "toy",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 178622,
+    "sha256": "31dbae8e06c257ca27bae5048c6df593ffe8992b22e93987525f748adedcdb7a",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: toy资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "toy_windmill",
+    "path": "图片素材/玩具-小风车.png",
+    "fileType": "png",
+    "currentUse": "toy",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 238397,
+    "sha256": "b7aaff20052e9e63cd562156ded1764ba23488e2e86a1a7f4674a0ee25dc32f3",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: toy资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "toy_pool",
+    "path": "图片素材/玩具-小水池.png",
+    "fileType": "png",
+    "currentUse": "toy",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 244028,
+    "sha256": "f9ce47e4a09f27f0acfbee4d0e8c679a1bfb66896cf9fb5cdadd27474315bd0a",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: toy资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "toy_lantern",
+    "path": "图片素材/玩具-小灯笼.png",
+    "fileType": "png",
+    "currentUse": "toy",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 196571,
+    "sha256": "a9a5436b3ffadc747de8f7c46eb5a42bce4cdcf9e828eedef86ab8c3d6f37a24",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: toy资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "toy_hammock",
+    "path": "图片素材/玩具-吊床.png",
+    "fileType": "png",
+    "currentUse": "toy",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 211159,
+    "sha256": "7789fc303ff823dfc69e8e1e55c1ad5730b3324921558660b9be1ee13f86c66d",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: toy资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "toy_ball",
+    "path": "图片素材/玩具-藤球.png",
+    "fileType": "png",
+    "currentUse": "toy",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 417925,
+    "sha256": "65438f353a65e0850d024989691857de836688623b0ec999740b5938ace55dbf",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: toy资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "toy_sandbox",
+    "path": "图片素材/玩具-沙坑.png",
+    "fileType": "png",
+    "currentUse": "toy",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 244401,
+    "sha256": "408cd056529b1350cfab78b79450b2286813e88825329812b3d0bd6e78196294",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: toy资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "toy_rug",
+    "path": "图片素材/玩具-地毯.png",
+    "fileType": "png",
+    "currentUse": "toy",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 219441,
+    "sha256": "adddf6463044fbc98fce7855ff02acf3f8ba1c9f1b3a45fcb61718a874c308e0",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: toy资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "toy_mobile",
+    "path": "图片素材/玩具-小挂饰.png",
+    "fileType": "png",
+    "currentUse": "toy",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 222848,
+    "sha256": "665102851faef47d90b7576899f9d451232f78d95988cda9924121e69f476de8",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: toy资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "home",
+    "path": "图片素材/家.png",
+    "fileType": "png",
+    "currentUse": "home-background",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": "home",
+    "exists": true,
+    "bytes": 12095237,
+    "sha256": "5dc6025fa2717dd56aa85a2eac648e9cc33ff4738ff4a49de8194fc253980810",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: home-background资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "icon_192",
+    "path": "图片素材/图标-192.png",
+    "fileType": "png",
+    "currentUse": "icon",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 45035,
+    "sha256": "e233741d482f5906481e3a4e8f985a43899981103a4aeab82e6c2cad35e03dfa",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: icon资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "icon_512",
+    "path": "图片素材/图标-512.png",
+    "fileType": "png",
+    "currentUse": "icon",
+    "usageLocations": [
+      "assets/manifest.js",
+      "src/assets.js"
+    ],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 271541,
+    "sha256": "df175b44d9471a61564f5606f7808d48e8a3baa276e2cb0e4a78eecd462aff60",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: icon资源是否符合新世界观，需要确认}"
+  },
+  {
+    "assetId": "unmapped_玩具-秋千",
+    "path": "图片素材/未使用/玩具-秋千.png",
+    "fileType": "png",
+    "currentUse": "unmapped",
+    "usageLocations": [],
+    "characterId": null,
+    "locationId": null,
+    "exists": true,
+    "bytes": 251764,
+    "sha256": "3815a9500b8391cab59c967dea0b27e4ea287124f7f5dc6c9dc5e22687932682",
+    "needsReplacement": false,
+    "replacementReason": null,
+    "marker": "{ASSET_REVIEW: 文件存在但未被当前 manifest 映射，需要确认保留用途}"
+  }
+]

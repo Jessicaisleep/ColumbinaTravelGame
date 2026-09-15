@@ -1,0 +1,180 @@
+[
+  {
+    "file": "assets/manifest.js",
+    "line": 19,
+    "text": " * 或者把地图换成提瓦特/任何地方，只需要替换「图片素材」文件夹里的图。",
+    "terms": [
+      "提瓦特"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 4,
+    "text": "实际上这个玩法搭起来，主角并不限于纳西妲，可以换成你喜欢的任意角色，地点也不局限于国内，甚至换成提瓦特，或者任意地图都行。而这些只需要随便一个ai助手换个素材的事情。",
+    "terms": [
+      "提瓦特"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 8,
+    "text": "> 非商业同人作品。角色来自《原神》（米哈游），版权归原厂所有。",
+    "terms": [
+      "原神"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 203,
+    "text": "**同伴** —— 10 个原神角色。不是必然遇到，食物/道具/运气提高概率。",
+    "terms": [
+      "原神"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 213,
+    "text": "- 发给模型的 system prompt 是她的**人设卡**：须弥草神、温和克制、说话简短、带一点学究气、不用感叹号堆情绪",
+    "terms": [
+      "须弥",
+      "草神"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 234,
+    "text": "**越界校验 `noNewFacts`**：AI 若编造了事实卡以外的地区名、角色名，或出现现实世界词汇，直接判废回退模板。",
+    "terms": [
+      "现实世界"
+    ]
+  },
+  {
+    "file": "README.md",
+    "line": 347,
+    "text": "| `场景-北京` … | 各地区背景 | **换地图**（提瓦特、任何世界都行） |",
+    "terms": [
+      "提瓦特"
+    ]
+  },
+  {
+    "file": "src/core/selftest.js",
+    "line": 1160,
+    "text": "    ok('人设里写了禁止现实词汇', /现实世界/.test(G.chatSystemPrompt));",
+    "terms": [
+      "现实世界"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 60,
+    "text": "      callNahida: '小吉祥草王',",
+    "terms": [
+      "小吉祥草王"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 108,
+    "text": "      callNahida: '草神姐姐',",
+    "terms": [
+      "草神"
+    ]
+  },
+  {
+    "file": "src/data/companions.js",
+    "line": 124,
+    "text": "      callNahida: '草、草神大人',",
+    "terms": [
+      "草神"
+    ]
+  },
+  {
+    "file": "src/data/templates.js",
+    "line": 150,
+    "text": "    '你是《原神》中「纳西妲」的第一人称日记写作者。玩家扮演纳西妲出门旅行，你负责把既定事实写成一段温柔的日记。',",
+    "terms": [
+      "原神"
+    ]
+  },
+  {
+    "file": "src/data/templates.js",
+    "line": 154,
+    "text": "    '2. 不得提及现实世界的任何事物：真实地名、品牌、公司、政治、时事、真人。',",
+    "terms": [
+      "现实世界"
+    ]
+  },
+  {
+    "file": "src/data/templates.js",
+    "line": 192,
+    "text": "    '你在扮演《原神》里的纳西妲，和一直照顾你的「旅行者」在家裡闲聊。',",
+    "terms": [
+      "原神"
+    ]
+  },
+  {
+    "file": "src/data/templates.js",
+    "line": 196,
+    "text": "    '须弥的草神，智慧、温和、好奇，说话简短、克制、偶尔带一点学究气。',",
+    "terms": [
+      "须弥",
+      "草神"
+    ]
+  },
+  {
+    "file": "src/data/templates.js",
+    "line": 202,
+    "text": "    '2. 不要提及现实世界的任何事物：真实地名、品牌、公司、政治、时事、真人、手机、网络。',",
+    "terms": [
+      "现实世界"
+    ]
+  },
+  {
+    "file": "src/text/deepseek.js",
+    "line": 13,
+    "text": "  /** 禁止出现的现实世界词汇（轻量黑名单，不求完备，够挡住最明显的越界） */",
+    "terms": [
+      "现实世界"
+    ]
+  },
+  {
+    "file": "src/text/deepseek.js",
+    "line": 18,
+    "text": "    '米哈游', '原神玩家', '现实', '手机', '电脑', '互联网', '游戏'",
+    "terms": [
+      "原神"
+    ]
+  },
+  {
+    "file": "src/ui.js",
+    "line": 1968,
+    "text": "      '<div class=\"hint\">非商业同人作品。角色来自《原神》，版权归米哈游所有。' +",
+    "terms": [
+      "原神"
+    ]
+  },
+  {
+    "file": "tools/asset-generator.html",
+    "line": 159,
+    "text": "  var stampNames = ['蒙德', '璃月', '稻妻', '须弥', '雪山', '枫丹', '海岛', '旅途'];",
+    "terms": [
+      "须弥"
+    ]
+  },
+  {
+    "file": "tools/make-icon.html",
+    "line": 30,
+    "text": "    // 圆角方形底 + 绿色渐变（须弥草元素的色调）",
+    "terms": [
+      "须弥"
+    ]
+  },
+  {
+    "file": "图片素材/素材标准.txt",
+    "line": 9,
+    "text": "  · 想把地图换成提瓦特/别的世界 → 换掉「场景-*」这些图，",
+    "terms": [
+      "提瓦特"
+    ]
+  }
+]

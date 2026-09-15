@@ -1,0 +1,82 @@
+[
+  {
+    "oldContent": "nahida",
+    "newContent": "columbina",
+    "changeType": "protagonist-id",
+    "reason": "统一主角 ID",
+    "requiresHumanConfirmation": false,
+    "marker": "{PROTAGONIST_ID: 代码和存档需兼容迁移，不能简单全文替换}"
+  },
+  {
+    "oldContent": "纳西妲",
+    "newContent": "哥伦比娅",
+    "changeType": "protagonist-name",
+    "reason": "用户指定新主角名称",
+    "requiresHumanConfirmation": false,
+    "marker": "{PROTAGONIST_NAME: 纯显示名称可替换；人物设定文本不可直接替换}"
+  },
+  {
+    "oldContent": "NT.data.nahidaStates",
+    "newContent": "protagonist.states",
+    "changeType": "logic",
+    "reason": "移除散落的角色专有数据名",
+    "requiresHumanConfirmation": true,
+    "marker": "{LOGIC_REVIEW: 迁移前需验证 home/render/time 全部调用}"
+  },
+  {
+    "oldContent": "save.home.nahida",
+    "newContent": "save.home.protagonist",
+    "changeType": "save",
+    "reason": "统一存档字段",
+    "requiresHumanConfirmation": true,
+    "marker": "{SAVE_MIGRATION: 必须兼容旧字段并保留回滚，当前阶段不改存档}"
+  },
+  {
+    "oldContent": "assetManifest.nahida",
+    "newContent": "assetManifest.protagonist",
+    "changeType": "asset-logic",
+    "reason": "统一主角资源入口",
+    "requiresHumanConfirmation": true,
+    "marker": "{LOGIC_REVIEW: 资源加载器和旧 manifest 需要兼容别名}"
+  },
+  {
+    "oldContent": "主角-待机/开心/疲惫",
+    "newContent": null,
+    "changeType": "asset",
+    "reason": "当前图片表现原主角",
+    "requiresHumanConfirmation": true,
+    "marker": "{ASSET_REPLACE: 需用户提供或确认哥伦比娅三态立绘}"
+  },
+  {
+    "oldContent": "须弥草神/小吉祥草王",
+    "newContent": null,
+    "changeType": "character-world",
+    "reason": "原主角身份不可沿用为哥伦比娅设定",
+    "requiresHumanConfirmation": true,
+    "marker": "{PROTAGONIST_REWRITE: 等待哥伦比娅人物设定}"
+  },
+  {
+    "oldContent": "旅行者（照顾主角的人）",
+    "newContent": null,
+    "changeType": "relationship",
+    "reason": "关系对象与玩家身份不明确",
+    "requiresHumanConfirmation": true,
+    "marker": "{CHARACTER_RELATIONSHIP: 不能映射为哥伦比娅本人}"
+  },
+  {
+    "oldContent": "现实中国目的地 + 原神角色",
+    "newContent": null,
+    "changeType": "world",
+    "reason": "现有世界观边界冲突",
+    "requiresHumanConfirmation": true,
+    "marker": "{WORLD_CONFIRM: 决定保留现实地点、原神世界或建立经确认的新边界}"
+  },
+  {
+    "oldContent": "[object Object]",
+    "newContent": null,
+    "changeType": "text-error",
+    "reason": "源文本序列化错误",
+    "requiresHumanConfirmation": true,
+    "marker": "{TEXT_ERROR: 禁止猜测原文，必须回查来源}"
+  }
+]
