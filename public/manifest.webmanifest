@@ -1,0 +1,13 @@
+{
+  "name": "纳西妲的旅行",
+  "short_name": "纳西妲的旅行",
+  "start_url": "./开始游戏.html",
+  "display": "standalone",
+  "background_color": "#161512",
+  "theme_color": "#161512",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "./图片素材/图标-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./图片素材/图标-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
