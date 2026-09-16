@@ -1,5 +1,6 @@
-/* 纳西妲旅行 · L2 AI 增强层（DeepSeek BYOK）
- * 三层降级：模板保底 → AI 增强 → 失败静默回退模板。
+/* 哥伦比娅的旅行 · 可选 AI 接口占位
+ * 当前版本只启用完全离线的本地模板。
+ * 不在前端接收、保存或发送 API Key；未来联网功能必须通过安全后端代理。
  * 关键闸门 noNewFacts：AI 若编造了事实卡以外的地点/角色，直接判废。
  */
 (function (root) {
@@ -47,45 +48,9 @@
     ]);
   };
 
-  /** 调 DeepSeek（OpenAI 兼容 /chat/completions）
-   *  @param opts {json:bool, maxTokens:number, temperature:number} */
-  api.call = function (settings, messages, timeoutMs, opts) {
-    opts = opts || {};
-    var url = (settings.baseURL || 'https://api.deepseek.com').replace(/\/+$/, '') + '/chat/completions';
-    var body = {
-      model: settings.model || 'deepseek-chat',
-      messages: messages,
-      temperature: opts.temperature === undefined ? 1.15 : opts.temperature,
-      max_tokens: opts.maxTokens || 600,
-      stream: false
-    };
-    if (opts.json !== false) body.response_format = { type: 'json_object' };
-
-    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
-    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, timeoutMs || 25000);
-
-    return fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + settings.apiKey
-      },
-      body: JSON.stringify(body),
-      signal: ctrl ? ctrl.signal : undefined
-    }).then(function (r) {
-      return r.text().then(function (txt) {
-        if (!r.ok) {
-          var msg = 'HTTP ' + r.status;
-          try { msg += ' ' + (JSON.parse(txt).error.message || ''); } catch (e) { }
-          throw new Error(msg);
-        }
-        var data = U.tryJSON(txt, null);
-        if (!data || !data.choices || !data.choices[0]) throw new Error('返回格式异常');
-        return data.choices[0].message.content;
-      });
-    }).finally(function () {
-      clearTimeout(timer);
-    });
+  /** 前端直连已禁用，保留方法是为了不破坏旧调用点。 */
+  api.call = function () {
+    return Promise.reject(new Error('AI 功能尚未启用；需先配置安全后端代理。'));
   };
 
   /**
@@ -137,34 +102,7 @@
    */
   api.render = function (fact, settings, fallbackText) {
     var base = fallbackText || NT.text.templateRender(fact);
-    var st = settings || {};
-    if (!st.aiEnabled || !st.apiKey) {
-      return Promise.resolve(base);
-    }
-
-    var attempt = function (n) {
-      var messages = api.buildMessages(fact);
-      return api.call(st, messages, 25000).then(function (content) {
-        var obj = U.extractJSON(content);
-        if (!api.validate(obj, fact)) throw new Error('输出越界或格式不合规');
-        return {
-          source: 'deepseek',
-          diary: String(obj.diary).trim(),
-          postcardBack: String(obj.postcardBack).trim()
-        };
-      }).catch(function (err) {
-        if (n > 0) return attempt(n - 1);
-        throw err;
-      });
-    };
-
-    return attempt(1).catch(function (err) {
-      var out = {};
-      for (var k in base) out[k] = base[k];
-      out.source = 'template';
-      out.error = err && err.message ? err.message : String(err);
-      return out;
-    });
+    return Promise.resolve(base);
   };
 
   /* ---------------- AI 角色扮演聊天 ---------------- */
@@ -191,7 +129,7 @@
     lines.push('她现在在家里：' + st.name + '（位置：' + (spot ? spot.label : '') + '）。');
     var playing = NT.home.playingToy(save);
     if (playing) lines.push('她正在玩：' + playing.name + '。');
-    lines.push('家乡：' + NT.data.homeName(save.homeId) + '。');
+    lines.push('游戏所在地：' + NT.data.homeName(save.homeId) + '。');
     lines.push('已经带回来 ' + (save.album || []).length + ' 张明信片。');
     var ready = NT.farm.hasReady(save, Date.now());
     if (ready) lines.push('田里有东西熟了。');
@@ -211,54 +149,13 @@
    * @returns Promise<{text, source, error?}>
    */
   api.chat = function (save, playerText, history, fallback) {
-    var st = save.settings || {};
     var preset = { text: fallback, source: 'preset' };
-    if (!st.aiEnabled || !st.apiKey) return Promise.resolve(preset);
-
-    var messages = [{ role: 'system', content: NT.data.chatSystemPrompt }];
-    messages.push({
-      role: 'user',
-      content: api.chatContext(save) + '\n\n（以上是背景，不要直接复述。接下来正常对话。）'
-    });
-    messages.push({ role: 'assistant', content: '知道了。' });
-
-    // 最近几轮
-    var hist = (history || []).slice(-8);
-    for (var i = 0; i < hist.length; i++) {
-      messages.push({ role: hist[i].me ? 'user' : 'assistant', content: hist[i].text });
-    }
-    messages.push({ role: 'user', content: playerText });
-
-    var attempt = function (n) {
-      return api.call(st, messages, 20000, { json: false, maxTokens: 160, temperature: 1.05 })
-        .then(function (content) {
-          var t = String(content || '').trim()
-            .replace(/^["'「『]/, '').replace(/["'」』]$/, '').trim();
-          if (!api.checkChatText(t)) throw new Error('回复不合规');
-          return { text: t, source: 'ai' };
-        })
-        .catch(function (err) {
-          if (n > 0) return attempt(n - 1);
-          throw err;
-        });
-    };
-
-    return attempt(1).catch(function (err) {
-      var out = { text: fallback, source: 'preset', error: err && err.message ? err.message : String(err) };
-      return out;
-    });
+    return Promise.resolve(preset);
   };
 
   /** 测试连接 */
   api.test = function (settings) {
-    return api.call(settings, [
-      { role: 'system', content: '只输出 JSON。' },
-      { role: 'user', content: '输出 {"ok":true}' }
-    ], 15000).then(function (c) {
-      return { ok: true, raw: String(c).slice(0, 120) };
-    }).catch(function (e) {
-      return { ok: false, error: e && e.message ? e.message : String(e) };
-    });
+    return Promise.resolve({ ok: false, error: 'AI 功能尚未启用；需先配置安全后端代理。' });
   };
 
   NT.text.ai = api;

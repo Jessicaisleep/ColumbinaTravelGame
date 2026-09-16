@@ -24,7 +24,7 @@
   var NT = (root.NT = root.NT || {});
 
   NT.assetManifest = {
-    version: 3,
+    version: 4,
 
     /* 素材文件夹的名字（改名了才需要动这里，一般不用管） */
     dir: '图片素材',
@@ -48,23 +48,13 @@
      * 换地图：改这里 + src/data/destinations.js 里的地区列表。
      * ------------------------------------------------------------------- */
     backgrounds: {
-      beijing:     '场景-北京',
-      harbin:      '场景-哈尔滨',
-      hulunbuir:   '场景-呼伦贝尔',
-      turpan:      '场景-吐鲁番',
-      dunhuang:    '场景-敦煌',
-      nyingchi:    '场景-林芝',
-      chengdu:     '场景-成都',
-      xian:        '场景-西安',
-      zhangjiajie: '场景-张家界',
-      suzhou:      '场景-苏州',
-      hangzhou:    '场景-杭州',
-      xiamen:      '场景-厦门',
-      guilin:      '场景-桂林',
-      dali:        '场景-大理',
-      sanya:       '场景-三亚',
-      guangzhou:   '场景-广州',
-      mohe:        '场景-漠河'
+      mondstadt: '场景-蒙德',
+      liyue:      '场景-璃月',
+      inazuma:    '场景-稻妻',
+      sumeru:     '场景-须弥',
+      fontaine:   '场景-枫丹',
+      natlan:     '场景-纳塔',
+      nod_krai:   '场景-挪德卡莱'
     },
 
     /* ---------------------------------------------------------------------
@@ -74,13 +64,27 @@
      * ------------------------------------------------------------------- */
     companions: {
       paimon:     '配角-派蒙',
+      lauma:      '配角-菈乌玛',
+      sandrone:   '配角-桑多涅',
+      arlecchino: '配角-阿蕾奇诺',
+      flins:      '配角-菲林斯',
+      nefer:      '配角-奈芙尔',
+      aino:       '配角-爱诺',
+      ineffa:     '配角-伊涅芙',
+      dainsleif:  '配角-戴因斯雷布',
+      mera:       '配角-梅拉',
+      nuonuo_tota:'配角-努昂诺塔',
       collei:     '配角-柯莱',
       tighnari:   '配角-提纳里',
       cyno:       '配角-赛诺',
       nilou:      '配角-妮露',
       dehya:      '配角-迪希雅',
       klee:       '配角-可莉',
-      qiqi:       '配角-七七'
+      qiqi:       '配角-七七',
+      varka:      '配角-法尔伽',
+      nicole:     '配角-尼可',
+      durin:      '配角-杜林',
+      wanderer:   '配角-阿帽'
     },
 
     /* ---------------------------------------------------------------------
@@ -100,15 +104,16 @@
      * 可以只有一两件。**最多同时摆 5 件**，全部摆在右边的院子里。
      * ------------------------------------------------------------------- */
     toys: {
-      trampoline: '玩具-蹦床',
-      windmill:   '玩具-小风车',
-      pool:       '玩具-小水池',
-      lantern:    '玩具-小灯笼',
-      hammock:    '玩具-吊床',
-      ball:       '玩具-藤球',
-      sandbox:    '玩具-沙坑',
-      rug:        '玩具-地毯',
-      mobile:     '玩具-小挂饰'
+      moon_chess:      '玩具-月亮棋',
+      moon_chime:      '玩具-月灵风铃',
+      moon_pool:       '玩具-月影水池',
+      moon_lantern:    '玩具-月光灯',
+      hammock:         '玩具-吊床',
+      moon_canvas:     '玩具-月灵画板',
+      moon_harp:       '玩具-月灵琴',
+      moon_mosaic:     '玩具-月光矿石拼画',
+      frostfin_whale:  '玩具-霜鳍鲸咬咬玩具',
+      animal_headwear: '玩具-动物头饰'
     },
 
     /* 网页图标（做「添加到主屏幕」才需要）。tools/make-icon.html 可以自动生成。 */

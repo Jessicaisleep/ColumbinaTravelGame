@@ -1,5 +1,5 @@
-/* 纳西妲旅行 · 界面层
- * 家是一个 16:9 的全屏世界：纳西妲在里面实时走动做事，两块田直接画在画面里，点一下就操作。
+/* 哥伦比娅的旅行 · 界面层
+ * 家是一个 16:9 的全屏世界：哥伦比娅在里面实时走动做事，两块田直接画在画面里，点一下就操作。
  */
 (function (root) {
   'use strict';
@@ -253,21 +253,8 @@
   app.sendChat = function (playerText, presetReply) {
     app.chatLog.push({ me: true, text: playerText });
     NT.achievements.recordChat(app.save);
-    var st = app.save.settings;
-    if (!st.aiEnabled || !st.apiKey) {
-      app.chatLog.push({ me: false, text: presetReply, source: 'preset' });
-      app.render();
-      return;
-    }
-    app.chatPending = true;
+    app.chatLog.push({ me: false, text: presetReply, source: 'preset' });
     app.render();
-    // 历史里去掉刚 push 的这句
-    var hist = app.chatLog.slice(0, -1);
-    NT.text.ai.chat(app.save, playerText, hist, presetReply).then(function (r) {
-      app.chatPending = false;
-      app.chatLog.push({ me: false, text: r.text, source: r.source, error: r.error });
-      app.render();
-    });
   };
 
   /* ---------------- 行为 ---------------- */
@@ -507,21 +494,12 @@
   });
 
   app.autoLocate = function () {
-    var el = $('locate-result');
-    if (el) { el.textContent = '定位中…'; el.className = 'test-result'; }
-    NT.geo.detect().then(function (r) {
-      var o = $('locate-result');
-      if (r && r.error) {
-        if (o) { o.textContent = r.error; o.className = 'test-result bad'; }
-        return;
-      }
-      app.save.homeId = r.regionId;
-      app.save.homeChosen = true;
-      NT.store.save(app.save);
-      app.toast('家乡设为：' + r.regionName + (r.source === 'ip' ? '（IP 定位）' : '（浏览器定位）'));
-      app.screen = 'home';
-      app.render();
-    });
+    app.save.homeId = 'nod_krai';
+    app.save.homeChosen = true;
+    NT.store.save(app.save);
+    app.toast('游戏所在地：挪德卡莱');
+    app.screen = 'home';
+    app.render();
   };
 
   app.depart = function () {
@@ -552,43 +530,30 @@
 
   app.saveSettings = function () {
     var s = app.save.settings;
-    s.apiKey = (($('api-key') || {}).value || '').trim();
-    s.aiEnabled = !!($('ai-enabled') || {}).checked;
+    s.aiEnabled = false;
     var snd = $('sound-enabled');
     if (snd) { s.sound = !!snd.checked; NT.sfx.setEnabled(s.sound); }
     var vs = $('visitor-stay');
     if (vs) s.visitorStay = vs.value;
-    var hs = $('home-select');
-    if (hs && hs.value) { app.save.homeId = hs.value; app.save.homeChosen = true; }
+    app.save.homeId = 'nod_krai';
+    app.save.homeChosen = true;
     NT.store.save(app.save); app.toast('设置已保存'); app.render();
   };
 
   app.testApi = function () {
-    var key = (($('api-key') || {}).value || '').trim();
-    var out = $('api-test-result');
-    if (!key) { app.toast('请先填入 API Key'); return; }
-    if (out) { out.textContent = '测试中…'; out.className = 'test-result'; }
-    NT.text.ai.test({ apiKey: key, model: app.save.settings.model, baseURL: app.save.settings.baseURL })
-      .then(function (r) {
-        var o = $('api-test-result'); if (!o) return;
-        if (r.ok) { o.textContent = '连接成功，Key 可用。'; o.className = 'test-result ok'; }
-        else {
-          o.textContent = '连接失败：' + r.error + '（若是浏览器跨域限制，需要走本地代理或打包成 App）';
-          o.className = 'test-result bad';
-        }
-      });
+    app.toast('AI 功能尚未启用，后续需通过安全后端代理接入。');
   };
 
   app.resetAll = function () {
     app.save = NT.store.reset();
-    app.screen = 'chooseHome'; app.viewing = null; app.render(); app.toast('已清空');
+    app.screen = 'home'; app.viewing = null; app.render(); app.toast('已清空');
   };
 
   app.exportSave = function () {
     var blob = new Blob([NT.store.exportJSON(app.save)], { type: 'application/json' });
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'nahida-travel-save.json';
+    a.download = 'columbina-travel-save.json';
     document.body.appendChild(a); a.click();
     setTimeout(function () { document.body.removeChild(a); URL.revokeObjectURL(a.href); }, 800);
   };
@@ -649,7 +614,7 @@
     var M = {
       kitchen: { title: '厨房', body: app.viewKitchen },
       toys: { title: '玩具箱', body: app.viewToys },
-      chat: { title: app.chatTopic ? (NT.home.topicById(app.chatTopic) || {}).label || '聊聊' : '和纳西妲说说话', body: app.viewChat },
+      chat: { title: app.chatTopic ? (NT.home.topicById(app.chatTopic) || {}).label || '聊聊' : '和哥伦比娅说说话', body: app.viewChat },
       album: { title: '明信片册', body: app.viewAlbum },
       settings: { title: '设置', body: app.viewSettings },
       outdoor: { title: '出门', body: app.viewOutdoor },
@@ -686,21 +651,10 @@
   /* ---------------- 首次选家乡 ---------------- */
 
   app.viewChooseHome = function () {
-    var cities = NT.data.homeCities();
-    var list = cities.map(function (d) {
-      return '<button class="chip' + (app.save.homeId === d.id ? ' on' : '') +
-        '" data-act="pick-home" data-arg="' + d.id + '">' + d.name +
-        '<small>' + (d.isDestination ? dirName(d.bearing) : '城市') + '</small></button>';
-    }).join('');
     return '<div class="pad choose">' +
-      '<h2>她住在哪里？</h2>' +
-      '<div class="hint" style="margin-top:0">家乡决定"走多远"和"往哪个方向"。' +
-      '选一个离你近的，或者点下面的自动定位。共 ' + cities.length + ' 个可选。</div>' +
-      '<button class="btn-ghost" data-act="auto-locate" style="width:100%;margin-top:14px">自动定位</button>' +
-      '<div class="test-result" id="locate-result"></div>' +
-      '<div class="label">选一个家乡</div>' +
-      '<div class="chips regions">' + list + '</div>' +
-      '<div class="hint">这个选择之后可以在设置里改。</div>' +
+      '<h2>游戏所在地：挪德卡莱</h2>' +
+      '<div class="hint" style="margin-top:0">哥伦比娅从挪德卡莱的家园出发，前往提瓦特各地。本游戏不读取现实位置。</div>' +
+      '<button class="btn btn-primary" data-act="auto-locate" style="width:100%;margin-top:14px">进入家园</button>' +
       '</div>';
   };
 
@@ -940,7 +894,7 @@
     var s = app.save;
     var now = Date.now();
 
-    // 纳西妲的内容高度。0.22 是照着家里家具的比例定的（约为门高的一半、比桌高一头）
+    // 哥伦比娅的内容高度。0.22 是照着家里家具的比例定的（约为门高的一半、比桌高一头）
     var chH = H * 0.25;
 
     // --- 背景层（含田与玩具） ---
@@ -966,7 +920,7 @@
         NT.placeholder.homeWorld(bctx, W, H,
           { seed: NT.rng.hashSeed('home:' + s.homeId), fields: fields });
       }
-      // 玩具：尺寸按"相对纳西妲身高的倍数"来（见 data/home.js 的 toySizeRatio）
+      // 玩具：尺寸按"相对主角身高的倍数"来（见 data/home.js 的 toySizeRatio）
       (s.home.placed || []).forEach(function (p, i) {
         var slot = NT.data.toySlots[p.slot];
         if (!slot) return;
@@ -980,7 +934,7 @@
     }
     drawStageBg();
 
-    // --- 前景层（纳西妲），每帧重画 ---
+    // --- 前景层（哥伦比娅），每帧重画 ---
     var target = NT.home.spot(s);
     if (!app._anim) {
       app._anim = { x: target.x, y: target.y, facing: 1, phase: 0, last: now };
@@ -989,7 +943,7 @@
 
     var fctx = fg.getContext('2d');
     var st = NT.home.state(s);
-    var sprite = { hair: '#f4f2ea', dress: '#8ec96a', accent: '#f7fbe8', skin: '#ffe2cc', hat: 'leaf' };
+    var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
 
     /** 被戳之后的短动画：返回 {rot,sx,sy,dx,dy,flip} */
     function reaction(now2) {
@@ -1363,7 +1317,7 @@
         (have ? '<span class="own">已有 ' + have + '</span>' : '') + '</div>' +
         '<div class="dish-desc">' + esc(d.desc) + '</div>' +
         '<div class="dish-need">' + need + '</div>' +
-        '<div class="dish-eff">能走 ' + d.foodKm + ' 公里　·　' + effectText(d.effect) + '</div>' +
+        '<div class="dish-eff">提供 ' + d.foodKm + ' 旅途点　·　' + effectText(d.effect) + '</div>' +
         '<button class="btn-ghost" data-act="cook" data-arg="' + d.id + '"' + (can ? '' : ' disabled') + '>' +
         (can ? '做一份' : '食材不够') + '</button></div>';
     }).join('');
@@ -1507,7 +1461,7 @@
 
     // 她本人：画在她此刻站的地方
     var spot = NT.home.spot(s);
-    var sprite = { hair: '#f4f2ea', dress: '#8ec96a', accent: '#f7fbe8', skin: '#ffe2cc', hat: 'leaf' };
+    var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
     var mood = st.lie ? 'tired' : st.mood;
     if (!(A && A.drawNahida(ctx, W * spot.x, H * spot.y, chH, false, mood))) {
       NT.placeholder.chibi(ctx, W * spot.x, H * spot.y, chH, sprite, mood, false);
@@ -1523,22 +1477,22 @@
 
   app.viewChat = function () {
     var s = app.save;
-    var aiOn = !!(s.settings.aiEnabled && s.settings.apiKey);
+    var aiOn = false;
     if (!app.chatTopic) {
       var topics = NT.data.chatTopics.map(function (t) {
         return '<button class="topic" data-act="topic" data-arg="' + t.id + '">' + t.label + '</button>';
       }).join('');
-      return app.header('和纳西妲说说话', 'home') +
+      return app.header('和哥伦比娅说说话', 'home') +
         '<div class="pad">' +
         '<div class="chat-stage" id="chat-stage"></div>' +
         '<div class="say-bubble">' + esc(NT.home.hello(s, s.home.nahida.since)) + '</div>' +
         '<div class="label">聊点什么</div><div class="topics">' + topics + '</div>' +
         '<div class="hint">' + (aiOn
-          ? '已接入 AI —— 她会按自己的人设回应你，也会记得刚才聊了什么。'
-          : '现在是预设对话。在设置里接入 API 之后，她会由 AI 扮演，回应跟着内容走。') +
+          ? '已接入可选对话服务。'
+          : '当前使用离线预设对话，无需联网即可交流。') +
         '</div></div>';
     }
-    var aiOn2 = !!(s.settings.aiEnabled && s.settings.apiKey);
+    var aiOn2 = false;
     var topic = NT.home.topicById(app.chatTopic);
     var log = app.chatLog.map(function (m) {
       return '<div class="msg ' + (m.me ? 'me' : 'her') + '">' + esc(m.text) +
@@ -1592,7 +1546,7 @@
           var tier = NT.data.distanceTier(cost);
           return '<button class="chip' + (app.outRegion === d.id ? ' on' : '') +
             '" data-act="out-region" data-arg="' + d.id + '">' + d.name +
-            '<small>' + tier.name + ' · ' + cost + 'km</small></button>';
+            '<small>' + tier.name + ' · ' + cost + ' 旅途点</small></button>';
         }).join('') + '</div>';
     } else if (app.outMode === 'bearing') {
       detail = '<div class="label">往哪边走</div><div class="chips">' +
@@ -1612,7 +1566,7 @@
       var have = id === 'none' ? '∞' : ('×' + s.inventory.dishes[id]);
       return '<button class="chip' + (app.outDish === id ? ' on' : '') +
         '" data-act="out-dish" data-arg="' + id + '">' + d.name +
-        '<small>' + have + ' · 能走 ' + d.foodKm + 'km</small></button>';
+        '<small>' + have + ' · 提供 ' + d.foodKm + ' 旅途点</small></button>';
     }).join('');
 
     var rareIds = Object.keys(s.inventory.rare);
@@ -1621,7 +1575,7 @@
         var r = NT.data.rareDropById(id);
         return '<button class="chip' + (app.outRares.indexOf(id) >= 0 ? ' on' : '') +
           '" data-act="out-rare" data-arg="' + id + '">' + r.name +
-          '<small>×' + s.inventory.rare[id] + ' · +' + r.foodKm + 'km</small></button>';
+          '<small>×' + s.inventory.rare[id] + ' · +' + r.foodKm + ' 旅途点</small></button>';
       }).join('')
       : '<span class="muted">还没有稀有道具。它们是<b>收获作物时随机掉落</b>的，' +
         '先去院子里的田种点东西。「仓库」里能看到详细的掉落和效果。</span>';
@@ -1631,7 +1585,7 @@
 
     return app.header('出门', 'home') + '<div class="pad">' +
       '<div class="hint" style="margin:0 0 14px">家乡：<b>' + esc(homeName) + '</b>　' +
-      '这次能走 <b>' + totalKm + '</b> 公里（' + NT.data.distanceTier(totalKm).name + '）</div>' +
+      '这次拥有 <b>' + totalKm + '</b> 旅途点（' + NT.data.distanceTier(totalKm).name + '）</div>' +
       '<div class="label">怎么走</div><div class="chips">' + modes + '</div>' + detail +
       '<div class="label">带什么吃的</div><div class="chips">' + dishes + '</div>' +
       '<div class="label">带上道具（最多两件）</div><div class="chips">' + rares + '</div>' +
@@ -1684,8 +1638,8 @@
       ' 回来　·　关掉网页也算数，到点回来看就好</div>' +
       '</div>' +
       '<div class="wait-status">' + U.vagueWait(remain, t.durationMs) + '</div>' +
-      '<div class="wait-detail">带的 ' + esc(t.dishName) + ' · 能走 ' + t.journey.budgetKm + ' 公里　' +
-      '目标 ' + esc(res.target ? res.target.name : '') + '（' + t.journey.costKm + 'km）</div>' +
+      '<div class="wait-detail">带的 ' + esc(t.dishName) + ' · ' + t.journey.budgetKm + ' 旅途点　' +
+      '目标 ' + esc(res.target ? res.target.name : '') + '（' + t.journey.costKm + ' 旅途点）</div>' +
       '<div class="label" style="text-align:left">路上（已经发生的）</div>' +
       '<div class="steps">' + log + '</div>' +
       '<div class="btn-row">' +
@@ -1734,7 +1688,7 @@
       return '<div class="step k-' + (s.kind || 'none') + '">' +
         '<span class="step-name">' + esc(s.name) + '</span>' +
         '<span class="step-text">' + esc(s.text) + '</span>' +
-        (s.delta ? '<span class="step-delta">' + (s.delta > 0 ? '+' : '') + s.delta + 'km</span>' : '') +
+        (s.delta ? '<span class="step-delta">' + (s.delta > 0 ? '+' : '') + s.delta + ' 旅途点</span>' : '') +
         '</div>';
     }).join('');
 
@@ -1751,8 +1705,8 @@
       '<span class="outcome o-' + (j.soaked ? 'bad' : j.reached ? 'ok' : 'warn') + '">' + outcome + '</span>' +
       '<span class="dest">' + esc(res.destination ? res.destination.fullName : '') + '</span>' +
       '</div>' +
-      '<div class="journey-stat">走了 ' + (j.traveledKm || 0) + ' km / 预算 ' + (j.budgetKm || 0) +
-      ' km　·　' + (t.durationMs / 3600e3).toFixed(1) + ' 小时</div>' +
+      '<div class="journey-stat">累计 ' + (j.traveledKm || 0) + ' 旅途点 / 预算 ' + (j.budgetKm || 0) +
+      ' 旅途点　·　' + (t.durationMs / 3600e3).toFixed(1) + ' 小时</div>' +
       toyHtml + rareHtml +
       '<div class="diary" id="diary-text">' + esc(t.text.diary) + '</div>' +
       '<div class="src" id="text-src"></div>' +
@@ -1809,7 +1763,7 @@
       srcEl.className = 'src ' + (t.text.source === 'deepseek' ? 'src-ai' : '');
     }
     var st = app.save.settings;
-    if (st.aiEnabled && st.apiKey && t.text.source !== 'deepseek') {
+    if (false && t.text.source !== 'deepseek') {
       var diaryEl = $('diary-text'); if (!diaryEl) return;
       diaryEl.classList.add('loading');
       NT.text.ai.render(t, st, t.text).then(function (out) {
@@ -1884,15 +1838,9 @@
   app.viewSettings = function () {
     var st = app.save.settings;
     var sizeKb = (NT.store.sizeOf(app.save) / 1024).toFixed(1);
-    var homes = NT.data.homeCities().map(function (d) {
-      return '<option value="' + d.id + '"' + (app.save.homeId === d.id ? ' selected' : '') + '>' + d.name + '</option>';
-    }).join('');
     return app.header('设置', 'home') + '<div class="pad">' +
-      '<div class="group"><div class="label">家乡</div>' +
-      '<div class="hint">决定"走多远"和方向。换家乡会改变所有行程距离。</div>' +
-      '<select class="input" id="home-select">' + homes + '</select>' +
-      '<button class="btn-ghost" data-act="auto-locate" style="width:100%">自动定位</button>' +
-      '<div class="test-result" id="locate-result"></div></div>' +
+      '<div class="group"><div class="label">游戏所在地</div>' +
+      '<div class="hint"><b>挪德卡莱</b>。这是提瓦特抽象地图的固定出发点，游戏不读取现实定位。</div></div>' +
       '<div class="group"><div class="label">音效</div>' +
       '<div class="hint">音效是用 Web Audio 现场合成的，不需要任何音频素材文件。</div>' +
       '<label class="switch"><input type="checkbox" id="sound-enabled"' +
@@ -1941,7 +1889,7 @@
         }
         if (rep.noGeo && rep.noGeo.length) {
           lines.push('缺坐标的：' + rep.noGeo.join('、') +
-            '（在 destinations.js 里给它们写上 lat / lng 才会算对距离）');
+            '（在 destinations.js 里补充抽象地图坐标后才能计算旅途点）');
         }
         if (!lines.length) return '';
         return '<div class="group"><div class="label">素材体检</div>' +
@@ -1949,15 +1897,9 @@
             return '<div class="hint warn-line">· ' + esc(t) + '</div>';
           }).join('') + '</div>';
       })() +
-      '<div class="group"><div class="label">AI 文案（可选）</div>' +
-      '<div class="hint">不填也能玩。Key 只保存在你自己的浏览器里，不会上传到任何服务器。</div>' +
-      '<label class="switch"><input type="checkbox" id="ai-enabled"' + (st.aiEnabled ? ' checked' : '') + '>' +
-      '<span>启用 AI 文案</span></label>' +
-      '<input class="input" id="api-key" type="password" placeholder="DeepSeek API Key (sk-...)" value="' +
-      esc(st.apiKey) + '">' +
-      '<div class="row"><button class="btn-ghost" data-act="test-api">测试连接</button>' +
-      '<button class="btn btn-primary" data-act="save-settings">保存</button></div>' +
-      '<div class="test-result" id="api-test-result"></div></div>' +
+      '<div class="group"><div class="label">AI 文案（未启用）</div>' +
+      '<div class="hint">核心玩法和对话可完全离线运行。正式接入 AI 时必须使用安全后端代理；前端、URL、本地设置和存档都不保存 API Key。</div>' +
+      '<button class="btn btn-primary" data-act="save-settings">保存设置</button></div>' +
       '<div class="group"><div class="label">数据</div>' +
       '<div class="hint">明信片 ' + app.save.album.length + ' 张 · 玩具 ' + (app.save.toys || []).length +
       ' 件 · 存档 ' + sizeKb + ' KB' +
@@ -1977,10 +1919,10 @@
     s.inventory.ingredients = { potato: 4, wheat: 3, soybean: 5, rice: 6, lotus: 2, waterchestnut: 3, corn: 2, tomato: 2, wildrice: 1, watercaltrop: 1 };
     s.inventory.dishes = { riceball: 2, potatocake: 1, lotus_soup: 1, harvest: 1 };
     s.inventory.rare = { clover4: 2, windchime: 1, moonstone: 1, luckycoin: 1 };
-    s.toys = ['windmill', 'lantern', 'ball', 'trampoline', 'rug', 'mobile'];
+    s.toys = ['moon_chess', 'moon_chime', 'moon_pool', 'moon_lantern', 'hammock', 'moon_canvas'];
     // 走正规入口摆放，槽位会自动匹配室内/室外（不要直接写 slot，否则可能摆错地方）
     s.home.placed = [];
-    ['rug', 'mobile', 'lantern', 'windmill', 'ball', 'trampoline'].forEach(function (id) {
+    ['moon_chess', 'moon_chime', 'moon_pool', 'moon_lantern', 'hammock', 'moon_canvas'].forEach(function (id) {
       NT.home.placeToy(s, id);
     });
     var now = Date.now();

@@ -1,4 +1,4 @@
-/* 纳西妲旅行 · 成就定义
+/* 哥伦比娅的旅行 · 成就定义
  * 每条成就一个 test(stats, save) 判定；判定为真且尚未解锁就解锁。
  * icon 用 emoji，不需要图片素材。
  */
@@ -31,27 +31,33 @@
       desc: '累计出门 10 次。', test: function (s) { return s.tripCount >= 10; } },
     { id: 'trip_50', group: 'travel', icon: '🧭', name: '老练的旅人',
       desc: '累计出门 50 次。', test: function (s) { return s.tripCount >= 50; } },
-    { id: 'local_1', group: 'travel', icon: '🏠', name: '就在家门口',
-      desc: '选自己的家乡出门一次（1 小时的行程）。',
+    { id: 'local_1', group: 'travel', icon: '🏠', name: '月光起点',
+      desc: '在挪德卡莱完成一次家园周边的短途出行。',
       test: function (s) { return s.localTrips >= 1; } },
-    { id: 'region_5', group: 'travel', icon: '🗺️', name: '五方',
-      desc: '去过 5 个不同的地区。', test: function (s) { return countKeys(s.byDestination) >= 5; } },
-    { id: 'region_all', group: 'travel', icon: '🌏', name: '走遍全国',
-      desc: '把所有地区都走一遍。',
+    { id: 'region_5', group: 'travel', icon: '🗺️', name: '五域见闻',
+      desc: '记录 5 个不同提瓦特区域的旅途。', test: function (s) { return countKeys(s.byDestination) >= 5; } },
+    { id: 'region_all', group: 'travel', icon: '🌏', name: '七域见闻',
+      desc: '在七个提瓦特区域都留下旅途记录。',
       test: function (s) { return countKeys(s.byDestination) >= (NT.data.destinations || []).length; } },
-    { id: 'km_1000', group: 'travel', icon: '🚶', name: '千里之行',
-      desc: '单次行程走满 1000 公里。', test: function (s) { return s.maxTravelKm >= 1000; } },
+    { id: 'km_1000', group: 'travel', icon: '🚶', name: '跨域之行',
+      desc: '单次行程累计 1000 旅途点。', test: function (s) { return s.maxTravelKm >= 1000; } },
     { id: 'km_2500', group: 'travel', icon: '🏔️', name: '长途跋涉',
-      desc: '单次行程走满 2500 公里。', test: function (s) { return s.maxTravelKm >= 2500; } },
-    { id: 'reach_mohe', group: 'travel', icon: '❄️', name: '抵达最北',
-      desc: '走到漠河。', test: function (s) { return (s.byDestination.mohe || 0) > 0; } },
-    { id: 'reach_kanas', group: 'travel', icon: '🐟', name: '西北角',
-      desc: '走到喀纳斯。', test: function (s) { return (s.byDestination.kanas || 0) > 0; } },
-    { id: 'reach_three', group: 'travel', icon: '🧳', name: '天涯海角',
-      desc: '漠河、喀纳斯、三亚都去过。',
+      desc: '单次行程累计 2500 旅途点。', test: function (s) { return s.maxTravelKm >= 2500; } },
+    { id: 'reach_mohe', group: 'travel', icon: '❄️', name: '月海之外',
+      desc: '从挪德卡莱抵达任一外域。', test: function (s) {
+        return ['mondstadt', 'liyue', 'inazuma', 'sumeru', 'fontaine', 'natlan']
+          .some(function (id) { return (s.byDestination[id] || 0) > 0; });
+      } },
+    { id: 'reach_kanas', group: 'travel', icon: '🐟', name: '七域回响',
+      desc: '分别记录过蒙德、璃月与须弥的旅途。', test: function (s) {
+        return (s.byDestination.mondstadt || 0) > 0 && (s.byDestination.liyue || 0) > 0 &&
+               (s.byDestination.sumeru || 0) > 0;
+      } },
+    { id: 'reach_three', group: 'travel', icon: '🧳', name: '跨海而行',
+      desc: '稻妻、枫丹、纳塔都去过。',
       test: function (s) {
-        return (s.byDestination.mohe || 0) > 0 && (s.byDestination.kanas || 0) > 0 &&
-               (s.byDestination.sanya || 0) > 0;
+        return (s.byDestination.inazuma || 0) > 0 && (s.byDestination.fontaine || 0) > 0 &&
+               (s.byDestination.natlan || 0) > 0;
       } },
 
     /* ---------- 明信片 ---------- */
@@ -94,8 +100,11 @@
     { id: 'friend_5', group: 'friend', icon: '👥', name: '五位同行',
       desc: '和 5 个不同的同伴一起旅行过。', test: function (s) { return countKeys(s.byCompanion) >= 5; } },
     { id: 'friend_all', group: 'friend', icon: '🎊', name: '全员同行',
-      desc: '和所有同伴都同行过。',
-      test: function (s) { return countKeys(s.byCompanion) >= (NT.data.companions || []).length; } },
+      desc: '和所有旅途偶遇同伴都同行过。',
+      test: function (s) {
+        var list = NT.data.encounterCompanions ? NT.data.encounterCompanions() : (NT.data.companions || []);
+        return list.length > 0 && list.every(function (c) { return (s.byCompanion[c.id] || 0) > 0; });
+      } },
 
     /* ---------- 家 ---------- */
     { id: 'toy_1', group: 'home', icon: '🧸', name: '第一件玩具',

@@ -202,7 +202,7 @@
   assets.bg = function (destId) { return ready('bg', destId); };
   assets.home = function () { return ready('home', 'home'); };
   assets.nahida = function (mood) { return ready('nahida', mood); };
-  /** 纳西妲任意一张可用立绘（优先指定姿态） */
+  /** 主角任意一张可用立绘（方法名保留用于旧版兼容） */
   assets.nahidaAny = function (mood) {
     return ready('nahida', mood) || ready('nahida', 'idle') ||
            ready('nahida', 'happy') || ready('nahida', 'tired');
@@ -317,7 +317,10 @@
       rarity: 'N',
       weight: 10,
       auto: true,                      // 标记：这条是从素材清单自动生成的
-      callNahida: '纳西妲',
+      callNahida: '哥伦比娅',
+      callColumbina: '哥伦比娅',
+      visitor: false,
+      encounter: true,
       traits: ['路过的'],
       catchphrases: ['你好。', '……嗯。'],
       meetLines: AUTO_MEET,

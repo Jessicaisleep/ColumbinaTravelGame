@@ -1,5 +1,5 @@
 // 第一阶段最小安全 Service Worker：只缓存同源静态 GET，不缓存存档或第三方 API。
-const CACHE_NAME = 'nahida-travel-static-v1';
+const CACHE_NAME = 'columbina-travel-static-v2';
 self.addEventListener('install', (event) => { self.skipWaiting(); event.waitUntil(Promise.resolve()); });
 self.addEventListener('activate', (event) => {
   event.waitUntil(caches.keys().then((keys) => Promise.all(

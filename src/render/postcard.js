@@ -1,4 +1,4 @@
-/* 纳西妲旅行 · 明信片合成管线
+/* 哥伦比娅的旅行 · 明信片合成管线
  * 图层顺序（自下而上）：
  *   背景 → 昼夜/天气调色 → 天气粒子 → 角色投影 → 角色立绘 → 贴纸
  *   → 飘浮物 → 统一调色 → 颗粒 → 暗角 → 画框 → 邮戳 → 手写短句 → 地点/日期
@@ -150,8 +150,8 @@
       }
     }
 
-    // 纳西妲（主角）
-    var nahidaSprite = { hair: '#f4f2ea', dress: '#8ec96a', accent: '#f7fbe8', skin: '#ffe2cc', hat: 'leaf' };
+    // 哥伦比娅（主角）；实图缺失时才使用这组占位配色。
+    var nahidaSprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
     var nOk = A && A.drawNahida(sctx, charX, feetY, charH, pres.charFlip, fact.moodId);
     if (!nOk) {
       PH.chibi(sctx, charX, feetY, charH, nahidaSprite, fact.moodId, pres.charFlip);

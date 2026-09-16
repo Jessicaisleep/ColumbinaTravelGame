@@ -1,4 +1,4 @@
-/* 纳西妲旅行 · 家的系统
+/* 哥伦比娅的旅行 · 家的系统
  * 一个 16:9 的全屏世界：她被看到在做什么、走到哪里；玩具摆在哪里；交流。
  */
 (function (root) {
@@ -14,7 +14,7 @@
     return R.hashSeed(a.join(':'));
   }
 
-  /* ---------------- 纳西妲的状态机 ---------------- */
+  /* ---------------- 哥伦比娅的状态机 ---------------- */
 
   function stateDurationMs(state, seed) {
     var r = R.mulberry32(hash('dur', state.id, seed));
@@ -421,9 +421,9 @@
     var st = NT.data.visitorById(v.stateId);
     var c = home.visitorCompanion(save, now);
     var r = R.mulberry32(hash('vline', v.since || v.arrivedAt, v.stateId));
-    // 偶尔用一句这个角色自己的口头禅，其余用通用的"客人"台词
-    if (c && c.catchphrases && c.catchphrases.length && r() < 0.3) {
-      return U.pick(r, c.catchphrases);
+    // 优先使用角色专属互动文案；通用状态台词只作为回退。
+    if (c && c.affinityLines && c.affinityLines.length && r() < 0.72) {
+      return U.pick(r, c.affinityLines);
     }
     return U.pick(r, st.lines);
   };
@@ -432,6 +432,8 @@
     var v = home.visitor(save, now);
     if (!v) return '';
     var r = R.mulberry32(hash('varrive', v.arrivedAt));
+    var c = home.visitorCompanion(save, now);
+    if (c && c.meetLines && c.meetLines.length) return U.pick(r, c.meetLines);
     return U.pick(r, NT.data.visitorArrive);
   };
 
@@ -535,7 +537,7 @@
     var r = R.mulberry32(hash('visit', now, save.createdAt));
     if (r() >= (VC.chance || 0.24)) return out;
 
-    var list = NT.data.companions || [];
+    var list = NT.data.visitingCompanions ? NT.data.visitingCompanions() : (NT.data.companions || []);
     if (!list.length) return out;
     var comp = list[Math.floor(r() * list.length) % list.length];
 
@@ -555,9 +557,11 @@
   /** 让自检和调试能手动放一位客人进来 */
   home.debugAddVisitor = function (save, companionId, now) {
     now = now || Date.now();
-    var list = NT.data.companions || [];
+    var list = NT.data.visitingCompanions ? NT.data.visitingCompanions() : (NT.data.companions || []);
     if (!list.length) return null;
-    var comp = companionId ? NT.data.companionById(companionId) : list[0];
+    var comp = companionId
+      ? list.filter(function (c) { return c.id === companionId; })[0]
+      : list[0];
     if (!comp) return null;
     save.home.visitor = {
       companionId: comp.id,

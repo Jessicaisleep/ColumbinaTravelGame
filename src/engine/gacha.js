@@ -107,7 +107,7 @@
     if (!willMeet) return null;
 
     var pool = [];
-    var list = NT.data.companions;
+    var list = NT.data.encounterCompanions ? NT.data.encounterCompanions() : NT.data.companions;
     for (var c = 0; c < list.length; c++) {
       var comp = list[c];
       var w = comp.weight;

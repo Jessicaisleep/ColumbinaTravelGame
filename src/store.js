@@ -1,4 +1,4 @@
-/* 纳西妲旅行 · 存档
+/* 哥伦比娅的旅行 · 存档
  * 存档里不存图片：明信片由事实卡确定性重绘。
  */
 (function (root) {
@@ -20,10 +20,9 @@
       createdAt: Date.now(),
       lastSeenAt: Date.now(),
 
-      /** 家乡：行程距离与方向的基准 */
-      homeId: 'beijing',
-      /** 是否已经选过家乡 */
-      homeChosen: false,
+      /** 游戏所在地固定为挪德卡莱 */
+      homeId: 'nod_krai',
+      homeChosen: true,
 
       activeTrip: null,
       album: [],
@@ -58,7 +57,7 @@
 
       settings: {
         aiEnabled: false,
-        apiKey: '',
+        /** AI 仅保留功能开关；禁止把 API Key 写入存档或 localStorage。 */
         model: 'deepseek-chat',
         baseURL: 'https://api.deepseek.com',
         sound: true,
@@ -90,10 +89,15 @@
     if (!Array.isArray(s.album)) s.album = [];
     if (!Array.isArray(s.toys)) s.toys = [];
     if (!Array.isArray(s.home.placed)) s.home.placed = [];
+    /* 旧版现实地点存档迁移：家园统一回到挪德卡莱。 */
+    if (!NT.data.destinationById || !NT.data.destinationById(s.homeId)) s.homeId = 'nod_krai';
+    s.homeChosen = true;
+    if (s.settings && Object.prototype.hasOwnProperty.call(s.settings, 'apiKey')) delete s.settings.apiKey;
     return s;
   };
 
   store.save = function (s) {
+    if (s.settings && Object.prototype.hasOwnProperty.call(s.settings, 'apiKey')) delete s.settings.apiKey;
     var raw = JSON.stringify(s);
     if (usingMemory) { memory[C.SAVE_KEY] = raw; return true; }
     if (!lsSet(C.SAVE_KEY, raw)) {

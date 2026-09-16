@@ -1,6 +1,5 @@
-/* 纳西妲旅行 · 目的地 = 中国各地区
- * 每个地区带三类内容：景观 / 美食 / 游玩，旅行时从中抽取，组成明信片内容。
- * bearing 用于"方向"选择（n/s/e/w/c），tags 驱动程序化地标绘制。
+/* 哥伦比娅的旅行 · 提瓦特区域
+ * mapX/mapY 是游戏内抽象地图坐标，仅用于计算旅途成本，不代表现实经纬度。
  */
 (function (root) {
   'use strict';
@@ -9,411 +8,178 @@
 
   NT.data.destinations = [
     {
-      id: 'beijing', name: '北京', fullName: '北京·胡同与城墙',
-      bearing: 'n', desc: '灰墙一直延伸到看不见的地方。风把树影吹得晃来晃去。',
-      tags: ['city', 'ancient'], rarity: 'N', weight: 12,
-      weatherCompat: ['clear', 'cloudy', 'wind'], anchorY: 0.74, depthScale: 1.00, stampHue: 0,
-      palette: { sky: ['#c9d8e8', '#eaf1f7'], far: '#9aa8b8', mid: '#7d848e', near: '#5a5f68', ground: '#8d8478' },
+      id: 'mondstadt', name: '蒙德', fullName: '蒙德·风与诗歌的国度',
+      bearing: 'w', mapX: 2, mapY: 5, lat: 2, lng: 5, remoteness: 1.0,
+      desc: '风、诗歌与城邦生活交织的地方。歌声会沿着道路去往很远的地方。',
+      tags: ['mondstadt', 'wind', 'city', 'plain', 'poetry'], rarity: 'N', weight: 12,
+      weatherCompat: ['clear', 'cloudy', 'wind'], anchorY: 0.73, depthScale: 1,
+      stampHue: 205, palette: { sky: ['#9ed4ef', '#eaf7ff'], far: '#9db9bd', mid: '#6d9d82', near: '#47745d', ground: '#729b68' },
       arriveLines: [
-        '灰墙一直延伸到看不见的地方，墙根蹲着一只晒太阳的猫。',
-        '胡同很窄，两边门墩上的狮子被摸得发亮。',
-        '风把树影吹得晃来晃去，我在墙根站了一会儿。'
+        '风从很远的地方来，带着歌声，也带着我还没听过的故事。',
+        '这里的风不要求谁跟随它。难怪人们把自由写进歌里。',
+        '（抬头听了一会儿）旋律被风带走，又从另一条街回来。'
       ],
       scenery: [
-        { name: '红墙根下', desc: '墙是那种暗红，被雨淋过的地方颜色更深一些。', sticker: 'pagoda' },
-        { name: '城墙上的风', desc: '站在上面，风很大，能看见很远的地方。', sticker: 'map' }
+        { name: '风中的城与原野', desc: '风穿过城门和草地，远处的风车缓慢转动。', sticker: 'compass' },
+        { name: '诗与歌的夜晚', desc: '人们围坐在灯下，把旅途写成新的歌。', sticker: 'star' }
       ],
       food: [
-        { name: '吃了烤鸭', desc: '皮很脆，卷上薄饼和葱丝，一口下去有点烫。', sticker: 'dumpling' },
-        { name: '喝了一碗豆汁', desc: '味道很怪。喝第二口的时候好像明白了一点。', sticker: 'bowl' }
+        { name: '分享了一份蒙德点心', desc: '味道轻快，适合一边听故事一边慢慢吃。', sticker: 'candy' },
+        { name: '喝了清香的饮品', desc: '风把香气吹散了一点，入口反而更柔和。', sticker: 'tea' }
       ],
       play: [
-        { name: '放了一只风筝', desc: '线绷得很紧，抬头看久了脖子会酸。', sticker: 'kite' },
-        { name: '逛了半天胡同', desc: '没什么目的，只是走。走着走着天就黑了。', sticker: 'compass' }
+        { name: '听了一首风中的歌', desc: '最后一个音结束后，风还替它延长了一会儿。', sticker: 'bell' },
+        { name: '沿着风的方向散步', desc: '没有急着抵达，只把沿路的故事记下来。', sticker: 'map' }
       ]
     },
     {
-      id: 'harbin', name: '哈尔滨', fullName: '哈尔滨·冰城',
-      bearing: 'n', desc: '冷得说话都会冒白气。屋顶积了厚厚一层雪，边缘圆圆的。',
-      tags: ['snow', 'city'], rarity: 'R', weight: 10,
-      weatherCompat: ['snow', 'cloudy', 'clear'], anchorY: 0.72, depthScale: 1.02, stampHue: 205,
-      palette: { sky: ['#c6dcf0', '#eef5fc'], far: '#a8c0d6', mid: '#8098b0', near: '#5b7288', ground: '#e8f0f8' },
+      id: 'liyue', name: '璃月', fullName: '璃月·山海与契约之地',
+      bearing: 's', mapX: 6, mapY: 8, lat: 6, lng: 8, remoteness: 1.05,
+      desc: '山海相接、重视契约与历史的土地。旧日故事也在普通人的一天里延续。',
+      tags: ['liyue', 'mountain', 'sea', 'city', 'contract'], rarity: 'R', weight: 10,
+      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.72, depthScale: 1.03,
+      stampHue: 38, palette: { sky: ['#d7c18b', '#f7edcf'], far: '#b99a68', mid: '#8d7555', near: '#65513e', ground: '#8b7659' },
       arriveLines: [
-        '冷得说话都会冒白气，我把围巾往上拉了拉。',
-        '屋顶积了厚厚一层雪，边缘圆圆的，像盖了糖霜。',
-        '江面冻住了，有人在上面走出了一条路。'
+        '山与海在这里彼此守望。很久以前的约定，也许就是这样留下来的。',
+        '神明的故事很长，人的一天却也有值得记住的重量。',
+        '（望向远处的灯火）这里把承诺写进石头，也写进日常。'
       ],
       scenery: [
-        { name: '结了冰的江', desc: '冰面底下有气泡，一层一层的，像被冻住的时间。', sticker: 'snowflake' },
-        { name: '雪里的屋顶', desc: '一排屋顶全是白的，烟囱冒出的气也是白的。', sticker: 'snowflake' }
+        { name: '山海之间', desc: '高处能看见水路与层叠山影，一直延伸到云下。', sticker: 'stone' },
+        { name: '灯火中的港城', desc: '灯一盏盏亮起来，像把归途标在夜色里。', sticker: 'lantern' }
       ],
       food: [
-        { name: '吃了一份锅包肉', desc: '外壳是酸的，咬开之后里面很烫。', sticker: 'bowl' },
-        { name: '啃了一根冰棍', desc: '越冷越想吃，这个道理我到现在也没想明白。', sticker: 'icecream' }
+        { name: '尝了璃月风味的热食', desc: '香气很足，适合在走过山路后慢慢分享。', sticker: 'bowl' },
+        { name: '带回一份精致点心', desc: '形状像小小的月相，月灵围着看了很久。', sticker: 'dumpling' }
       ],
       play: [
-        { name: '看了冰灯', desc: '冰里冻着灯，光是透出来的，不是照出来的。', sticker: 'lantern' },
-        { name: '摔了一跤', desc: '不疼，但是站起来的时候有点不好意思。', sticker: 'star' }
+        { name: '听人讲了一段旧契约', desc: '故事已经很久，却仍有人记得承诺为何开始。', sticker: 'book' },
+        { name: '沿着山海路线访古', desc: '石刻有些模糊，剩下的部分仍足够让人停步。', sticker: 'map' }
       ]
     },
     {
-      id: 'hulunbuir', name: '呼伦贝尔', fullName: '呼伦贝尔·草原',
-      bearing: 'n', desc: '草一直铺到天边。云在天上跑，影子在草上跑。',
-      tags: ['plain', 'wind'], rarity: 'R', weight: 10,
-      weatherCompat: ['clear', 'cloudy', 'wind'], anchorY: 0.70, depthScale: 0.98, stampHue: 120,
-      palette: { sky: ['#a8d8f0', '#dff0fa'], far: '#a8c8b0', mid: '#7fae6a', near: '#5c8a4a', ground: '#6f9a55' },
+      id: 'inazuma', name: '稻妻', fullName: '稻妻·雷光与群岛',
+      bearing: 'e', mapX: 11, mapY: 7, lat: 11, lng: 7, remoteness: 1.25,
+      desc: '群岛、雷光与漫长记忆构成的国度。海让岛屿分开，也让航路指向相遇。',
+      tags: ['inazuma', 'island', 'sea', 'thunder', 'sakura', 'memory'], rarity: 'R', weight: 9,
+      weatherCompat: ['clear', 'cloudy', 'rain', 'wind'], anchorY: 0.7, depthScale: 1.03,
+      stampHue: 285, palette: { sky: ['#b9a6dc', '#eee8fb'], far: '#8d82b0', mid: '#675c91', near: '#493e6e', ground: '#75658f' },
       arriveLines: [
-        '草一直铺到天边，云在天上跑，影子就在草上跑。',
-        '走了很久景色都没变，回头一看，帐篷已经很小了。',
-        '这里的风是整片的，不是一阵一阵的。'
+        '海把岛屿分开，又让每一条航路都指向相遇。',
+        '雷光只亮了一瞬，却把远处的山照得很清楚。',
+        '短暂并不等于没有留下痕迹。花瓣落下时，我这样想。'
       ],
       scenery: [
-        { name: '白桦林', desc: '树干是白的，上面有黑色的疤，像谁随手点的。', sticker: 'leaf' },
-        { name: '草原上的日落', desc: '太阳是慢慢沉到草里去的，不是落到山后面。', sticker: 'star' }
+        { name: '雷光下的群岛', desc: '云层亮起的一瞬，海与远山都有了清晰轮廓。', sticker: 'star' },
+        { name: '随风而落的花瓣', desc: '风停时，衣袖里已经留下几片花瓣。', sticker: 'flower' }
       ],
       food: [
-        { name: '喝了咸奶茶', desc: '第一口不习惯，第二口就停不下来了。', sticker: 'tea' },
-        { name: '吃了手把肉', desc: '用刀自己割着吃，吃完手上全是油。', sticker: 'bowl' }
+        { name: '吃了一份岛上料理', desc: '摆放得很整齐，味道比外表更温和。', sticker: 'bowl' },
+        { name: '分享了随身点心', desc: '坐在能听见海声的地方，食物也像带了一点潮气。', sticker: 'candy' }
       ],
       play: [
-        { name: '骑了一小段马', desc: '颠得厉害，但是风从耳朵边过的时候很舒服。', sticker: 'compass' },
-        { name: '躺下看星星', desc: '躺平之后天变得特别大，星星多得数不过来。', sticker: 'star' }
+        { name: '乘船穿过岛屿', desc: '海面不断改变颜色，月灵一直停在船头。', sticker: 'fish' },
+        { name: '记录了一次雷光', desc: '它太快了，只能画下记忆里剩下的轮廓。', sticker: 'camera' }
       ]
     },
     {
-      id: 'turpan', name: '吐鲁番', fullName: '吐鲁番·火焰山',
-      bearing: 'w', desc: '热气从地面上冒起来，远处的路像化了。葡萄架下是唯一凉快的地方。',
-      tags: ['desert'], rarity: 'SR', weight: 7,
-      weatherCompat: ['clear', 'cloudy'], anchorY: 0.71, depthScale: 1.02, stampHue: 35,
-      palette: { sky: ['#ffd9a0', '#ffeccc'], far: '#e0ac6b', mid: '#c98d52', near: '#9c6a3a', ground: '#c69457' },
+      id: 'sumeru', name: '须弥', fullName: '须弥·雨林与沙海',
+      bearing: 's', mapX: 5, mapY: 12, lat: 5, lng: 12, remoteness: 1.2,
+      desc: '雨林与沙海并存，知识、梦境和生命彼此交错。',
+      tags: ['sumeru', 'rainforest', 'desert', 'knowledge', 'dream'], rarity: 'R', weight: 10,
+      weatherCompat: ['clear', 'cloudy', 'rain', 'wind'], anchorY: 0.7, depthScale: 1.04,
+      stampHue: 135, palette: { sky: ['#a9d8c0', '#e9f5e9'], far: '#83ae8a', mid: '#5d8669', near: '#3f6350', ground: '#6f8d61' },
       arriveLines: [
-        '热气从地面上冒起来，远处的路看起来像化掉了。',
-        '山是红的，被太阳晒得发亮，我看了好久才敢走近。',
-        '葡萄架下面是唯一凉快的地方，我坐在那儿不想走。'
+        '雨林里的声音很多。闭上眼睛以后，反而更容易分清每一种生命。',
+        '沙海看起来空无一物，却把时间留下的痕迹保存得很完整。',
+        '知识能解释许多事情，也会诚实地留下仍不知道的部分。'
       ],
       scenery: [
-        { name: '红色的山', desc: '一层一层的纹路，像被谁用手指划过。', sticker: 'stone' },
-        { name: '坎儿井的水', desc: '地底下居然有水，凉的，摸一下手都精神了。', sticker: 'bowl' }
+        { name: '雨林的层叠生命', desc: '叶片遮住一部分天空，每一层都有不同的声音。', sticker: 'leaf' },
+        { name: '沙海中的遗迹', desc: '被风磨过的石头仍留着无法完全辨认的文字。', sticker: 'sand' }
       ],
       food: [
-        { name: '吃了一串葡萄', desc: '甜得不讲道理。籽很小，可以一起咽下去。', sticker: 'grape' },
-        { name: '买了烤包子', desc: '皮是脆的，里面的汁差点滴到衣服上。', sticker: 'dumpling' }
+        { name: '尝了当地香料料理', desc: '香味很复杂，吃完后仍能分辨出几层不同味道。', sticker: 'bowl' },
+        { name: '分享了新鲜水果', desc: '果香清爽，月灵似乎比人更早闻到。', sticker: 'grape' }
       ],
       play: [
-        { name: '骑着骆驼走了一段', desc: '起来和坐下的时候最吓人，中间其实很稳。', sticker: 'camel' },
-        { name: '摘了一筐葡萄', desc: '剪刀不太会用，还是园主帮我剪的。', sticker: 'grape' }
+        { name: '观察了一处生态', desc: '先记录，再询问熟悉这里的人，没有贸然触碰。', sticker: 'book' },
+        { name: '阅读了一本旧记录', desc: '答案不在最后一页，而在被反复修改的边角。', sticker: 'book' }
       ]
     },
     {
-      id: 'dunhuang', name: '敦煌', fullName: '敦煌·鸣沙山',
-      bearing: 'w', desc: '沙山是软的，走一步陷半步。山下有一小片水，弯弯的。',
-      tags: ['desert', 'ancient'], rarity: 'SR', weight: 7,
-      weatherCompat: ['clear', 'cloudy'], anchorY: 0.70, depthScale: 1.02, stampHue: 40,
-      palette: { sky: ['#ffd2a0', '#ffe8c8'], far: '#d9a468', mid: '#bb8348', near: '#8f6234', ground: '#cf9c5e' },
+      id: 'fontaine', name: '枫丹', fullName: '枫丹·水与审判之国',
+      bearing: 'c', mapX: 6, mapY: 3, lat: 6, lng: 3, remoteness: 1.1,
+      desc: '水域、城市、机关与公开审判交织的国度。真相有时藏在谢幕之后。',
+      tags: ['fontaine', 'water', 'sea', 'city', 'machine', 'justice'], rarity: 'R', weight: 9,
+      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.72, depthScale: 1,
+      stampHue: 198, palette: { sky: ['#9fcde0', '#e8f5fa'], far: '#87adc0', mid: '#5d849b', near: '#3e6178', ground: '#6b91a2' },
       arriveLines: [
-        '沙山是软的，走一步陷半步，最后干脆坐下来滑下去。',
-        '山下有一小片水，弯弯的，风再大也没把它埋掉。',
-        '傍晚的时候沙子会变颜色，一层金一层红。'
+        '水会映出人的样子，也会把藏起来的声音传得很远。',
+        '这里的人习惯注视舞台。我更想知道谢幕后，他们怎样称呼彼此。',
+        '机关的声音很精确。水流却总会找到没有被规定的方向。'
       ],
       scenery: [
-        { name: '洞窟里的画', desc: '颜色比想象中沉，人物很多，每一个都不太一样。', sticker: 'pagoda' },
-        { name: '月牙形的湖', desc: '周围全是沙，只有这一小块水，安静得奇怪。', sticker: 'fish' }
+        { name: '水路与城市机关', desc: '水面映着建筑与灯光，机关沿固定节奏运转。', sticker: 'gear' },
+        { name: '谢幕后的小路', desc: '离开热闹的舞台，才能听清普通人的脚步。', sticker: 'mask' }
       ],
       food: [
-        { name: '喝了一杯杏皮水', desc: '酸甜的，凉的，喝下去整个人都醒过来了。', sticker: 'tea' },
-        { name: '吃了一碗面', desc: '面很宽，浇头不多，但是很香。', sticker: 'bowl' }
+        { name: '尝了一份枫丹甜点', desc: '外形精致，切开后香气才慢慢散出来。', sticker: 'cake' },
+        { name: '喝了清澈的饮品', desc: '入口很轻，余味却停留得比想象中久。', sticker: 'tea' }
       ],
       play: [
-        { name: '从沙坡上滑下来', desc: '沙子会跟着一起滑，声音闷闷的，像在响。', sticker: 'sand' },
-        { name: '看了很久的壁画', desc: '有些地方掉了色，但剩下的还是很清楚。', sticker: 'book' }
+        { name: '观察了一组机关', desc: '爱诺大概会想拆开看看。幸好她今天不在。', sticker: 'gear' },
+        { name: '沿水路记录城市', desc: '同一座建筑在不同水面里，像有不同的表情。', sticker: 'camera' }
       ]
     },
     {
-      id: 'nyingchi', name: '林芝', fullName: '林芝·桃花沟',
-      bearing: 'w', desc: '雪山在远处，近处全是桃花。风一过，花瓣落得比雪还慢。',
-      tags: ['mountain', 'snow', 'sakura'], rarity: 'SR', weight: 6,
-      weatherCompat: ['clear', 'cloudy', 'snow'], anchorY: 0.68, depthScale: 1.05, stampHue: 330,
-      palette: { sky: ['#cfe0f5', '#f2f6fc'], far: '#b8c8dc', mid: '#94a8c0', near: '#6d8098', ground: '#e0d8e8' },
+      id: 'natlan', name: '纳塔', fullName: '纳塔·火与同行者的土地',
+      bearing: 'w', mapX: 1, mapY: 11, lat: 1, lng: 11, remoteness: 1.35,
+      desc: '火、部族、竞争与同行关系鲜明的土地。故事围着火继续传下去。',
+      tags: ['natlan', 'fire', 'mountain', 'tribe', 'companion'], rarity: 'SR', weight: 7,
+      weatherCompat: ['clear', 'cloudy', 'wind'], anchorY: 0.69, depthScale: 1.05,
+      stampHue: 8, palette: { sky: ['#f2b17e', '#ffe4c8'], far: '#c77c55', mid: '#9b5842', near: '#6d3d32', ground: '#9d6745' },
       arriveLines: [
-        '雪山在远处，近处全是桃花，风一过花瓣落得比雪还慢。',
-        '云在半山腰挂着，山尖露在外面，白得晃眼。',
-        '这里的空气很薄，走快两步就得停下来喘。'
+        '这里的火不是为了驱散谁。人们围着它坐下，故事就有了继续传下去的地方。',
+        '路很热，也很长。幸好同行的人会把脚步留给彼此。',
+        '火光照亮的不是胜负，而是谁愿意站在同伴身边。'
       ],
       scenery: [
-        { name: '桃花开满山谷', desc: '一整条沟都是粉的，中间夹着几棵绿树。', sticker: 'peach' },
-        { name: '远处的雪山', desc: '太阳照到山顶的时候，整座山会亮一下。', sticker: 'snowflake' }
+        { name: '火光与山路', desc: '热风沿山路升起，远处的火光像不会熄灭的路标。', sticker: 'flame' },
+        { name: '同行者的营地', desc: '人们分享食物、路线和各自带来的故事。', sticker: 'tent' }
       ],
       food: [
-        { name: '喝了酥油茶', desc: '咸的，油花浮在上面，喝完身上暖起来。', sticker: 'tea' },
-        { name: '捏了一团糌粑', desc: '捏得不太好看，但是蘸着茶吃还不错。', sticker: 'dumpling' }
+        { name: '分享了火边料理', desc: '刚离开火焰时很烫，等大家坐齐正好入口。', sticker: 'bowl' },
+        { name: '尝了当地果实', desc: '味道明亮直接，像这里的人说话一样。', sticker: 'grape' }
       ],
       play: [
-        { name: '跟着转了一段经', desc: '不知道要转多少圈，跟着转就是了。', sticker: 'bell' },
-        { name: '在桃树下坐了一下午', desc: '什么也没做。花瓣落到本子上了。', sticker: 'peach' }
+        { name: '和伙伴走过一段山路', desc: '没有人催促落后者，队伍因此一直保持完整。', sticker: 'compass' },
+        { name: '听了一段部族故事', desc: '讲述者不断添入新的名字，让过去继续活在现在。', sticker: 'book' }
       ]
     },
     {
-      id: 'chengdu', name: '成都', fullName: '成都·巷子与竹林',
-      bearing: 'w', desc: '竹椅摆在门口，茶盖一掀，一坐就是半天。',
-      tags: ['city', 'rainforest'], rarity: 'N', weight: 12,
-      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.75, depthScale: 0.98, stampHue: 140,
-      palette: { sky: ['#cfe6d8', '#eaf5ee'], far: '#a8c4b0', mid: '#7ea888', near: '#567a5e', ground: '#6f9276' },
+      id: 'nod_krai', name: '挪德卡莱', fullName: '挪德卡莱·月光归处',
+      bearing: 'n', mapX: 8, mapY: 0, lat: 8, lng: 0, remoteness: 1,
+      desc: '游戏所在地与家园起点。银月之庭、霜月之坊与月灵都在月光下留下自己的故事。',
+      tags: ['nod_krai', 'moon', 'frostmoon', 'home', 'island', 'snow', 'mystery'], rarity: 'SR', weight: 12,
+      weatherCompat: ['clear', 'cloudy', 'snow', 'wind', 'moonlit', 'fog'], anchorY: 0.7, depthScale: 1.04,
+      stampHue: 255, palette: { sky: ['#8f9bc7', '#d9ddf4'], far: '#777fa5', mid: '#5c6288', near: '#414664', ground: '#696d8d' },
       arriveLines: [
-        '竹椅摆在门口，茶盖一掀，一坐就是半天。',
-        '巷子绕来绕去，走着走着就不知道自己在哪了。',
-        '这里的人说话慢慢的，我听着也就慢下来了。'
+        '月光落在银月之庭。这里曾有人等待月神，如今也有人只是在等哥伦比娅回家。',
+        '月灵从草叶后探出头来。（轻轻抬手回应）我认得它，也认得这条回去的路。',
+        '人们仍会谈起库塔尔，但朋友叫我的名字。两种声音都属于这里的故事。'
       ],
       scenery: [
-        { name: '一片竹林', desc: '风过的时候整片都在响，但是看不到风在哪。', sticker: 'bamboo' },
-        { name: '老茶馆', desc: '椅子是竹子的，坐久了会有印子留在腿上。', sticker: 'tea' }
+        { name: '银月之庭', desc: '月光停在庭院与月灵身上，安静得像一幅还在呼吸的画。', sticker: 'moon' },
+        { name: '霜月路线', desc: '霜月之坊与祈月之夜的灯光沿道路延伸。', sticker: 'snowflake' }
       ],
       food: [
-        { name: '吃了一次火锅', desc: '辣得直吸气，但是手一直没停。', sticker: 'hotpot' },
-        { name: '吃了一碗担担面', desc: '面不多，拌匀之后每一根都裹着酱。', sticker: 'bowl' }
+        { name: '分享了新鲜水果', desc: '月灵围过来时，每一份都被认真分得一样多。', sticker: 'grape' },
+        { name: '喝了清香的热饮', desc: '香气淡雅，适合在月光下慢慢说话。', sticker: 'tea' }
       ],
       play: [
-        { name: '去看了一次熊猫', desc: '它一直在吃，偶尔抬头看一眼，然后又低头吃。', sticker: 'panda' },
-        { name: '在茶馆坐了一下午', desc: '没人赶我走，续了好几次水。', sticker: 'tea' }
-      ]
-    },
-    {
-      id: 'xian', name: '西安', fullName: '西安·城墙内',
-      bearing: 'c', desc: '城墙是方的，围住了一整座城。灯亮起来的时候，砖缝里都是暖的。',
-      tags: ['city', 'ancient'], rarity: 'N', weight: 12,
-      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.73, depthScale: 1.00, stampHue: 25,
-      palette: { sky: ['#e0d0b8', '#f4ebdc'], far: '#c0a884', mid: '#9a8058', near: '#6e5a3c', ground: '#9c8460' },
-      arriveLines: [
-        '城墙是方的，围住了一整座城，站在上面能看见两头。',
-        '灯亮起来的时候，砖缝里都是暖的。',
-        '街上人很多，但是大家都走得不快。'
-      ],
-      scenery: [
-        { name: '城墙上的砖', desc: '每一块都不太一样，有的上面还刻着字。', sticker: 'stone' },
-        { name: '一排陶俑', desc: '站得整整齐齐，脸一个和一个都不一样。', sticker: 'mask' }
-      ],
-      food: [
-        { name: '吃了一个肉夹馍', desc: '饼是脆的，肉汁顺着手指往下流。', sticker: 'dumpling' },
-        { name: '掰了一碗泡馍', desc: '要自己掰，掰得越小越好吃。手有点酸。', sticker: 'bowl' }
-      ],
-      play: [
-        { name: '骑车绕了一圈城墙', desc: '路很颠，屁股有点疼，但是风很好。', sticker: 'bike' },
-        { name: '看了一场灯', desc: '人挤人，我只能踮着脚看。', sticker: 'lantern' }
-      ]
-    },
-    {
-      id: 'zhangjiajie', name: '张家界', fullName: '张家界·峰林',
-      bearing: 'c', desc: '石柱一根根从雾里立起来，看不到底。',
-      tags: ['mountain', 'rainforest'], rarity: 'R', weight: 9,
-      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.68, depthScale: 1.06, stampHue: 155,
-      palette: { sky: ['#c8dcd0', '#e8f2ec'], far: '#a0b8a8', mid: '#78948a', near: '#4e6a62', ground: '#5f7a70' },
-      arriveLines: [
-        '石柱一根根从雾里立起来，看不到底。',
-        '雾散了一下，又合上，像有人把帘子拉开又放下。',
-        '台阶很多，数到两百多就放弃了。'
-      ],
-      scenery: [
-        { name: '雾里的峰林', desc: '只露出上半截，下面全是白的。', sticker: 'stone' },
-        { name: '一条溪', desc: '水很浅，能看见底下每一块石头。', sticker: 'fish' }
-      ],
-      food: [
-        { name: '吃了一碗米粉', desc: '汤是红的，其实不太辣，就是香。', sticker: 'bowl' },
-        { name: '点了一份三下锅', desc: '什么都有，吃着吃着就分不清是什么了。', sticker: 'hotpot' }
-      ],
-      play: [
-        { name: '走了玻璃栈道', desc: '我尽量不看脚下，只看前面。', sticker: 'compass' },
-        { name: '坐了很长的索道', desc: '缆车晃了一下，我抓紧了扶手。', sticker: 'map' }
-      ]
-    },
-    {
-      id: 'suzhou', name: '苏州', fullName: '苏州·水巷',
-      bearing: 'e', desc: '白墙黑瓦，河从屋子底下过。船摇过来的时候，水会拍到石阶上。',
-      tags: ['city', 'water'], rarity: 'R', weight: 9,
-      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.74, depthScale: 0.98, stampHue: 190,
-      palette: { sky: ['#d8e4e8', '#f0f6f8'], far: '#a8b8c0', mid: '#84949e', near: '#5c6a74', ground: '#8fa8ae' },
-      arriveLines: [
-        '白墙黑瓦，河从屋子底下过，船摇过来的时候水会拍到石阶上。',
-        '门很小，进去之后院子却很大。',
-        '雨下得很细，伞可打可不打，我就没打。'
-      ],
-      scenery: [
-        { name: '一座园林', desc: '窗子是空的，每个窗框看出去都是一幅画。', sticker: 'pagoda' },
-        { name: '水巷里的桥', desc: '桥不高，但是拱得很圆，下面的影子也是一个圆。', sticker: 'boat' }
-      ],
-      food: [
-        { name: '吃了一碗汤面', desc: '汤很清，面很细，上面的浇头只有一点点。', sticker: 'bowl' },
-        { name: '喝了一碗糖粥', desc: '甜得很老实，就是米和糖的味道。', sticker: 'candy' }
-      ],
-      play: [
-        { name: '坐了一趟小船', desc: '船夫一边摇一边讲话，我一句也没听懂。', sticker: 'boat' },
-        { name: '听了一段评弹', desc: '听不懂词，但是调子很好听，听着听着就困了。', sticker: 'bell' }
-      ]
-    },
-    {
-      id: 'hangzhou', name: '杭州', fullName: '杭州·西湖边',
-      bearing: 'e', desc: '湖面上有一层薄薄的雾。柳条垂到水里，被风吹得画圈。',
-      tags: ['plain', 'water'], rarity: 'N', weight: 11,
-      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.72, depthScale: 0.98, stampHue: 165,
-      palette: { sky: ['#d4e8e0', '#eef7f2'], far: '#a8c4b8', mid: '#82a894', near: '#5c8272', ground: '#7fa892' },
-      arriveLines: [
-        '湖面上有一层薄薄的雾，远处的东西都变得不真切。',
-        '柳条垂到水里，被风吹得画圈。',
-        '绕湖走了一段，走走停停，也没走到头。'
-      ],
-      scenery: [
-        { name: '一片茶园', desc: '一行一行的，修剪得很整齐，闻起来是清的。', sticker: 'leaf' },
-        { name: '湖心的岛', desc: '要坐船过去，岛上比岸上安静得多。', sticker: 'boat' }
-      ],
-      food: [
-        { name: '吃了一块定胜糕', desc: '粉粉的，甜的，一口就没了。', sticker: 'candy' },
-        { name: '喝了一杯龙井', desc: '叶子在水里慢慢展开，我看了很久。', sticker: 'tea' }
-      ],
-      play: [
-        { name: '划了一会儿船', desc: '桨比我以为的重，划了半天还在原地附近。', sticker: 'boat' },
-        { name: '在茶园里走了一圈', desc: '采茶的人手指很快，我看不清是怎么弄的。', sticker: 'leaf' }
-      ]
-    },
-    {
-      id: 'xiamen', name: '厦门', fullName: '厦门·海岛',
-      bearing: 's', desc: '海就在路边。风是咸的，树叶子是硬的。',
-      tags: ['sea', 'city'], rarity: 'R', weight: 10,
-      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.66, depthScale: 0.96, stampHue: 200,
-      palette: { sky: ['#b8dff0', '#e6f5fc'], far: '#8cc0d8', mid: '#5f9ec4', near: '#3d7aa0', ground: '#e0d4b0' },
-      arriveLines: [
-        '海就在路边，走几步就得停下来看一眼。',
-        '风是咸的，树叶子是硬的，摸上去有点像塑料。',
-        '岛上没有车，只有脚步声和很远的船鸣。'
-      ],
-      scenery: [
-        { name: '老别墅', desc: '墙是红的，窗是拱的，院子里有棵很大的树。', sticker: 'pagoda' },
-        { name: '海边的礁石', desc: '退潮之后能走下去，石头缝里全是小东西。', sticker: 'shell' }
-      ],
-      food: [
-        { name: '吃了一碗沙茶面', desc: '汤稠稠的，味道说不上来，但是想再喝一口。', sticker: 'bowl' },
-        { name: '尝了一份海蛎煎', desc: '外面脆里面软，蘸了酱更好吃。', sticker: 'fish' }
-      ],
-      play: [
-        { name: '沿海骑了车', desc: '一路都是海，骑到后面腿酸了也不想停。', sticker: 'bike' },
-        { name: '在沙滩上走了一段', desc: '沙子是温的，鞋里进了不少。', sticker: 'shell' }
-      ]
-    },
-    {
-      id: 'guilin', name: '桂林', fullName: '桂林·山水',
-      bearing: 's', desc: '山是一个一个独立的小包，圆圆的。水从中间绕过去。',
-      tags: ['mountain', 'water'], rarity: 'R', weight: 10,
-      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.70, depthScale: 1.02, stampHue: 130,
-      palette: { sky: ['#cfe4d8', '#ecf6f0'], far: '#a4c0ac', mid: '#7a9c86', near: '#547862', ground: '#86a890' },
-      arriveLines: [
-        '山是一个一个独立的小包，圆圆的，像是随便摆在那里的。',
-        '水从山中间绕过去，船走得很慢，正好够我看完两边。',
-        '雾一起来，山就只剩一个淡淡的影子。'
-      ],
-      scenery: [
-        { name: '江上的山影', desc: '水里的山比真的那座还要完整一点。', sticker: 'stone' },
-        { name: '一个山洞', desc: '里面很凉，石头上有水在滴，一下一下的。', sticker: 'key' }
-      ],
-      food: [
-        { name: '吃了一碗桂林米粉', desc: '粉是圆的，卤水很香，我加了两勺。', sticker: 'bowl' },
-        { name: '点了一条啤酒鱼', desc: '鱼很鲜，就是刺有点多，吃得慢。', sticker: 'fish' }
-      ],
-      play: [
-        { name: '坐了竹筏', desc: '水会从竹缝里冒上来，鞋有点湿。', sticker: 'boat' },
-        { name: '在江边坐了很久', desc: '什么也没做，就看着水往一个方向走。', sticker: 'feather' }
-      ]
-    },
-    {
-      id: 'dali', name: '大理', fullName: '大理·洱海边',
-      bearing: 's', desc: '湖很大，对面是山。云压得很低，像要碰到水面。',
-      tags: ['mountain', 'water'], rarity: 'R', weight: 9,
-      weatherCompat: ['clear', 'cloudy', 'wind'], anchorY: 0.69, depthScale: 1.00, stampHue: 210,
-      palette: { sky: ['#bcd8ec', '#e8f2fa'], far: '#94b0cc', mid: '#6e8cae', near: '#48607e', ground: '#8fa8c0' },
-      arriveLines: [
-        '湖很大，对面是山。云压得很低，像要碰到水面。',
-        '风一直在吹，头发一直糊在脸上。',
-        '白墙的屋子一间挨一间，屋顶上晒着东西。'
-      ],
-      scenery: [
-        { name: '苍山的云', desc: '云卡在半山腰，一整天都没挪地方。', sticker: 'star' },
-        { name: '洱海边的树', desc: '几棵树直接长在水里，影子被水拉得很长。', sticker: 'leaf' }
-      ],
-      food: [
-        { name: '吃了一块乳扇', desc: '烤过之后有点韧，甜的，越嚼越香。', sticker: 'candy' },
-        { name: '吃了一碗饵丝', desc: '比面要软，汤是清的，早上吃很合适。', sticker: 'bowl' }
-      ],
-      play: [
-        { name: '绕湖骑了一段', desc: '路很平，但是风一直顶着，骑得很慢。', sticker: 'bike' },
-        { name: '在古城里转了转', desc: '卖什么的都有，我最后只买了一张明信片。', sticker: 'camera' }
-      ]
-    },
-    {
-      id: 'sanya', name: '三亚', fullName: '三亚·海边',
-      bearing: 's', desc: '水是那种很浅的绿，能看到底下。椰子树歪歪地长着。',
-      tags: ['sea', 'plain'], rarity: 'R', weight: 10,
-      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.65, depthScale: 0.96, stampHue: 175,
-      palette: { sky: ['#a8e0e8', '#dff5f8'], far: '#7fc8d4', mid: '#4fa8bc', near: '#2f8298', ground: '#e8dcc0' },
-      arriveLines: [
-        '水是那种很浅的绿，能看到底下，也能看到自己的脚。',
-        '椰子树歪歪地长着，像是被风吹了很多年。',
-        '太阳很晒，走几步就得找一片影子。'
-      ],
-      scenery: [
-        { name: '一片椰林', desc: '掉下来的椰子堆在树根那儿，没人捡。', sticker: 'leaf' },
-        { name: '退潮后的滩', desc: '露出一大片湿的沙，上面全是小洞。', sticker: 'shell' }
-      ],
-      food: [
-        { name: '喝了一碗清补凉', desc: '里面什么都有，冰冰的，一下就凉快了。', sticker: 'icecream' },
-        { name: '吃了一顿海鲜', desc: '壳比肉多，但是很新鲜。', sticker: 'fish' }
-      ],
-      play: [
-        { name: '下水浮了一会儿', desc: '水很暖，飘着不用使劲，差点睡着。', sticker: 'fish' },
-        { name: '捡了一堆贝壳', desc: '挑了半天，最后发现最好看的那个是碎的。', sticker: 'shell' }
-      ]
-    },
-    {
-      id: 'guangzhou', name: '广州', fullName: '广州·骑楼与早茶',
-      bearing: 's', desc: '骑楼把太阳挡在外面，走在底下凉凉的。',
-      tags: ['city', 'rainforest'], rarity: 'N', weight: 11,
-      weatherCompat: ['clear', 'cloudy', 'rain'], anchorY: 0.74, depthScale: 1.00, stampHue: 15,
-      palette: { sky: ['#e0dcc0', '#f4f2e0'], far: '#bcc0a0', mid: '#94987c', near: '#6c7058', ground: '#9c9c78' },
-      arriveLines: [
-        '骑楼把太阳挡在外面，走在底下凉凉的。',
-        '街上一直很吵，但是不烦，听着听着就习惯了。',
-        '这里的树很大，垂下来的须子会碰到头。'
-      ],
-      scenery: [
-        { name: '一排骑楼', desc: '柱子是一根一根的，走过去的时候影子会一段一段地变。', sticker: 'pagoda' },
-        { name: '一棵大榕树', desc: '须子垂下来扎进土里，又长成了新的树干。', sticker: 'leaf' }
-      ],
-      food: [
-        { name: '吃了一顿早茶', desc: '一笼一笼地上来，吃到最后我都记不清吃了什么。', sticker: 'dumpling' },
-        { name: '吃了一碟肠粉', desc: '很滑，酱是甜的，两口就没了。', sticker: 'bowl' }
-      ],
-      play: [
-        { name: '逛了夜市', desc: '灯很亮，人很多，我跟着人流走。', sticker: 'lantern' },
-        { name: '在江边看了一会儿', desc: '对岸的灯倒在水里，被船搅散了又合起来。', sticker: 'boat' }
-      ]
-    },
-    {
-      id: 'mohe', name: '漠河', fullName: '漠河·北极村',
-      bearing: 'n', desc: '冷到睫毛上会结霜。晚上十点天还亮着，北边的天有时会亮起来。',
-      tags: ['snow', 'mountain'], rarity: 'SSR', weight: 2,
-      weatherCompat: ['snow', 'cloudy', 'clear'], anchorY: 0.70, depthScale: 1.04, stampHue: 215,
-      palette: { sky: ['#b8d0e8', '#e8f2fb'], far: '#9db4cc', mid: '#7a92ac', near: '#57697e', ground: '#e4eef8' },
-      arriveLines: [
-        '冷到睫毛上会结霜，我把围巾一直拉到眼睛下面。',
-        '晚上十点天还亮着，我坐在那儿等天黑，等着等着就睡着了。',
-        '北边的天有时候会亮起来，绿色的，一层一层地动。'
-      ],
-      scenery: [
-        { name: '最北的邮局', desc: '从这里寄出的信，会盖一个特别的戳。', sticker: 'pagoda' },
-        { name: '江的源头', desc: '水很浅，能看见底下的石头，凉得刺手。', sticker: 'fish' }
-      ],
-      food: [
-        { name: '吃了一锅冷水鱼', desc: '汤是白的，鱼肉很紧，喝完整个人都暖了。', sticker: 'bowl' },
-        { name: '抓了一把蓝莓', desc: '野生的，很小，酸的比甜的多。', sticker: 'grape' }
-      ],
-      play: [
-        { name: '找到了最北的那块碑', desc: '排队拍照的人很多，我等到最后才过去。', sticker: 'stone' },
-        { name: '坐了一趟雪橇', desc: '狗跑得比我想的快，风把帽子吹掉了。', sticker: 'snowflake' }
+        { name: '和月灵一起画画', desc: '梅拉把月光画得很淡，却把朋友画得很清楚。', sticker: 'flower' },
+        { name: '下了一盘月亮棋', desc: '棋子少了一枚。最后在努昂诺塔身后找到了。', sticker: 'moon' }
       ]
     }
   ];
@@ -424,10 +190,9 @@
     return null;
   };
 
-  /** 方位 -> 该方位的地区列表 */
   NT.data.destinationsByBearing = function (bearing) {
     return NT.data.destinations.filter(function (d) {
-      return !bearing || bearing === 'any' || d.bearing === bearing;
+      return bearing === 'any' || d.bearing === bearing;
     });
   };
 })(typeof window !== 'undefined' ? window : this);

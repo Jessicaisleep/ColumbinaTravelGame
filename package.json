@@ -1,8 +1,8 @@
 {
-  "name": "nahida-travel",
+  "name": "columbina-travel",
   "version": "1.0.0",
   "private": true,
-  "description": "纳西妲的旅行：保留旧版兼容入口的 Vite HTML5 游戏项目",
+  "description": "哥伦比娅的旅行：保留旧版兼容入口的 Vite HTML5 游戏项目",
   "type": "module",
   "scripts": {
     "dev": "vite",

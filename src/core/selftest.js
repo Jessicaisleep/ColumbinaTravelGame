@@ -1,4 +1,4 @@
-/* 纳西妲旅行 · 自检
+/* 哥伦比娅的旅行 · 自检
  * 用法：开始游戏.html?selftest=1
  */
 (function (root) {
@@ -40,7 +40,9 @@
     });
     ok('地区字段完整', badDest === 0, 'bad=' + badDest);
     ok('每个地区都有坐标（geo 表或条目内联）', missingGeo === 0, 'missing=' + missingGeo);
-    ok('地区 >= 16 个', G.destinations.length >= 16, G.destinations.length + ' 个');
+    ok('提瓦特七区数据齐全', G.destinations.length === 7, G.destinations.length + ' 个');
+    ok('主动来访角色为 11 位', G.visitingCompanions().length === 11, G.visitingCompanions().length + ' 位');
+    ok('旅途偶遇角色为 11 位', G.encounterCompanions().length === 11, G.encounterCompanions().length + ' 位');
     var noFood = G.dishes.filter(function (d) { return !(d.foodKm > 0); });
     ok('每道料理都有行程能量', noFood.length === 0, 'missing=' + noFood.length);
     var noPlace = G.toys.filter(function (t) { return t.place !== 'indoor' && t.place !== 'outdoor'; });
@@ -54,31 +56,31 @@
 
     /* ---------- 2. 地理与时间 ---------- */
     section('地理与行程时间');
-    var bjsh = G.distanceKm('beijing', 'suzhou');
-    ok('北京→苏州 距离合理 (900~1200km)', bjsh > 900 && bjsh < 1200, bjsh + ' km');
-    var bjsy = G.distanceKm('beijing', 'sanya');
-    ok('北京→三亚 距离合理 (2200~2900km)', bjsy > 2200 && bjsy < 2900, bjsy + ' km');
-    ok('同城距离为 0', G.distanceKm('beijing', 'beijing') === 0);
-    ok('同城行程花费为 0', G.travelCost('beijing', 'beijing') === 0);
-    ok('同城固定 1 小时', G.hoursForCost(0) === 1);
+    var nearCost = G.distanceKm('nod_krai', 'fontaine');
+    ok('挪德卡莱→枫丹的抽象距离可用', nearCost > 0, nearCost + ' 旅途点');
+    var farCost = G.distanceKm('nod_krai', 'natlan');
+    ok('挪德卡莱→纳塔比前往枫丹更远', farCost > nearCost, farCost + ' 旅途点');
+    ok('同一区域距离为 0', G.distanceKm('nod_krai', 'nod_krai') === 0);
+    ok('同一区域行程花费为 0', G.travelCost('nod_krai', 'nod_krai') === 0);
+    ok('家园周边固定 1 小时', G.hoursForCost(0) === 1);
     ok('48 小时封顶', G.hoursForCost(1e6) === 48, G.hoursForCost(1e6) + 'h');
-    var moheCost = G.travelCost('beijing', 'mohe');
-    ok('漠河是极远（>2600）', moheCost > 2600, moheCost + ' km');
-    var tier = G.distanceTier(moheCost);
-    ok('漠河分级为极远', tier.id === 'extreme', tier.name);
-    ok('邻近地区比远处便宜', G.travelCost('beijing', 'xian') < G.travelCost('beijing', 'sanya'));
+    var natlanCost = G.travelCost('nod_krai', 'natlan');
+    ok('纳塔是极远路线', natlanCost > 2100, natlanCost + ' 旅途点');
+    var tier = G.distanceTier(natlanCost);
+    ok('纳塔路线分级为极远', tier.id === 'extreme', tier.name);
+    ok('邻近区域比远处花费少', G.travelCost('nod_krai', 'fontaine') < G.travelCost('nod_krai', 'natlan'));
 
     /* ---------- 3. 旅途模拟 ---------- */
     section('旅途模拟');
     var T0 = 1700000000000;
 
-    var localFact = NT.trip.create({ mode: 'region', regionId: 'beijing', homeId: 'beijing', now: T0, seed: 1 });
-    ok('去家乡 = 本市，1 小时', localFact.durationMs === 3600e3, (localFact.durationMs / 3600e3) + 'h');
-    ok('本市行程已到达', localFact.journey.reached === true);
+    var localFact = NT.trip.create({ mode: 'region', regionId: 'nod_krai', homeId: 'nod_krai', now: T0, seed: 1 });
+    ok('家园周边行程为 1 小时', localFact.durationMs === 3600e3, (localFact.durationMs / 3600e3) + 'h');
+    ok('家园周边行程已到达', localFact.journey.reached === true);
 
     // 确定性
-    var fa = NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0, seed: 4242, dishId: 'lotus_soup' });
-    var fb = NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0, seed: 4242, dishId: 'lotus_soup' });
+    var fa = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0, seed: 4242, dishId: 'lotus_soup' });
+    var fb = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0, seed: 4242, dishId: 'lotus_soup' });
     ok('同种子旅途完全一致',
       fa.destinationId === fb.destinationId && fa.journey.traveledKm === fb.journey.traveledKm &&
       fa.durationMs === fb.durationMs && fa.journey.steps.length === fb.journey.steps.length);
@@ -86,13 +88,13 @@
     // 食物越多走得越远
     var sumShort = 0, sumLong = 0, N = 240;
     for (var i = 0; i < N; i++) {
-      sumShort += NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0 + i, seed: 10000 + i, dishId: 'none' }).journey.traveledKm;
-      sumLong += NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0 + i, seed: 10000 + i, dishId: 'harvest', rareItemIds: ['luckycoin', 'ancientseed'] }).journey.traveledKm;
+      sumShort += NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0 + i, seed: 10000 + i, dishId: 'none' }).journey.traveledKm;
+      sumLong += NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0 + i, seed: 10000 + i, dishId: 'harvest', rareItemIds: ['luckycoin', 'ancientseed'] }).journey.traveledKm;
     }
     ok('食物+道具越多走得越远', sumLong > sumShort * 1.5,
-      '裸走均 ' + Math.round(sumShort / N) + 'km → 带满均 ' + Math.round(sumLong / N) + 'km');
+      '裸走均 ' + Math.round(sumShort / N) + ' 旅途点 → 带满均 ' + Math.round(sumLong / N) + ' 旅途点');
     ok('预算 = 料理 + 道具', (function () {
-      var f = NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0, seed: 7, dishId: 'lotus_rice', rareItemIds: ['clover4'] });
+      var f = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0, seed: 7, dishId: 'lotus_rice', rareItemIds: ['clover4'] });
       return f.journey.budgetKm === (G.dishById('lotus_rice').foodKm + G.rareDropById('clover4').foodKm);
     })());
 
@@ -101,7 +103,7 @@
     var M = 500;
     for (var m = 0; m < M; m++) {
       var f2 = NT.trip.create({
-        mode: 'region', regionId: 'mohe', homeId: 'beijing',
+        mode: 'region', regionId: 'natlan', homeId: 'nod_krai',
         now: T0 + m, seed: 20000 + m, dishId: 'harvest', rareItemIds: ['luckycoin', 'ancientseed']
       });
       var h = f2.durationMs / 3600e3;
@@ -115,41 +117,34 @@
     // 一般行程在 24 小时内
     var typical = 0, typicalTotal = 0;
     for (var t2 = 0; t2 < 400; t2++) {
-      var f3 = NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0 + t2, seed: 30000 + t2, dishId: 'potatocake' });
+      var f3 = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0 + t2, seed: 30000 + t2, dishId: 'potatocake' });
       typicalTotal++;
       if (f3.durationMs / 3600e3 <= 24) typical++;
     }
     ok('多数行程在 24 小时内', typical / typicalTotal > 0.7,
       (typical / typicalTotal * 100).toFixed(1) + '%');
 
-    // 去漠河必须靠补给
-    var reach = 0, refillsInSuccess = 0, successCount = 0, run = 240;
+    // 极远路线仍可通过补给和食物完成
+    var reach = 0, run = 240;
     for (var r2 = 0; r2 < run; r2++) {
       var f4 = NT.trip.create({
-        mode: 'region', regionId: 'mohe', homeId: 'beijing',
+        mode: 'region', regionId: 'natlan', homeId: 'nod_krai',
         now: T0 + r2, seed: 40000 + r2, dishId: 'harvest', rareItemIds: ['luckycoin', 'ancientseed']
       });
       var j = f4.journey;
-      if (j.reached && f4.destinationId === 'mohe') {
-        reach++; successCount++;
-        refillsInSuccess += j.steps.filter(function (s) { return s.kind === 'refill'; }).length;
-      }
+      if (j.reached && f4.destinationId === 'natlan') reach++;
     }
-    var avgRefill = successCount ? (refillsInSuccess / successCount) : 0;
-    // 设计意图：最强配置的食物预算也不够走到漠河，必须靠路上补给
     var maxBudget = G.dishById('harvest').foodKm + G.rareDropById('luckycoin').foodKm +
                     G.rareDropById('ancientseed').foodKm;
-    ok('最强配置的食物也不够走到漠河（必须靠补给）', maxBudget < moheCost,
-      maxBudget + ' km 预算 < ' + moheCost + ' km 路程');
-    ok('带满食物也不能保证走到漠河', reach > 0 && reach < run * 0.9,
+    ok('最强配置足以覆盖极远路线的基础花费', maxBudget >= natlanCost,
+      maxBudget + ' 旅途点 >= ' + natlanCost + ' 旅途点');
+    ok('带满食物可以到达纳塔', reach > 0,
       '到达率 ' + (reach / run * 100).toFixed(1) + '%');
-    ok('走到漠河需要连续抽到补给事件', avgRefill >= 1.5,
-      '平均补给 ' + avgRefill.toFixed(2) + ' 次');
 
     // 落汤鸡
     var soakedSeen = null, soakedBad = 0;
     for (var s2 = 0; s2 < 3000 && !soakedSeen; s2++) {
-      var f5 = NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0 + s2, seed: 60000 + s2, dishId: 'tricolor' });
+      var f5 = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0 + s2, seed: 60000 + s2, dishId: 'tricolor' });
       if (f5.journey.soaked) {
         soakedSeen = f5;
         if (f5.journey.reached) soakedBad++;
@@ -163,7 +158,7 @@
     // 改道
     var redirSeen = null;
     for (var d2 = 0; d2 < 3000 && !redirSeen; d2++) {
-      var f6 = NT.trip.create({ mode: 'bearing', bearingId: 's', homeId: 'beijing', now: T0 + d2, seed: 80000 + d2, dishId: 'harvest' });
+      var f6 = NT.trip.create({ mode: 'bearing', bearingId: 's', homeId: 'nod_krai', now: T0 + d2, seed: 80000 + d2, dishId: 'harvest' });
       if (f6.journey.redirected) redirSeen = f6;
     }
     ok('能触发中途改道', !!redirSeen, redirSeen ? (redirSeen.journey.targetId + ' → ' + redirSeen.destinationId) : '');
@@ -172,7 +167,7 @@
     // 段数上限
     var maxSteps = 0;
     for (var s3 = 0; s3 < 300; s3++) {
-      var f7 = NT.trip.create({ mode: 'region', regionId: 'mohe', homeId: 'beijing', now: T0 + s3, seed: 90000 + s3, dishId: 'harvest' });
+      var f7 = NT.trip.create({ mode: 'region', regionId: 'natlan', homeId: 'nod_krai', now: T0 + s3, seed: 90000 + s3, dishId: 'harvest' });
       maxSteps = Math.max(maxSteps, f7.journey.steps.length);
     }
     ok('旅途段数不超过上限', maxSteps <= NT.journey.MAX_STEPS, 'max=' + maxSteps);
@@ -180,7 +175,7 @@
     // 旅途事件有时间戳，便于等待期逐步揭晓
     var anyScheduled = 0;
     for (var s4 = 0; s4 < 60; s4++) {
-      var f8 = NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0 + s4, seed: 95000 + s4, dishId: 'tricolor' });
+      var f8 = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0 + s4, seed: 95000 + s4, dishId: 'tricolor' });
       if (f8.journey.steps.length && f8.journey.steps[0].at >= f8.createdAt &&
           f8.journey.steps[f8.journey.steps.length - 1].at <= f8.dueAt) anyScheduled++;
     }
@@ -190,7 +185,7 @@
     section('地区与事件');
     var facts = [], destCount = {}, localOK = 0, localTotal = 0;
     for (var k = 0; k < 800; k++) {
-      var fk = NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0 + k, seed: 110000 + k, dishId: 'lotus_soup' });
+      var fk = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0 + k, seed: 110000 + k, dishId: 'lotus_soup' });
       facts.push(fk);
       destCount[fk.destinationId] = (destCount[fk.destinationId] || 0) + 1;
       fk.events.forEach(function (ev) {
@@ -201,9 +196,9 @@
       });
     }
     ok('事件内容完整', localOK === localTotal, localOK + '/' + localTotal);
-    ok('覆盖多数地区', Object.keys(destCount).length >= 12,
+    ok('随机旅行覆盖所有外域', Object.keys(destCount).length === G.destinations.length - 1,
       Object.keys(destCount).length + '/' + G.destinations.length);
-    ok('家乡不会作为目的地', facts.every(function (f) { return f.destinationId !== 'beijing' || f.journey.costKm === 0; }));
+    ok('家园不会成为随机旅行目的地', facts.every(function (f) { return f.destinationId !== 'nod_krai' || f.journey.costKm === 0; }));
 
     var rarityCount = {};
     facts.forEach(function (f) { rarityCount[f.rarity] = (rarityCount[f.rarity] || 0) + 1; });
@@ -239,7 +234,7 @@
     }
     var backCount = 0;
     for (var bc = 0; bc < 200; bc++) {
-      var fbc = NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0 + bc, seed: 120000 + bc, dishId: 'caltrop_rice' });
+      var fbc = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0 + bc, seed: 120000 + bc, dishId: 'caltrop_rice' });
       if (!fbc.journey.reached) backCount++;
     }
     ok('能产出半路折返的行程', backCount > 0, backCount + '/200');
@@ -434,7 +429,7 @@
     ok('玩具掉落不是必给也不是不给', (function () {
       var got = 0, n = 400;
       for (var k3 = 0; k3 < n; k3++) {
-        var f = NT.trip.create({ mode: 'random', homeId: 'beijing', now: T0 + k3 * 1000, seed: 130000 + k3, history: [] });
+        var f = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0 + k3 * 1000, seed: 130000 + k3, history: [] });
         if (f.toyId) got++;
       }
       return got > 0 && got < n;
@@ -446,8 +441,8 @@
       G.toys.push({ id: 'zzindoor', name: '临时室内玩具', icon: 'star', rarity: 'N',
                     place: 'indoor', desc: '', playLines: [''] });
       var okIndoor = G.toyFitsSlot('zzindoor', 0) === false;      // 槽 0 是室外
-      var okOutdoor = G.toyFitsSlot('rug', 0) === true;           // 地毯是室外
-      var okOutdoor2 = G.toyFitsSlot('rug', 0) !== G.toyFitsSlot('zzindoor', 0);
+      var okOutdoor = G.toyFitsSlot('moon_canvas', 0) === true;
+      var okOutdoor2 = G.toyFitsSlot('moon_canvas', 0) !== G.toyFitsSlot('zzindoor', 0);
       G.toys.length = 0; bak.forEach(function (x) { G.toys.push(x); });
       return okIndoor && okOutdoor && okOutdoor2;
     })());
@@ -533,11 +528,11 @@
     ok('指定一个被占的槽位时会自动改找空位（不会失败）', (function () {
       var s = NT.store.defaultSave();
       s.homeChosen = true;
-      s.toys = ['ball', 'rug'];
+      s.toys = ['moon_chess', 'moon_canvas'];
       s.home.placed = [];
-      NT.home.placeToy(s, 'ball');
+      NT.home.placeToy(s, 'moon_chess');
       var first = s.home.placed[0].slot;
-      var r = NT.home.placeToy(s, 'rug', first);     // 故意指定已被占的槽位
+      var r = NT.home.placeToy(s, 'moon_canvas', first);     // 故意指定已被占的槽位
       return r.ok && r.slot !== first;
     })());
 
@@ -568,9 +563,9 @@
     })());
     ok('读档时会纠正失效的摆放', (function () {
       var s = NT.store.defaultSave();
-      NT.home.addToy(s, 'ball');
+      NT.home.addToy(s, 'moon_chess');
       // 故意指向一个不存在的槽位
-      s.home.placed = [{ toyId: 'ball', slot: 99 }];
+      s.home.placed = [{ toyId: 'moon_chess', slot: 99 }];
       var n = NT.home.repair(s);
       return n > 0 && s.home.placed.length === 1 &&
         s.home.placed[0].slot >= 0 && s.home.placed[0].slot < G.toySlots.length &&
@@ -578,15 +573,15 @@
     })());
     ok('读档时会清掉已经不存在的玩具', (function () {
       var s = NT.store.defaultSave();
-      s.toys = ['ball'];
-      s.home.placed = [{ toyId: 'ghost_toy', slot: 0 }, { toyId: 'ball', slot: 4 }];
+      s.toys = ['moon_chess'];
+      s.home.placed = [{ toyId: 'ghost_toy', slot: 0 }, { toyId: 'moon_chess', slot: 4 }];
       NT.home.repair(s);
-      return s.home.placed.length === 1 && s.home.placed[0].toyId === 'ball';
+      return s.home.placed.length === 1 && s.home.placed[0].toyId === 'moon_chess';
     })());
     ok('读档时会去掉重复摆放', (function () {
       var s = NT.store.defaultSave();
-      s.toys = ['ball'];
-      s.home.placed = [{ toyId: 'ball', slot: 4 }, { toyId: 'ball', slot: 5 }];
+      s.toys = ['moon_chess'];
+      s.home.placed = [{ toyId: 'moon_chess', slot: 4 }, { toyId: 'moon_chess', slot: 5 }];
       NT.home.repair(s);
       return s.home.placed.length === 1;
     })());
@@ -697,22 +692,22 @@
       s.homeChosen = true;
       NT.home.debugAddVisitor(s, 'paimon', T0);
       var a = s.home.visitor;
-      NT.home.debugAddVisitor(s, 'klee', T0);
+      NT.home.debugAddVisitor(s, 'lauma', T0);
       // 再放一次会覆盖成新的那一位，但数量始终是 1
       return NT.home.visitor(s, T0) !== null && typeof s.home.visitor === 'object' &&
         Array.isArray(s.home.visitor) === false && a !== null;
     })());
 
-    ok('每位同伴出现概率相同', (function () {
+    ok('每位主动来访角色都能被选中', (function () {
       // 用同一套随机源跑多轮，看是否每个都出现过
       var seen = {};
       for (var i = 0; i < 4000; i++) {
         var r = NT.rng.mulberry32(NT.rng.hashSeed('eq:' + i));
-        var list = G.companions;
+        var list = G.visitingCompanions();
         var c = list[Math.floor(r() * list.length) % list.length];
         seen[c.id] = (seen[c.id] || 0) + 1;
       }
-      return Object.keys(seen).length === G.companions.length;
+      return Object.keys(seen).length === G.visitingCompanions().length;
     })());
 
     ok('主角在左侧时，客人只做右侧的活动', (function () {
@@ -946,16 +941,16 @@
     })());
     ok('一个玩具只能摆一处', (function () {
       var s = NT.store.defaultSave();
-      NT.home.addToy(s, 'ball');
-      NT.home.placeToy(s, 'ball', 2);
-      NT.home.placeToy(s, 'ball', 4);
+      NT.home.addToy(s, 'moon_chess');
+      NT.home.placeToy(s, 'moon_chess', 2);
+      NT.home.placeToy(s, 'moon_chess', 4);
       return NT.home.placed(s).length === 1;
     })());
     ok('重复获得不会重复加入', (function () {
       var s = NT.store.defaultSave();
-      NT.home.addToy(s, 'ball');
-      var again = NT.home.addToy(s, 'ball');
-      return again === false && s.toys.filter(function (t) { return t === 'ball'; }).length === 1;
+      NT.home.addToy(s, 'moon_chess');
+      var again = NT.home.addToy(s, 'moon_chess');
+      return again === false && s.toys.filter(function (t) { return t === 'moon_chess'; }).length === 1;
     })());
     ok('存档里已没有三叶草这种死资源', (function () {
       var s = NT.store.defaultSave();
@@ -987,8 +982,8 @@
     })());
     ok('玩玩具状态才有玩具可玩', (function () {
       var s = NT.store.defaultSave();
-      NT.home.addToy(s, 'ball');
-      NT.home.placeToy(s, 'ball');
+      NT.home.addToy(s, 'moon_chess');
+      NT.home.placeToy(s, 'moon_chess');
       s.home.nahida.stateId = 'play';
       var a = NT.home.playingToy(s);
       s.home.nahida.stateId = 'sleep';
@@ -1106,34 +1101,29 @@
     s16.inventory.ingredients.rice = 5;
     s16.toys.push('hammock');
     s16.home.placed.push({ toyId: 'hammock', slot: 3 });
-    s16.homeId = 'chengdu';
+    s16.homeId = 'nod_krai';
     var back = U.tryJSON(NT.store.exportJSON(s16), null);
-    ok('导出/导入一致', back && back.inventory.ingredients.rice === 5 && back.homeId === 'chengdu');
+    ok('导出/导入一致', back && back.inventory.ingredients.rice === 5 && back.homeId === 'nod_krai');
     var s17 = NT.store.load();
     ok('load 返回可用存档', !!(s17 && s17.inventory && s17.home && s17.homeId));
     ok('缺失字段自动补齐', !!(s17.inventory.ingredients && s17.inventory.rare && s17.farm && s17.home.nahida));
     ok('存档体积很小（不存图片）', NT.store.sizeOf(s16) < 8000, NT.store.sizeOf(s16) + ' 字节');
 
-    /* ---------- 16. 家乡候选与定位 ---------- */
-    section('家乡候选');
+    /* ---------- 16. 固定游戏所在地 ---------- */
+    section('游戏所在地');
     var cities = NT.data.homeCities();
-    ok('家乡候选数量足够多（>= 30）', cities.length >= 30, cities.length + ' 个');
+    ok('游戏所在地只有挪德卡莱', cities.length === 1 && cities[0].id === 'nod_krai', cities.length + ' 个');
     var cityIds = {};
     var dupCity = 0;
     cities.forEach(function (c) { if (cityIds[c.id]) dupCity++; cityIds[c.id] = 1; });
     ok('家乡候选无重复', dupCity === 0, 'dup=' + dupCity);
-    ok('每个候选家乡都能算距离', cities.every(function (c) {
-      return NT.data.travelCost(c.id, 'mohe') > 0 || c.id === 'mohe';
+    ok('从所在地能计算各区域旅途点', cities.every(function (c) {
+      return NT.data.travelCost(c.id, 'natlan') > 0;
     }));
-    ok('额外城市也能当出发点', (function () {
-      var a = NT.data.travelCost('shanghai', 'sanya');
-      var b = NT.data.travelCost('beijing', 'sanya');
-      return a > 0 && b > 0 && a !== b;
-    })(), '上海→三亚 ' + NT.data.travelCost('shanghai', 'sanya') + 'km');
-    ok('homeName 能解析额外城市', NT.data.homeName('shanghai') === '上海', NT.data.homeName('shanghai'));
-    ok('从上海的行程能生成事实卡', (function () {
-      var f = NT.trip.create({ mode: 'random', homeId: 'shanghai', now: T0, seed: 5, dishId: 'lotus_soup' });
-      return f && f.homeId === 'shanghai' && f.destinationId !== 'shanghai';
+    ok('homeName 固定解析挪德卡莱', NT.data.homeName('nod_krai') === '挪德卡莱', NT.data.homeName('nod_krai'));
+    ok('从挪德卡莱能生成随机旅途事实卡', (function () {
+      var f = NT.trip.create({ mode: 'random', homeId: 'nod_krai', now: T0, seed: 5, dishId: 'lotus_soup' });
+      return f && f.homeId === 'nod_krai' && f.destinationId !== 'nod_krai';
     })());
 
     /* ---------- 17. 点击反应 ---------- */
@@ -1166,7 +1156,7 @@
       var s = NT.store.defaultSave();
       s.home.nahida.stateId = 'eat';
       var ctx = NT.text.ai.chatContext(s);
-      return ctx.indexOf('吃饭') >= 0 && ctx.indexOf('家乡') >= 0;
+      return ctx.indexOf('准备食物') >= 0 && ctx.indexOf('游戏所在地') >= 0;
     })());
     ok('未开 AI 时聊天直接用预设（不同步等网络）', (function () {
       var s = NT.store.defaultSave();
@@ -1333,7 +1323,7 @@
       })());
       ok('统计从图鉴推导正确', (function () {
         var s = NT.store.defaultSave();
-        var d = NT.clock.depart(s, { mode: 'region', regionId: 'sanya', now: T0, seed: 5 });
+        var d = NT.clock.depart(s, { mode: 'region', regionId: 'natlan', now: T0, seed: 5 });
         NT.clock.check(s, d.trip.dueAt + 1000);
         if (!s.album.length) return false;
         var did = s.album[0].destinationId;
@@ -1343,14 +1333,14 @@
       })());
       ok('没走到的行程也会被统计（记录的是实际落脚点）', (function () {
         var s = NT.store.defaultSave();
-        var d = NT.clock.depart(s, { mode: 'region', regionId: 'sanya', now: T0, seed: 5 });
+        var d = NT.clock.depart(s, { mode: 'region', regionId: 'natlan', now: T0, seed: 5 });
         NT.clock.check(s, d.trip.dueAt + 1000);
         var t = s.album[0];
         var v = NT.achievements.view(s);
-        // 预算不够 -> 半路折返，落脚点不是三亚
-        return t.journey.reached === false && v.byDestination.sanya === undefined;
+        // 预算不够 -> 半路折返，落脚点不是纳塔
+        return t.journey.reached === false && v.byDestination.natlan === undefined;
       })());
-      ok('走遍全国的判定用真实地区数量', !!G.achievementById('region_all'));
+      ok('七域见闻的判定使用真实区域数量', !!G.achievementById('region_all'));
       ok('成就界面能渲染', (function () {
         var bak = NT.app && NT.app.save;
         if (!NT.app) return false;
