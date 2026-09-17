@@ -457,9 +457,11 @@
       });
       return bad.length === 0;
     })());
-    ok('所有玩具槽都在画面右侧', (function () {
-      // 她做别的事都在左侧，玩具统一在右侧 —— 这样人和玩具永远不会挤在一起
-      return G.toySlots.every(function (s) { return s.x > 0.6; });
+    ok('玩具槽分布在房屋两侧并留出中央通道', (function () {
+      var left = G.toySlots.some(function (s) { return s.x < 0.36; });
+      var right = G.toySlots.some(function (s) { return s.x > 0.64; });
+      var clear = G.toySlots.every(function (s) { return s.x < 0.36 || s.x > 0.64; });
+      return left && right && clear;
     })());
 
     // 摆满一院子玩具，再让她一件件轮流去玩，看会不会站到别的玩具上。
@@ -857,30 +859,13 @@
       return s.x > 0.02 && s.x < 0.98 && s.y > 0.02 && s.y < 0.98;
     }));
 
-    ok('室内玩具槽在屋里、室外槽在屋外', (function () {
-      // 屋子大约占 x 0~0.43
+    ok('玩具槽分布在左右庭院并避开正门通道', (function () {
+      var hasLeft = false, hasRight = false;
       return G.toySlots.every(function (s) {
-        return s.place === 'indoor' ? s.x < 0.43 : s.x > 0.43;
-      });
-    })());
-
-    ok('室外玩具槽避开了树、喷泉和田地', (function () {
-      // 这几块的坐标是按家-全景.png 量的
-      var blocks = [
-        { n: '树', x0: 0.655, x1: 0.780, y0: 0.25, y1: 0.42 },
-        { n: '喷泉', x0: 0.620, x1: 0.720, y0: 0.40, y1: 0.48 },
-        { n: '田地', x0: 0.460, x1: 0.670, y0: 0.54, y1: 0.76 }
-      ];
-      var tallest = 0;                              // 最高的那件玩具（按相对身高算）
-      G.toys.forEach(function (t) { tallest = Math.max(tallest, G.toySize(t.id)); });
-      var bad = [];
-      G.toySlots.filter(function (s) { return s.place === 'outdoor'; }).forEach(function (s, i) {
-        var top = s.y - tallest * 0.25;              // 玩具顶端的 y
-        blocks.forEach(function (b) {
-          if (s.x > b.x0 && s.x < b.x1 && top < b.y1 && s.y > b.y0) bad.push('槽' + i + '压到' + b.n);
-        });
-      });
-      return bad.length === 0;
+        if (s.area === 'left') hasLeft = true;
+        if (s.area === 'right') hasRight = true;
+        return s.place === 'outdoor' && (s.x < 0.36 || s.x > 0.64);
+      }) && hasLeft && hasRight;
     })());
 
     ok('玩玩具时她不会站在玩具上', (function () {
@@ -1400,6 +1385,21 @@
           var oks = NT.assets.drawSprite(c.getContext('2d'), null, 100, 100, 50, false);
           return okc === false && oks === false;
         } catch (e) { return false; }
+      })());
+      ok('cover 裁剪框始终等比且位于源图内', (function () {
+        var cases = [
+          [1890, 1417, 1600, 900],
+          [1890, 1417, 900, 1600],
+          [900, 1600, 1600, 900]
+        ];
+        return cases.every(function (v) {
+          var r = NT.assets.coverRect(v[0], v[1], v[2], v[3], 0.2, -0.2, 1.1);
+          if (!r) return false;
+          var sameRatio = Math.abs(r.sw / r.sh - v[2] / v[3]) < 0.000001;
+          var inBounds = r.sx >= 0 && r.sy >= 0 && r.sx + r.sw <= v[0] + 0.000001 &&
+            r.sy + r.sh <= v[1] + 0.000001;
+          return sameRatio && inBounds;
+        });
       })());
       ok('status 可用', typeof NT.assets.status().total === 'number');
       ok('没填清单时明信片仍能合成（回退到程序化）', (function () {

@@ -1,6 +1,6 @@
 /* 哥伦比娅的旅行 · 家的数据
- * 家是一个 16:9 的全屏世界：左边是半截面的屋子（能看见她在屋里做什么），
- * 中间是院子（两块田直接画在画面里），右边是花园和池塘。全部同屏，不需要切场景。
+ * 家是一个 16:9 的全屏世界。背景会根据屏幕比例等比裁剪；主角和可交互物
+ * 集中在房屋正门前的庭院中，保证不同尺寸的界面都能看到主要内容。
  */
 (function (root) {
   'use strict';
@@ -14,41 +14,33 @@
 
   /** 三个区域，纯用于摆放与描述 */
   NT.data.homeAreas = [
-    { id: 'house',  name: '屋里', x: [0.02, 0.31] },
-    { id: 'yard',   name: '院子', x: [0.32, 0.63] },
-    { id: 'garden', name: '花园', x: [0.64, 0.99] }
+    { id: 'left',  name: '左侧庭院', x: [0.02, 0.34] },
+    { id: 'front', name: '正门前',   x: [0.35, 0.65] },
+    { id: 'right', name: '右侧庭院', x: [0.66, 0.98] }
   ];
 
   /**
-   * 哥伦比娅会去的位置。坐标是按家.png 实际量出来的（斜俯视玩偶屋视角）。
+   * 哥伦比娅会去的位置。坐标按家.png 的房屋正门和前庭重新标定。
    * y 是脚底基准。field 为真的位置，她在那里就是在照看那块田。
-   * 布局原则：屋里的事（看书/做饭/吃饭/发呆）在左侧，玩玩具在右侧；
-   * 落点要避开树、水池、田地和玩具。
+   * 所有日常状态都保持在房屋前，默认落点 yard 正对大门。
    */
   NT.data.homeSpots = {
-    /* ---- 屋里（可走动的地板带大约 y 0.70~0.81） ---- */
-    // 睡觉：脚在床尾、身体朝床头躺下（床的长轴是横的，床头在左边、书架下面）
-    bed:     { x: 0.184, y: 0.598, area: 'house',  label: '床上', onBed: true },
-    // 看书：床头、书架下面
-    shelf:   { x: 0.082, y: 0.754, area: 'house',  label: '床头' },
-    desk:    { x: 0.256, y: 0.742, area: 'house',  label: '桌边' },
-    stove:   { x: 0.392, y: 0.694, area: 'house',  label: '灶台边' },
-    door:    { x: 0.208, y: 0.808, area: 'house',  label: '门口' },
-
-    /* ---- 院子（屋子右边的草地，两块田在 x 0.47~0.66 / y 0.55~0.75） ---- */
-    dry:     { x: 0.448, y: 0.614, area: 'yard',   label: '菜地边', field: 'dry' },
-    wet:     { x: 0.512, y: 0.800, area: 'yard',   label: '水田边', field: 'wet' },
-    yard:    { x: 0.258, y: 0.904, area: 'yard',   label: '院子里' },
-    gate:    { x: 0.168, y: 0.966, area: 'yard',   label: '草地边上' },
-
-    /* ---- 花园（右侧草地；树和喷泉在 x 0.62~0.80 / y 0.25~0.48，所以都放在 y 0.75 以下） ---- */
-    lawn:    { x: 0.480, y: 0.870, area: 'garden', label: '草地上' }
+    bed:     { x: 0.440, y: 0.810, area: 'front', label: '房屋前', onBed: true },
+    shelf:   { x: 0.420, y: 0.820, area: 'front', label: '屋前左侧' },
+    desk:    { x: 0.560, y: 0.820, area: 'front', label: '屋前右侧' },
+    stove:   { x: 0.590, y: 0.850, area: 'front', label: '屋前右侧' },
+    door:    { x: 0.500, y: 0.820, area: 'front', label: '正门前' },
+    dry:     { x: 0.400, y: 0.880, area: 'front', label: '左侧花圃', field: 'dry' },
+    wet:     { x: 0.600, y: 0.880, area: 'front', label: '右侧花圃', field: 'wet' },
+    yard:    { x: 0.500, y: 0.860, area: 'front', label: '房屋前' },
+    gate:    { x: 0.500, y: 0.930, area: 'front', label: '庭院入口' },
+    lawn:    { x: 0.560, y: 0.890, area: 'front', label: '前庭' }
   };
 
   NT.data.spotById = function (id) { return NT.data.homeSpots[id]; };
 
   /**
-   * 玩具落位槽。全部在右侧草地，**一共 5 个**。
+   * 玩具落位槽。分散在前庭左右两侧，**一共 5 个**。
    *
    * 为什么是 5 个（不是 8 个）：
    *   · 主角要站到玩具旁边玩，来访的同伴也要玩 —— 院子里同时有人有玩具
@@ -56,18 +48,15 @@
    *   · 摆太满就会出问题：她站到别的玩具上、玩具互相压住
    *   5 个槽位能把行距拉到 0.2，上面这些问题就都不存在了。
    *
-   * 避开的区域：树（x 0.655~0.78 / y 0.25~0.42）、
-   *             喷泉（x 0.62~0.72 / y 0.40~0.48）、
-   *             田地（x 0.47~0.66 / y 0.54~0.75）。
-   * 另外 y 不能超过 ~0.90 —— 她玩最下面那件时要能站到它**前面**（画面更下方），
-   * 再往下就出画了。左上那个位置空着也是这个原因（吊床摆那儿会压到喷泉）。
+   * 中央正门及通道留空，避免玩具遮住主角；外侧槽位也给最大尺寸的吊床
+   * 留出了完整显示空间。
    */
   NT.data.toySlots = [
-    { x: 0.690, y: 0.895, area: 'garden', place: 'outdoor' },
-    { x: 0.790, y: 0.700, area: 'garden', place: 'outdoor' },
-    { x: 0.790, y: 0.895, area: 'garden', place: 'outdoor' },
-    { x: 0.885, y: 0.720, area: 'garden', place: 'outdoor' },
-    { x: 0.885, y: 0.900, area: 'garden', place: 'outdoor' }
+    { x: 0.160, y: 0.820, area: 'left',  place: 'outdoor' },
+    { x: 0.300, y: 0.960, area: 'left',  place: 'outdoor' },
+    { x: 0.700, y: 0.960, area: 'right', place: 'outdoor' },
+    { x: 0.840, y: 0.820, area: 'right', place: 'outdoor' },
+    { x: 0.880, y: 0.960, area: 'right', place: 'outdoor' }
   ];
 
   /* ---------------- 哥伦比娅的居家状态 ---------------- */

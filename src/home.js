@@ -346,8 +346,8 @@
    * 这样两个人的位置永远不会撞上，省掉一堆图层叠加的麻烦。
    */
 
-  /** 院子里一件玩具都没摆时，同伴在这儿待着（刻意避开主角所有落点） */
-  var VISITOR_IDLE_SPOT = { x: 0.620, y: 0.862, area: 'garden', label: '院子里' };
+  /** 院子里一件玩具都没摆时，同伴在右侧空地待着（刻意避开主角所有落点） */
+  var VISITOR_IDLE_SPOT = { x: 0.760, y: 0.840, area: 'right', label: '右侧庭院' };
 
   /** 主角现在在画面哪一侧：玩玩具 = 右边，其它 = 左边 */
   home.nahidaSide = function (save) {

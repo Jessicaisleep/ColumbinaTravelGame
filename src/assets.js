@@ -392,20 +392,36 @@
 
   /* ---------------- 绘制辅助 ---------------- */
 
-  /** 等比铺满（相当于 CSS 的 object-fit: cover） */
+  /**
+   * 计算等比铺满所需的源图裁剪框（相当于 CSS 的 object-fit: cover）。
+   * 返回值使用源图片像素坐标；裁剪框始终位于图片内部，并与目标画布同宽高比。
+   */
+  assets.coverRect = function (iw, ih, w, h, panX, panY, zoom) {
+    if (!(iw > 0 && ih > 0 && w > 0 && h > 0)) return null;
+
+    // cover 的基础倍率已经保证不露边；额外 zoom 只允许继续放大。
+    zoom = Math.max(1, Number(zoom) || 1);
+    var scale = Math.max(w / iw, h / ih) * zoom;
+    var sw = Math.min(iw, w / scale);
+    var sh = Math.min(ih, h / scale);
+    var sx = (iw - sw) / 2 - (Number(panX) || 0) * w / scale;
+    var sy = (ih - sh) / 2 - (Number(panY) || 0) * h / scale;
+
+    sx = Math.max(0, Math.min(iw - sw, sx));
+    sy = Math.max(0, Math.min(ih - sh, sy));
+    return { sx: sx, sy: sy, sw: sw, sh: sh };
+  };
+
+  /** 等比裁剪后铺满；只裁掉画面边缘，绝不改变图片宽高比。 */
   assets.drawCover = function (ctx, img, w, h, panX, panY, zoom) {
     if (!img) return false;
     var iw = img.naturalWidth, ih = img.naturalHeight;
-    if (!iw || !ih) return false;
-    zoom = zoom || 1;
-    var scale = Math.max(w / iw, h / ih) * zoom;
-    var dw = iw * scale, dh = ih * scale;
-    var dx = (w - dw) / 2 + (panX || 0) * w;
-    var dy = (h - dh) / 2 + (panY || 0) * h;
+    var crop = assets.coverRect(iw, ih, w, h, panX, panY, zoom);
+    if (!crop) return false;
     ctx.save();
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';   // 大幅缩小时低质量采样会明显发糊
-    ctx.drawImage(img, dx, dy, dw, dh);
+    ctx.drawImage(img, crop.sx, crop.sy, crop.sw, crop.sh, 0, 0, w, h);
     ctx.restore();
     return true;
   };
