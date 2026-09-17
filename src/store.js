@@ -81,7 +81,10 @@
   }
 
   store.load = function () {
-    var raw = usingMemory ? memory[C.SAVE_KEY] : lsGet(C.SAVE_KEY);
+    var currentRaw = usingMemory ? memory[C.SAVE_KEY] : lsGet(C.SAVE_KEY);
+    var previousRaw = currentRaw ? null
+      : (usingMemory ? memory[C.PREVIOUS_SAVE_KEY] : lsGet(C.PREVIOUS_SAVE_KEY));
+    var raw = currentRaw || previousRaw;
     if (!raw) return store.defaultSave();
     var s = NT.util.tryJSON(raw, null);
     if (!s || typeof s !== 'object') return store.defaultSave();
@@ -93,6 +96,11 @@
     if (!NT.data.destinationById || !NT.data.destinationById(s.homeId)) s.homeId = 'nod_krai';
     s.homeChosen = true;
     if (s.settings && Object.prototype.hasOwnProperty.call(s.settings, 'apiKey')) delete s.settings.apiKey;
+    // 首次读到旧键时复制到新键。旧键暂不删除，出现异常时仍可回退。
+    if (!currentRaw && previousRaw) {
+      if (usingMemory) memory[C.SAVE_KEY] = raw;
+      else lsSet(C.SAVE_KEY, raw);
+    }
     return s;
   };
 
@@ -109,7 +117,13 @@
   };
 
   store.reset = function () {
-    if (usingMemory) delete memory[C.SAVE_KEY]; else lsDel(C.SAVE_KEY);
+    if (usingMemory) {
+      delete memory[C.SAVE_KEY];
+      delete memory[C.PREVIOUS_SAVE_KEY];
+    } else {
+      lsDel(C.SAVE_KEY);
+      lsDel(C.PREVIOUS_SAVE_KEY);
+    }
     return store.defaultSave();
   };
 

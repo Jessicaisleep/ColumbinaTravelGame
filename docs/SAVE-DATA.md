@@ -1,6 +1,6 @@
 # Save data compatibility (phase 1)
 
-The live game continues to use `src/store.js` and localStorage key `nahida-travel/save/v2`. `src/storage/save-api.js` exposes an ES Module facade for future code but is intentionally not wired into the legacy initializer yet.
+The live game uses `src/store.js` and localStorage key `columbina-travel/save/v2`. On first load after the project rename, the previous project key is copied forward automatically. `src/storage/save-api.js` exposes an ES Module facade for future code but is intentionally not wired into the legacy initializer yet.
 
 Current storage is JSON in localStorage. It contains home, active trip, album, statistics, farm, inventory, toys, visitor state and settings. It does not use IndexedDB, cookies or a service-worker cache.
 

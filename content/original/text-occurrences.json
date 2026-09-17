@@ -1807,7 +1807,7 @@
   {
     "file": "README.md",
     "line": 436,
-    "text": "**没有单文件版** —— 代码 39 个文件 + 素材 40 张图，直接整个 `nahida-travel` 文件夹拷给别人就能玩。"
+    "text": "**没有单文件版** —— 代码 39 个文件 + 素材 40 张图，直接整个 `columbina-travel` 文件夹拷给别人就能玩。"
   },
   {
     "file": "README.md",
@@ -13737,7 +13737,7 @@
   {
     "file": "tools/record-demo.ps1",
     "line": 11,
-    "text": "#  用法（在 nahida-travel 目录下）："
+    "text": "#  用法（在 columbina-travel 目录下）："
   },
   {
     "file": "tools/record-demo.ps1",
@@ -14447,7 +14447,7 @@
   {
     "file": "图片素材/素材标准.txt",
     "line": 153,
-    "text": "  2. 在 nahida-travel/assets/manifest.js 的 companions 里加一行："
+    "text": "  2. 在 columbina-travel/assets/manifest.js 的 companions 里加一行："
   },
   {
     "file": "图片素材/素材标准.txt",
@@ -14682,7 +14682,7 @@
   {
     "file": "图片素材/素材标准.txt",
     "line": 238,
-    "text": "所以整个 nahida-travel 文件夹拷到哪、改名成什么，都不会失效。"
+    "text": "所以整个 columbina-travel 文件夹拷到哪、改名成什么，都不会失效。"
   },
   {
     "file": "图片素材/素材标准.txt",
@@ -14692,7 +14692,7 @@
   {
     "file": "图片素材/素材标准.txt",
     "line": 241,
-    "text": "nahida-travel/assets/manifest.js 里的 dir 字段。"
+    "text": "columbina-travel/assets/manifest.js 里的 dir 字段。"
   },
   {
     "file": "图片素材/素材标准.txt",
@@ -14742,7 +14742,7 @@
   {
     "file": "图片素材/素材标准.txt",
     "line": 258,
-    "text": "放到 nahida-travel/assets/font/ 里，再把 开始游戏.html 里那段"
+    "text": "放到 columbina-travel/assets/font/ 里，再把 开始游戏.html 里那段"
   },
   {
     "file": "图片素材/素材标准.txt",

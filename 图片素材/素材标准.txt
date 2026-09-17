@@ -150,7 +150,7 @@
   1. 把图片放进本文件夹，命名成「配角-<名字>」
      例：配角-新角色.png
 
-  2. 在 nahida-travel/assets/manifest.js 的 companions 里加一行：
+  2. 在 columbina-travel/assets/manifest.js 的 companions 里加一行：
      newchar: '配角-新角色',
 
 就完了。游戏启动时会**自动把这个角色收录进角色表**：
@@ -224,7 +224,7 @@
 ========================================================
 默认（也是推荐的）摆法 —— 就在项目里、和入口文件同层：
 
-    nahida-travel/
+    columbina-travel/
     ├── 开始游戏.html
     ├── 说明.txt
     ├── 图片素材/          ← 本文件夹
@@ -235,10 +235,10 @@
 
 游戏会按「同层 → 上一层 → 上两层」依次找这个文件夹，
 **第一个能加载成功的位置就定下来**，后面所有素材都用它。
-所以整个 nahida-travel 文件夹拷到哪、改名成什么，都不会失效。
+所以整个 columbina-travel 文件夹拷到哪、改名成什么，都不会失效。
 
 想改这个文件夹的名字也行：改
-nahida-travel/assets/manifest.js 里的 dir 字段。
+columbina-travel/assets/manifest.js 里的 dir 字段。
 
 
 ========================================================
@@ -255,6 +255,6 @@ Windows 和 macOS 都有，部分 Linux 没有，会退化成普通字体。
 
 如果你希望所有平台看起来都一样，可以放一个开源字体进来：
 推荐 **霞鹜文楷 LXGW WenKai（SIL OFL 1.1 授权，可自由再分发）**，
-放到 nahida-travel/assets/font/ 里，再把 开始游戏.html 里那段
+放到 columbina-travel/assets/font/ 里，再把 开始游戏.html 里那段
 @font-face 的注释取消即可。字体文件较大（完整版 10MB+），
 也可以只做子集化。

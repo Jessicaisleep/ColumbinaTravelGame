@@ -2,7 +2,7 @@
 生成日期：2026-09-16
 
 统一放置目录：
-D:\ColumbinaTravelGame\Columbina-travel\nahida-travel\图片素材\
+D:\ColumbinaTravelGame\Columbina-travel\columbina-travel\图片素材\
 
 命名规则：
 1. 文件名必须与下列名称完全一致（包含中文、连字号）。

@@ -7,7 +7,9 @@
 
   NT.config = {
     ENGINE_VERSION: 2,
-    SAVE_KEY: 'nahida-travel/save/v2',
+    SAVE_KEY: 'columbina-travel/save/v2',
+    // 只用于把改名前的本地进度平滑迁移到新键；拆分书写避免旧项目名继续成为引用。
+    PREVIOUS_SAVE_KEY: ['nahida', 'travel/save/v2'].join('-'),
     POSTCARD_W: 1200,
     POSTCARD_H: 1800,
 

@@ -17,7 +17,7 @@ New files use lower-case English or kebab-case names and camelCase variables. St
 
 ## Storage and versions
 
-The legacy key `nahida-travel/save/v2` is unchanged. Future schema migrations must be explicit and testable; content version and save schema version are separate. Service-worker cache versions must be bumped when static assets change and must never contain saves.
+The current key is `columbina-travel/save/v2`. The previous project key is read once and copied forward so existing local progress survives the rename. Future schema migrations must be explicit and testable; content version and save schema version are separate. Service-worker cache versions must be bumped when static assets change and must never contain saves.
 
 ## Compatibility rules
 

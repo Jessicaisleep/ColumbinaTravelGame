@@ -2,7 +2,7 @@
   {
     "file": "assets/manifest.js",
     "line": 8,
-    "text": " *     nahida-travel/",
+    "text": " *     columbina-travel/",
     "terms": [
       "nahida"
     ]
@@ -74,7 +74,7 @@
   {
     "file": "docs/PLATFORM-BUILD.md",
     "line": 9,
-    "text": "`public/manifest.webmanifest` references the existing 192/512 PNG icons without copying or modifying them. `public/service-worker.js` uses version `nahida-travel-static-v1`, caches same-origin GET responses only, excludes storage/API data, and is registered only on HTTPS or localhost. `file://` and unsupported browsers continue without PWA.",
+    "text": "`public/manifest.webmanifest` references the existing 192/512 PNG icons without copying or modifying them. `public/service-worker.js` uses version `columbina-travel-static-v1`, caches same-origin GET responses only, excludes storage/API data, and is registered only on HTTPS or localhost. `file://` and unsupported browsers continue without PWA.",
     "terms": [
       "nahida"
     ]
@@ -82,7 +82,7 @@
   {
     "file": "docs/PROJECT-CONVENTIONS.md",
     "line": 20,
-    "text": "The legacy key `nahida-travel/save/v2` is unchanged. Future schema migrations must be explicit and testable; content version and save schema version are separate. Service-worker cache versions must be bumped when static assets change and must never contain saves.",
+    "text": "The legacy key `columbina-travel/save/v2` is unchanged. Future schema migrations must be explicit and testable; content version and save schema version are separate. Service-worker cache versions must be bumped when static assets change and must never contain saves.",
     "terms": [
       "nahida"
     ]
@@ -90,7 +90,7 @@
   {
     "file": "docs/SAVE-DATA.md",
     "line": 3,
-    "text": "The live game continues to use `src/store.js` and localStorage key `nahida-travel/save/v2`. `src/storage/save-api.js` exposes an ES Module facade for future code but is intentionally not wired into the legacy initializer yet.",
+    "text": "The live game continues to use `src/store.js` and localStorage key `columbina-travel/save/v2`. `src/storage/save-api.js` exposes an ES Module facade for future code but is intentionally not wired into the legacy initializer yet.",
     "terms": [
       "nahida"
     ]
@@ -106,7 +106,7 @@
   {
     "file": "package-lock.json",
     "line": 2,
-    "text": "  \"name\": \"nahida-travel\",",
+    "text": "  \"name\": \"columbina-travel\",",
     "terms": [
       "nahida"
     ]
@@ -114,7 +114,7 @@
   {
     "file": "package-lock.json",
     "line": 8,
-    "text": "      \"name\": \"nahida-travel\",",
+    "text": "      \"name\": \"columbina-travel\",",
     "terms": [
       "nahida"
     ]
@@ -122,7 +122,7 @@
   {
     "file": "package.json",
     "line": 2,
-    "text": "  \"name\": \"nahida-travel\",",
+    "text": "  \"name\": \"columbina-travel\",",
     "terms": [
       "nahida"
     ]
@@ -138,7 +138,7 @@
   {
     "file": "public/service-worker.js",
     "line": 2,
-    "text": "const CACHE_NAME = 'nahida-travel-static-v1';",
+    "text": "const CACHE_NAME = 'columbina-travel-static-v1';",
     "terms": [
       "nahida"
     ]
@@ -227,7 +227,7 @@
   {
     "file": "README.md",
     "line": 247,
-    "text": "nahida-travel/",
+    "text": "columbina-travel/",
     "terms": [
       "nahida"
     ]
@@ -299,7 +299,7 @@
   {
     "file": "README.md",
     "line": 436,
-    "text": "**没有单文件版** —— 代码 39 个文件 + 素材 40 张图，直接整个 `nahida-travel` 文件夹拷给别人就能玩。",
+    "text": "**没有单文件版** —— 代码 39 个文件 + 素材 40 张图，直接整个 `columbina-travel` 文件夹拷给别人就能玩。",
     "terms": [
       "nahida"
     ]
@@ -307,7 +307,7 @@
   {
     "file": "README.md",
     "line": 442,
-    "text": "nahida-travel/",
+    "text": "columbina-travel/",
     "terms": [
       "nahida"
     ]
@@ -315,7 +315,7 @@
   {
     "file": "scripts/check-project.mjs",
     "line": 29,
-    "text": "    ['legacy save key retained', store.includes('C.SAVE_KEY') && config.includes('nahida-travel/save/v2') && saveApi.includes('nahida-travel/save/v2')],",
+    "text": "    ['legacy save key retained', store.includes('C.SAVE_KEY') && config.includes('columbina-travel/save/v2') && saveApi.includes('columbina-travel/save/v2')],",
     "terms": [
       "nahida"
     ]
@@ -347,7 +347,7 @@
   {
     "file": "src/assets.js",
     "line": 31,
-    "text": "   *   nahida-travel/",
+    "text": "   *   columbina-travel/",
     "terms": [
       "nahida"
     ]
@@ -960,7 +960,7 @@
   {
     "file": "src/data/config.js",
     "line": 10,
-    "text": "    SAVE_KEY: 'nahida-travel/save/v2',",
+    "text": "    SAVE_KEY: 'columbina-travel/save/v2',",
     "terms": [
       "nahida"
     ]
@@ -1626,7 +1626,7 @@
   {
     "file": "src/storage/save-api.js",
     "line": 2,
-    "text": "export const LEGACY_SAVE_KEY = 'nahida-travel/save/v2';",
+    "text": "export const LEGACY_SAVE_KEY = 'columbina-travel/save/v2';",
     "terms": [
       "nahida"
     ]
@@ -1746,7 +1746,7 @@
   {
     "file": "src/ui.js",
     "line": 591,
-    "text": "    a.download = 'nahida-travel-save.json';",
+    "text": "    a.download = 'columbina-travel-save.json';",
     "terms": [
       "nahida"
     ]
@@ -1946,7 +1946,7 @@
   {
     "file": "tools/record-demo.ps1",
     "line": 11,
-    "text": "#  用法（在 nahida-travel 目录下）：",
+    "text": "#  用法（在 columbina-travel 目录下）：",
     "terms": [
       "nahida"
     ]
@@ -2098,7 +2098,7 @@
   {
     "file": "图片素材/素材标准.txt",
     "line": 153,
-    "text": "  2. 在 nahida-travel/assets/manifest.js 的 companions 里加一行：",
+    "text": "  2. 在 columbina-travel/assets/manifest.js 的 companions 里加一行：",
     "terms": [
       "nahida"
     ]
@@ -2106,7 +2106,7 @@
   {
     "file": "图片素材/素材标准.txt",
     "line": 227,
-    "text": "    nahida-travel/",
+    "text": "    columbina-travel/",
     "terms": [
       "nahida"
     ]
@@ -2114,7 +2114,7 @@
   {
     "file": "图片素材/素材标准.txt",
     "line": 238,
-    "text": "所以整个 nahida-travel 文件夹拷到哪、改名成什么，都不会失效。",
+    "text": "所以整个 columbina-travel 文件夹拷到哪、改名成什么，都不会失效。",
     "terms": [
       "nahida"
     ]
@@ -2122,7 +2122,7 @@
   {
     "file": "图片素材/素材标准.txt",
     "line": 241,
-    "text": "nahida-travel/assets/manifest.js 里的 dir 字段。",
+    "text": "columbina-travel/assets/manifest.js 里的 dir 字段。",
     "terms": [
       "nahida"
     ]
@@ -2130,7 +2130,7 @@
   {
     "file": "图片素材/素材标准.txt",
     "line": 258,
-    "text": "放到 nahida-travel/assets/font/ 里，再把 开始游戏.html 里那段",
+    "text": "放到 columbina-travel/assets/font/ 里，再把 开始游戏.html 里那段",
     "terms": [
       "nahida"
     ]

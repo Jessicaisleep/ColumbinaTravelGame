@@ -6,7 +6,7 @@
 
 ## PWA
 
-`public/manifest.webmanifest` references the existing 192/512 PNG icons without copying or modifying them. `public/service-worker.js` uses version `nahida-travel-static-v1`, caches same-origin GET responses only, excludes storage/API data, and is registered only on HTTPS or localhost. `file://` and unsupported browsers continue without PWA.
+`public/manifest.webmanifest` references the existing 192/512 PNG icons without copying or modifying them. `public/service-worker.js` uses version `columbina-travel-static-v2`, caches same-origin GET responses only, excludes storage/API data, and is registered only on HTTPS or localhost. `file://` and unsupported browsers continue without PWA.
 
 ## Tauri / Capacitor
 

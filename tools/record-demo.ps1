@@ -8,7 +8,7 @@
 #  最后把带时间戳的帧重采样成固定帧率，封装成 MJPEG 的 AVI。
 #  机器上没有 ffmpeg，所以 AVI 容器是这里手写的（RIFF 结构不复杂）。
 #
-#  用法（在 nahida-travel 目录下）：
+#  用法（在 columbina-travel 目录下）：
 #     powershell -ExecutionPolicy Bypass -File tools\record-demo.ps1
 #     powershell -ExecutionPolicy Bypass -File tools\record-demo.ps1 -Fps 12 -Width 1280 -Height 720
 #

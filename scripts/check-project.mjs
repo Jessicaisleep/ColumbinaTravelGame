@@ -26,7 +26,7 @@ else {
     ['legacy script order boundary', legacyScripts[0] === 'src/core/util.js' && legacyScripts.at(-1) === 'src/core/selftest.js'],
     ['all script paths exist', allScriptsExist],
     ['legacy namespace retained', game.includes('src/core/selftest.js')],
-    ['legacy save key retained', store.includes('C.SAVE_KEY') && config.includes('nahida-travel/save/v2') && saveApi.includes('nahida-travel/save/v2')],
+    ['save key renamed with migration', store.includes('C.PREVIOUS_SAVE_KEY') && config.includes('columbina-travel/save/v2') && saveApi.includes('columbina-travel/save/v2')],
     ['manifest icon paths exist', manifestIconsExist]
   ];
   checks.forEach(([name, ok]) => console.log(`${ok ? 'PASS' : 'FAIL'} ${name}`));

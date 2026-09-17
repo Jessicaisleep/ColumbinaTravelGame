@@ -5,7 +5,7 @@
  * 这里只写**文件名**，不写路径 —— 素材文件夹在哪一层由 src/assets.js 自动探测。
  * 默认摆法是「图片素材」就在 开始游戏.html 旁边：
  *
- *     nahida-travel/
+ *     columbina-travel/
  *     ├── 开始游戏.html
  *     └── 图片素材/
  *
