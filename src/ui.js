@@ -749,7 +749,9 @@
     var body;
     if (st.state === 'empty') {
       var crops = NT.data.cropsForField(fieldId).map(function (c) {
-        return '<button class="chip" data-act="plant" data-arg="' + c.id + '">' + c.name +
+        var img = NT.assets && NT.assets.crop(c.id);
+        var art = img ? '<img class="crop-thumb" src="' + esc(img.src) + '" alt="">' : '';
+        return '<button class="chip crop-chip" data-act="plant" data-arg="' + c.id + '">' + art + c.name +
           '<small>' + fmtDur(c.growMs) + '</small></button>';
       }).join('');
       body = '<div class="label">种什么？</div><div class="chips">' + crops + '</div>';
@@ -1311,8 +1313,10 @@
           NT.data.ingredientName(k) + ' ' + have + '/' + want + '</span>';
       }).join(' ');
       var have = s.inventory.dishes[d.id] || 0;
+      var dishImg = NT.assets && NT.assets.dish(d.id);
+      var dishArt = dishImg ? '<img class="dish-thumb" src="' + esc(dishImg.src) + '" alt="">' : '';
       return '<div class="dish' + (can ? ' can' : '') + '">' +
-        '<div class="dish-head"><b>' + d.name + '</b>' +
+        dishArt + '<div class="dish-head"><b>' + d.name + '</b>' +
         (have ? '<span class="own">已有 ' + have + '</span>' : '') + '</div>' +
         '<div class="dish-desc">' + esc(d.desc) + '</div>' +
         '<div class="dish-need">' + need + '</div>' +

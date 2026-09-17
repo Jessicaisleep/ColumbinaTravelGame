@@ -181,6 +181,8 @@
     for (k in (m.nahida || {})) register('nahida', k, m.nahida[k]);
     for (k in (m.companions || {})) register('companion', k, m.companions[k]);
     for (k in (m.toys || {})) register('toy', k, m.toys[k]);
+    for (k in (m.crops || {})) register('crop', k, m.crops[k]);
+    for (k in (m.dishes || {})) register('dish', k, m.dishes[k]);
     for (k in (m.stickers || {})) register('sticker', k, m.stickers[k]);
     if (m.home) register('home', 'home', m.home);
     for (k in (m.icons || {})) register('icon', k, m.icons[k]);
@@ -209,6 +211,8 @@
   };
   assets.companion = function (id) { return ready('companion', id); };
   assets.toy = function (id) { return ready('toy', id); };
+  assets.crop = function (id) { return ready('crop', id); };
+  assets.dish = function (id) { return ready('dish', id); };
   assets.sticker = function (id) { return ready('sticker', id); };
 
   assets.hasBackgrounds = function () { return !!NT.assetManifest && !!NT.assetManifest.backgrounds &&
@@ -247,7 +251,7 @@
     }
     var map = {
       bg: m.backgrounds, nahida: m.nahida, companion: m.companions,
-      toy: m.toys, icon: m.icons, sticker: m.stickers
+      toy: m.toys, crop: m.crops, dish: m.dishes, icon: m.icons, sticker: m.stickers
     };
     var g = map[group];
     if (!g || !g[id]) return id;
@@ -375,7 +379,9 @@
     var groups = [
       { list: NT.data.destinations, map: m.backgrounds, label: '地区' },
       { list: NT.data.companions, map: m.companions, label: '配角' },
-      { list: NT.data.toys, map: m.toys, label: '玩具' }
+      { list: NT.data.toys, map: m.toys, label: '玩具' },
+      { list: NT.data.crops, map: m.crops, label: '作物' },
+      { list: (NT.data.dishes || []).filter(function (x) { return x.id !== 'none'; }), map: m.dishes, label: '料理' }
     ];
     groups.forEach(function (g) {
       if (!Array.isArray(g.list) || !g.map) return;

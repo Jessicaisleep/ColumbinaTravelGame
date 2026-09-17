@@ -242,7 +242,7 @@
     /* ---------- 6. 种植 ---------- */
     section('种植系统');
     ok('空田状态为 empty', NT.farm.status(NT.store.defaultSave(), 'dry', T0).state === 'empty');
-    ok('旱田不能种水稻', NT.farm.plant(NT.store.defaultSave(), 'dry', 'rice', T0).ok === false);
+    ok('玄此玉田不能种嘟嘟莲', NT.farm.plant(NT.store.defaultSave(), 'dry', 'rice', T0).ok === false);
     ok('种植成功并可查询进度', (function () {
       var s = NT.store.defaultSave();
       var r = NT.farm.plant(s, 'wet', 'rice', T0);
@@ -277,7 +277,7 @@
     section('厨房与出门消耗');
     ok('食材不足时不可做', NT.data.canCook(G.dishById('lotus_rice'), {}) === false);
     ok('食材够时可以合成', (function () {
-      var inv = { rice: 2, lotus: 1 };
+      var inv = { rice: 2, wheat: 1 };
       return NT.data.canCook(G.dishById('lotus_rice'), inv) === true;
     })());
     ok('没有该食物时出发被拒', (function () {
@@ -1374,10 +1374,12 @@
       ok('NT.assets 已加载', true);
       ok('素材清单存在且结构完整', (function () {
         var m = NT.assetManifest;
-        return !!m && !!m.backgrounds && !!m.nahida && !!m.companions && !!m.toys && !!m.stickers;
+        return !!m && !!m.backgrounds && !!m.nahida && !!m.companions && !!m.toys &&
+          !!m.crops && !!m.dishes && !!m.stickers;
       })());
       ok('清单为空时查询返回 null', NT.assets.bg('__none__') === null &&
-        NT.assets.nahida('__none__') === null && NT.assets.companion('__none__') === null);
+        NT.assets.nahida('__none__') === null && NT.assets.companion('__none__') === null &&
+        NT.assets.crop('__none__') === null && NT.assets.dish('__none__') === null);
       ok('没有真图时 drawCover/drawSprite 返回 false（触发回退）', (function () {
         try {
           var c = NT.effects.makeCanvas(200, 120);

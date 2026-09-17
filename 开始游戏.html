@@ -207,6 +207,8 @@
   .chip small{color:var(--fg3);font-size:11.5px;line-height:1.5}
   .chip.on{border-color:var(--green);background:#242c1e;color:#dff0cd}
   .chip.on small{color:#9ab98a}
+  .crop-chip{position:relative;padding-left:48px;min-height:46px;justify-content:center}
+  .crop-thumb{position:absolute;left:8px;top:50%;width:34px;height:34px;object-fit:contain;transform:translateY(-50%)}
   .chips.regions .chip{min-width:21%;padding:9px 10px;font-size:13.5px}
 
   /* ---- 首次选家乡 ---- */
@@ -216,6 +218,8 @@
   /* ---- 厨房 ---- */
   .dishes{display:flex;flex-direction:column;gap:11px}
   .dish{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;opacity:.62}
+  .dish-thumb{float:left;width:64px;height:64px;object-fit:contain;margin:0 12px 8px 0;border-radius:10px}
+  .dish::after{content:"";display:block;clear:both}
   .dish.can{opacity:1;border-color:#465a34}
   .dish-head{display:flex;justify-content:space-between;align-items:baseline;font-size:15px}
   .dish-head .own{font-size:11.5px;color:var(--green)}

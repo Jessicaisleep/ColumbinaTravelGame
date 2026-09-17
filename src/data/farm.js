@@ -1,5 +1,5 @@
-﻿/* 纳西妲旅行 · 种植系统数据
- * 两块田：旱田 + 水田。作物按真实时间生长，收获后进食材背包，
+﻿/* 哥伦比娅的旅行 · 种植系统数据
+ * 两块田：玄此玉田 + 楚此诸田。作物按真实时间生长，收获后进食材背包，
  * 并有几率掉落稀有道具（只提升稀有明信片概率，不直接给明信片）。
  */
 (function (root) {
@@ -12,10 +12,10 @@
   /** 田地 */
   NT.data.fields = [
     {
-      id: 'dry', name: '旱田', desc: '土是松的，一脚踩下去会陷一点。'
+      id: 'dry', name: '玄此玉田', desc: '土是松的，一脚踩下去会陷一点。'
     },
     {
-      id: 'wet', name: '水田', desc: '浅浅一层水，能看见底下的泥。'
+      id: 'wet', name: '楚此诸田', desc: '浅浅一层水，能看见底下的泥。'
     }
   ];
 
@@ -27,28 +27,28 @@
 
   /** 作物。growMs 为真实时间；yield 为收获的食材数量区间 */
   NT.data.crops = [
-    /* ---- 旱田 ---- */
+    /* ---- 玄此玉田 ---- */
     { id: 'potato', name: '土豆', field: 'dry', growMs: 2 * NT.HOUR, icon: 'stone',
       yieldItem: 'potato', yieldMin: 2, yieldMax: 4, desc: '埋在土里，看不出来熟了没有。' },
-    { id: 'wheat', name: '小麦', field: 'dry', growMs: 4 * NT.HOUR, icon: 'leaf',
+    { id: 'wheat', name: '甜甜花', field: 'dry', growMs: 4 * NT.HOUR, icon: 'flower',
       yieldItem: 'wheat', yieldMin: 2, yieldMax: 3, desc: '一片一片地倒向同一边。' },
-    { id: 'soybean', name: '大豆', field: 'dry', growMs: 3 * NT.HOUR, icon: 'seed',
+    { id: 'soybean', name: '琉璃百合', field: 'dry', growMs: 3 * NT.HOUR, icon: 'flower',
       yieldItem: 'soybean', yieldMin: 2, yieldMax: 4, desc: '豆荚鼓鼓的，捏一下有响声。' },
-    { id: 'tomato', name: '番茄', field: 'dry', growMs: 5 * NT.HOUR, icon: 'flower',
+    { id: 'tomato', name: '风车菊', field: 'dry', growMs: 5 * NT.HOUR, icon: 'flower',
       yieldItem: 'tomato', yieldMin: 2, yieldMax: 3, desc: '红得很快，前一天还是青的。' },
-    { id: 'corn', name: '玉米', field: 'dry', growMs: 6 * NT.HOUR, icon: 'leaf',
+    { id: 'corn', name: '冬凌草', field: 'dry', growMs: 6 * NT.HOUR, icon: 'leaf',
       yieldItem: 'corn', yieldMin: 1, yieldMax: 3, desc: '长得比人还高，叶子会划手。' },
 
-    /* ---- 水田 ---- */
-    { id: 'wildrice', name: '茭白', field: 'wet', growMs: 3 * NT.HOUR, icon: 'bamboo',
+    /* ---- 楚此诸田 ---- */
+    { id: 'wildrice', name: '金鱼草', field: 'wet', growMs: 3 * NT.HOUR, icon: 'flower',
       yieldItem: 'wildrice', yieldMin: 2, yieldMax: 4, desc: '站在水里，叶子又长又直。' },
-    { id: 'waterchestnut', name: '荸荠', field: 'wet', growMs: 4 * NT.HOUR, icon: 'stone',
+    { id: 'waterchestnut', name: '莲蓬', field: 'wet', growMs: 4 * NT.HOUR, icon: 'seed',
       yieldItem: 'waterchestnut', yieldMin: 2, yieldMax: 5, desc: '要伸手到泥里去摸。' },
-    { id: 'rice', name: '水稻', field: 'wet', growMs: 6 * NT.HOUR, icon: 'leaf',
+    { id: 'rice', name: '嘟嘟莲', field: 'wet', growMs: 6 * NT.HOUR, icon: 'flower',
       yieldItem: 'rice', yieldMin: 3, yieldMax: 5, desc: '水面上能看见天的倒影。' },
-    { id: 'watercaltrop', name: '菱角', field: 'wet', growMs: 5 * NT.HOUR, icon: 'star',
+    { id: 'watercaltrop', name: '海灵芝', field: 'wet', growMs: 5 * NT.HOUR, icon: 'star',
       yieldItem: 'watercaltrop', yieldMin: 2, yieldMax: 4, desc: '浮在水上，翻过来是尖的。' },
-    { id: 'lotus', name: '莲藕', field: 'wet', growMs: 8 * NT.HOUR, icon: 'flower',
+    { id: 'lotus', name: '久雨莲', field: 'wet', growMs: 8 * NT.HOUR, icon: 'flower',
       yieldItem: 'lotus', yieldMin: 1, yieldMax: 3, desc: '花开了很久，底下才慢慢长起来。' }
   ];
 
@@ -63,8 +63,8 @@
 
   /** 食材显示名 */
   NT.data.ingredients = {
-    potato: '土豆', wheat: '小麦', soybean: '大豆', tomato: '番茄', corn: '玉米',
-    wildrice: '茭白', waterchestnut: '荸荠', rice: '稻米', watercaltrop: '菱角', lotus: '莲藕'
+    potato: '土豆', wheat: '甜甜花', soybean: '琉璃百合', tomato: '风车菊', corn: '冬凌草',
+    wildrice: '金鱼草', waterchestnut: '莲蓬', rice: '嘟嘟莲', watercaltrop: '海灵芝', lotus: '久雨莲'
   };
   NT.data.ingredientName = function (id) { return NT.data.ingredients[id] || id; };
 
