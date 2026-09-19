@@ -288,18 +288,27 @@ writeJson('items.json', items);
 
 function resolveAssetPath(stem) {
   const extensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
-  return extensions.map((extension) => resolve(root, assetManifest.dir, stem + extension)).find(existsSync) || null;
+  const stems = Array.isArray(stem) ? stem : [stem];
+  for (const candidate of stems) {
+    if (!candidate) continue;
+    const direct = resolve(root, assetManifest.dir, candidate);
+    if (existsSync(direct)) return direct;
+    const withExtension = extensions.map((extension) => resolve(root, assetManifest.dir, candidate + extension)).find(existsSync);
+    if (withExtension) return withExtension;
+  }
+  return null;
 }
 const assetRows = [];
 function addAsset(assetId, stem, type, ownerId = null, locationId = null, sourcePath = 'assets/manifest.js') {
   const full = resolveAssetPath(stem);
-  const rel = full ? posix(relative(root, full)) : `图片素材/${stem}.{png,jpg,jpeg,webp,gif}`;
+  const displayStem = Array.isArray(stem) ? stem.join(' | ') : stem;
+  const rel = full ? posix(relative(root, full)) : `图片素材/${displayStem}.{png,jpg,jpeg,webp,gif}`;
   const isProtagonist = type === 'protagonist';
   assetRows.push({
     assetId, path: rel, fileType: full ? extname(full).slice(1).toLowerCase() : null, currentUse: type, usageLocations: [sourcePath, 'src/assets.js'],
     characterId: ownerId, locationId, exists: !!full, bytes: full ? statSync(full).size : null, sha256: full ? sha256(readFileSync(full)) : null,
     needsReplacement: isProtagonist, replacementReason: isProtagonist ? '当前立绘表现原主角，需换为哥伦比娅' : null,
-    marker: !full ? marker('ASSET_MISSING', `${stem} 未找到对应图片`) : isProtagonist ? marker('ASSET_REPLACE', '当前图片表现原主角，需要替换为哥伦比娅') : marker('ASSET_REVIEW', `${type}资源是否符合新世界观，需要确认`)
+    marker: !full ? marker('ASSET_MISSING', `${displayStem} 未找到对应图片`) : isProtagonist ? marker('ASSET_REPLACE', '当前图片表现原主角，需要替换为哥伦比娅') : marker('ASSET_REVIEW', `${type}资源是否符合新世界观，需要确认`)
   });
 }
 for (const [mood, stem] of Object.entries(assetManifest.nahida)) addAsset(`protagonist_${mood}`, stem, 'protagonist', 'protagonist');

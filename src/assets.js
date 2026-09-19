@@ -52,7 +52,7 @@
   assets.resolvedBase = function () { return baseIdx >= 0 ? BASES[baseIdx] : null; };
 
   function register(group, id, name) {
-    if (!name) return;
+    if (!name || (Array.isArray(name) && name.length === 0)) return;
     var k = key(group, id);
     if (store[k]) return;
     var rec = { img: null, state: 'loading', trim: null };
@@ -61,11 +61,25 @@
 
     // 已经知道素材夹在哪 -> 只试那一个；还不知道 -> 挨个试
     var useBases = baseIdx >= 0 ? [BASES[baseIdx]] : BASES;
+    var names = Array.isArray(name) ? name.slice() : [name];
     var candidates = [];
     useBases.forEach(function (b) {
-      if (hasExt(name)) candidates.push(b + name);
-      else EXTS.forEach(function (e) { candidates.push(b + name + e); });
+      names.forEach(function (entry) {
+        if (!entry) return;
+        if (hasExt(entry)) candidates.push(b + entry);
+        else EXTS.forEach(function (e) { candidates.push(b + entry + e); });
+      });
     });
+    // 背景清单可以登记同一区域的多张候选图。随机打乱一次即可：
+    // 当前会话保持所选背景稳定，不会在每一帧渲染时跳图。
+    if (group === 'bg' && candidates.length > 1) {
+      for (var ci = candidates.length - 1; ci > 0; ci--) {
+        var swap = Math.floor(Math.random() * (ci + 1));
+        var tmp = candidates[ci];
+        candidates[ci] = candidates[swap];
+        candidates[swap] = tmp;
+      }
+    }
 
     var i = 0;
     var img = new root.Image();
@@ -255,6 +269,7 @@
     };
     var g = map[group];
     if (!g || !g[id]) return id;
+    if (Array.isArray(g[id])) return group === 'bg' ? '随机背景（' + g[id].length + ' 张候选）' : g[id].join('、');
     return String(g[id]).replace(/^.*\//, '');
   };
 

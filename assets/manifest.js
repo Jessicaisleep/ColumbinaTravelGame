@@ -26,7 +26,7 @@
   var NT = (root.NT = root.NT || {});
 
   NT.assetManifest = {
-    version: 7,
+    version: 8,
 
     /* 素材文件夹的名字（改名了才需要动这里，一般不用管） */
     dir: '图片素材',
@@ -44,19 +44,71 @@
     },
 
     /* ---------------------------------------------------------------------
-     * 场景背景（每个地区一张）
-     * 2048×1152 起，横版 16:9，不需要透明，**画面里不要出现人物**。
+     * 场景背景（每个地区一组候选图，启动时随机选一张）
+     * 横版风景图，不需要透明，**画面里不要出现人物**。
      * 昼夜和天气不用另画 —— 代码会自动叠色。
      * 换地图：改这里 + src/data/destinations.js 里的地区列表。
      * ------------------------------------------------------------------- */
     backgrounds: {
-      mondstadt: '背景/蒙德/Viewpoint_Windswept_Wilderness.png',
-      liyue:      '背景/璃月/Viewpoint_Where_Merchants_Flock_And_All_Ships_Dock.png',
-      inazuma:    '背景/稻妻/Viewpoint_The_Iridescent_Lake.png',
-      sumeru:     '背景/须弥/Viewpoint_The_World_of_the_Aranara.png',
-      fontaine:   '背景/枫丹/Viewpoint_Court_of_Dew_and_Springs.png',
-      natlan:     '背景/纳塔/Viewpoint_Arena_of_Glory_and_Triumph.png',
-      nod_krai:   '背景/挪德卡莱/Viewpoint_Border_Town.png'
+      mondstadt: [
+        "背景/蒙德/Viewpoint_Manor_of_Daybreak.png",
+        "背景/蒙德/Viewpoint_Windswept_Wilderness.png"
+      ],
+      liyue: [
+        "背景/璃月/Viewpoint_A_Home_in_the_Hills.png",
+        "背景/璃月/Viewpoint_Beyond_the_Chasm.png",
+        "背景/璃月/Viewpoint_Bishui's_Twilight_Luster.png",
+        "背景/璃月/Viewpoint_Clear_Skies_Over_Xuanlian.png",
+        "背景/璃月/Viewpoint_Feiyun_Slope.png",
+        "背景/璃月/Viewpoint_Weeping_Garden.png",
+        "背景/璃月/Viewpoint_Where_Merchants_Flock_And_All_Ships_Dock.png",
+        "背景/璃月/Viewpoint_Yujing_Terrace.png"
+      ],
+      inazuma: [
+        "背景/稻妻/Viewpoint_The_Iridescent_Lake.png",
+        "背景/稻妻/Viewpoint_Village_of_the_People_of_the_Deep.png"
+      ],
+      sumeru: [
+        "背景/须弥/Viewpoint_The_Rain's_End.png",
+        "背景/须弥/Viewpoint_The_Story_Recorded.png",
+        "背景/须弥/Viewpoint_The_Village_by_the_River.png",
+        "背景/须弥/Viewpoint_The_World_of_the_Aranara.png",
+        "背景/须弥/Viewpoint_Where_a_Titan's_Shins_Were_Broken.png"
+      ],
+      fontaine: [
+        "背景/枫丹/Viewpoint__Fontaine_Hot_Springs_.png",
+        "背景/枫丹/Viewpoint__Memories_of_Mont_Esus_.png",
+        "背景/枫丹/Viewpoint__Morning_in_the_Beryl_Mountains,_Clear_Weather_.png",
+        "背景/枫丹/Viewpoint__Narzissenkreuz_Kingdom_.png",
+        "背景/枫丹/Viewpoint__Oratrice_Mecanique_d'Analyse_Cardinale_.png",
+        "背景/枫丹/Viewpoint__The_Seaside_Village_.png",
+        "背景/枫丹/Viewpoint__View_From_Mont_Automnequi_.png",
+        "背景/枫丹/Viewpoint_A_Distant_Harbor.png",
+        "背景/枫丹/Viewpoint_A_Sea_of_Exile.png",
+        "背景/枫丹/Viewpoint_Abandoned_Capital_of_Howling_Winds.png",
+        "背景/枫丹/Viewpoint_Court_of_Dew_and_Springs.png"
+      ],
+      natlan: [
+        "背景/纳塔/Viewpoint_A_Bountiful_Land_of_Farming_and_Fecundity.png",
+        "背景/纳塔/Viewpoint_A_Hilly_Hidey-Hole_for_Nectar.png",
+        "背景/纳塔/Viewpoint_A_Night_of_Uninhibited_Dance.png",
+        "背景/纳塔/Viewpoint_Among_the_Painted_Peaks.png",
+        "背景/纳塔/Viewpoint_Ancient_Thousand_Winds_Temple.png",
+        "背景/纳塔/Viewpoint_Arena_of_Glory_and_Triumph.png",
+        "背景/纳塔/Viewpoint_Before_the_Tezcatepetonco_Range.png",
+        "背景/纳塔/Viewpoint_Canopy_of_the_Clifftops.png",
+        "背景/纳塔/Viewpoint_Cavern_of_Stone_and_Prickly_Pears.png",
+        "背景/纳塔/Viewpoint_Cavern_of_Tranquil_Light.png",
+        "背景/纳塔/Viewpoint_Home_of_Hot_Springs_and_Flowing_Waters.png",
+        "背景/纳塔/Viewpoint_Lost_Ceremonial_Site.png",
+        "背景/纳塔/Viewpoint_Sacred_Mountain_of_the_Undying_Flame.png"
+      ],
+      nod_krai: [
+        "背景/挪德卡莱/Viewpoint_Border_Town.png",
+        "背景/霜月/Viewpoint__The_Next_Journey_.png",
+        "背景/霜月/Viewpoint_A_Gaze_Toward_the_Stars.png",
+        "背景/霜月/Viewpoint_A_Gaze_Upon_the_World.png"
+      ]
     },
 
     /* ---------------------------------------------------------------------
@@ -101,19 +153,19 @@
 
     /* ---------------------------------------------------------------------
      * 田地作物与厨房料理
-     * 512×512 透明 PNG。缺图时界面自动保留文字，不影响种植、收获和烹饪。
+     * 透明 PNG。缺图时界面自动保留文字，不影响种植、收获和烹饪。
      * ------------------------------------------------------------------- */
     crops: {
       potato:          '作物-土豆',
-      wheat:           '作物-甜甜花',
-      soybean:         '作物-琉璃百合',
-      tomato:          '作物-风车菊',
-      corn:            '作物-冬凌草',
-      wildrice:        '作物-金鱼草',
-      waterchestnut:   '作物-莲蓬',
-      rice:            '作物-嘟嘟莲',
-      watercaltrop:    '作物-海灵芝',
-      lotus:           '作物-久雨莲'
+      wheat:           '田地作物/甜甜花.png',
+      soybean:         '田地作物/琉璃百合.png',
+      tomato:          '田地作物/风车菊.png',
+      corn:            '田地作物/冬凌草.png',
+      wildrice:        '田地作物/金鱼草.png',
+      waterchestnut:   '田地作物/莲蓬.png',
+      rice:            '田地作物/嘟嘟莲.png',
+      watercaltrop:    '田地作物/海灵芝.png',
+      lotus:           '田地作物/久雨莲.png'
     },
 
     dishes: {
