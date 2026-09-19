@@ -3,8 +3,8 @@
  * ===========================================================================
  *
  * 这里写素材文件名或相对于「图片素材」目录的路径 —— 素材文件夹在哪一层由
- * src/assets.js 自动探测。料理图片目前放在「厨房料理图片」子目录，因此用
- * 「厨房料理图片/料理-xxx」的相对路径登记。
+ * src/assets.js 自动探测。料理、玩具和地区背景都可以放在各自的子目录中，
+ * 例如「厨房料理图片/料理-xxx」「玩具/玩具-xxx」「背景/蒙德/xxx」。
  * 默认摆法是「图片素材」就在 开始游戏.html 旁边：
  *
  *     columbina-travel/
@@ -26,7 +26,7 @@
   var NT = (root.NT = root.NT || {});
 
   NT.assetManifest = {
-    version: 6,
+    version: 7,
 
     /* 素材文件夹的名字（改名了才需要动这里，一般不用管） */
     dir: '图片素材',
@@ -50,13 +50,13 @@
      * 换地图：改这里 + src/data/destinations.js 里的地区列表。
      * ------------------------------------------------------------------- */
     backgrounds: {
-      mondstadt: '场景-蒙德',
-      liyue:      '场景-璃月',
-      inazuma:    '场景-稻妻',
-      sumeru:     '场景-须弥',
-      fontaine:   '场景-枫丹',
-      natlan:     '场景-纳塔',
-      nod_krai:   '场景-挪德卡莱'
+      mondstadt: '背景/蒙德/Viewpoint_Windswept_Wilderness.png',
+      liyue:      '背景/璃月/Viewpoint_Where_Merchants_Flock_And_All_Ships_Dock.png',
+      inazuma:    '背景/稻妻/Viewpoint_The_Iridescent_Lake.png',
+      sumeru:     '背景/须弥/Viewpoint_The_World_of_the_Aranara.png',
+      fontaine:   '背景/枫丹/Viewpoint_Court_of_Dew_and_Springs.png',
+      natlan:     '背景/纳塔/Viewpoint_Arena_of_Glory_and_Triumph.png',
+      nod_krai:   '背景/挪德卡莱/Viewpoint_Border_Town.png'
     },
 
     /* ---------------------------------------------------------------------
@@ -136,16 +136,16 @@
      * 可以只有一两件。**最多同时摆 5 件**，全部摆在右边的院子里。
      * ------------------------------------------------------------------- */
     toys: {
-      moon_chess:      '玩具-月亮棋',
-      moon_chime:      '玩具-月灵风铃',
-      moon_pool:       '玩具-月影水池',
-      moon_lantern:    '玩具-月光灯',
+      moon_chess:      '玩具/玩具-月亮棋',
+      moon_chime:      '玩具/玩具-月灵风铃',
+      moon_pool:       '玩具/玩具-月影水池',
+      moon_lantern:    '玩具/玩具-月光灯',
       hammock:         '玩具-吊床',
-      moon_canvas:     '玩具-月灵画板',
-      moon_harp:       '玩具-月灵琴',
-      moon_mosaic:     '玩具-月光矿石拼画',
-      frostfin_whale:  '玩具-霜鳍鲸咬咬玩具',
-      animal_headwear: '玩具-动物头饰'
+      moon_canvas:     '玩具/玩具-月灵画板',
+      moon_harp:       '玩具/玩具-月灵琴',
+      moon_mosaic:     '玩具/玩具-月光矿石拼画',
+      frostfin_whale:  '玩具/玩具-霜鳍鲸咬咬玩具',
+      animal_headwear: '玩具/玩具-动物头饰'
     },
 
     /* 网页图标（做「添加到主屏幕」才需要）。tools/make-icon.html 可以自动生成。 */
