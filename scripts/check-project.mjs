@@ -22,7 +22,7 @@ else {
   const checks = [
     ['index module entry', index.includes('type="module"') && index.includes('./src/main.js')],
     ['game module entry', game.includes('type="module"') && game.includes('./src/main.js')],
-    ['34 legacy scripts retained', legacyScripts.length === 34],
+    ['35 legacy scripts retained', legacyScripts.length === 35],
     ['legacy script order boundary', legacyScripts[0] === 'src/core/util.js' && legacyScripts.at(-1) === 'src/core/selftest.js'],
     ['all script paths exist', allScriptsExist],
     ['legacy namespace retained', game.includes('src/core/selftest.js')],

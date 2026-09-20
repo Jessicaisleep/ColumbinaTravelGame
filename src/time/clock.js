@@ -12,7 +12,8 @@
 
   /**
    * 让纳西妲出发。
-   * @param opts {mode, regionId, bearingId, dishId, rareItemIds, now, seed}
+   * @param opts {mode, regionId, bearingId, dishId, rareItemIds, now, seed,
+   *               forceCompanionId, forceEventId, forceJourneyEventId, forceRegion}
    *   会消耗 dishId 对应的一份料理 与 rareItemIds 里的稀有道具。
    */
   clock.depart = function (save, opts) {
@@ -54,7 +55,11 @@
       history: save.album || [],
       ownedToys: save.toys || [],
       now: now,
-      seed: opts.seed
+      seed: opts.seed,
+      forceCompanionId: opts.forceCompanionId,
+      forceEventId: opts.forceEventId,
+      forceJourneyEventId: opts.forceJourneyEventId,
+      forceRegion: opts.forceRegion
     });
     fact.text = NT.text.templateRender(fact);
 

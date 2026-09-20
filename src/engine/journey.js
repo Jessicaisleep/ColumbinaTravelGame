@@ -101,6 +101,9 @@
     var targetCost = NT.data.travelCost(homeId, targetId);
 
     var budget = o.foodKm || 320;
+    // 命令栏指定地区用于内容检查：提供足够的调试路粮，并屏蔽随机强制返程/改道。
+    // 若同时明确指定过程事件，则事件后果仍优先，便于单独测试失足和改道。
+    if (o.forceRegion) budget = Math.max(budget, targetCost + 2500);
     var initialBudget = budget;
     var traveled = 0;
     var steps = [];
@@ -112,6 +115,7 @@
     var redirectUsed = false;
     var budgetGained = 0;
     var budgetLost = 0;
+    var forcedJourneyEvent = o.forceJourneyEventId ? NT.data.journeyEventById(o.forceJourneyEventId) : null;
 
     for (var s = 0; s < journey.MAX_STEPS; s++) {
       var remaining = targetCost - traveled;
@@ -123,10 +127,22 @@
       budget -= stepKm;
       traveled += stepKm;
 
-      var ev = rollEvent(rand, {
+      var ev = (s === 0 && forcedJourneyEvent) ? forcedJourneyEvent : rollEvent(rand, {
         companion: companion, riverUsed: riverUsed, redirectUsed: redirectUsed,
         homeId: homeId, targetId: targetId
       });
+      if (o.forceRegion && !forcedJourneyEvent && ev && (ev.kind === 'redirect' || ev.forceReturn)) {
+        ev = NT.data.journeyEventById('see_lights');
+      }
+
+      // 某些过程事件要求已经有同行者；调试强制这类事件时，先按正常角色池补一位。
+      if (ev && ev.needCompanion && !companion) {
+        var forcedForEvent = o.forceCompanionId ? NT.data.companionById(o.forceCompanionId) : null;
+        companion = (forcedForEvent && forcedForEvent.encounter) ? forcedForEvent : NT.gacha.pickCompanion(rand, {
+          destination: NT.data.destinationById(targetId), history: o.history || [], meetBonus: 1, luck: o.luck
+        });
+        if (!companion) companion = NT.data.encounterCompanions()[0];
+      }
 
       var record = {
         index: steps.length,
@@ -182,7 +198,8 @@
           }
 
         } else if (ev.kind === 'companion') {
-          companion = NT.gacha.pickCompanion(rand, {
+          var forced = o.forceCompanionId ? NT.data.companionById(o.forceCompanionId) : null;
+          companion = (forced && forced.encounter) ? forced : NT.gacha.pickCompanion(rand, {
             destination: NT.data.destinationById(targetId),
             history: o.history || [],
             meetBonus: (o.meetBonus || 0) + 0.35,   // 旅途中的相遇是额外的

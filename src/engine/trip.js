@@ -63,13 +63,18 @@
       meetBonus: eff.meetBonus,
       luck: eff.luck,
       history: history,
-      seed: seed
+      seed: seed,
+      forceCompanionId: o.forceCompanionId,
+      forceJourneyEventId: o.forceJourneyEventId,
+      forceRegion: o.forceRegion
     });
 
     var dest = NT.data.destinationById(jr.finalId) || NT.data.destinations[0];
 
     // ---- 2. 同伴：旅途中遇到的优先，否则在目的地再碰一次运气 ----
-    var companion = jr.companionId ? NT.data.companionById(jr.companionId) : null;
+    var forcedCompanion = o.forceCompanionId ? NT.data.companionById(o.forceCompanionId) : null;
+    if (forcedCompanion && !forcedCompanion.encounter) forcedCompanion = null;
+    var companion = forcedCompanion || (jr.companionId ? NT.data.companionById(jr.companionId) : null);
     if (!companion) {
       companion = NT.gacha.pickCompanion(rand, {
         destination: dest, history: history, meetBonus: eff.meetBonus, luck: eff.luck
@@ -80,6 +85,18 @@
     var events = NT.gacha.pickEvents(rand, {
       destination: dest, luck: eff.luck, scoreBonus: eff.scoreBonus
     });
+    if (o.forceEventId) {
+      // 通用事件允许跨地区检查；地区专属事件仍只从当前地区池中查找。
+      var forcedEvent = NT.data.eventById(o.forceEventId);
+      var eventPool = forcedEvent ? [forcedEvent] : NT.gacha.regionEvents(dest.id);
+      for (var fe = 0; fe < eventPool.length; fe++) {
+        if (eventPool[fe].id === o.forceEventId) {
+          forcedEvent = eventPool[fe];
+          break;
+        }
+      }
+      if (forcedEvent) events = [forcedEvent];
+    }
 
     var weather = NT.gacha.pickWeather(rand, {
       destination: dest,
@@ -141,7 +158,7 @@
         forceReturn: jr.forceReturn,
         costKm: jr.costKm,
         traveledKm: jr.traveledKm,
-        budgetKm: budgetKm,
+        budgetKm: jr.initialBudgetKm,
         budgetLeftKm: jr.budgetLeftKm,
         budgetGainedKm: jr.budgetGainedKm,
         budgetLostKm: jr.budgetLostKm,

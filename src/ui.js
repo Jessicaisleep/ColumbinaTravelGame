@@ -57,6 +57,7 @@
     if (!app.save.homeChosen) app.screen = 'chooseHome';
 
     app.bindGlobal();
+    if (app.bindCommands) app.bindCommands();
     app.render();
     // 每 20 秒检查一次她的状态（状态本身只持续 1.5~6 分钟，所以能看到她走动）
     setInterval(function () {
