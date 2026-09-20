@@ -29,10 +29,14 @@
       companionAffinity: {},
       stats: { tripCount: 0, byDestination: {}, byCompanion: {} },
 
-      /** 田地：每块地一个槽位 */
+      /** 田地：背景图中的六块田各有一个独立槽位 */
       farm: {
-        dry: { cropId: null, plantedAt: 0, readyAt: 0 },
-        wet: { cropId: null, plantedAt: 0, readyAt: 0 }
+        dry1: { cropId: null, plantedAt: 0, readyAt: 0 },
+        dry2: { cropId: null, plantedAt: 0, readyAt: 0 },
+        wet1: { cropId: null, plantedAt: 0, readyAt: 0 },
+        dry3: { cropId: null, plantedAt: 0, readyAt: 0 },
+        dry4: { cropId: null, plantedAt: 0, readyAt: 0 },
+        wet2: { cropId: null, plantedAt: 0, readyAt: 0 }
       },
 
       /** 背包 */
@@ -92,6 +96,10 @@
     if (!Array.isArray(s.album)) s.album = [];
     if (!Array.isArray(s.toys)) s.toys = [];
     if (!Array.isArray(s.home.placed)) s.home.placed = [];
+    /* 两块田旧存档 -> 六块田；只搬到尚未使用的第一块同类田。 */
+    if (s.farm && s.farm.dry && !s.farm.dry1.cropId) s.farm.dry1 = NT.util.clone(s.farm.dry);
+    if (s.farm && s.farm.wet && !s.farm.wet1.cropId) s.farm.wet1 = NT.util.clone(s.farm.wet);
+    if (s.farm) { delete s.farm.dry; delete s.farm.wet; }
     /* 旧版现实地点存档迁移：家园统一回到挪德卡莱。 */
     if (!NT.data.destinationById || !NT.data.destinationById(s.homeId)) s.homeId = 'nod_krai';
     s.homeChosen = true;

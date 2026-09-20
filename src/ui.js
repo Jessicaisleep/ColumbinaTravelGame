@@ -1,5 +1,5 @@
 /* 哥伦比娅的旅行 · 界面层
- * 家是一个 16:9 的全屏世界：哥伦比娅在里面实时走动做事，两块田直接画在画面里，点一下就操作。
+ * 家与田地是两个独立场景：哥伦比娅在家时会跟随玩家进入田地。
  */
 (function (root) {
   'use strict';
@@ -49,7 +49,7 @@
       }
       clearTimeout(assetRerender);
       assetRerender = setTimeout(function () {
-        if (app.screen === 'home' && !app.save.activeTrip) app.render();
+        if ((app.screen === 'home' || app.screen === 'farm') && !app.save.activeTrip) app.render();
       }, 180);
     });
     NT.assets.init();
@@ -60,7 +60,7 @@
     app.render();
     // 每 20 秒检查一次她的状态（状态本身只持续 1.5~6 分钟，所以能看到她走动）
     setInterval(function () {
-      if (app.screen !== 'home') return;
+      if (app.screen !== 'home' && app.screen !== 'farm') return;
       var now = Date.now();
       // 她可能已经回来了 —— 必须定时结算，否则要刷新页面才有反应（这是个真 bug）
       if (app.settleIfDue(now)) { app.render(); return; }
@@ -90,6 +90,7 @@
     app.viewing = r.settled;
     app.modal = 'result';
     app.fieldSheet = null;
+    if (app.screen === 'farm') app.screen = 'home';
     if (r.missed) app._pendingNote = '你很久没有翻开本子了，她还是回来了。';
     NT.store.save(app.save);
     return r.settled;
@@ -116,7 +117,7 @@
      */
     var lastW = -1, lastH = -1;
     var onViewportChange = function () {
-      var st = document.getElementById('stage');
+      var st = document.getElementById('stage') || document.getElementById('farm-stage');
       if (!st) return;
       var r = st.getBoundingClientRect();
       // 第一次只记尺寸，不重排 —— 否则刚进页面就白白 render 一次，
@@ -126,7 +127,7 @@
       lastW = r.width; lastH = r.height;
       clearTimeout(app._relayoutTimer);
       app._relayoutTimer = setTimeout(function () {
-        if (app.screen === 'home' && !app.modal) app.render();
+        if ((app.screen === 'home' || app.screen === 'farm') && !app.modal) app.render();
       }, 160);
     };
     window.addEventListener('resize', onViewportChange);
@@ -189,7 +190,7 @@
     app.toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2600);
   };
 
-  app.go = function (s) { app.screen = s; app.fieldSheet = null; app.render(); };
+  app.go = function (s) { app.screen = s; app.modal = null; app.fieldSheet = null; app.render(); };
 
   /* ---------------- 点击她的实时反应 ---------------- */
 
@@ -563,7 +564,8 @@
   app.render = function () {
     if (app._raf) { cancelAnimationFrame(app._raf); app._raf = null; }
     var rootEl = $('screen'); if (!rootEl) return;
-    var fn = (app.screen === 'chooseHome') ? app.viewChooseHome : app.viewHome;
+    var fn = app.screen === 'chooseHome' ? app.viewChooseHome :
+      (app.screen === 'farm' ? app.viewFarm : app.viewHome);
     // 渲染函数一旦抛异常，innerHTML 就什么都不会被写入 —— 表现是"点了没反应"。
     // 所以这里必须捕获并把错误显示出来，否则问题完全静默。
     var html;
@@ -636,7 +638,8 @@
 
   app.mount = function () {
     if (app.screen === 'chooseHome') return;
-    app.mountHome();
+    if (app.screen === 'farm') app.mountFarm();
+    else app.mountHome();
     var m = app.activeModal();
     if (m === 'result' && app.viewing) app.mountResult();
     if (m === 'album') app.mountAlbum();
@@ -711,7 +714,6 @@
         ? '<div class="stage-countdown" id="home-countdown" data-act="modal" data-arg="waiting"' +
           ' title="查看旅途详情">' + app.countdownHTML() + '</div>'
         : '<div class="stage-hint">点她一下试试</div>') +
-      (app.fieldSheet ? app.viewFieldSheet(app.fieldSheet) : '') +
       '</div>' +
       '</div>' +                       // 收掉 .stage-scroll
       // 「建议横屏」不写在这里 —— 它不参与 render，由 maybeShowRotateHint 单独插
@@ -721,7 +723,8 @@
       (s.activeTrip
         ? '<button class="sbtn busy" data-act="modal" data-arg="waiting">旅途中…</button>'
         : '<button class="sbtn go" data-act="modal" data-arg="outdoor">送她出门</button>') +
-      '<button class="sbtn' + (ready ? ' hot' : '') + '" data-act="harvest-all">收全部</button>' +
+      '<button class="sbtn' + (ready ? ' hot' : '') + '" data-act="go" data-arg="farm">田地' +
+      (ready ? '<i>可收获</i>' : '') + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="kitchen">厨房' + badge(cookable) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="toys">玩具' + badge((s.toys || []).length) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="store">仓库' + badge(storeCount(s)) + '</button>' +
@@ -738,6 +741,51 @@
       app.renderModalLayer() +
       '</div>' +
       '</div>';
+  };
+
+  /* ---------------- 独立田地 ---------------- */
+
+  app.viewFarm = function () {
+    var s = app.save;
+    var now = Date.now();
+    var readyCount = 0;
+    var plots = NT.data.fields.map(function (field) {
+      var status = NT.farm.status(s, field.id, now);
+      if (status.state === 'ready') readyCount++;
+      var cropImg = status.crop && NT.assets && NT.assets.crop(status.crop.id);
+      var cropArt = cropImg
+        ? '<img class="farm-crop" src="' + esc(cropImg.src) + '" alt="">'
+        : '';
+      var stateText = status.state === 'empty' ? '种植' :
+        (status.state === 'ready' ? status.crop.name + ' · 可收获' :
+          status.crop.name + ' · ' + Math.round(status.progress * 100) + '%');
+      return '<button class="farm-plot ' + field.type + ' ' + status.state + '"' +
+        ' data-act="open-field" data-arg="' + field.id + '"' +
+        ' aria-label="' + esc(field.name + '，' + stateText) + '"' +
+        ' style="left:' + (field.x * 100) + '%;top:' + (field.y * 100) + '%;' +
+        'width:' + (field.w * 100) + '%;height:' + (field.h * 100) + '%">' +
+        cropArt + '<span>' + esc(stateText) + '</span></button>';
+    }).join('');
+
+    return '<div class="stage-wrap farm-wrap">' +
+      '<div class="farm-stage-box">' +
+      '<div class="farm-stage" id="farm-stage">' +
+      '<canvas id="farm-bg"></canvas><canvas id="farm-fg"></canvas>' +
+      '<div class="stage-top"><span class="state-badge">田地</span>' +
+      (s.activeTrip
+        ? '<span class="state-spot">哥伦比娅正在旅行</span>'
+        : '<span class="state-spot">哥伦比娅也来到了田地</span>') +
+      (readyCount ? '<span class="visitor-chip">' + readyCount + ' 块可收获</span>' : '') +
+      '</div>' +
+      '<div class="stage-tools"><button class="stage-gear farm-back" data-act="go" data-arg="home">回家</button></div>' +
+      plots +
+      (app.fieldSheet ? app.viewFieldSheet(app.fieldSheet) : '') +
+      '<div class="home-controls farm-controls"><div class="stage-bar">' +
+      '<button class="sbtn' + (readyCount ? ' hot' : '') + '" data-act="harvest-all">收全部' +
+      (readyCount ? '<i>' + readyCount + '</i>' : '') + '</button>' +
+      '<button class="sbtn" data-act="go" data-arg="home">返回家园</button>' +
+      '</div></div>' +
+      '</div></div></div>';
   };
 
   /** 田地就地操作面板（浮在画面里） */
@@ -770,6 +818,60 @@
       '</div>';
   };
 
+  /** 田地背景、作物热区和在家的哥伦比娅。背景保持 4:3，不做拉伸。 */
+  app.mountFarm = function () {
+    var stage = $('farm-stage'), bg = $('farm-bg'), fg = $('farm-fg');
+    if (!stage || !bg || !fg) return;
+
+    var wrap = document.querySelector('.farm-wrap');
+    if (wrap) {
+      wrap.onscroll = function () { app._farmScroll = wrap.scrollLeft; };
+      var wantX = app._farmScroll || 0;
+      if (wantX) {
+        wrap.scrollLeft = wantX;
+        requestAnimationFrame(function () { wrap.scrollLeft = wantX; });
+      }
+    }
+
+    var rect = stage.getBoundingClientRect();
+    var dpr = Math.min(root.devicePixelRatio || 1, 2);
+    var W = Math.max(640, Math.round(rect.width * dpr));
+    var H = Math.max(480, Math.round(rect.height * dpr));
+    bg.width = W; bg.height = H; fg.width = W; fg.height = H;
+    var cssW = rect.width || 1024;
+    stage.style.fontSize = U.clamp(cssW / 58, root.innerWidth <= 899 ? 16 : 10, 21).toFixed(2) + 'px';
+
+    var bctx = bg.getContext('2d');
+    var farmImg = NT.assets && NT.assets.farm();
+    if (!(farmImg && NT.assets.drawCover(bctx, farmImg, W, H))) {
+      var grad = bctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0, '#77b487'); grad.addColorStop(1, '#4b9270');
+      bctx.fillStyle = grad; bctx.fillRect(0, 0, W, H);
+    }
+
+    if (app.save.activeTrip) return;
+
+    var fctx = fg.getContext('2d');
+    var chH = H * 0.23;
+    var cx = W * 0.885, feetY = H * 0.825;
+    var phase = 0, last = performance.now();
+    var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
+
+    function drawFarmNahida(t) {
+      var dt = U.clamp((t - last) / 1000, 0, 0.1); last = t; phase += dt * 1.6;
+      var bob = Math.sin(phase) * chH * 0.012;
+      fctx.clearRect(0, 0, W, H);
+      fctx.save();
+      fctx.globalAlpha = 0.22; fctx.fillStyle = '#000'; fctx.beginPath();
+      fctx.ellipse(cx, feetY + H * 0.004, chH * 0.26, chH * 0.07, 0, 0, Math.PI * 2); fctx.fill();
+      fctx.restore();
+      var ok = NT.assets && NT.assets.drawNahida(fctx, cx, feetY - bob, chH, true, 'idle');
+      if (!ok) NT.placeholder.chibi(fctx, cx, feetY - bob, chH, sprite, 'idle', true);
+      app._raf = requestAnimationFrame(drawFarmNahida);
+    }
+    app._raf = requestAnimationFrame(drawFarmNahida);
+  };
+
   /** 仓库里一共有多少件东西（食材 + 料理 + 稀有道具） */
   function storeCount(s) {
     var n = 0, k;
@@ -790,7 +892,7 @@
       ? '<div class="pills">' + ingIds.map(function (k) {
           return '<span class="pill">' + NT.data.ingredientName(k) + ' ×' + inv.ingredients[k] + '</span>';
         }).join('') + '</div>'
-      : '<div class="muted">还没有食材。去院子里的两块田种点什么。</div>';
+      : '<div class="muted">还没有食材。进入田地，在六块田里种点什么。</div>';
 
     /* --- 料理 --- */
     var dishIds = Object.keys(inv.dishes);
@@ -901,12 +1003,12 @@
 
     // --- 背景层（含田与玩具） ---
     var fields = {};
-    ['dry', 'wet'].forEach(function (f) {
-      var st = NT.farm.status(s, f, now);
-      fields[f] = {
-        cropId: st.crop ? st.crop.id : null,
-        progress: st.progress,
-        ripeColor: st.crop && st.crop.field === 'wet' ? '#d8e0a0' : '#e2b25c'
+    [{ id: 'dry1', key: 'dry' }, { id: 'wet1', key: 'wet' }].forEach(function (f) {
+      var fst = NT.farm.status(s, f.id, now);
+      fields[f.key] = {
+        cropId: fst.crop ? fst.crop.id : null,
+        progress: fst.progress,
+        ripeColor: fst.crop && fst.crop.field === 'wet' ? '#d8e0a0' : '#e2b25c'
       };
     });
 
@@ -1276,25 +1378,12 @@
     // 动画循环一直跑（她出门时也要画来访的客人）
     app._raf = requestAnimationFrame(drawNahida);
 
-    // --- 点击：先判田，再判她 ---
+    // 家里只响应人物；种地必须进入独立田地界面。
     stage.onclick = function (ev) {
       var r = stage.getBoundingClientRect();
       var nx = (ev.clientX - r.left) / r.width;
       var ny = (ev.clientY - r.top) / r.height;
 
-      if (app.fieldSheet) { app.fieldSheet = null; app.render(); return; }  // 面板开着就先关
-
-      // 新家图片没有旧版固定田块：把交互热区放在房门前左右两侧的花圃。
-      var fdefs = [
-        { id: 'dry', x0: 0.310, x1: 0.440, y0: 0.790, y1: 0.960 },
-        { id: 'wet', x0: 0.560, x1: 0.690, y0: 0.790, y1: 0.960 }
-      ];
-      for (var i = 0; i < fdefs.length; i++) {
-        var f = fdefs[i];
-        if (nx >= f.x0 && nx <= f.x1 && ny >= f.y0 && ny <= f.y1) {
-          app.fieldSheet = f.id; app.render(); return;
-        }
-      }
       var dxn = nx - anim.x, dyn = ny - anim.y;
       if (Math.sqrt(dxn * dxn + dyn * dyn) < 0.10) app.poke();
     };
@@ -1443,9 +1532,9 @@
     var A = NT.assets;
 
     var fields = {};
-    ['dry', 'wet'].forEach(function (f) {
-      var sst = NT.farm.status(s, f, Date.now());
-      fields[f] = { cropId: sst.crop ? sst.crop.id : null, progress: sst.progress, ripeColor: '#e2b25c' };
+    [{ id: 'dry1', key: 'dry' }, { id: 'wet1', key: 'wet' }].forEach(function (f) {
+      var sst = NT.farm.status(s, f.id, Date.now());
+      fields[f.key] = { cropId: sst.crop ? sst.crop.id : null, progress: sst.progress, ripeColor: '#e2b25c' };
     });
 
     var homeImg = A && A.home();
@@ -1581,7 +1670,7 @@
           '<small>×' + s.inventory.rare[id] + ' · +' + r.foodKm + ' 旅途点</small></button>';
       }).join('')
       : '<span class="muted">还没有稀有道具。它们是<b>收获作物时随机掉落</b>的，' +
-        '先去院子里的田种点东西。「仓库」里能看到详细的掉落和效果。</span>';
+        '先进入田地种点东西。「仓库」里能看到详细的掉落和效果。</span>';
 
     var totalKm = NT.data.dishById(app.outDish).foodKm;
     app.outRares.forEach(function (id) { totalKm += NT.data.rareDropById(id).foodKm; });
@@ -1929,8 +2018,8 @@
       NT.home.placeToy(s, id);
     });
     var now = Date.now();
-    NT.farm.plant(s, 'dry', 'tomato', now - 3600e3);
-    NT.farm.plant(s, 'wet', 'rice', now - 7200e3);
+    NT.farm.plant(s, 'dry1', 'tomato', now - 3600e3);
+    NT.farm.plant(s, 'wet1', 'rice', now - 7200e3);
     var seeds = [11, 202, 3003, 40004, 555, 66, 777];
     for (var i = 0; i < seeds.length; i++) {
       var d = NT.clock.depart(s, {

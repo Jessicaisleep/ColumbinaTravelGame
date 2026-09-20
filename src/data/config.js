@@ -49,7 +49,7 @@
 
     /** 种植 */
     farm: {
-      plots: ['dry', 'wet'],
+      plots: ['dry1', 'dry2', 'wet1', 'dry3', 'dry4', 'wet2'],
       /** 收获时掉落稀有道具的全局倍率 */
       rareDropMul: 1.0
     },

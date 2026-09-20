@@ -241,6 +241,13 @@
 
     /* ---------- 6. 种植 ---------- */
     section('种植系统');
+    ok('独立田地共有六个种植槽', NT.config.farm.plots.length === 6 &&
+      NT.config.farm.plots.every(function (id) { return !!NT.data.fieldById(id); }));
+    ok('四块旱田和两块水田类型正确', (function () {
+      var types = NT.config.farm.plots.map(function (id) { return NT.data.fieldType(id); });
+      return types.filter(function (x) { return x === 'dry'; }).length === 4 &&
+        types.filter(function (x) { return x === 'wet'; }).length === 2;
+    })());
     ok('空田状态为 empty', NT.farm.status(NT.store.defaultSave(), 'dry', T0).state === 'empty');
     ok('玄此玉田不能种嘟嘟莲', NT.farm.plant(NT.store.defaultSave(), 'dry', 'rice', T0).ok === false);
     ok('种植成功并可查询进度', (function () {
@@ -1164,7 +1171,7 @@
       NT.clock.check(sUI, dUI.trip.dueAt + 1000);
       NT.app.viewing = sUI.album[0];
 
-      var views = ['viewChooseHome', 'viewHome', 'viewKitchen', 'viewToys', 'viewChat',
+      var views = ['viewChooseHome', 'viewHome', 'viewFarm', 'viewKitchen', 'viewToys', 'viewChat',
                    'viewAlbum', 'viewOutdoor', 'viewSettings', 'viewResult', 'viewStore'];
       views.forEach(function (n) {
         var html = null, err = null;
@@ -1246,6 +1253,32 @@
           !!(dom && dom.innerHTML && dom.innerHTML.length > 100),
           dom ? dom.innerHTML.length + ' 字符' : '没有 modal-body');
         NT.app.modal = null;
+        NT.app.render();
+      })();
+
+      // 真实点击路径：家园 -> 田地 -> 第二块旱田 -> 种土豆。
+      (function () {
+        var sF = NT.store.defaultSave();
+        sF.homeChosen = true;
+        NT.app.save = sF;
+        NT.app.screen = 'home';
+        NT.app.modal = null;
+        NT.app.fieldSheet = null;
+        NT.app.render();
+        var farmBtn = document.querySelector('[data-act="go"][data-arg="farm"]');
+        if (farmBtn) farmBtn.click();
+        var plotButtons = document.querySelectorAll('.farm-plot');
+        ok('从家园按钮能进入独立田地', NT.app.screen === 'farm' && !!document.getElementById('farm-stage'));
+        ok('田地界面显示六块可操作田', plotButtons.length === 6, plotButtons.length);
+        var dry2 = document.querySelector('.farm-plot[data-arg="dry2"]');
+        if (dry2) dry2.click();
+        ok('点击田块会打开对应种植面板', NT.app.fieldSheet === 'dry2' && !!document.querySelector('.stage-sheet'));
+        var potato = document.querySelector('[data-act="plant"][data-arg="potato"]');
+        if (potato) potato.click();
+        ok('只能在田地界面完成种植', NT.farm.status(sF, 'dry2').crop &&
+          NT.farm.status(sF, 'dry2').crop.id === 'potato');
+        NT.app.screen = 'home';
+        NT.app.fieldSheet = null;
         NT.app.render();
       })();
 

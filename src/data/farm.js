@@ -1,5 +1,6 @@
 ﻿/* 哥伦比娅的旅行 · 种植系统数据
- * 两块田：玄此玉田 + 楚此诸田。作物按真实时间生长，收获后进食材背包，
+ * 独立田地场景共有六块田：四块玄此玉田 + 两块楚此诸田。
+ * 作物按真实时间生长，收获后进食材背包，
  * 并有几率掉落稀有道具（只提升稀有明信片概率，不直接给明信片）。
  */
 (function (root) {
@@ -9,20 +10,29 @@
 
   NT.HOUR = 3600e3;
 
-  /** 田地 */
+  /**
+   * 田地。x/y/w/h 是相对田地背景图的比例，用来放置六个交互热区。
+   * type 决定能种旱田作物还是水田作物。
+   */
   NT.data.fields = [
-    {
-      id: 'dry', name: '玄此玉田', desc: '土是松的，一脚踩下去会陷一点。'
-    },
-    {
-      id: 'wet', name: '楚此诸田', desc: '浅浅一层水，能看见底下的泥。'
-    }
+    { id: 'dry1', type: 'dry', name: '玄此玉田·一', desc: '上层左侧的松软土地。', x: 0.235, y: 0.285, w: 0.190, h: 0.145 },
+    { id: 'dry2', type: 'dry', name: '玄此玉田·二', desc: '上层中间的浅色土地。', x: 0.425, y: 0.285, w: 0.155, h: 0.135 },
+    { id: 'wet1', type: 'wet', name: '楚此诸田·一', desc: '上层右侧的清浅水田。', x: 0.645, y: 0.335, w: 0.205, h: 0.205 },
+    { id: 'dry3', type: 'dry', name: '玄此玉田·三', desc: '下层左侧的松软土地。', x: 0.225, y: 0.505, w: 0.225, h: 0.190 },
+    { id: 'dry4', type: 'dry', name: '玄此玉田·四', desc: '下层中间的浅色土地。', x: 0.450, y: 0.505, w: 0.190, h: 0.180 },
+    { id: 'wet2', type: 'wet', name: '楚此诸田·二', desc: '下层右侧的清浅水田。', x: 0.705, y: 0.535, w: 0.260, h: 0.245 }
   ];
 
   NT.data.fieldById = function (id) {
     var l = NT.data.fields;
     for (var i = 0; i < l.length; i++) if (l[i].id === id) return l[i];
     return null;
+  };
+
+  /** 旧版 dry/wet 仍可被旧存档和自检识别。 */
+  NT.data.fieldType = function (id) {
+    var f = NT.data.fieldById(id);
+    return f ? f.type : (id === 'dry' || id === 'wet' ? id : null);
   };
 
   /** 作物。growMs 为真实时间；yield 为收获的食材数量区间 */
@@ -58,7 +68,8 @@
     return null;
   };
   NT.data.cropsForField = function (fieldId) {
-    return NT.data.crops.filter(function (c) { return c.field === fieldId; });
+    var type = NT.data.fieldType(fieldId);
+    return NT.data.crops.filter(function (c) { return c.field === type; });
   };
 
   /** 食材显示名 */

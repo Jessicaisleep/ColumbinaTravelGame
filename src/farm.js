@@ -1,5 +1,5 @@
 /* 哥伦比娅的旅行 · 种植系统
- * 两块田（玄此玉田/楚此诸田），作物按真实时间生长，收获进食材背包，
+ * 六块田（四块玄此玉田/两块楚此诸田），作物按真实时间生长，收获进食材背包，
  * 并有几率掉落稀有道具（只提升稀有明信片概率）。
  */
 (function (root) {
@@ -49,7 +49,8 @@
   farm.plant = function (save, fieldId, cropId, now) {
     now = now || Date.now();
     var crop = NT.data.cropById(cropId);
-    if (!crop || crop.field !== fieldId) return { ok: false, error: '这块地种不了这个' };
+    var fieldType = NT.data.fieldType(fieldId);
+    if (!crop || crop.field !== fieldType) return { ok: false, error: '这块地种不了这个' };
     var s = farm.slot(save, fieldId);
     if (s.cropId) return { ok: false, error: '这块地还种着东西' };
     s.cropId = cropId;

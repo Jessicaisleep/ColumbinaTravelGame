@@ -33,7 +33,7 @@
     return chosen ? chosen.s.id : 'idle';
   }
 
-  /** 她现在的落点 id（water 状态会在两块田之间轮换） */
+  /** 她当前在家园中的落点 id；进入田地场景后会使用田地专属位置。 */
   home._spotIdOf = function (save, stateId) {
     var st = NT.data.nahidaStateById(stateId);
     if (st.altSpot) {

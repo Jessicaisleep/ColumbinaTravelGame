@@ -21,7 +21,7 @@
 
   /**
    * 哥伦比娅会去的位置。坐标按家.png 的房屋正门和前庭重新标定。
-   * y 是脚底基准。field 为真的位置，她在那里就是在照看那块田。
+   * y 是脚底基准。田地已经迁移到独立场景，这里只保留家园内的位置。
    * 所有日常状态都保持在房屋前，默认落点 yard 正对大门。
    */
   NT.data.homeSpots = {
@@ -30,8 +30,6 @@
     desk:    { x: 0.560, y: 0.820, area: 'front', label: '屋前右侧' },
     stove:   { x: 0.590, y: 0.850, area: 'front', label: '屋前右侧' },
     door:    { x: 0.500, y: 0.820, area: 'front', label: '正门前' },
-    dry:     { x: 0.400, y: 0.880, area: 'front', label: '左侧花圃', field: 'dry' },
-    wet:     { x: 0.600, y: 0.880, area: 'front', label: '右侧花圃', field: 'wet' },
     yard:    { x: 0.500, y: 0.860, area: 'front', label: '房屋前' },
     gate:    { x: 0.500, y: 0.930, area: 'front', label: '庭院入口' },
     lawn:    { x: 0.560, y: 0.890, area: 'front', label: '前庭' }
@@ -81,7 +79,7 @@
     { id: 'read', name: '阅读', mood: 'idle', weight: 10, spot: 'shelf', dwell: 3,
       lines: ['这一页读了三遍，每一次理解都不太一样。', '书里的故事结束了，留下的问题没有。', '（把书页压好）你也想看吗？'],
       poke: { anim: 'lookup', lines: ['……等一下，这段看完。', '（从书上方看了你一眼）', '你坐近一点，我们一起看。'] } },
-    { id: 'water', name: '照看田地', mood: 'idle', weight: 11, spot: 'dry', dwell: 2, altSpot: 'wet',
+    { id: 'water', name: '准备照看田地', mood: 'idle', weight: 11, spot: 'yard', dwell: 2,
       lines: ['土还是湿的，今天不用浇了。', '这棵比昨天高了一点。真的。', '水要慢慢浇，根才不会松。'],
       poke: { anim: 'wave', lines: ['小心，别站太近。', '这棵今天已经喝饱了。', '（往旁边挪了半步）你来试试？'] } },
     { id: 'cook', name: '做饭', mood: 'happy', weight: 9, spot: 'stove', dwell: 2.5,
