@@ -1,0 +1,464 @@
+《哥伦比娅的旅行》命令栏使用说明
+====================================
+
+用途
+----
+本命令栏用于本地开发、内容检查和快速测试。命令会直接操作当前设备上的本地存档，
+不会联网，也不会上传数据。执行 reset、trip cancel 等命令前请先阅读对应说明。
+
+打开与关闭
+----------
+1. PC 键盘按 ` 或 ~（键盘左上角 Esc 下方的反引号键）打开/关闭命令栏。
+2. 手机、平板或没有该按键的设备，可以点击画面右下角圆形“~”按钮。
+3. 按 Esc、点击右上角“×”或输入 close 关闭命令栏。
+4. 按 Enter 执行；方向键 ↑ / ↓ 可浏览本次打开游戏后的命令历史。
+5. 参数既可以写 ID，也可以写中文名；含空格的参数请用英文双引号包裹。
+
+
+一、基础命令
+------------
+help
+commands
+?
+  显示命令摘要，三条命令效果相同。
+
+clear
+  清空命令栏输出，不改游戏数据。
+
+close
+exit
+  关闭命令栏。
+
+status
+  查看当前场景、居家状态、来访角色、探索倒计时、下一次强制事件和明信片数量。
+
+
+二、界面命令
+------------
+home                 回到家园
+farm                 进入独立田地界面
+kitchen              打开厨房
+toys                 打开玩具箱
+chat                 打开聊天
+album                打开明信片册
+store                打开仓库
+settings             打开设置
+outdoor              打开出门面板
+waiting              打开旅途中面板（需有进行中的探索）
+result               打开最近一次探索结果
+
+
+三、探索命令
+------------
+trip random [偶遇角色]
+  开始随机探索。可选的最后一个参数会强制本次遇见指定角色。
+  示例：trip random 柯莱
+
+trip region <地区ID或名称> [偶遇角色]
+  开始指定地区探索。命令栏会提供调试路粮并屏蔽随机改道，保证抵达指定地区；
+  如果同时通过 journey-event 强制“失足”或“改道”事件，则优先保留事件的正常结果。
+  示例：trip region sumeru
+  示例：trip region 须弥 柯莱
+
+trip region list
+  列出全部地区。
+
+trip bearing <n|s|e|w|c|any> [偶遇角色]
+  按方向开始探索。n北、s南、e东、w西、c中部、any随机。
+  也可写：北、南、东、西、中、随机。
+  示例：trip bearing n
+  示例：trip bearing 南 赛诺
+
+trip finish
+  立即完成当前探索，走正常结算流程并打开结果，不会伪造明信片。
+
+trip finish <秒数>
+  将当前探索的剩余时间调整为指定秒数。
+  示例：trip finish 10
+
+trip result
+  打开最近一次已经完成的探索结果。
+
+trip cancel confirm
+  取消当前探索。已消耗的料理和稀有道具不会返还。
+
+
+四、指定偶遇角色
+----------------
+encounter <角色ID或名称>
+  指定下一次探索遇见的角色；设置只使用一次，探索开始后自动清除。
+  示例：encounter collei
+  示例：encounter 柯莱
+
+encounter random
+encounter clear
+encounter off
+  清除指定角色，下一次探索恢复随机偶遇。
+
+encounter list
+  列出全部可偶遇角色。
+
+说明：也可以直接在 trip 命令最后写角色，例如 trip region 须弥 柯莱。
+
+
+五、指定明信片见闻事件
+----------------------
+event <事件ID或名称>
+  指定下一次探索的明信片见闻；设置只使用一次。
+  示例：event aurora
+  示例：event 看见了极光
+
+event random
+event clear
+event off
+  清除指定见闻，恢复随机。
+
+event list
+  在命令栏列出全部通用与地区专属明信片见闻。
+
+注意：地区专属见闻必须与本次目的地一致。例如 sumeru_play_0 应配合须弥探索使用。
+
+
+六、指定旅途过程事件
+--------------------
+journey-event <事件ID或名称>
+  指定下一次探索的第一个路途过程事件；设置只使用一次。
+  示例：journey-event meet_1
+  示例：journey-event 在水边失足
+
+journey-event random
+journey-event clear
+journey-event off
+  清除指定过程事件，恢复随机。
+
+journey-event list
+  列出全部旅途过程事件。
+
+过程事件仍会走正常路线模拟。例如“在水边失足”可能导致提前返程，“被邀请前往另一处”
+可能触发改道；需要同伴的事件会先从正常偶遇角色池补充同伴。
+
+
+七、指定角色来访
+----------------
+visitor <角色ID或名称>
+  让指定角色立即来到家园。
+  示例：visitor paimon
+  示例：visitor 派蒙
+
+visitor random
+  从可来访角色池随机选择一位立即来访。
+
+visitor clear
+visitor off
+  让当前来访角色离开。
+
+visitor list
+  列出全部可来访角色。
+
+
+八、哥伦比娅状态与互动
+----------------------
+state <状态ID或名称>
+  立即切换哥伦比娅的居家状态。
+  示例：state read
+  示例：state 阅读
+
+state random
+  随机切换一个居家状态。
+
+state list
+  列出全部居家状态。
+
+poke
+  触发一次点击哥伦比娅的互动。
+
+bar
+  切换家园/田地底部菜单的展开与收起状态。
+
+rotate
+  再次触发移动端“建议横屏”提示；宽屏设备不会显示提示。
+
+
+九、田地命令
+------------
+farm
+  进入田地界面。
+
+farm list
+  列出所有田块和作物 ID。
+
+farm status
+  查看六块田的空闲、生长或成熟状态。
+
+farm plant <田块ID或名称> <作物ID或名称>
+  在指定空田播种。旱田只能种旱田作物，水田只能种水田作物。
+  示例：farm plant dry1 potato
+  示例：farm plant 楚此诸田·一 金鱼草
+
+farm ready <田块ID或名称>
+  立即催熟指定田块已有的作物。
+
+farm ready all
+  立即催熟所有已播种田块。
+
+farm harvest <田块ID或名称>
+  收获指定的成熟田块。
+
+farm harvest all
+  收获所有成熟田块。
+
+
+十、存档、素材与设置命令
+------------------------
+save
+  立即保存当前进度。
+
+export
+  导出当前存档 JSON 文件。
+
+assets
+probe
+  显示素材总数、已加载数、失败数和失败项；两条命令效果相同。
+
+sound on
+sound off
+  开启或关闭音效并保存设置。
+
+demo
+  写入项目内置试玩数据，用于快速检查仓库、玩具、田地和明信片。
+  该命令会改变当前存档，建议先使用 export 备份。
+
+reset confirm
+  清空全部本地进度。此操作不可撤销，必须完整输入 confirm。
+
+
+十一、可用地区
+--------------
+mondstadt = 蒙德
+liyue = 璃月
+inazuma = 稻妻
+sumeru = 须弥
+fontaine = 枫丹
+natlan = 纳塔
+nod_krai = 挪德卡莱
+
+
+十二、可来访角色
+----------------
+paimon = 派蒙
+lauma = 菈乌玛
+sandrone = 桑多涅
+arlecchino = 阿蕾奇诺
+flins = 菲林斯
+nefer = 奈芙尔
+aino = 爱诺
+ineffa = 伊涅芙
+dainsleif = 戴因斯雷布
+mera = 梅拉
+nuonuo_tota = 努昂诺塔
+
+
+十三、可在旅途中偶遇的角色
+--------------------------
+collei = 柯莱
+tighnari = 提纳里
+cyno = 赛诺
+nilou = 妮露
+dehya = 迪希雅
+klee = 可莉
+qiqi = 七七
+varka = 法尔伽
+nicole = 尼可
+durin = 杜林
+wanderer = 阿帽
+
+
+十四、哥伦比娅居家状态
+----------------------
+idle = 静静观察
+sleep = 休息
+eat = 准备食物
+play = 玩月亮棋
+read = 阅读
+water = 准备照看田地
+cook = 做饭
+stretch = 舒展身体
+lookout = 等待归来
+
+
+十五、田块与作物
+----------------
+田块：
+dry1 = 玄此玉田·一（旱田）
+dry2 = 玄此玉田·二（旱田）
+wet1 = 楚此诸田·一（水田）
+dry3 = 玄此玉田·三（旱田）
+dry4 = 玄此玉田·四（旱田）
+wet2 = 楚此诸田·二（水田）
+
+旱田作物：
+potato = 土豆
+wheat = 甜甜花
+soybean = 琉璃百合
+tomato = 风车菊
+corn = 冬凌草
+
+水田作物：
+wildrice = 金鱼草
+waterchestnut = 莲蓬
+rice = 嘟嘟莲
+watercaltrop = 海灵芝
+lotus = 久雨莲
+
+
+十六、通用明信片见闻事件
+--------------------------
+found_flower = 发现一朵花
+picked_seed = 捡到种子
+long_walk = 走了很久的路
+shared_meal = 分吃了一顿饭
+found_feather = 捡到一根羽毛
+took_photo = 留了一张影
+shelter_rain = 躲了一场雨
+night_stars = 看了很久的星星
+shell_on_beach = 捡到一只贝壳
+snow_crystal = 接住一片雪
+desert_mirage = 看见了幻影
+old_book = 翻到一本旧书
+street_food = 尝了当地的东西
+climb_peak = 爬到了最高处
+found_lantern = 点亮了一盏灯
+met_traveler = 遇见另一个旅人
+found_mushroom = 发现一丛蘑菇
+fish_jumped = 鱼跳出了水面
+petal_rain = 花瓣落了一身
+lost_way = 走错了路
+ancient_ruin = 发现一处遗迹
+rare_butterfly = 见到一只罕见的蝴蝶
+aurora = 看见了极光
+old_friend_gift = 收到一件旧礼物
+
+
+十七、地区专属明信片见闻事件
+------------------------------
+蒙德：
+mondstadt_scenery_0 = 风中的城与原野
+mondstadt_scenery_1 = 诗与歌的夜晚
+mondstadt_food_0 = 分享了一份蒙德点心
+mondstadt_food_1 = 喝了清香的饮品
+mondstadt_play_0 = 听了一首风中的歌
+mondstadt_play_1 = 沿着风的方向散步
+
+璃月：
+liyue_scenery_0 = 山海之间
+liyue_scenery_1 = 灯火中的港城
+liyue_food_0 = 尝了璃月风味的热食
+liyue_food_1 = 带回一份精致点心
+liyue_play_0 = 听人讲了一段旧契约
+liyue_play_1 = 沿着山海路线访古
+
+稻妻：
+inazuma_scenery_0 = 雷光下的群岛
+inazuma_scenery_1 = 随风而落的花瓣
+inazuma_food_0 = 吃了一份岛上料理
+inazuma_food_1 = 分享了随身点心
+inazuma_play_0 = 乘船穿过岛屿
+inazuma_play_1 = 记录了一次雷光
+
+须弥：
+sumeru_scenery_0 = 雨林的层叠生命
+sumeru_scenery_1 = 沙海中的遗迹
+sumeru_food_0 = 尝了当地香料料理
+sumeru_food_1 = 分享了新鲜水果
+sumeru_play_0 = 观察了一处生态
+sumeru_play_1 = 阅读了一本旧记录
+
+枫丹：
+fontaine_scenery_0 = 水路与城市机关
+fontaine_scenery_1 = 谢幕后的小路
+fontaine_food_0 = 尝了一份枫丹甜点
+fontaine_food_1 = 喝了清澈的饮品
+fontaine_play_0 = 观察了一组机关
+fontaine_play_1 = 沿水路记录城市
+
+纳塔：
+natlan_scenery_0 = 火光与山路
+natlan_scenery_1 = 同行者的营地
+natlan_food_0 = 分享了火边料理
+natlan_food_1 = 尝了当地果实
+natlan_play_0 = 和伙伴走过一段山路
+natlan_play_1 = 听了一段部族故事
+
+挪德卡莱：
+nod_krai_scenery_0 = 银月之庭
+nod_krai_scenery_1 = 霜月路线
+nod_krai_food_0 = 分享了新鲜水果
+nod_krai_food_1 = 喝了清香的热饮
+nod_krai_play_0 = 和月灵一起画画
+nod_krai_play_1 = 下了一盘月亮棋
+
+
+十八、旅途过程事件
+------------------
+ref_lift = 得到安全的同行帮助
+ref_orchard = 采到可以分享的果实
+ref_share = 同伴分享了干粮
+ref_market = 在聚集地帮忙
+ref_noodle = 得到一份热食
+ref_eggs = 收到路人的善意
+set_river = 在水边失足
+set_bag = 包被小动物翻开了
+set_wrongway = 走错了路线
+set_rain = 被雨困住了
+set_shoe = 装备需要修理
+red_invite = 被邀请前往另一处
+red_poster = 看到新的区域线索
+red_road = 前方暂时无法通行
+red_letter = 收到一封旅途信件
+meet_1 = 遇到了同伴
+see_lights = 远处的灯
+see_field = 路边的田
+see_bridge = 过了一座桥
+see_market = 路过一个聚集地
+see_hill = 翻过一座山
+see_star = 停下来看星星
+
+
+十九、组合示例
+--------------
+指定去须弥并遇见柯莱：
+trip region 须弥 柯莱
+
+指定去挪德卡莱、看见极光并在 5 秒后完成：
+event aurora
+trip region nod_krai
+trip finish 5
+
+指定第一段遇到同伴，并指定该同伴为赛诺：
+encounter 赛诺
+journey-event meet_1
+trip region 须弥
+
+让派蒙来访，并把哥伦比娅切换到阅读状态：
+visitor 派蒙
+state 阅读
+
+在第一块旱田种土豆、立即催熟并收获：
+farm plant dry1 potato
+farm ready dry1
+farm harvest dry1
+
+快速完成当前探索并查看结果：
+trip finish
+trip result
+
+
+错误提示说明
+------------
+“找不到……”：请使用对应的 list 命令检查 ID 或中文名。
+“已有探索正在进行”：先等待、使用 trip finish，或确认后使用 trip cancel confirm。
+“这块地种不了这个”：旱田和水田的作物类型不匹配。
+“这块田还种着东西”：先等待成熟并收获，或换另一块空田。
+“当前没有进行中的探索”：需要先使用 trip random / region / bearing 开始探索。
+
+最后更新：2026-09-21
