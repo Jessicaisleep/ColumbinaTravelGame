@@ -329,7 +329,17 @@
     bub.classList.add('show');
   };
 
-  app.poke = function () {
+  app.poke = function () { pokeReaction('home'); };
+
+  /** 卧室（睡觉场景）里戳她：只出一行字，不画立绘动作 —— 她已经在睡觉图里了。 */
+  app.pokeSleep = function () { pokeReaction('bedroom'); };
+
+  /**
+   * 戳她的公共流程：选台词 -> 记成就 -> 响一声 -> 出气泡。
+   * @param where 'home' = 庭院画布上的立绘（气泡跟着人物走）；
+   *              'bedroom' = 睡觉场景（气泡固定在左上角的空地，层级压在场景图之上）。
+   */
+  function pokeReaction(where) {
     var s = app.save;
     var now = Date.now();
     if (now < app._react.until) return;                  // 冷却：反应没结束就不再触发
@@ -342,7 +352,28 @@
     NT.achievements.recordPoke(s);
     NT.store.save(s);
     NT.sfx.play('poke');
-    app.setBubble(line, 5200, 'poke');
+    if (where === 'bedroom') app.setSleepBubble(line, 5200);
+    else app.setBubble(line, 5200, 'poke');
+  }
+
+  /**
+   * 睡觉场景的台词气泡。位置交给 CSS（左上角的空地），不跟随人物坐标 ——
+   * 睡觉图里她躺在右侧，气泡放左边就不会压住她；z-index 也在图片之上。
+   */
+  app.setSleepBubble = function (text, ms) {
+    app._bubble = { text: text, until: Date.now() + (ms || 6000), kind: 'poke' };
+    var bub = $('sleep-bubble');
+    if (!bub) return;
+    bub.textContent = text;
+    bub.setAttribute('data-txt', text);
+    bub.classList.add('show');
+    clearTimeout(app._sleepBubbleTimer);
+    app._sleepBubbleTimer = setTimeout(function () {
+      if (app._bubble && Date.now() >= app._bubble.until) {
+        var b = $('sleep-bubble');
+        if (b) b.classList.remove('show');
+      }
+    }, (ms || 6000) + 60);
   };
 
   /* ---------------- 聊天（可选 AI 角色扮演） ---------------- */
@@ -921,6 +952,8 @@
       '<canvas id="bedroom-bg"></canvas><canvas id="bedroom-fg"></canvas>' +
       '<div class="stage-top"><span class="state-badge">卧室</span><span class="state-spot">哥伦比娅正在床上休息</span></div>' +
       '<div class="bedroom-note">她只会在卧室的床上睡觉</div>' +
+      // 戳她的台词：单独一个气泡，固定放在左上角的空地，z-index 高于场景图
+      '<div class="bubble sleep" id="sleep-bubble"></div>' +
       '<div class="scene-actions"><button class="sbtn go" data-act="go" data-arg="home">返回庭院</button></div>' +
       '</div></div></div>';
   };
@@ -947,15 +980,58 @@
 
   app.mountBedroom = function () {
     var stage = $('bedroom-stage'), bg = $('bedroom-bg'), fg = $('bedroom-fg');
-    // 卧室重点在左侧床铺：移动裁剪窗口但仍保持等比，不拉伸图片。
-    mountSceneCanvas(stage, bg, NT.assets && NT.assets.bedroom(), '#392b2a', '#171113', 0.10, 0, 1);
-    if (!stage || !fg) return;
+    var s = app.save;
+    var m = NT.assetManifest || {};
+
+    // 睡觉场景：每次睡着（since 变化）从候选图里随机挑一张，直接当**背景层**用 ——
+    // 也就是替换原来的 卧室.png，UI（按钮、角标、说明）照旧浮在它上面。
+    // 这些图里已经画好了"她躺在床上睡着"，所以这一场**不再画立绘**，免得出现两个她。
+    var sleeps = (NT.assets && NT.assets.bedroomSleeps) ? NT.assets.bedroomSleeps() : [];
+    var sleepKey = 'sleep:' + ((s && s.home && s.home.nahida) ? s.home.nahida.since : 0);
+    if (app._sleepKey !== sleepKey) {
+      app._sleepKey = sleepKey;
+      app._sleepPick = sleeps.length ? Math.floor(Math.random() * sleeps.length) : 0;
+    }
+    var sleepImg = sleeps.length ? sleeps[app._sleepPick % sleeps.length] : null;
+
+    if (sleepImg) {
+      // 整幅睡觉图铺满背景层：等比裁剪（cover），不拉伸，不改素材比例。
+      mountSceneCanvas(stage, bg, sleepImg, '#392b2a', '#171113', 0, 0, 1);
+    } else {
+      // 没有睡觉图（清单为空 / 全部加载失败）时退回旧表现：卧室背景 + 立绘。
+      // 卧室重点在左侧床铺：移动裁剪窗口但仍保持等比，不拉伸图片。
+      mountSceneCanvas(stage, bg, NT.assets && NT.assets.bedroom(), '#392b2a', '#171113', 0.10, 0, 1);
+    }
+    if (!stage) return;
+
+    // 睡觉图还没加载完（例如带 ?screen=bedroom 直接进卧室）：它一旦到位就重画场景。
+    if (!sleepImg && m.bedroomSleep) {
+      var waits = 0;
+      var waitSleep = function () {
+        if (app.screen !== 'bedroom') return;                 // 已经离开卧室，别再管
+        if ((NT.assets.bedroomSleeps() || []).length) { app.render(); return; }
+        var stat = NT.assets.status();
+        if (stat.ready + stat.error >= stat.total || ++waits > 80) return;   // 没在加载了 / 等够了就放弃
+        setTimeout(waitSleep, 120);
+      };
+      setTimeout(waitSleep, 120);
+    }
+
+    // 点画面任意位置都能戳她：不额外盖一层按钮或热区，免得挡住她。
+    stage.onclick = function () { app.pokeSleep(); };
+
+    if (!fg) return;
     var rect = stage.getBoundingClientRect();
     var dpr = Math.min(root.devicePixelRatio || 1, 2);
     var W = Math.max(640, Math.round((rect.width || 1280) * dpr));
     var H = Math.max(360, Math.round((rect.height || 720) * dpr));
     fg.width = W; fg.height = H;
     var ctx = fg.getContext('2d');
+    ctx.clearRect(0, 0, W, H);         // 前景层这一场不用（睡觉图里已经有人物）
+
+    if (sleepImg) return;
+
+    // ---- 退回旧表现：在背景上手绘她不动的睡姿 ----
     // 以床垫右侧为脚底锚点：人物略微放大并右移，仍完整落在床面，不随窗口比例漂移。
     var chH = H * 0.75, cx = W * 0.47, feetY = H * 0.70;
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };

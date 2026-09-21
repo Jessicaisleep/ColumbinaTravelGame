@@ -1410,6 +1410,20 @@
         return !!m && !!m.backgrounds && !!m.nahida && !!m.companions && !!m.toys &&
           !!m.crops && !!m.dishes && !!m.stickers;
       })());
+      // 睡觉场景是"多选一"：进卧室时从这几张里随机挑一张当背景，且不再叠画立绘。
+      ok('睡觉场景候选图在清单里，且每张都能查到名字', (function () {
+        var m = NT.assetManifest;
+        var list = m && m.bedroomSleep;
+        if (!list) return false;
+        list = Array.isArray(list) ? list : [list];
+        return list.length >= 1 && list.every(function (name, i) {
+          if (!name) return false;
+          var base = String(name).replace(/^.*\//, '');
+          return NT.assets.displayName('scene', 'bedroomSleep' + i) === base;
+        });
+      })());
+      ok('睡觉场景候选图查询接口返回数组', typeof NT.assets.bedroomSleeps === 'function' &&
+        Object.prototype.toString.call(NT.assets.bedroomSleeps()) === '[object Array]');
       ok('清单为空时查询返回 null', NT.assets.bg('__none__') === null &&
         NT.assets.nahida('__none__') === null && NT.assets.companion('__none__') === null &&
         NT.assets.crop('__none__') === null && NT.assets.dish('__none__') === null);
