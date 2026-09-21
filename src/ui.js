@@ -74,6 +74,7 @@
     app.bindGlobal();
     if (app.bindCommands) app.bindCommands();
     app.render();
+    app.replaceHistory();
 
     // 移动端切后台、浏览器关闭和系统回收页面时，最后一次操作可能还没有
     // 经过下一个定时器；这些事件都同步写入当前存档，保留原有键和迁移逻辑。
@@ -85,6 +86,18 @@
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState === 'hidden') persistOnExit();
     });
+
+    // 移动浏览器的软键盘会改变 visualViewport，却不应重绘页面（重绘会丢失
+    // 正在输入的聊天内容）。只更新可视高度变量，让弹窗留在键盘上方。
+    var syncVisualViewport = function () {
+      var vv = window.visualViewport;
+      document.documentElement.style.setProperty('--app-vh', (vv ? vv.height : window.innerHeight) + 'px');
+    };
+    syncVisualViewport();
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', syncVisualViewport);
+      window.visualViewport.addEventListener('scroll', syncVisualViewport);
+    }
     // 每 20 秒检查一次她的状态（状态本身只持续 1.5~6 分钟，所以能看到她走动）
     setInterval(function () {
       if (app.screen !== 'home' && app.screen !== 'farm') return;
@@ -161,6 +174,35 @@
     window.addEventListener('orientationchange', onViewportChange);
     document.addEventListener('fullscreenchange', onViewportChange);
     document.addEventListener('webkitfullscreenchange', onViewportChange);
+
+    // Android 返回手势和浏览器返回键优先回到上一个游戏界面，而不是意外离开游戏。
+    window.addEventListener('popstate', function (event) {
+      var state = event.state;
+      if (state && state.columbinaTravel) {
+        app.screen = state.screen || 'home';
+        app.modal = state.modal || null;
+        app.fieldSheet = null;
+      } else {
+        app.screen = 'home'; app.modal = null; app.fieldSheet = null;
+      }
+      app.render();
+    });
+  };
+
+  app.historyState = function () {
+    return { columbinaTravel: true, screen: app.screen || 'home', modal: app.modal || null };
+  };
+  app.replaceHistory = function () {
+    if (root.history && root.history.replaceState) root.history.replaceState(app.historyState(), '', root.location.href);
+  };
+  app.pushHistory = function () {
+    if (root.history && root.history.pushState) root.history.pushState(app.historyState(), '', root.location.href);
+  };
+  app.closeModal = function () {
+    if (root.history && root.history.state && root.history.state.columbinaTravel && root.history.state.modal) {
+      root.history.back(); return;
+    }
+    app.modal = null; app.fieldSheet = null; app.render(); app.replaceHistory();
   };
 
   /**
@@ -230,7 +272,7 @@
       awake.stateId = 'idle'; awake.since = awakeNow; awake.until = awakeNow + 150000; awake.prevSpotId = 'yard';
       NT.store.save(app.save);
     }
-    app.screen = s; app.modal = null; app.fieldSheet = null; app.render();
+    app.screen = s; app.modal = null; app.fieldSheet = null; app.render(); app.pushHistory();
   };
 
   app.updateLoadingProgress = function () {
@@ -321,8 +363,8 @@
     var s = app.save;
     switch (act) {
       case 'go': app.go(arg); break;
-      case 'modal': app.modal = arg; app.fieldSheet = null; app.render(); break;
-      case 'close-modal': app.modal = null; app.render(); break;
+      case 'modal': app.modal = arg; app.fieldSheet = null; app.render(); app.pushHistory(); break;
+      case 'close-modal': app.closeModal(); break;
       case 'noop': break;
       case 'fullscreen': app.toggleFullscreen(); break;
       case 'toggle-bar': app.toggleBar(); break;
@@ -435,6 +477,7 @@
       case 'test-api': app.testApi(); break;
       case 'reset': if (confirm('确定要清空所有记录吗？此操作不可撤销。')) app.resetAll(); break;
       case 'export': app.exportSave(); break;
+      case 'import': app.importSave(); break;
     }
   };
 
@@ -582,7 +625,7 @@
   app.viewTrip = function (id) {
     var list = app.save.album;
     for (var i = 0; i < list.length; i++) {
-      if (list[i].id === id) { app.viewing = list[i]; app.modal = 'result'; app.render(); return; }
+      if (list[i].id === id) { app.viewing = list[i]; app.modal = 'result'; app.render(); app.pushHistory(); return; }
     }
   };
 
@@ -815,6 +858,36 @@
       '</div>';
   };
 
+  /** 从用户主动选择的 JSON 文件恢复本机存档；全程仅在浏览器本地读写。 */
+  app.importSave = function () {
+    var picker = document.createElement('input');
+    picker.type = 'file'; picker.accept = 'application/json,.json'; picker.style.display = 'none';
+    picker.addEventListener('change', function () {
+      var file = picker.files && picker.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        var candidate = U.tryJSON(String(reader.result || ''), null);
+        if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate)) {
+          app.toast('导入失败：请选择有效的存档 JSON 文件。'); return;
+        }
+        // load() 统一补齐旧存档缺失字段并保留版本迁移；不向网络发送文件内容。
+        NT.store.save(candidate);
+        app.save = NT.store.load();
+        NT.home.repair(app.save);
+        NT.achievements.ensureStats(app.save);
+        NT.store.save(app.save);
+        app.modal = null; app.fieldSheet = null; app.screen = 'home';
+        app.render(); app.replaceHistory(); app.toast('存档已导入。');
+      };
+      reader.onerror = function () { app.toast('导入失败：文件无法读取。'); };
+      reader.readAsText(file, 'utf-8');
+    });
+    document.body.appendChild(picker);
+    picker.click();
+    setTimeout(function () { if (picker.parentNode) picker.parentNode.removeChild(picker); }, 1000);
+  };
+
   app.viewLoading = function () {
     return '<div class="loading-screen" role="status" aria-live="polite">' +
       '<div class="loading-card"><div class="loading-mark">月</div>' +
@@ -919,6 +992,7 @@
   };
 
   app.mountBackyard = function () {
+    var s = app.save;
     var stage = $('backyard-stage'), bg = $('backyard-bg'), fg = $('backyard-fg');
     mountSceneCanvas(stage, bg, NT.assets && NT.assets.backyard(), '#152f62', '#081329', 0, 0, 1);
     if (!stage || !fg) return;
@@ -2240,7 +2314,9 @@
       '<div class="hint">明信片 ' + app.save.album.length + ' 张 · 玩具 ' + (app.save.toys || []).length +
       ' 件 · 存档 ' + sizeKb + ' KB' +
       (NT.store.isMemoryOnly() ? '<br>浏览器不允许本地存储，本次进度不会被保存' : '') + '</div>' +
+      (NT.store.loadedEmpty && NT.store.loadedEmpty() ? '<div class="hint warn-line">未找到这台设备的旧存档。若曾清理浏览器站点数据，请用备份 JSON 恢复。</div>' : '') +
       '<div class="row"><button class="btn-ghost" data-act="export">导出存档</button>' +
+      '<button class="btn-ghost" data-act="import">导入存档</button></div><div class="row" style="margin-top:10px">' +
       '<button class="btn-ghost danger" data-act="reset">清空全部</button></div></div>' +
       '<div class="group about"><div class="label">关于</div>' +
       '<div class="hint">非商业同人作品。角色来自《原神》，版权归米哈游所有。' +

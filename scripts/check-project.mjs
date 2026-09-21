@@ -31,6 +31,9 @@ else {
   const store = readFileSync(resolve(root, 'src/store.js'), 'utf8');
   const config = readFileSync(resolve(root, 'src/data/config.js'), 'utf8');
   const saveApi = readFileSync(resolve(root, 'src/storage/save-api.js'), 'utf8');
+  const serviceWorker = readFileSync(resolve(root, 'public/service-worker.js'), 'utf8');
+  const readme = readFileSync(resolve(root, 'README.md'), 'utf8');
+  const gameHtml = readFileSync(resolve(root, '开始游戏.html'), 'utf8');
   const checks = [
     ['index module entry', index.includes('type="module"') && index.includes('./src/main.js')],
     ['game module entry', game.includes('type="module"') && game.includes('./src/main.js')],
@@ -41,7 +44,11 @@ else {
     ['save key renamed with migration', store.includes('C.PREVIOUS_SAVE_KEY') && config.includes('columbina-travel/save/v2') && saveApi.includes('columbina-travel/save/v2')],
     ['manifest icon paths are relative and exist', manifestIconsExist],
     ['192px icon is a real 192x192 PNG', !!icon192 && icon192.width === 192 && icon192.height === 192],
-    ['512px icon is a real 512x512 PNG', !!icon512 && icon512.width === 512 && icon512.height === 512]
+    ['512px icon is a real 512x512 PNG', !!icon512 && icon512.width === 512 && icon512.height === 512],
+    ['service worker versions and clears old caches', /CACHE_NAME\s*=\s*['"]columbina-travel-static-v\d+['"]/.test(serviceWorker) && serviceWorker.includes('caches.delete')],
+    ['service worker excludes local storage and API calls', !serviceWorker.includes('localStorage') && !serviceWorker.includes('/api/')],
+    ['mobile controls provide coarse-pointer touch targets', gameHtml.includes('pointer:coarse') && gameHtml.includes('min-height:44px')],
+    ['README documents HTTPS PWA installation on three platforms', ['Windows / Chrome', 'Android / Chrome', 'iOS / Safari', 'HTTPS'].every((term) => readme.includes(term))]
   ];
   checks.forEach(([name, ok]) => console.log(`${ok ? 'PASS' : 'FAIL'} ${name}`));
   if (checks.some(([, ok]) => !ok)) process.exitCode = 1;

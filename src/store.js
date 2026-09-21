@@ -9,6 +9,7 @@
   var store = {};
   var memory = {};
   var usingMemory = false;
+  var loadedEmpty = false;
 
   function lsGet(k) { try { return root.localStorage.getItem(k); } catch (e) { return null; } }
   function lsSet(k, v) { try { root.localStorage.setItem(k, v); return true; } catch (e) { return false; } }
@@ -89,7 +90,8 @@
     var previousRaw = currentRaw ? null
       : (usingMemory ? memory[C.PREVIOUS_SAVE_KEY] : lsGet(C.PREVIOUS_SAVE_KEY));
     var raw = currentRaw || previousRaw;
-    if (!raw) return store.defaultSave();
+    if (!raw) { loadedEmpty = true; return store.defaultSave(); }
+    loadedEmpty = false;
     var s = NT.util.tryJSON(raw, null);
     if (!s || typeof s !== 'object') return store.defaultSave();
     deepDefaults(s, store.defaultSave());
@@ -138,6 +140,8 @@
   };
 
   store.isMemoryOnly = function () { return usingMemory; };
+  /** 首次打开或浏览器清除站点数据后为 true，供界面提示玩家恢复备份。 */
+  store.loadedEmpty = function () { return loadedEmpty; };
   store.exportJSON = function (s) { return JSON.stringify(s, null, 2); };
 
   /** 存档体积（字节），用于确认"不存图"的效果 */

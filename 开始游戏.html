@@ -35,6 +35,7 @@
       "WenQuanYi Micro Hei",system-ui,sans-serif;
     display:flex;justify-content:center;
   }
+  :root{--app-vh:100dvh}
   #app{width:100%;max-width:1000px;min-height:100%;display:flex;flex-direction:column;padding:0 0 32px}
 
   .hdr{display:flex;align-items:center;justify-content:space-between;gap:8px;
@@ -68,7 +69,7 @@
          color:var(--fg);padding:12px 13px;font-size:14px;font-family:inherit;margin:10px 0 12px}
 
   /* ---- 家：真·全屏 16:9 世界，控件全部在画面里 ---- */
-  .screen-home,.screen-farm,.screen-hall,.screen-bedroom,.screen-backyard{position:fixed;inset:0;z-index:2;background:#0b0a09}
+  .screen-home,.screen-farm,.screen-hall,.screen-bedroom,.screen-backyard{position:fixed;left:0;right:0;top:0;height:var(--app-vh,100dvh);z-index:2;background:#0b0a09}
   .stage-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
   .stage-box{position:relative;width:min(100vw,calc(100vh * 16 / 9));max-height:100vh}
   /* 这一层只在手机竖屏时用来横向滚动（见下面的媒体查询）；
@@ -139,7 +140,7 @@
               color:#efe9dd;border-radius:.55em;padding:.5em .85em;font-size:.78em;
               font-family:inherit;cursor:pointer;line-height:1.2;white-space:nowrap;
               transition:.15s}
-  .bar-toggle:hover{border-color:var(--green);color:#fff}
+  .bar-toggle:hover,.bar-toggle:focus-visible{border-color:var(--green);color:#fff}
   .bar-toggle.up{border-color:var(--green);color:#bcdba0}
 
   .stage-bar{display:flex;gap:.45em;flex-wrap:wrap;align-items:center}
@@ -147,7 +148,7 @@
         color:#efe9dd;border-radius:.55em;padding:.5em .85em;font-size:.78em;font-family:inherit;
         cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:.35em;
         white-space:nowrap;line-height:1.2}
-  .sbtn:hover{border-color:var(--green);background:rgba(48,58,36,.92)}
+  .sbtn:hover,.sbtn:focus-visible{border-color:var(--green);background:rgba(48,58,36,.92)}
   .sbtn.go{background:linear-gradient(180deg,#9ed474,#7bb355);color:#17240f;border-color:transparent;
            font-weight:700;padding:.5em 1.25em}
   .sbtn.hot{border-color:var(--green);color:#bcdba0}
@@ -419,7 +420,7 @@
               border:1px solid rgba(92,84,68,.8);color:#e8e1d2;font-size:.85em;cursor:pointer;
               display:flex;align-items:center;justify-content:center;padding:0;line-height:1;
               font-family:inherit;transition:.15s}
-  .stage-gear:hover{border-color:var(--green);color:#fff}
+  .stage-gear:hover,.stage-gear:focus-visible{border-color:var(--green);color:#fff}
   .stage-gear.w{width:auto;padding:0 .7em;white-space:nowrap}   /* 带字的按钮 */
   /* 全屏/横屏按钮：只在手机窄屏显示（电脑上画面本来就铺满，不需要） */
   .stage-fsbtn{display:none}
@@ -471,7 +472,7 @@
     background:rgba(14,13,11,.78);border:1px solid rgba(120,140,90,.6);
     border-radius:999px;padding:.42em 1.05em;
     font-size:.7em;color:var(--fg);white-space:nowrap;transition:.15s;z-index:2}
-  .stage-countdown:hover{border-color:var(--green);background:rgba(20,26,16,.9)}
+  .stage-countdown:hover,.stage-countdown:focus-visible{border-color:var(--green);background:rgba(20,26,16,.9)}
   .stage-countdown b{color:var(--green);font-weight:700}
   .cd-dot{width:.5em;height:.5em;border-radius:50%;background:var(--green);
           flex:0 0 auto;animation:cdpulse 1.6s ease-in-out infinite}
@@ -535,6 +536,16 @@
     .command-panel{bottom:calc(10px + env(safe-area-inset-bottom,0px));max-height:78vh}
     .command-output{max-height:52vh}
   }
+
+  /* 手机上所有实际可点控件至少保留约 44px 触控面积；hover 只提供视觉反馈，
+     焦点和点击均可完成相同操作。 */
+  @media (max-width:899px), (pointer:coarse){
+    .btn-ghost,.sbtn,.bar-toggle,.stage-gear,.command-toggle,.command-close,.command-run{min-height:44px;min-width:44px}
+    .stage-gear{width:44px;height:44px}.stage-gear.w{width:auto;min-width:44px}
+    .farm-plot{min-width:44px;min-height:44px}
+    .switch{min-height:44px}.switch input{width:22px;height:22px}
+    .album-item{min-width:44px;min-height:44px}
+  }
   body.selftest .command-toggle,body.selftest .command-panel{display:none}
 
   #selftest-output{white-space:pre-wrap;font:12.5px/1.6 Consolas,Menlo,monospace;
@@ -554,18 +565,18 @@
      写在前面会被它们覆盖掉（之前 .stage-gear 就因此跑到了屏幕外点不到）。
      ------------------------------------------------------------------ */
   @media (max-width:899px), (max-aspect-ratio:1/1){
-    .stage-top{position:fixed;left:.7em;top:.7em;max-width:92vw}
-    .stage-tools{position:fixed;right:.7em;top:.7em}
+    .stage-top{position:fixed;left:calc(.7em + env(safe-area-inset-left,0px));top:calc(.7em + env(safe-area-inset-top,0px));max-width:92vw}
+    .stage-tools{position:fixed;right:calc(.7em + env(safe-area-inset-right,0px));top:calc(.7em + env(safe-area-inset-top,0px))}
     .stage-fsbtn{display:flex}
-    .stage-hint{position:fixed;left:50%;top:.75em;transform:translateX(-50%)}
-    .stage-countdown{position:fixed;left:50%;top:.75em;transform:translateX(-50%)}
+    .stage-hint{position:fixed;left:50%;top:calc(.75em + env(safe-area-inset-top,0px));transform:translateX(-50%)}
+    .stage-countdown{position:fixed;left:50%;top:calc(.75em + env(safe-area-inset-top,0px));transform:translateX(-50%)}
     .stage-sheet{position:fixed;left:50%;top:11%;transform:translateX(-50%);
                  width:min(23em,88vw)}
     .home-controls{position:fixed;left:0;right:0;bottom:0;
                    background:linear-gradient(180deg,transparent,rgba(12,11,9,.72) 45%,rgba(12,11,9,.94));
                    padding:2.4em 6.2em calc(.9em + env(safe-area-inset-bottom,0px)) .9em}
     .bar-toggle{position:fixed;right:.7em;bottom:calc(.7em + env(safe-area-inset-bottom,0px))}
-    .modal-layer{position:fixed;padding:4%}
+    .modal-layer{position:fixed;top:0;bottom:auto;height:var(--app-vh,100dvh);padding:calc(4% + env(safe-area-inset-top,0px)) calc(4% + env(safe-area-inset-right,0px)) calc(4% + env(safe-area-inset-bottom,0px)) calc(4% + env(safe-area-inset-left,0px))}
     .modal{width:96%;max-height:88%}
   }
 </style>
