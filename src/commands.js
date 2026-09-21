@@ -86,7 +86,7 @@
 
   var HELP = [
     '基础：help / commands / clear / close / status',
-    '界面：home / farm / kitchen / toys / chat / album / store / settings / outdoor / waiting / result',
+    '界面：hall / home / backyard / bedroom / farm / kitchen / toys / chat / album / store / settings / outdoor / waiting / result',
     '探索：trip random [角色]；trip region <地区> [角色]；trip bearing <n|s|e|w|c|any> [角色]',
     '探索控制：trip finish [秒]；trip cancel confirm；trip result',
     '指定偶遇：encounter <角色ID或名称>；encounter random；encounter list',
@@ -315,6 +315,8 @@
       else if (cmd === 'close' || cmd === 'exit') { app.closeCommandBar(); return; }
       else if (cmd === 'status') result = statusText();
       else if (cmd === 'home') { app.go('home'); result = '已回到家园。'; }
+      else if (cmd === 'backyard') { app.go('backyard'); result = '已进入后院。'; }
+      else if (cmd === 'bedroom') { app.go('bedroom'); result = '已进入卧室。'; }
       else if (cmd === 'farm' && !parts.length) { app.go('farm'); result = '已进入田地。'; }
       else if (cmd === 'farm') result = runFarm(parts);
       else if (cmd === 'kitchen' || cmd === 'toys' || cmd === 'chat' || cmd === 'album' || cmd === 'store' || cmd === 'settings' || cmd === 'outdoor' || cmd === 'waiting') result = openModal(cmd);

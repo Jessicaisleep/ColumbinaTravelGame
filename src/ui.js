@@ -49,7 +49,7 @@
       }
       clearTimeout(assetRerender);
       assetRerender = setTimeout(function () {
-        if ((app.screen === 'home' || app.screen === 'farm' || app.screen === 'hall' || app.screen === 'bedroom') && !app.save.activeTrip) app.render();
+        if ((app.screen === 'home' || app.screen === 'farm' || app.screen === 'hall' || app.screen === 'bedroom' || app.screen === 'backyard') && !app.save.activeTrip) app.render();
       }, 180);
     });
     NT.assets.init();
@@ -129,7 +129,7 @@
       lastW = r.width; lastH = r.height;
       clearTimeout(app._relayoutTimer);
       app._relayoutTimer = setTimeout(function () {
-        if ((app.screen === 'home' || app.screen === 'farm' || app.screen === 'hall' || app.screen === 'bedroom') && !app.modal) app.render();
+        if ((app.screen === 'home' || app.screen === 'farm' || app.screen === 'hall' || app.screen === 'bedroom' || app.screen === 'backyard') && !app.modal) app.render();
       }, 160);
     };
     window.addEventListener('resize', onViewportChange);
@@ -583,7 +583,8 @@
     var fn = app.screen === 'chooseHome' ? app.viewChooseHome :
       (app.screen === 'farm' ? app.viewFarm :
         (app.screen === 'hall' ? app.viewHall :
-          (app.screen === 'bedroom' ? app.viewBedroom : app.viewHome)));
+          (app.screen === 'bedroom' ? app.viewBedroom :
+            (app.screen === 'backyard' ? app.viewBackyard : app.viewHome))));
     // 渲染函数一旦抛异常，innerHTML 就什么都不会被写入 —— 表现是"点了没反应"。
     // 所以这里必须捕获并把错误显示出来，否则问题完全静默。
     var html;
@@ -659,6 +660,7 @@
     if (app.screen === 'farm') app.mountFarm();
     else if (app.screen === 'hall') app.mountHall();
     else if (app.screen === 'bedroom') app.mountBedroom();
+    else if (app.screen === 'backyard') app.mountBackyard();
     else app.mountHome();
     var m = app.activeModal();
     if (m === 'result' && app.viewing) app.mountResult();
@@ -777,6 +779,7 @@
       '<div class="scene-actions">' +
       '<button class="sbtn go" data-act="go" data-arg="home">进入家园</button>' +
       '<button class="sbtn" data-act="go" data-arg="bedroom">进入卧室</button>' +
+      '<button class="sbtn" data-act="go" data-arg="backyard">进入后院</button>' +
       '<button class="sbtn' + (ready ? ' hot' : '') + '" data-act="go" data-arg="farm">前往田地' +
       (ready ? '<i>可收获</i>' : '') + '</button>' +
       '</div></div></div></div>';
@@ -789,6 +792,7 @@
       '<div class="stage-top"><span class="state-badge">卧室</span><span class="state-spot">哥伦比娅正在床上休息</span></div>' +
       '<div class="bedroom-note">她只会在卧室的床上睡觉</div>' +
       '<div class="scene-actions"><button class="sbtn" data-act="go" data-arg="hall">返回大厅</button>' +
+      '<button class="sbtn" data-act="go" data-arg="backyard">进入后院</button>' +
       '<button class="sbtn go" data-act="go" data-arg="home">进入家园</button></div>' +
       '</div></div></div>';
   };
@@ -838,6 +842,69 @@
       var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY, chH, false, 'tired');
       if (!ok) NT.placeholder.chibi(ctx, cx, feetY, chH, sprite, 'tired', false);
       ctx.restore();
+      app._raf = requestAnimationFrame(draw);
+    }
+    app._raf = requestAnimationFrame(draw);
+  };
+
+  app.viewBackyard = function () {
+    var s = app.save;
+    return '<div class="stage-wrap scene-wrap backyard-wrap">' +
+      '<div class="stage-box"><div class="stage scene-stage" id="backyard-stage">' +
+      '<canvas id="backyard-bg"></canvas><canvas id="backyard-fg"></canvas>' +
+      '<div class="stage-top"><span class="state-badge">后院</span><span class="state-spot">玩具和月灵都在这里玩</span></div>' +
+      '<div class="backyard-note">后院是哥伦比娅玩玩具的地方</div>' +
+      '<div class="scene-actions"><button class="sbtn" data-act="go" data-arg="hall">返回大厅</button>' +
+      '<button class="sbtn" data-act="modal" data-arg="toys">玩具箱' +
+      ((s.toys || []).length ? '<i>' + s.toys.length + '</i>' : '') + '</button>' +
+      '<button class="sbtn go" data-act="go" data-arg="home">进入家园</button></div>' +
+      app.renderModalLayer() +
+      '</div></div></div>';
+  };
+
+  app.mountBackyard = function () {
+    var stage = $('backyard-stage'), bg = $('backyard-bg'), fg = $('backyard-fg');
+    mountSceneCanvas(stage, bg, NT.assets && NT.assets.backyard(), '#152f62', '#081329', 0, 0, 1);
+    if (!stage || !fg) return;
+    var rect = stage.getBoundingClientRect();
+    var dpr = Math.min(root.devicePixelRatio || 1, 2);
+    var W = Math.max(640, Math.round((rect.width || 1280) * dpr));
+    var H = Math.max(360, Math.round((rect.height || 720) * dpr));
+    fg.width = W; fg.height = H;
+    var ctx = fg.getContext('2d');
+    var chH = H * 0.23, now = Date.now(), phase = 0, last = performance.now();
+    // 后院使用自己的居中槽位，手机竖屏裁剪时仍能看到玩具和人物。
+    var backyardSlots = [
+      { x: 0.20, y: 0.62 }, { x: 0.38, y: 0.73 }, { x: 0.62, y: 0.73 },
+      { x: 0.80, y: 0.62 }, { x: 0.28, y: 0.84 }, { x: 0.50, y: 0.86 },
+      { x: 0.72, y: 0.84 }
+    ];
+    var backyardToyPositions = {};
+    (s.home.placed || []).forEach(function (p, i) {
+      backyardToyPositions[p.toyId] = backyardSlots[i % backyardSlots.length];
+    });
+    var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
+    function draw() {
+      var t = performance.now(), dt = U.clamp((t - last) / 1000, 0, 0.1); last = t; phase += dt * 1.6;
+      ctx.clearRect(0, 0, W, H);
+      var placed = s.home.placed || [];
+      placed.forEach(function (p, i) {
+        var slot = backyardSlots[i % backyardSlots.length];
+        if (!slot) return;
+        var th = chH * NT.data.toySize(p.toyId);
+        if (!(NT.assets && NT.assets.drawToy(ctx, W * slot.x, H * slot.y, th, p.toyId))) {
+          NT.placeholder.toy(ctx, p.toyId, W * slot.x, H * slot.y, th, NT.rng.mulberry32(p.slot + 31));
+        }
+      });
+      if (!s.activeTrip && NT.home.state(s).id !== 'sleep') {
+        var st = NT.home.state(s), playing = st.useToy && NT.home.playingToy(s);
+        var target = (playing && backyardToyPositions[playing.id]) ? backyardToyPositions[playing.id] : { x: 0.52, y: 0.84 };
+        var cx = W * target.x, feetY = H * target.y, bob = Math.sin(phase) * chH * 0.012;
+        ctx.save(); ctx.globalAlpha = 0.2; ctx.fillStyle = '#000'; ctx.beginPath();
+        ctx.ellipse(cx, feetY + H * 0.004, chH * 0.26, chH * 0.07, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+        var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY - bob, chH, false, st.mood);
+        if (!ok) NT.placeholder.chibi(ctx, cx, feetY - bob, chH, sprite, st.mood, false);
+      }
       app._raf = requestAnimationFrame(draw);
     }
     app._raf = requestAnimationFrame(draw);
@@ -1144,22 +1211,13 @@
             { seed: NT.rng.hashSeed('home:' + s.homeId), fields: fields });
         }
       }
-      // 玩具：尺寸按"相对主角身高的倍数"来（见 data/home.js 的 toySizeRatio）
-      (s.home.placed || []).forEach(function (p, i) {
-        var slot = NT.data.toySlots[p.slot];
-        if (!slot) return;
-        var th = chH * NT.data.toySize(p.toyId);
-        var okImg = NT.assets && NT.assets.drawToy(bctx, W * slot.x, H * slot.y, th, p.toyId);
-        if (!okImg) {
-          NT.placeholder.toy(bctx, p.toyId, W * slot.x, H * slot.y, th,
-            NT.rng.mulberry32(i + 11));
-        }
-      });
+      // 玩具统一在独立后院显示；家园背景不再重复绘制玩具。
     }
     drawStageBg();
 
     // --- 前景层（哥伦比娅），每帧重画 ---
-    var target = NT.home.spot(s);
+    // 玩耍状态的角色在后院才会靠近玩具；家园里保持在房屋前，避免出现“玩具不在身边”。
+    var target = NT.home.state(s).useToy ? (NT.data.spotById('yard') || NT.data.homeSpots.yard) : NT.home.spot(s);
     if (!app._anim) {
       app._anim = { x: target.x, y: target.y, facing: 1, phase: 0, last: now };
     }
@@ -1577,7 +1635,7 @@
     var isFull = placedCount >= slots.length;
 
     var head = '<div class="cap-bar">' +
-      '<span>摆放位置 <b>' + placedCount + ' / ' + slots.length + '</b>　都在右边的院子里</span>' +
+      '<span>摆放位置 <b>' + placedCount + ' / ' + slots.length + '</b>　都在后院里</span>' +
       (isFull ? '<span class="cap-full">满了，要摆新的得先收回一件</span>' : '') +
       '</div>';
 

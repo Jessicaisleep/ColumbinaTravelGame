@@ -66,7 +66,7 @@
          color:var(--fg);padding:12px 13px;font-size:14px;font-family:inherit;margin:10px 0 12px}
 
   /* ---- 家：真·全屏 16:9 世界，控件全部在画面里 ---- */
-  .screen-home,.screen-farm,.screen-hall,.screen-bedroom{position:fixed;inset:0;z-index:2;background:#0b0a09}
+  .screen-home,.screen-farm,.screen-hall,.screen-bedroom,.screen-backyard{position:fixed;inset:0;z-index:2;background:#0b0a09}
   .stage-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
   .stage-box{position:relative;width:min(100vw,calc(100vh * 16 / 9));max-height:100vh}
   /* 这一层只在手机竖屏时用来横向滚动（见下面的媒体查询）；
@@ -110,6 +110,8 @@
                  flex-wrap:wrap;justify-content:center;z-index:4}
   .bedroom-note{position:absolute;left:50%;top:16%;transform:translateX(-50%);padding:.38em .8em;border-radius:.55em;
                 background:rgba(14,13,11,.58);color:#f0e6d6;font-size:.72em;pointer-events:none}
+  .backyard-note{position:absolute;left:50%;top:16%;transform:translateX(-50%);padding:.38em .8em;border-radius:.55em;
+                 background:rgba(8,18,42,.60);color:#e7f0ff;font-size:.72em;pointer-events:none}
 
   .stage-top{position:absolute;left:1.1em;top:1.0em;display:flex;gap:.5em;align-items:center;
              background:rgba(14,13,11,.55);backdrop-filter:blur(4px);border-radius:.55em;
@@ -200,13 +202,14 @@
        这里选后者（玩家要的全屏），溢出的部分用手指横向拖查看。
        另外 stage 的浮层字号是 clamp(宽/62, 9, 20)，按宽度铺时会被下限卡在 9px，
        徽章实际只有 7px —— 这也是按高度铺的另一个理由。 */
-    .screen-home,.screen-farm,.screen-hall,.screen-bedroom{position:fixed;inset:0;background:#0b0a09}
+    .screen-home,.screen-farm,.screen-hall,.screen-bedroom,.screen-backyard{position:fixed;inset:0;background:#0b0a09}
     .stage-wrap{position:absolute;inset:0;overflow:hidden}
-    .stage-box{width:min(100vw,calc(100vh * 16 / 9));height:auto;max-height:none}
+    /* 竖屏时按高度显示完整舞台，左右只裁掉超出屏幕的边缘，避免上下出现大片黑边。 */
+    .stage-box{width:max-content;height:100%;max-height:none}
     .stage-scroll{display:contents}
-    .stage{width:100%;height:auto;aspect-ratio:16/9;border-radius:0;box-shadow:none}
-    .farm-stage-box{width:min(100vw,calc(100vh * 4 / 3));height:auto;max-height:none}
-    .farm-stage{width:100%;height:auto;aspect-ratio:4/3;border-radius:0;box-shadow:none}
+    .stage{width:auto;height:100%;aspect-ratio:16/9;border-radius:0;box-shadow:none}
+    .farm-stage-box{width:max-content;height:100%;max-height:none}
+    .farm-stage{width:auto;height:100%;aspect-ratio:4/3;border-radius:0;box-shadow:none}
 
     /* 气泡跟着人物走，所以要留在画面里一起滚 —— 不能固定 */
     .bubble{max-width:26%}

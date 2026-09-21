@@ -202,6 +202,7 @@
     if (m.farm) register('farm', 'background', m.farm);
     if (m.hall) register('scene', 'hall', m.hall);
     if (m.bedroom) register('scene', 'bedroom', m.bedroom);
+    if (m.backyard) register('scene', 'backyard', m.backyard);
     for (k in (m.icons || {})) register('icon', k, m.icons[k]);
     return stats.total;
   };
@@ -223,6 +224,7 @@
   assets.farm = function () { return ready('farm', 'background'); };
   assets.hall = function () { return ready('scene', 'hall'); };
   assets.bedroom = function () { return ready('scene', 'bedroom'); };
+  assets.backyard = function () { return ready('scene', 'backyard'); };
   assets.nahida = function (mood) { return ready('nahida', mood); };
   /** 主角任意一张可用立绘（方法名保留用于旧版兼容） */
   assets.nahidaAny = function (mood) {
