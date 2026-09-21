@@ -61,6 +61,17 @@
     app.bindGlobal();
     if (app.bindCommands) app.bindCommands();
     app.render();
+
+    // 移动端切后台、浏览器关闭和系统回收页面时，最后一次操作可能还没有
+    // 经过下一个定时器；这些事件都同步写入当前存档，保留原有键和迁移逻辑。
+    var persistOnExit = function () {
+      if (app.save) NT.store.save(app.save);
+    };
+    window.addEventListener('pagehide', persistOnExit);
+    window.addEventListener('beforeunload', persistOnExit);
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') persistOnExit();
+    });
     // 每 20 秒检查一次她的状态（状态本身只持续 1.5~6 分钟，所以能看到她走动）
     setInterval(function () {
       if (app.screen !== 'home' && app.screen !== 'farm') return;
@@ -260,6 +271,7 @@
     app._react = { at: now, until: now + 1800, kind: st.poke.anim, line: line };
     // 反应做成人物旁边的气泡，比底部那行显眼得多。
     NT.achievements.recordPoke(s);
+    NT.store.save(s);
     NT.sfx.play('poke');
     app.setBubble(line, 5200, 'poke');
   };
@@ -272,6 +284,7 @@
     app.chatLog.push({ me: true, text: playerText });
     NT.achievements.recordChat(app.save);
     app.chatLog.push({ me: false, text: presetReply, source: 'preset' });
+    NT.store.save(app.save);
     app.render();
   };
 

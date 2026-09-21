@@ -1,6 +1,13 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '..');
+function pngSize(file) {
+  try {
+    const bytes = readFileSync(file);
+    if (bytes.length < 24 || bytes.readUInt32BE(0) !== 0x89504e47 || bytes.readUInt32BE(4) !== 0x0d0a1a0a) return null;
+    return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+  } catch { return null; }
+}
 const required = [
   'index.html', '开始游戏.html', 'vite.config.js', 'src/main.js', 'src/legacy-entry.js',
   'public/manifest.webmanifest', 'public/service-worker.js', 'src/pwa/registerServiceWorker.js',
@@ -15,7 +22,12 @@ else {
   const legacyScripts = scriptReferences.filter((path) => !path.endsWith('src/main.js'));
   const allScriptsExist = scriptReferences.every((path) => existsSync(resolve(root, path.replace(/^\.\//, ''))));
   const manifest = JSON.parse(readFileSync(resolve(root, 'public/manifest.webmanifest'), 'utf8'));
-  const manifestIconsExist = manifest.icons.every((icon) => existsSync(resolve(root, icon.src.replace(/^\.\//, ''))));
+  const manifestIconsExist = manifest.icons.every((icon) => {
+    if (!icon.src.startsWith('./') || icon.src.includes('\\') || icon.src.includes('..')) return false;
+    return existsSync(resolve(root, icon.src.replace(/^\.\//, '')));
+  });
+  const icon192 = pngSize(resolve(root, '图片素材/图标-192.png'));
+  const icon512 = pngSize(resolve(root, '图片素材/图标-512.png'));
   const store = readFileSync(resolve(root, 'src/store.js'), 'utf8');
   const config = readFileSync(resolve(root, 'src/data/config.js'), 'utf8');
   const saveApi = readFileSync(resolve(root, 'src/storage/save-api.js'), 'utf8');
@@ -27,7 +39,9 @@ else {
     ['all script paths exist', allScriptsExist],
     ['legacy namespace retained', game.includes('src/core/selftest.js')],
     ['save key renamed with migration', store.includes('C.PREVIOUS_SAVE_KEY') && config.includes('columbina-travel/save/v2') && saveApi.includes('columbina-travel/save/v2')],
-    ['manifest icon paths exist', manifestIconsExist]
+    ['manifest icon paths are relative and exist', manifestIconsExist],
+    ['192px icon is a real 192x192 PNG', !!icon192 && icon192.width === 192 && icon192.height === 192],
+    ['512px icon is a real 512x512 PNG', !!icon512 && icon512.width === 512 && icon512.height === 512]
   ];
   checks.forEach(([name, ok]) => console.log(`${ok ? 'PASS' : 'FAIL'} ${name}`));
   if (checks.some(([, ok]) => !ok)) process.exitCode = 1;

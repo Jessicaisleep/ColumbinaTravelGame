@@ -114,6 +114,8 @@
 
   store.save = function (s) {
     if (s.settings && Object.prototype.hasOwnProperty.call(s.settings, 'apiKey')) delete s.settings.apiKey;
+    // 记录最近一次成功请求保存的时间，便于恢复/诊断；不改变既有存档键或数据结构。
+    s.lastSeenAt = Date.now();
     var raw = JSON.stringify(s);
     if (usingMemory) { memory[C.SAVE_KEY] = raw; return true; }
     if (!lsSet(C.SAVE_KEY, raw)) {
