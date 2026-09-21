@@ -10,7 +10,7 @@
   NT.app = app;
 
   app.save = null;
-  app.screen = 'home';
+  app.screen = 'hall';
   app.viewing = null;
   app.outMode = 'random';
   app.outRegion = null;
@@ -49,12 +49,13 @@
       }
       clearTimeout(assetRerender);
       assetRerender = setTimeout(function () {
-        if ((app.screen === 'home' || app.screen === 'farm') && !app.save.activeTrip) app.render();
+        if ((app.screen === 'home' || app.screen === 'farm' || app.screen === 'hall' || app.screen === 'bedroom') && !app.save.activeTrip) app.render();
       }, 180);
     });
     NT.assets.init();
     app.settleIfDue();
     if (!app.save.homeChosen) app.screen = 'chooseHome';
+    else app.screen = 'hall';
 
     app.bindGlobal();
     if (app.bindCommands) app.bindCommands();
@@ -128,7 +129,7 @@
       lastW = r.width; lastH = r.height;
       clearTimeout(app._relayoutTimer);
       app._relayoutTimer = setTimeout(function () {
-        if ((app.screen === 'home' || app.screen === 'farm') && !app.modal) app.render();
+        if ((app.screen === 'home' || app.screen === 'farm' || app.screen === 'hall' || app.screen === 'bedroom') && !app.modal) app.render();
       }, 160);
     };
     window.addEventListener('resize', onViewportChange);
@@ -191,7 +192,21 @@
     app.toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2600);
   };
 
-  app.go = function (s) { app.screen = s; app.modal = null; app.fieldSheet = null; app.render(); };
+  app.go = function (s) {
+    if (s === 'bedroom' && app.save && app.save.home && app.save.home.nahida) {
+      var h = app.save.home.nahida;
+      var now = Date.now();
+      h.stateId = 'sleep'; h.since = now; h.until = now + 6 * 60e3; h.prevSpotId = 'bed';
+      NT.store.save(app.save);
+    } else if (s !== 'bedroom' && app.save && app.save.home && app.save.home.nahida &&
+      app.save.home.nahida.stateId === 'sleep') {
+      var awake = app.save.home.nahida;
+      var awakeNow = Date.now();
+      awake.stateId = 'idle'; awake.since = awakeNow; awake.until = awakeNow + 150000; awake.prevSpotId = 'yard';
+      NT.store.save(app.save);
+    }
+    app.screen = s; app.modal = null; app.fieldSheet = null; app.render();
+  };
 
   /* ---------------- 点击她的实时反应 ---------------- */
 
@@ -272,7 +287,7 @@
       case 'toggle-bar': app.toggleBar(); break;
       case 'pick-home':
         s.homeId = arg; s.homeChosen = true;
-        NT.store.save(s); app.screen = 'home'; app.render();
+        NT.store.save(s); app.screen = 'hall'; app.render();
         break;
       case 'auto-locate': app.autoLocate(); break;
 
@@ -566,7 +581,9 @@
     if (app._raf) { cancelAnimationFrame(app._raf); app._raf = null; }
     var rootEl = $('screen'); if (!rootEl) return;
     var fn = app.screen === 'chooseHome' ? app.viewChooseHome :
-      (app.screen === 'farm' ? app.viewFarm : app.viewHome);
+      (app.screen === 'farm' ? app.viewFarm :
+        (app.screen === 'hall' ? app.viewHall :
+          (app.screen === 'bedroom' ? app.viewBedroom : app.viewHome)));
     // 渲染函数一旦抛异常，innerHTML 就什么都不会被写入 —— 表现是"点了没反应"。
     // 所以这里必须捕获并把错误显示出来，否则问题完全静默。
     var html;
@@ -640,6 +657,8 @@
   app.mount = function () {
     if (app.screen === 'chooseHome') return;
     if (app.screen === 'farm') app.mountFarm();
+    else if (app.screen === 'hall') app.mountHall();
+    else if (app.screen === 'bedroom') app.mountBedroom();
     else app.mountHome();
     var m = app.activeModal();
     if (m === 'result' && app.viewing) app.mountResult();
@@ -697,7 +716,7 @@
       (s.activeTrip
         ? '<span class="state-badge away">旅途中</span><span class="state-spot">她不在家</span>'
         : '<span class="state-badge">' + st.name + '</span>' +
-          '<span class="state-spot">在' + esc(spot ? spot.label : '') + '</span>') +
+          '<span class="state-spot">' + (st.id === 'sleep' ? '她在卧室睡觉' : '在' + esc(spot ? spot.label : '')) + '</span>') +
       (visitor ? '<span class="visitor-chip">' + esc(visitor.comp.name) + '来串门 · ' +
         esc(visitor.vst.name) + '</span>' : '') +
       '</div>' +
@@ -726,6 +745,7 @@
         : '<button class="sbtn go" data-act="modal" data-arg="outdoor">送她出门</button>') +
       '<button class="sbtn' + (ready ? ' hot' : '') + '" data-act="go" data-arg="farm">田地' +
       (ready ? '<i>可收获</i>' : '') + '</button>' +
+      '<button class="sbtn" data-act="go" data-arg="hall">大厅</button>' +
       '<button class="sbtn" data-act="modal" data-arg="kitchen">厨房' + badge(cookable) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="toys">玩具' + badge((s.toys || []).length) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="store">仓库' + badge(storeCount(s)) + '</button>' +
@@ -742,6 +762,85 @@
       app.renderModalLayer() +
       '</div>' +
       '</div>';
+  };
+
+  /* ---------------- 大厅与卧室 ---------------- */
+
+  app.viewHall = function () {
+    var s = app.save;
+    var ready = NT.farm.hasReady(s, Date.now());
+    return '<div class="stage-wrap scene-wrap hall-wrap">' +
+      '<div class="stage-box"><div class="stage scene-stage" id="hall-stage">' +
+      '<canvas id="hall-bg"></canvas>' +
+      '<div class="stage-top"><span class="state-badge">大厅</span><span class="state-spot">挪德卡莱的家</span></div>' +
+      '<div class="scene-title"><b>哥伦比娅的旅行</b><span>从这里前往家园、卧室与田地</span></div>' +
+      '<div class="scene-actions">' +
+      '<button class="sbtn go" data-act="go" data-arg="home">进入家园</button>' +
+      '<button class="sbtn" data-act="go" data-arg="bedroom">进入卧室</button>' +
+      '<button class="sbtn' + (ready ? ' hot' : '') + '" data-act="go" data-arg="farm">前往田地' +
+      (ready ? '<i>可收获</i>' : '') + '</button>' +
+      '</div></div></div></div>';
+  };
+
+  app.viewBedroom = function () {
+    return '<div class="stage-wrap scene-wrap bedroom-wrap">' +
+      '<div class="stage-box"><div class="stage scene-stage" id="bedroom-stage">' +
+      '<canvas id="bedroom-bg"></canvas><canvas id="bedroom-fg"></canvas>' +
+      '<div class="stage-top"><span class="state-badge">卧室</span><span class="state-spot">哥伦比娅正在床上休息</span></div>' +
+      '<div class="bedroom-note">她只会在卧室的床上睡觉</div>' +
+      '<div class="scene-actions"><button class="sbtn" data-act="go" data-arg="hall">返回大厅</button>' +
+      '<button class="sbtn go" data-act="go" data-arg="home">进入家园</button></div>' +
+      '</div></div></div>';
+  };
+
+  function mountSceneCanvas(stage, bg, image, fallbackTop, fallbackBottom, panX, panY, zoom) {
+    if (!stage || !bg) return;
+    var rect = stage.getBoundingClientRect();
+    var dpr = Math.min(root.devicePixelRatio || 1, 2);
+    var W = Math.max(640, Math.round((rect.width || 1280) * dpr));
+    var H = Math.max(360, Math.round((rect.height || 720) * dpr));
+    bg.width = W; bg.height = H;
+    var ctx = bg.getContext('2d');
+    if (!(image && NT.assets.drawCover(ctx, image, W, H, panX || 0, panY || 0, zoom || 1))) {
+      var grad = ctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0, fallbackTop); grad.addColorStop(1, fallbackBottom);
+      ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+    }
+    stage.style.fontSize = U.clamp((rect.width || 1280) / 62, root.innerWidth <= 899 ? 16 : 9, 20).toFixed(2) + 'px';
+  }
+
+  app.mountHall = function () {
+    mountSceneCanvas($('hall-stage'), $('hall-bg'), NT.assets && NT.assets.hall(), '#253d37', '#101714', 0, 0, 1);
+  };
+
+  app.mountBedroom = function () {
+    var stage = $('bedroom-stage'), bg = $('bedroom-bg'), fg = $('bedroom-fg');
+    // 卧室重点在左侧床铺：移动裁剪窗口但仍保持等比，不拉伸图片。
+    mountSceneCanvas(stage, bg, NT.assets && NT.assets.bedroom(), '#392b2a', '#171113', 0.10, 0, 1);
+    if (!stage || !fg) return;
+    var rect = stage.getBoundingClientRect();
+    var dpr = Math.min(root.devicePixelRatio || 1, 2);
+    var W = Math.max(640, Math.round((rect.width || 1280) * dpr));
+    var H = Math.max(360, Math.round((rect.height || 720) * dpr));
+    fg.width = W; fg.height = H;
+    var ctx = fg.getContext('2d');
+    // 以床垫右侧为脚底锚点，旋转后身体完整落在床面，不随窗口比例漂移。
+    var chH = H * 0.23, cx = W * 0.43, feetY = H * 0.70;
+    var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.save();
+      ctx.globalAlpha = 0.18; ctx.fillStyle = '#000';
+      ctx.beginPath(); ctx.ellipse(cx, feetY + H * 0.004, chH * 0.27, chH * 0.07, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+      ctx.save();
+      ctx.translate(cx, feetY); ctx.rotate(-Math.PI / 2 * 0.86); ctx.translate(-cx, -feetY);
+      var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY, chH, false, 'tired');
+      if (!ok) NT.placeholder.chibi(ctx, cx, feetY, chH, sprite, 'tired', false);
+      ctx.restore();
+      app._raf = requestAnimationFrame(draw);
+    }
+    app._raf = requestAnimationFrame(draw);
   };
 
   /* ---------------- 独立田地 ---------------- */
@@ -785,6 +884,7 @@
       '<button class="sbtn' + (readyCount ? ' hot' : '') + '" data-act="harvest-all">收全部' +
       (readyCount ? '<i>' + readyCount + '</i>' : '') + '</button>' +
       '<button class="sbtn" data-act="go" data-arg="home">返回家园</button>' +
+      '<button class="sbtn" data-act="go" data-arg="hall">大厅</button>' +
       '</div></div>' +
       '</div></div></div>';
   };
@@ -861,7 +961,8 @@
 
     var fctx = fg.getContext('2d');
     var chH = H * 0.23;
-    var cx = W * 0.885, feetY = H * 0.825;
+    // 田地前景中央是可通行草地，人物固定站在这里，避开六块田和水池。
+    var cx = W * 0.54, feetY = H * 0.86;
     var phase = 0, last = performance.now();
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
 
@@ -1113,6 +1214,16 @@
         fctx.clearRect(0, 0, W, H);
         var bubAway = $('nahida-bubble');
         if (bubAway) bubAway.classList.remove('show');
+        drawVisitor(t, dt);
+        app._raf = requestAnimationFrame(drawNahida);
+        return;
+      }
+
+      // 睡觉只在独立卧室场景显示。家园保留状态与倒计时，但不再把睡姿画在家园背景上。
+      if (st.id === 'sleep') {
+        fctx.clearRect(0, 0, W, H);
+        var bubSleep = $('nahida-bubble');
+        if (bubSleep) bubSleep.classList.remove('show');
         drawVisitor(t, dt);
         app._raf = requestAnimationFrame(drawNahida);
         return;

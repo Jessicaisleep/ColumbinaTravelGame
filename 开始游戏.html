@@ -66,7 +66,7 @@
          color:var(--fg);padding:12px 13px;font-size:14px;font-family:inherit;margin:10px 0 12px}
 
   /* ---- 家：真·全屏 16:9 世界，控件全部在画面里 ---- */
-  .screen-home,.screen-farm{position:fixed;inset:0;z-index:2;background:#0b0a09}
+  .screen-home,.screen-farm,.screen-hall,.screen-bedroom{position:fixed;inset:0;z-index:2;background:#0b0a09}
   .stage-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
   .stage-box{position:relative;width:min(100vw,calc(100vh * 16 / 9));max-height:100vh}
   /* 这一层只在手机竖屏时用来横向滚动（见下面的媒体查询）；
@@ -90,14 +90,26 @@
   .farm-plot:hover,.farm-plot:focus-visible{border-color:rgba(221,245,196,.9);
              background:rgba(33,54,34,.18);outline:none;box-shadow:0 0 0 .12em rgba(142,201,106,.22)}
   .farm-plot.ready{border-color:rgba(217,184,91,.72);background:rgba(93,66,20,.13)}
-  .farm-plot span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  .farm-plot span{position:absolute;left:50%;top:88%;transform:translate(-50%,-50%);
                   padding:.18em .48em;border-radius:999px;background:rgba(20,18,15,.78);
                   box-shadow:0 .2em .6em rgba(0,0,0,.35);font-size:.55em;white-space:nowrap;
                   pointer-events:none;text-shadow:0 1px 2px #000}
   .farm-plot.ready span{color:#ffe8a3;background:rgba(72,49,16,.9)}
-  .farm-crop{position:absolute;left:50%;top:47%;width:48%;height:72%;transform:translate(-50%,-50%);
+  .farm-crop{position:absolute;left:50%;top:39%;width:26%;height:40%;transform:translate(-50%,-50%);
              object-fit:contain;filter:drop-shadow(0 .18em .18em rgba(0,0,0,.45));pointer-events:none}
   .farm-controls{z-index:4}
+
+  /* 大厅与卧室都使用 16:9 原图等比 cover；按钮浮在场景底部，不改素材比例。 */
+  .scene-stage{background:#141917}
+  .scene-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .scene-title{position:absolute;left:50%;top:25%;transform:translateX(-50%);display:flex;flex-direction:column;
+               align-items:center;gap:.25em;color:#fff;text-shadow:0 .12em .3em #000;pointer-events:none;text-align:center}
+  .scene-title b{font-size:1.65em;letter-spacing:.1em}
+  .scene-title span{font-size:.78em;color:#e9e3d6}
+  .scene-actions{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);display:flex;gap:.55em;
+                 flex-wrap:wrap;justify-content:center;z-index:4}
+  .bedroom-note{position:absolute;left:50%;top:16%;transform:translateX(-50%);padding:.38em .8em;border-radius:.55em;
+                background:rgba(14,13,11,.58);color:#f0e6d6;font-size:.72em;pointer-events:none}
 
   .stage-top{position:absolute;left:1.1em;top:1.0em;display:flex;gap:.5em;align-items:center;
              background:rgba(14,13,11,.55);backdrop-filter:blur(4px);border-radius:.55em;
@@ -188,14 +200,13 @@
        这里选后者（玩家要的全屏），溢出的部分用手指横向拖查看。
        另外 stage 的浮层字号是 clamp(宽/62, 9, 20)，按宽度铺时会被下限卡在 9px，
        徽章实际只有 7px —— 这也是按高度铺的另一个理由。 */
-    .screen-home{position:fixed;inset:0;background:#0b0a09}
-    .stage-wrap{position:absolute;inset:0;overflow-x:auto;overflow-y:hidden;
-                -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
-    .stage-box{width:max-content;height:100%;max-height:none}
+    .screen-home,.screen-farm,.screen-hall,.screen-bedroom{position:fixed;inset:0;background:#0b0a09}
+    .stage-wrap{position:absolute;inset:0;overflow:hidden}
+    .stage-box{width:min(100vw,calc(100vh * 16 / 9));height:auto;max-height:none}
     .stage-scroll{display:contents}
-    .stage{width:auto;height:100%;border-radius:0;box-shadow:none}
-    .farm-stage-box{width:max-content;height:100%;max-height:none}
-    .farm-stage{width:auto;height:100%;border-radius:0;box-shadow:none}
+    .stage{width:100%;height:auto;aspect-ratio:16/9;border-radius:0;box-shadow:none}
+    .farm-stage-box{width:min(100vw,calc(100vh * 4 / 3));height:auto;max-height:none}
+    .farm-stage{width:100%;height:auto;aspect-ratio:4/3;border-radius:0;box-shadow:none}
 
     /* 气泡跟着人物走，所以要留在画面里一起滚 —— 不能固定 */
     .bubble{max-width:26%}
@@ -609,7 +620,7 @@
       if (Q.get('demo')) {
         NT.app.save = NT.store.defaultSave();
         NT.app.demoSeed();
-        NT.app.screen = Q.get('screen') || 'home';
+        NT.app.screen = Q.get('screen') || 'hall';
         if (NT.app.screen === 'result' || NT.app.screen === 'waiting') {
           var al = NT.app.save.album;
           if (NT.app.screen === 'result' && al.length) NT.app.viewing = al[al.length - 1];

@@ -200,6 +200,8 @@
     for (k in (m.stickers || {})) register('sticker', k, m.stickers[k]);
     if (m.home) register('home', 'home', m.home);
     if (m.farm) register('farm', 'background', m.farm);
+    if (m.hall) register('scene', 'hall', m.hall);
+    if (m.bedroom) register('scene', 'bedroom', m.bedroom);
     for (k in (m.icons || {})) register('icon', k, m.icons[k]);
     return stats.total;
   };
@@ -219,6 +221,8 @@
   assets.bg = function (destId) { return ready('bg', destId); };
   assets.home = function () { return ready('home', 'home'); };
   assets.farm = function () { return ready('farm', 'background'); };
+  assets.hall = function () { return ready('scene', 'hall'); };
+  assets.bedroom = function () { return ready('scene', 'bedroom'); };
   assets.nahida = function (mood) { return ready('nahida', mood); };
   /** 主角任意一张可用立绘（方法名保留用于旧版兼容） */
   assets.nahidaAny = function (mood) {
@@ -267,6 +271,9 @@
     }
     if (group === 'farm') {
       return String(m.farm || '田地-全景').replace(/^.*\//, '');
+    }
+    if (group === 'scene') {
+      return String(m[id] || id).replace(/^.*\//, '');
     }
     var map = {
       bg: m.backgrounds, nahida: m.nahida, companion: m.companions,

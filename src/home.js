@@ -26,6 +26,8 @@
     var list = NT.data.nahidaStates;
     for (var i = 0; i < list.length; i++) {
       var w = list[i].weight;
+      // 睡眠只由独立卧室场景触发，家园状态机不会把她随机送到床上。
+      if (list[i].id === 'sleep') w = 0;
       if (list[i].id === currentId) w *= 0.2;   // 避免连续同一个状态
       pool.push({ s: list[i], weight: w });
     }
