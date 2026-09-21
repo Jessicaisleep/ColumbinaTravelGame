@@ -72,14 +72,14 @@
   /* 这一层只在手机竖屏时用来横向滚动（见下面的媒体查询）；
      宽屏上 display:contents 等于它不存在，不影响原来的布局 */
   .stage-scroll{display:contents}
-  .stage{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#7fa862;
+  .stage{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#141917;
          cursor:pointer;box-shadow:0 0 60px rgba(0,0,0,.7)}
   .stage canvas{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
   #world-fg{pointer-events:none}
 
   /* ---- 独立田地：使用 4:3 原图，保持比例，不拉伸 ---- */
   .farm-stage-box{position:relative;width:min(100vw,calc(100vh * 4 / 3));max-height:100vh}
-  .farm-stage{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#57956f;
+  .farm-stage{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#141917;
               box-shadow:0 0 60px rgba(0,0,0,.7)}
   .farm-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
   #farm-fg{pointer-events:none;z-index:2}
@@ -90,7 +90,7 @@
   .farm-plot:hover,.farm-plot:focus-visible{border-color:rgba(221,245,196,.9);
              background:rgba(33,54,34,.18);outline:none;box-shadow:0 0 0 .12em rgba(142,201,106,.22)}
   .farm-plot.ready{border-color:rgba(217,184,91,.72);background:rgba(93,66,20,.13)}
-  .farm-plot span{position:absolute;left:50%;bottom:.15em;transform:translate(-50%,100%);
+  .farm-plot span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
                   padding:.18em .48em;border-radius:999px;background:rgba(20,18,15,.78);
                   box-shadow:0 .2em .6em rgba(0,0,0,.35);font-size:.55em;white-space:nowrap;
                   pointer-events:none;text-shadow:0 1px 2px #000}
@@ -231,8 +231,13 @@
   .chip small{color:var(--fg3);font-size:11.5px;line-height:1.5}
   .chip.on{border-color:var(--green);background:#242c1e;color:#dff0cd}
   .chip.on small{color:#9ab98a}
-  .crop-chip{position:relative;padding-left:48px;min-height:46px;justify-content:center}
-  .crop-thumb{position:absolute;left:8px;top:50%;width:34px;height:34px;object-fit:contain;transform:translateY(-50%)}
+  .crop-chip{position:relative;display:grid;grid-template-columns:32px minmax(0,1fr);
+             grid-template-rows:auto auto;column-gap:7px;align-items:center;justify-content:stretch;
+             flex:1 1 calc(50% - .3em);min-width:0;min-height:48px;padding:6px 8px;text-align:left;overflow:hidden}
+  .crop-thumb{position:static;grid-row:1 / span 2;width:30px;height:30px;object-fit:contain;transform:none;justify-self:center}
+  .crop-thumb-placeholder{display:block;border-radius:8px;background:rgba(142,201,106,.12);border:1px solid rgba(142,201,106,.28)}
+  .crop-name{grid-column:2;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.35}
+  .crop-chip small{grid-column:2;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .chips.regions .chip{min-width:21%;padding:9px 10px;font-size:13.5px}
 
   /* ---- 首次选家乡 ---- */

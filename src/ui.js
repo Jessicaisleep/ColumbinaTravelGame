@@ -799,8 +799,11 @@
     if (st.state === 'empty') {
       var crops = NT.data.cropsForField(fieldId).map(function (c) {
         var img = NT.assets && NT.assets.crop(c.id);
-        var art = img ? '<img class="crop-thumb" src="' + esc(img.src) + '" alt="">' : '';
-        return '<button class="chip crop-chip" data-act="plant" data-arg="' + c.id + '">' + art + c.name +
+        var art = img
+          ? '<img class="crop-thumb" src="' + esc(img.src) + '" alt="">'
+          : '<span class="crop-thumb crop-thumb-placeholder" aria-hidden="true"></span>';
+        return '<button class="chip crop-chip" data-act="plant" data-arg="' + c.id + '">' + art +
+          '<span class="crop-name">' + esc(c.name) + '</span>' +
           '<small>' + fmtDur(c.growMs) + '</small></button>';
       }).join('');
       body = '<div class="label">种什么？</div><div class="chips">' + crops + '</div>';
@@ -845,8 +848,12 @@
     var bctx = bg.getContext('2d');
     var farmImg = NT.assets && NT.assets.farm();
     if (!(farmImg && NT.assets.drawCover(bctx, farmImg, W, H))) {
+      var assetState = NT.assets && NT.assets.status ? NT.assets.status() : null;
+      var assetPending = !!(NT.assets && NT.assets.anyDeclared && NT.assets.anyDeclared() && assetState &&
+        assetState.ready + assetState.error < assetState.total);
       var grad = bctx.createLinearGradient(0, 0, 0, H);
-      grad.addColorStop(0, '#77b487'); grad.addColorStop(1, '#4b9270');
+      grad.addColorStop(0, assetPending ? '#18211e' : '#77b487');
+      grad.addColorStop(1, assetPending ? '#101513' : '#4b9270');
       bctx.fillStyle = grad; bctx.fillRect(0, 0, W, H);
     }
 
@@ -1022,8 +1029,19 @@
       bgEpoch = NT.assets ? NT.assets.epoch() : 0;
       var homeImg = NT.assets && NT.assets.home();
       if (!(homeImg && NT.assets.drawCover(bctx, homeImg, W, H))) {
-        NT.placeholder.homeWorld(bctx, W, H,
-          { seed: NT.rng.hashSeed('home:' + s.homeId), fields: fields });
+        var assetState = NT.assets && NT.assets.status ? NT.assets.status() : null;
+        var assetPending = !!(NT.assets && NT.assets.anyDeclared && NT.assets.anyDeclared() && assetState &&
+          assetState.ready + assetState.error < assetState.total);
+        if (assetPending) {
+          var pendingGrad = bctx.createLinearGradient(0, 0, 0, H);
+          pendingGrad.addColorStop(0, '#1b201d');
+          pendingGrad.addColorStop(1, '#0f1412');
+          bctx.fillStyle = pendingGrad;
+          bctx.fillRect(0, 0, W, H);
+        } else {
+          NT.placeholder.homeWorld(bctx, W, H,
+            { seed: NT.rng.hashSeed('home:' + s.homeId), fields: fields });
+        }
       }
       // 玩具：尺寸按"相对主角身高的倍数"来（见 data/home.js 的 toySizeRatio）
       (s.home.placed || []).forEach(function (p, i) {
