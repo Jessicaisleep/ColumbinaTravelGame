@@ -1,5 +1,6 @@
 // 第一阶段最小安全 Service Worker：只缓存同源静态 GET，不缓存存档或第三方 API。
-const CACHE_NAME = 'columbina-travel-static-v2';
+// 每次发布旧版静态资源变更时递增，确保 GitHub Pages/PWA 不继续返回旧脚本。
+const CACHE_NAME = 'columbina-travel-static-v3';
 self.addEventListener('install', (event) => { self.skipWaiting(); event.waitUntil(Promise.resolve()); });
 self.addEventListener('activate', (event) => {
   event.waitUntil(caches.keys().then((keys) => Promise.all(
