@@ -11,6 +11,7 @@
 
   app.save = null;
   app.screen = 'hall';
+  app.loading = false;
   app.viewing = null;
   app.outMode = 'random';
   app.outRegion = null;
@@ -40,6 +41,7 @@
     NT.achievements.ensureStats(app.save);
     // 图片是异步加载的：加载完要重绘一次，否则第一次进游戏看到的还是占位图
     var assetRerender = null;
+    app.loading = true;
     NT.assets.onLoaded(function (group, id, img) {
       if (group === 'icon') {
         var link = document.querySelector('link[rel="icon"]');
@@ -48,11 +50,22 @@
         return;
       }
       clearTimeout(assetRerender);
+      app.updateLoadingProgress();
       assetRerender = setTimeout(function () {
         if ((app.screen === 'home' || app.screen === 'farm' || app.screen === 'hall' || app.screen === 'bedroom' || app.screen === 'backyard') && !app.save.activeTrip) app.render();
       }, 180);
     });
+    NT.assets.onSettled(function () {
+      app.loading = false;
+      app.updateLoadingProgress();
+      app.render();
+    });
     NT.assets.init();
+    // 清单为空时 onSettled 不会由图片回调触发，直接结束加载态。
+    var initialAssets = NT.assets.status();
+    if (!initialAssets.total) {
+      app.loading = false;
+    }
     app.settleIfDue();
     // 游戏所在地固定为挪德卡莱，启动后直接进入庭院家园。
     // 不再显示旧版的首次选择/大厅入口；旧存档仍由 store.load 负责迁移。
@@ -218,6 +231,20 @@
       NT.store.save(app.save);
     }
     app.screen = s; app.modal = null; app.fieldSheet = null; app.render();
+  };
+
+  app.updateLoadingProgress = function () {
+    if (!app.loading) return;
+    var el = $('loading-progress');
+    var label = $('loading-label');
+    if (!el || !label || !NT.assets || !NT.assets.status) return;
+    var st = NT.assets.status();
+    var done = st.ready + st.error;
+    var pct = st.total ? Math.round(done / st.total * 100) : 100;
+    el.style.width = pct + '%';
+    label.textContent = st.total
+      ? ('正在准备游戏素材　' + done + ' / ' + st.total)
+      : '正在准备游戏素材';
   };
 
   /* ---------------- 点击她的实时反应 ---------------- */
@@ -594,6 +621,12 @@
   app.render = function () {
     if (app._raf) { cancelAnimationFrame(app._raf); app._raf = null; }
     var rootEl = $('screen'); if (!rootEl) return;
+    if (app.loading) {
+      rootEl.className = 'screen screen-loading';
+      rootEl.innerHTML = app.viewLoading();
+      app.updateLoadingProgress();
+      return;
+    }
     // chooseHome 是旧版兼容值；即使旧链接带上它，也统一落到庭院，不再显示选择页。
     var fn = app.screen === 'farm' ? app.viewFarm :
         (app.screen === 'hall' ? app.viewHall :
@@ -780,6 +813,14 @@
       app.renderModalLayer() +
       '</div>' +
       '</div>';
+  };
+
+  app.viewLoading = function () {
+    return '<div class="loading-screen" role="status" aria-live="polite">' +
+      '<div class="loading-card"><div class="loading-mark">月</div>' +
+      '<h1>哥伦比娅的旅行</h1><p id="loading-label">正在准备游戏素材</p>' +
+      '<div class="loading-track"><i id="loading-progress"></i></div>' +
+      '<small>素材加载完成后进入庭院</small></div></div>';
   };
 
   /* ---------------- 大厅与卧室 ---------------- */
