@@ -839,8 +839,8 @@
       ctx.beginPath(); ctx.ellipse(cx, feetY + H * 0.004, chH * 0.27, chH * 0.07, 0, 0, Math.PI * 2); ctx.fill();
       ctx.restore();
       ctx.save();
-      // 床面是横向的，人物顺时针旋转 90° 后与床完全平行。
-      ctx.translate(cx, feetY); ctx.rotate(Math.PI / 2); ctx.translate(-cx, -feetY);
+      // 床面是横向的；顺时针 75° 后，头部大致朝右上方偏 15°。
+      ctx.translate(cx, feetY); ctx.rotate(Math.PI * 75 / 180); ctx.translate(-cx, -feetY);
       var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY, chH, false, 'tired');
       if (!ok) NT.placeholder.chibi(ctx, cx, feetY, chH, sprite, 'tired', false);
       ctx.restore();
