@@ -829,8 +829,8 @@
     var H = Math.max(360, Math.round((rect.height || 720) * dpr));
     fg.width = W; fg.height = H;
     var ctx = fg.getContext('2d');
-    // 以床垫右侧为脚底锚点，旋转后身体完整落在床面，不随窗口比例漂移。
-    var chH = H * 0.23, cx = W * 0.43, feetY = H * 0.70;
+    // 以床垫右侧为脚底锚点：人物略微放大并右移，仍完整落在床面，不随窗口比例漂移。
+    var chH = H * 0.25, cx = W * 0.47, feetY = H * 0.70;
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
     function draw() {
       ctx.clearRect(0, 0, W, H);
@@ -839,8 +839,8 @@
       ctx.beginPath(); ctx.ellipse(cx, feetY + H * 0.004, chH * 0.27, chH * 0.07, 0, 0, Math.PI * 2); ctx.fill();
       ctx.restore();
       ctx.save();
-      // 床面是横向的；顺时针 75° 后，头部大致朝右上方偏 15°。
-      ctx.translate(cx, feetY); ctx.rotate(Math.PI * 75 / 180); ctx.translate(-cx, -feetY);
+      // 床面是横向的，人物顺时针旋转 90° 后与床平行。
+      ctx.translate(cx, feetY); ctx.rotate(Math.PI / 2); ctx.translate(-cx, -feetY);
       var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY, chH, false, 'tired');
       if (!ok) NT.placeholder.chibi(ctx, cx, feetY, chH, sprite, 'tired', false);
       ctx.restore();
