@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Columbina Travel</string>
+    <string name="title_activity_main">Columbina Travel</string>
+    <string name="package_name">com.columbina.travel</string>
+    <string name="custom_url_scheme">com.columbina.travel</string>
+</resources>

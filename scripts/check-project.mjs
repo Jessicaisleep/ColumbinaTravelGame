@@ -44,6 +44,15 @@ else {
     : null;
   const forbiddenPermissions = ['shell:', 'fs:', 'http:', 'opener:'];
   const tauriPermissions = tauriCapability?.permissions ?? [];
+  const capacitorConfigPath = resolve(root, 'capacitor.config.json');
+  const capacitorConfig = existsSync(capacitorConfigPath)
+    ? JSON.parse(readFileSync(capacitorConfigPath, 'utf8'))
+    : null;
+  const capacitorIosPackage = existsSync(resolve(root, 'node_modules/@capacitor/ios/package.json'));
+  const androidManifestPath = resolve(root, 'android/app/src/main/AndroidManifest.xml');
+  const androidManifest = existsSync(androidManifestPath)
+    ? readFileSync(androidManifestPath, 'utf8')
+    : '';
   const checks = [
     ['index module entry', index.includes('type="module"') && index.includes('./src/main.js')],
     ['game module entry', game.includes('type="module"') && game.includes('./src/main.js')],
@@ -64,7 +73,11 @@ else {
     ['Tauri Windows bundles include MSI and NSIS', ['msi', 'nsis'].every((target) => tauriConfig?.bundle?.targets?.includes(target))],
     ['Tauri window is resizable with safe minimum size', tauriConfig?.app?.windows?.[0]?.resizable === true && tauriConfig.app.windows[0].minWidth >= 320 && tauriConfig.app.windows[0].minHeight >= 240],
     ['Tauri capability has no network, shell, filesystem, or opener permissions', tauriPermissions.length === 1 && tauriPermissions[0] === 'core:default' && !tauriPermissions.some((permission) => forbiddenPermissions.some((prefix) => permission.startsWith(prefix)))],
-    ['Tauri release notes document signing and data policy', existsSync(resolve(root, 'docs/TAURI-WINDOWS-RELEASE.md')) && ['SmartScreen', 'localStorage', 'MSI', 'NSIS'].every((term) => readFileSync(resolve(root, 'docs/TAURI-WINDOWS-RELEASE.md'), 'utf8').includes(term))]
+    ['Tauri release notes document signing and data policy', existsSync(resolve(root, 'docs/TAURI-WINDOWS-RELEASE.md')) && ['SmartScreen', 'localStorage', 'MSI', 'NSIS'].every((term) => readFileSync(resolve(root, 'docs/TAURI-WINDOWS-RELEASE.md'), 'utf8').includes(term))],
+    ['Capacitor uses Vite dist and stable app id', capacitorConfig?.webDir === 'dist' && capacitorConfig?.appId === 'com.columbina.travel'],
+    ['Capacitor includes Android and iOS platform packages', existsSync(resolve(root, 'node_modules/@capacitor/android/package.json')) && capacitorIosPackage],
+    ['Capacitor Android manifest has no unrelated permissions', existsSync(androidManifestPath) && !/<uses-permission\\b/.test(androidManifest)],
+    ['Capacitor mobile release notes document device limits and signing', existsSync(resolve(root, 'docs/CAPACITOR-MOBILE-RELEASE.md')) && ['sdkmanager', 'Apple Developer', 'localStorage', '低内存'].every((term) => readFileSync(resolve(root, 'docs/CAPACITOR-MOBILE-RELEASE.md'), 'utf8').includes(term))]
   ];
   checks.forEach(([name, ok]) => console.log(`${ok ? 'PASS' : 'FAIL'} ${name}`));
   if (checks.some(([, ok]) => !ok)) process.exitCode = 1;

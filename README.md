@@ -35,6 +35,15 @@ npm run dev
 npm run build
 ```
 
+## Capacitor 手机工程
+
+Android 工程已初始化，使用 Vite `dist/` 作为 Web 资源目录：
+
+    npm run cap:sync
+    npx cap open android
+
+原生桥仅处理 Android 返回键、暂停/恢复、低内存恢复、状态栏和安全区；AndroidManifest 不申请相机、定位、通讯录或通知权限。Android Studio、JDK、SDK、adb 未安装在当前 Windows 环境时，只能完成工程同步，不能代替真实设备验收。iOS 需要在 macOS + Xcode 上执行 `npx cap add ios` 和 `npx cap sync ios`，并使用 Apple Developer 账号签名。设备矩阵、低内存重启、APK/AAB 与商店发布限制见 [CAPACITOR-MOBILE-RELEASE.md](docs/CAPACITOR-MOBILE-RELEASE.md)。
+
 ## PWA 安装与离线验证
 
 PWA 必须通过 HTTPS 或 `localhost` 打开；直接双击 `开始游戏.html` 的 `file://` 模式适合便携预览，但浏览器不会注册 Service Worker，也不能作为安装验收环境。

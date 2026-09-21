@@ -12,7 +12,7 @@
 
 Windows Tauri is initialized and consumes Vite `dist/`. `npm run tauri:dev` starts the local shell and `npm run tauri:build` creates MSI and NSIS bundles. The default capability is limited to `core:default`; no shell, filesystem, HTTP, network, account, or remote API permission is added. See [`TAURI-WINDOWS-RELEASE.md`](TAURI-WINDOWS-RELEASE.md) for signing, upgrade, uninstall, and release checks.
 
-Capacitor remains a not-ready placeholder until Android SDK/Studio/JDK or macOS/Xcode are available. It must consume the same `dist/`, use no unnecessary permissions, and never embed API keys.
+Capacitor Android is initialized and consumes the same `dist/`. Run `npm run cap:sync` after each web build. The native bridge handles Android back, lifecycle persistence, low-memory restoration, status bar, and safe-area presentation without adding unrelated permissions. iOS is generated on macOS with Xcode via `npx cap add ios`; see `CAPACITOR-MOBILE-RELEASE.md` for device validation and signing boundaries.
 
 ## Rollback
 

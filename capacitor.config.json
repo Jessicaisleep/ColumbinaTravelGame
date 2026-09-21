@@ -1,0 +1,12 @@
+{
+  "appId": "com.columbina.travel",
+  "appName": "Columbina Travel",
+  "webDir": "dist",
+  "plugins": {
+    "StatusBar": {
+      "overlaysWebView": true,
+      "style": "DARK",
+      "backgroundColor": "#161512"
+    }
+  }
+}
