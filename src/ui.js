@@ -54,8 +54,9 @@
     });
     NT.assets.init();
     app.settleIfDue();
-    if (!app.save.homeChosen) app.screen = 'chooseHome';
-    else app.screen = 'hall';
+    // 游戏所在地固定为挪德卡莱，启动后直接进入“大厅 · 挪德卡莱的家”。
+    // 不再显示旧版的首次选择界面；旧存档仍由 store.load 负责迁移。
+    app.screen = 'hall';
 
     app.bindGlobal();
     if (app.bindCommands) app.bindCommands();
@@ -515,7 +516,7 @@
     app.save.homeChosen = true;
     NT.store.save(app.save);
     app.toast('游戏所在地：挪德卡莱');
-    app.screen = 'home';
+    app.screen = 'hall';
     app.render();
   };
 
@@ -563,7 +564,7 @@
 
   app.resetAll = function () {
     app.save = NT.store.reset();
-    app.screen = 'home'; app.viewing = null; app.render(); app.toast('已清空');
+    app.screen = 'hall'; app.viewing = null; app.render(); app.toast('已清空');
   };
 
   app.exportSave = function () {
@@ -580,11 +581,12 @@
   app.render = function () {
     if (app._raf) { cancelAnimationFrame(app._raf); app._raf = null; }
     var rootEl = $('screen'); if (!rootEl) return;
-    var fn = app.screen === 'chooseHome' ? app.viewChooseHome :
-      (app.screen === 'farm' ? app.viewFarm :
+    // chooseHome 是旧版兼容值；即使旧链接带上它，也统一落到大厅，不再显示选择页。
+    var fn = app.screen === 'farm' ? app.viewFarm :
         (app.screen === 'hall' ? app.viewHall :
           (app.screen === 'bedroom' ? app.viewBedroom :
-            (app.screen === 'backyard' ? app.viewBackyard : app.viewHome))));
+            (app.screen === 'backyard' ? app.viewBackyard :
+              (app.screen === 'chooseHome' ? app.viewHall : app.viewHome))));
     // 渲染函数一旦抛异常，innerHTML 就什么都不会被写入 —— 表现是"点了没反应"。
     // 所以这里必须捕获并把错误显示出来，否则问题完全静默。
     var html;
@@ -656,11 +658,11 @@
   };
 
   app.mount = function () {
-    if (app.screen === 'chooseHome') return;
     if (app.screen === 'farm') app.mountFarm();
     else if (app.screen === 'hall') app.mountHall();
     else if (app.screen === 'bedroom') app.mountBedroom();
     else if (app.screen === 'backyard') app.mountBackyard();
+    else if (app.screen === 'chooseHome') app.mountHall();
     else app.mountHome();
     var m = app.activeModal();
     if (m === 'result' && app.viewing) app.mountResult();
