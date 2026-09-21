@@ -34,6 +34,16 @@ else {
   const serviceWorker = readFileSync(resolve(root, 'public/service-worker.js'), 'utf8');
   const readme = readFileSync(resolve(root, 'README.md'), 'utf8');
   const gameHtml = readFileSync(resolve(root, '开始游戏.html'), 'utf8');
+  const tauriConfigPath = resolve(root, 'src-tauri/tauri.conf.json');
+  const tauriCapabilityPath = resolve(root, 'src-tauri/capabilities/default.json');
+  const tauriConfig = existsSync(tauriConfigPath)
+    ? JSON.parse(readFileSync(tauriConfigPath, 'utf8'))
+    : null;
+  const tauriCapability = existsSync(tauriCapabilityPath)
+    ? JSON.parse(readFileSync(tauriCapabilityPath, 'utf8'))
+    : null;
+  const forbiddenPermissions = ['shell:', 'fs:', 'http:', 'opener:'];
+  const tauriPermissions = tauriCapability?.permissions ?? [];
   const checks = [
     ['index module entry', index.includes('type="module"') && index.includes('./src/main.js')],
     ['game module entry', game.includes('type="module"') && game.includes('./src/main.js')],
@@ -48,7 +58,13 @@ else {
     ['service worker versions and clears old caches', /CACHE_NAME\s*=\s*['"]columbina-travel-static-v\d+['"]/.test(serviceWorker) && serviceWorker.includes('caches.delete')],
     ['service worker excludes local storage and API calls', !serviceWorker.includes('localStorage') && !serviceWorker.includes('/api/')],
     ['mobile controls provide coarse-pointer touch targets', gameHtml.includes('pointer:coarse') && gameHtml.includes('min-height:44px')],
-    ['README documents HTTPS PWA installation on three platforms', ['Windows / Chrome', 'Android / Chrome', 'iOS / Safari', 'HTTPS'].every((term) => readme.includes(term))]
+    ['README documents HTTPS PWA installation on three platforms', ['Windows / Chrome', 'Android / Chrome', 'iOS / Safari', 'HTTPS'].every((term) => readme.includes(term))],
+    ['Tauri config loads Vite dist', tauriConfig?.build?.frontendDist === '../dist'],
+    ['Tauri uses stable app identifier', tauriConfig?.identifier === 'com.columbina.travel'],
+    ['Tauri Windows bundles include MSI and NSIS', ['msi', 'nsis'].every((target) => tauriConfig?.bundle?.targets?.includes(target))],
+    ['Tauri window is resizable with safe minimum size', tauriConfig?.app?.windows?.[0]?.resizable === true && tauriConfig.app.windows[0].minWidth >= 320 && tauriConfig.app.windows[0].minHeight >= 240],
+    ['Tauri capability has no network, shell, filesystem, or opener permissions', tauriPermissions.length === 1 && tauriPermissions[0] === 'core:default' && !tauriPermissions.some((permission) => forbiddenPermissions.some((prefix) => permission.startsWith(prefix)))],
+    ['Tauri release notes document signing and data policy', existsSync(resolve(root, 'docs/TAURI-WINDOWS-RELEASE.md')) && ['SmartScreen', 'localStorage', 'MSI', 'NSIS'].every((term) => readFileSync(resolve(root, 'docs/TAURI-WINDOWS-RELEASE.md'), 'utf8').includes(term))]
   ];
   checks.forEach(([name, ok]) => console.log(`${ok ? 'PASS' : 'FAIL'} ${name}`));
   if (checks.some(([, ok]) => !ok)) process.exitCode = 1;

@@ -11,14 +11,16 @@
     "check": "node scripts/check-project.mjs",
     "test": "node scripts/check-project.mjs",
     "content:extract": "node scripts/extract-content.mjs",
-    "tauri:dev": "node scripts/platform-not-ready.mjs tauri:dev",
-    "tauri:build": "node scripts/platform-not-ready.mjs tauri:build",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "tauri:icon": "tauri icon 图片素材/图标-512.png",
     "cap:sync": "node scripts/platform-not-ready.mjs cap:sync",
     "cap:open:android": "node scripts/platform-not-ready.mjs cap:open:android",
     "cap:open:ios": "node scripts/platform-not-ready.mjs cap:open:ios",
     "cap:build": "node scripts/platform-not-ready.mjs cap:build"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^2.11.5",
     "node": "24.19.0",
     "vite": "7.3.6"
   }
