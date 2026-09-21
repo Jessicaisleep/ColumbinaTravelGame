@@ -1,0 +1,96 @@
+哥伦比娅的旅行：移动端 Android 兼容状态报告
+报告日期：2026-09-21
+
+一、报告范围
+
+本报告记录当前已经完成的桌面原生壳、Capacitor 手机工程和 Android 兼容准备工作，也记录尚未完成、无法在当前环境验证以及后续工作的边界。
+
+本阶段只新增本报告文件，不修改游戏逻辑、存档结构、既有图片素材、用户已有改动或发布产物。
+
+二、已经完成
+
+1. Web 基础
+
+- Vite 构建入口和 dist/ 发布目录已经存在。
+- 游戏继续使用本地资源和浏览器/WebView localStorage 存档。
+- Service Worker 只缓存静态发布文件，不缓存 localStorage 存档，也不上传存档。
+- 已有相对资源路径、PWA 图标、移动端安全区和触控区域适配。
+
+2. Windows Tauri
+
+- 已初始化 Tauri 工程，生产构建加载 Vite dist/。
+- 已配置 Windows MSI 和 NSIS 安装包。
+- 已配置可缩放窗口、全屏入口和固定应用标识 com.columbina.travel。
+- 已生成统一项目图标，并用于 Tauri 桌面图标。
+- 已通过 npm test、npm run build、cargo check 和 Tauri release 构建。
+- 已生成 app.exe、MSI 和 NSIS 构建产物。
+- Tauri 只启用 core:default，没有新增 shell、文件系统、HTTP、远程 API 或账号权限。
+- 签名、SmartScreen、升级覆盖安装和卸载存档策略已经写入 docs/TAURI-WINDOWS-RELEASE.md。
+
+3. Capacitor Android 工程
+
+- 已加入 Capacitor core、Android、iOS、App 和 Status Bar 依赖。
+- 已创建 capacitor.config.json，webDir 为 dist/，appId 为 com.columbina.travel。
+- 已生成 android/ 原生工程。
+- 已成功执行 npm run build、npx cap add android、npx cap sync android。
+- Web 资源已复制到 android/app/src/main/assets/public。
+- AndroidManifest 已移除模板默认的 INTERNET 权限；当前没有申请相机、定位、通讯录、通知等无关权限。
+- 已使用 图片素材/图标-512.png 生成 Android 多密度应用图标，保持与其他端统一。
+- 已加入 Android 原生桥接逻辑：返回键、弹窗关闭、回到家园、历史回退、后台保存、恢复重绘、旅程补偿和低内存恢复。
+- 已配置状态栏主题与 WebView 覆盖模式，页面沿用 safe-area-inset 安全区。
+- 已提供 npm run cap:sync、npm run cap:sync:android、npm run cap:sync:ios 和 npm run cap:build 脚本。
+- 已通过项目自检，检查包含 Capacitor 配置、AndroidManifest 权限、Android/iOS 包和移动端发布文档。
+
+三、尚未完成
+
+1. Android 工具链与设备
+
+- 当前机器虽然已安装 Android Studio，但 Android SDK、sdkmanager、adb 尚未完成可用配置。
+- Gradle 已启动并下载 Gradle 8.14.3，但 APK 构建因缺少 Android SDK 路径而停止，错误为：
+  SDK location not found，需要 ANDROID_HOME、ANDROID_SDK_ROOT 或 android/local.properties 中的 sdk.dir。
+- 尚未生成可安装 APK 或 AAB。
+- 尚未连接真实 Android 设备，也没有完成 USB 调试、安装、启动和卸载验证。
+- 尚未在不同屏幕比例、刘海屏、底部导航栏、横屏和竖屏设备上验收。
+- 尚未完成 Android 低内存杀进程后的恢复实测。
+
+2. iOS
+
+- 当前 Windows 环境无法生成、编译或签名 iOS 工程。
+- 尚未在 macOS + Xcode 上执行 npx cap add ios 和 npx cap sync ios。
+- 尚未连接 iOS 真机，也没有 Apple Developer 账号签名、TestFlight 或 App Store 验收。
+
+3. 发布与商店准备
+
+- 尚未决定发布 APK、内部测试包、AAB、测试版分发或应用商店版本。
+- 尚未准备 Android keystore、iOS 证书、隐私说明、年龄分级、商店截图、商店图标和素材授权材料。
+- 任何签名私钥、keystore、provisioning profile、Apple 凭据和用户存档都不能提交到 Git。
+
+四、Android 优先的后续顺序
+
+1. 在 Android Studio SDK Manager 安装 Android SDK Platform、Build Tools、Platform Tools 和 Command-line Tools。
+2. 配置 ANDROID_HOME 或 ANDROID_SDK_ROOT；确认 sdkmanager 和 adb 可执行，并生成 android/local.properties（该文件保持忽略，不提交）。
+3. 执行 npm run cap:sync:android 和 npm run cap:build，确认 debug APK 或 release APK/AAB 真实生成。
+4. 在至少一台真实 Android 设备上验证首次启动、离线静态资源、返回键、弹窗关闭、横竖屏、状态栏、安全区、后台恢复、低内存重启、存档导出和存档导入。
+5. 在另一种屏幕比例或 Android 版本上重复关键流程，记录兼容性问题。
+6. 再决定内部 APK、测试版分发或商店发布；签名和商店材料另行准备。
+7. Android 验收稳定后，再在 macOS + Xcode 环境处理 iOS。
+
+五、当前结论
+
+Android 兼容工作已经完成工程初始化、Web 资源同步、权限收敛、图标统一和生命周期代码准备；尚未达到“可安装 APK 已在真实设备验收”的发布标准。
+
+当前最主要的阻塞是 Android SDK 路径和命令行工具未配置，而不是游戏 Web 资源或 Capacitor 工程缺失。后续工作应优先补齐 Android SDK 并完成真实设备验收，暂不扩大到 iOS 商店发布或额外原生权限。
+
+六、相关文件
+
+- docs/CAPACITOR-MOBILE-RELEASE.md：Capacitor 手机工程、权限、生命周期、设备验收和签名说明。
+- capacitor.config.json：Capacitor 应用标识和 dist/ Web 资源目录。
+- android/：Android 原生工程。
+- src/platform/capacitor.js：返回键、暂停/恢复、状态栏和低内存恢复桥接。
+- docs/TAURI-WINDOWS-RELEASE.md：Windows Tauri 构建、签名和存档策略。
+
+七、仓库状态说明
+
+- 本报告不包含密钥、凭据、localStorage 存档或构建缓存。
+- 工作区已有的 docs/CROSS-PLATFORM-ADAPTATION-PLAN.md 等用户文件不属于本报告范围，应继续保留。
+- 本报告本身是说明文档，不代表 Android 真机验收已经完成。
