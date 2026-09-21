@@ -54,9 +54,9 @@
     });
     NT.assets.init();
     app.settleIfDue();
-    // 游戏所在地固定为挪德卡莱，启动后直接进入“大厅 · 挪德卡莱的家”。
-    // 不再显示旧版的首次选择界面；旧存档仍由 store.load 负责迁移。
-    app.screen = 'hall';
+    // 游戏所在地固定为挪德卡莱，启动后直接进入庭院家园。
+    // 不再显示旧版的首次选择/大厅入口；旧存档仍由 store.load 负责迁移。
+    app.screen = 'home';
 
     app.bindGlobal();
     if (app.bindCommands) app.bindCommands();
@@ -288,7 +288,7 @@
       case 'toggle-bar': app.toggleBar(); break;
       case 'pick-home':
         s.homeId = arg; s.homeChosen = true;
-        NT.store.save(s); app.screen = 'hall'; app.render();
+        NT.store.save(s); app.screen = 'home'; app.render();
         break;
       case 'auto-locate': app.autoLocate(); break;
 
@@ -516,7 +516,7 @@
     app.save.homeChosen = true;
     NT.store.save(app.save);
     app.toast('游戏所在地：挪德卡莱');
-    app.screen = 'hall';
+    app.screen = 'home';
     app.render();
   };
 
@@ -564,7 +564,7 @@
 
   app.resetAll = function () {
     app.save = NT.store.reset();
-    app.screen = 'hall'; app.viewing = null; app.render(); app.toast('已清空');
+    app.screen = 'home'; app.viewing = null; app.render(); app.toast('已清空');
   };
 
   app.exportSave = function () {
@@ -581,12 +581,12 @@
   app.render = function () {
     if (app._raf) { cancelAnimationFrame(app._raf); app._raf = null; }
     var rootEl = $('screen'); if (!rootEl) return;
-    // chooseHome 是旧版兼容值；即使旧链接带上它，也统一落到大厅，不再显示选择页。
+    // chooseHome 是旧版兼容值；即使旧链接带上它，也统一落到庭院，不再显示选择页。
     var fn = app.screen === 'farm' ? app.viewFarm :
         (app.screen === 'hall' ? app.viewHall :
           (app.screen === 'bedroom' ? app.viewBedroom :
             (app.screen === 'backyard' ? app.viewBackyard :
-              (app.screen === 'chooseHome' ? app.viewHall : app.viewHome))));
+              app.viewHome)));
     // 渲染函数一旦抛异常，innerHTML 就什么都不会被写入 —— 表现是"点了没反应"。
     // 所以这里必须捕获并把错误显示出来，否则问题完全静默。
     var html;
@@ -662,7 +662,7 @@
     else if (app.screen === 'hall') app.mountHall();
     else if (app.screen === 'bedroom') app.mountBedroom();
     else if (app.screen === 'backyard') app.mountBackyard();
-    else if (app.screen === 'chooseHome') app.mountHall();
+    else if (app.screen === 'chooseHome') app.mountHome();
     else app.mountHome();
     var m = app.activeModal();
     if (m === 'result' && app.viewing) app.mountResult();
@@ -749,7 +749,8 @@
         : '<button class="sbtn go" data-act="modal" data-arg="outdoor">送她出门</button>') +
       '<button class="sbtn' + (ready ? ' hot' : '') + '" data-act="go" data-arg="farm">田地' +
       (ready ? '<i>可收获</i>' : '') + '</button>' +
-      '<button class="sbtn" data-act="go" data-arg="hall">大厅</button>' +
+      '<button class="sbtn" data-act="go" data-arg="bedroom">卧室</button>' +
+      '<button class="sbtn" data-act="go" data-arg="backyard">后院</button>' +
       '<button class="sbtn" data-act="modal" data-arg="kitchen">厨房' + badge(cookable) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="toys">玩具' + badge((s.toys || []).length) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="store">仓库' + badge(storeCount(s)) + '</button>' +
@@ -793,9 +794,7 @@
       '<canvas id="bedroom-bg"></canvas><canvas id="bedroom-fg"></canvas>' +
       '<div class="stage-top"><span class="state-badge">卧室</span><span class="state-spot">哥伦比娅正在床上休息</span></div>' +
       '<div class="bedroom-note">她只会在卧室的床上睡觉</div>' +
-      '<div class="scene-actions"><button class="sbtn" data-act="go" data-arg="hall">返回大厅</button>' +
-      '<button class="sbtn" data-act="go" data-arg="backyard">进入后院</button>' +
-      '<button class="sbtn go" data-act="go" data-arg="home">进入家园</button></div>' +
+      '<div class="scene-actions"><button class="sbtn go" data-act="go" data-arg="home">返回庭院</button></div>' +
       '</div></div></div>';
   };
 
@@ -840,7 +839,8 @@
       ctx.beginPath(); ctx.ellipse(cx, feetY + H * 0.004, chH * 0.27, chH * 0.07, 0, 0, Math.PI * 2); ctx.fill();
       ctx.restore();
       ctx.save();
-      ctx.translate(cx, feetY); ctx.rotate(-Math.PI / 2 * 0.86); ctx.translate(-cx, -feetY);
+      // 床面是横向的，人物旋转 90° 后与床完全平行。
+      ctx.translate(cx, feetY); ctx.rotate(-Math.PI / 2); ctx.translate(-cx, -feetY);
       var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY, chH, false, 'tired');
       if (!ok) NT.placeholder.chibi(ctx, cx, feetY, chH, sprite, 'tired', false);
       ctx.restore();
@@ -856,10 +856,10 @@
       '<canvas id="backyard-bg"></canvas><canvas id="backyard-fg"></canvas>' +
       '<div class="stage-top"><span class="state-badge">后院</span><span class="state-spot">玩具和月灵都在这里玩</span></div>' +
       '<div class="backyard-note">后院是哥伦比娅玩玩具的地方</div>' +
-      '<div class="scene-actions"><button class="sbtn" data-act="go" data-arg="hall">返回大厅</button>' +
+      '<div class="scene-actions"><button class="sbtn go" data-act="go" data-arg="home">返回庭院</button>' +
       '<button class="sbtn" data-act="modal" data-arg="toys">玩具箱' +
       ((s.toys || []).length ? '<i>' + s.toys.length + '</i>' : '') + '</button>' +
-      '<button class="sbtn go" data-act="go" data-arg="home">进入家园</button></div>' +
+      '</div>' +
       app.renderModalLayer() +
       '</div></div></div>';
   };
@@ -898,7 +898,8 @@
           NT.placeholder.toy(ctx, p.toyId, W * slot.x, H * slot.y, th, NT.rng.mulberry32(p.slot + 31));
         }
       });
-      if (!s.activeTrip && NT.home.state(s).id !== 'sleep') {
+      // 只要没有出门，后院始终能看到哥伦比娅；玩耍时再靠近当前玩具。
+      if (!s.activeTrip) {
         var st = NT.home.state(s), playing = st.useToy && NT.home.playingToy(s);
         var target = (playing && backyardToyPositions[playing.id]) ? backyardToyPositions[playing.id] : { x: 0.52, y: 0.84 };
         var cx = W * target.x, feetY = H * target.y, bob = Math.sin(phase) * chH * 0.012;
@@ -953,7 +954,6 @@
       '<button class="sbtn' + (readyCount ? ' hot' : '') + '" data-act="harvest-all">收全部' +
       (readyCount ? '<i>' + readyCount + '</i>' : '') + '</button>' +
       '<button class="sbtn" data-act="go" data-arg="home">返回家园</button>' +
-      '<button class="sbtn" data-act="go" data-arg="hall">大厅</button>' +
       '</div></div>' +
       '</div></div></div>';
   };
