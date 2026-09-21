@@ -830,7 +830,7 @@
     fg.width = W; fg.height = H;
     var ctx = fg.getContext('2d');
     // 以床垫右侧为脚底锚点：人物略微放大并右移，仍完整落在床面，不随窗口比例漂移。
-    var chH = H * 0.25, cx = W * 0.47, feetY = H * 0.70;
+    var chH = H * 0.75, cx = W * 0.47, feetY = H * 0.70;
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
     function draw() {
       ctx.clearRect(0, 0, W, H);
