@@ -1922,6 +1922,27 @@
           vb.classList.remove('show');
         }
       }
+
+      // 两块气泡都挂在各自头顶，两人站得近时会在中间叠成一团。
+      // 每帧定位完之后判一次：真叠上了就把客人的气泡往上抬一层（变成上下两层）。
+      // 每次都先清掉上次的抬升再重算，免得越抬越高。
+      vb.style.marginTop = '';
+      var nb = $('nahida-bubble');
+      if (nb && nb.classList.contains('show') && vb.classList.contains('show') &&
+          vb.getAttribute('data-txt')) {
+        var nr = nb.getBoundingClientRect();
+        var vr = vb.getBoundingClientRect();
+        var ovX = Math.min(nr.right, vr.right) - Math.max(nr.left, vr.left);
+        var ovY = Math.min(nr.bottom, vr.bottom) - Math.max(nr.top, vr.top);
+        if (ovX > 0 && ovY > 0) {
+          // 能抬多少：别把气泡顶出画面
+          var box = vb.offsetParent || vb.parentNode;
+          var ceil = box ? box.getBoundingClientRect().top + 4 : 4;
+          var room = Math.max(0, vr.top - ceil);
+          var up = Math.min(ovY + 8, room);
+          if (up > 0) vb.style.marginTop = (-up).toFixed(1) + 'px';
+        }
+      }
     }
     // 她换状态时，用气泡开口说一句 —— 她的台词只从气泡出，底部不再重复一行
     var playingNow = NT.home.playingToy(s);
