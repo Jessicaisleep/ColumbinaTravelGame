@@ -1124,45 +1124,46 @@
     fg.width = W; fg.height = H;
     var ctx = fg.getContext('2d');
     var chH = H * 0.23, now = Date.now(), phase = 0, last = performance.now();
-    // 后院使用自己的居中槽位，手机竖屏裁剪时仍能看到玩具和人物。
-    var backyardSlots = [
-      { x: 0.20, y: 0.62 }, { x: 0.38, y: 0.73 }, { x: 0.62, y: 0.73 },
-      { x: 0.80, y: 0.62 }, { x: 0.28, y: 0.84 }, { x: 0.50, y: 0.86 },
-      { x: 0.72, y: 0.84 }
-    ];
-    var backyardToyPositions = {};
-    (s.home.placed || []).forEach(function (p, i) {
-      backyardToyPositions[p.toyId] = backyardSlots[i % backyardSlots.length];
-    });
+    // 后院有自己的玩具槽位表（NT.data.backyardSlots）：同一排、行距 0.19，
+    // 手机竖屏裁剪时也能同时看到玩具和她。
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
     function draw() {
       var t = performance.now(), dt = U.clamp((t - last) / 1000, 0, 0.1); last = t; phase += dt * 1.6;
       ctx.clearRect(0, 0, W, H);
-      var placed = s.home.placed || [];
-      placed.forEach(function (p, i) {
-        var slot = backyardSlots[i % backyardSlots.length];
-        if (!slot) return;
-        var th = chH * NT.data.toySize(p.toyId);
-        if (!(NT.assets && NT.assets.drawToy(ctx, W * slot.x, H * slot.y, th, p.toyId))) {
-          NT.placeholder.toy(ctx, p.toyId, W * slot.x, H * slot.y, th, NT.rng.mulberry32(p.slot + 31));
-        }
+
+      var layout = NT.home.backyardLayout(s);
+      var items = layout.map(function (it) {
+        return { kind: 'toy', x: it.x, y: it.y, toyId: it.toyId };
       });
-      // 只要没有出门，后院始终能看到哥伦比娅；玩耍时站到那件玩具的**旁边**。
+      // 只要没有出门，后院始终能看到哥伦比娅；玩耍时站到那件玩具跟前。
       if (!s.activeTrip) {
         var st = NT.home.state(s), playing = st.useToy && NT.home.playingToy(s);
-        var target = (playing && backyardToyPositions[playing.id]) ? backyardToyPositions[playing.id] : { x: 0.52, y: 0.84 };
-        // 玩具就画在槽位上，她要是也站槽位就会把玩具挡住 —— 往场地中间那一侧让开半步，
-        // 看起来才是"在旁边玩"。最左/最右的槽位则往另一侧让。
-        if (playing && backyardToyPositions[playing.id]) {
-          var shift = target.x < 0.5 ? 0.09 : -0.09;
-          target = { x: U.clamp(target.x + shift, 0.07, 0.93), y: target.y };
+        // 站位由 home.backyardSpot 算：它保证她不会踩到/压住**别的**玩具
+        var spot = playing
+          ? NT.home.backyardSpot(s, playing.id, { W: W, H: H, chH: chH }, 1)
+          : { x: 0.52, y: 0.86 };
+        items.push({ kind: 'her', x: spot.x, y: spot.y, mood: st.mood });
+      }
+
+      // 按脚底 y 排序（远的先画）：她站在玩具前面时才正确地挡住玩具，
+      // 也不会出现"她在后面却被画在玩具上面"。
+      items.sort(function (a, b) { return a.y - b.y; });
+
+      items.forEach(function (it) {
+        if (it.kind === 'toy') {
+          var th = chH * NT.data.toySize(it.toyId);
+          if (!(NT.assets && NT.assets.drawToy(ctx, W * it.x, H * it.y, th, it.toyId))) {
+            NT.placeholder.toy(ctx, it.toyId, W * it.x, H * it.y, th, NT.rng.mulberry32(31));
+          }
+          return;
         }
-        var cx = W * target.x, feetY = H * target.y, bob = Math.sin(phase) * chH * 0.012;
+        var cx = W * it.x, feetY = H * it.y, bob = Math.sin(phase) * chH * 0.012;
         ctx.save(); ctx.globalAlpha = 0.2; ctx.fillStyle = '#000'; ctx.beginPath();
         ctx.ellipse(cx, feetY + H * 0.004, chH * 0.26, chH * 0.07, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-        var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY - bob, chH, false, st.mood);
-        if (!ok) NT.placeholder.chibi(ctx, cx, feetY - bob, chH, sprite, st.mood, false);
-      }
+        var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY - bob, chH, false, it.mood);
+        if (!ok) NT.placeholder.chibi(ctx, cx, feetY - bob, chH, sprite, it.mood, false);
+      });
+
       app._raf = requestAnimationFrame(draw);
     }
     app._raf = requestAnimationFrame(draw);
