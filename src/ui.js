@@ -977,8 +977,7 @@
       '<div class="stage-box"><div class="stage scene-stage" id="bedroom-stage">' +
       '<canvas id="bedroom-bg"></canvas><canvas id="bedroom-fg"></canvas>' +
       '<div class="stage-top"><span class="state-badge">卧室</span><span class="state-spot">哥伦比娅正在床上休息</span></div>' +
-      '<div class="bedroom-note">她只会在卧室的床上睡觉</div>' +
-      // 戳她的台词：单独一个气泡，固定放在左上角的空地，z-index 高于场景图
+      // 戳她的台词：单独一个气泡，位置就是原来那行"她只会在卧室的床上睡觉"提示的位置
       '<div class="bubble sleep" id="sleep-bubble"></div>' +
       '<div class="scene-actions"><button class="sbtn go" data-act="go" data-arg="home">返回庭院</button></div>' +
       '</div></div></div>';
