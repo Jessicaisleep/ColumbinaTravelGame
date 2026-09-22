@@ -13,6 +13,8 @@
   app.screen = 'hall';
   app.loading = false;
   app.viewing = null;
+  /** 当前这条历史项是不是"为了打开弹窗"推的（关闭弹窗时据此决定要不要 back()） */
+  app._modalHistory = false;
   app.outMode = 'random';
   app.outRegion = null;
   app.outBearing = 'any';
@@ -178,6 +180,7 @@
     // Android 返回手势和浏览器返回键优先回到上一个游戏界面，而不是意外离开游戏。
     window.addEventListener('popstate', function (event) {
       var state = event.state;
+      app._modalHistory = false;        // 这一项是历史回退来的，不再属于"待 pop 的弹窗项"
       if (state && state.columbinaTravel) {
         app.screen = state.screen || 'home';
         app.modal = state.modal || null;
@@ -193,16 +196,39 @@
     return { columbinaTravel: true, screen: app.screen || 'home', modal: app.modal || null };
   };
   app.replaceHistory = function () {
+    app._modalHistory = false;          // replace 出来的历史项不是"为弹窗推的"
     if (root.history && root.history.replaceState) root.history.replaceState(app.historyState(), '', root.location.href);
   };
   app.pushHistory = function () {
+    app._modalHistory = false;
     if (root.history && root.history.pushState) root.history.pushState(app.historyState(), '', root.location.href);
   };
+  /** 打开弹窗时用它推历史：关闭弹窗时才知道"这条历史项该不该被 back() 掉" */
+  app.pushModalHistory = function () {
+    app.pushHistory();
+    app._modalHistory = true;
+  };
+  /**
+   * 关闭当前弹窗。
+   *
+   * 关键：**先本地关掉，再考虑历史栈**。关闭是一个本地动作，不能依赖
+   * `history.back()` 真的发生 —— 旧实现只要 `history.state.modal` 有值就
+   * `back()` 然后 `return`，可如果当前这条历史项本身就是最后一条，back() 是
+   * 空操作、也不会触发 popstate，弹窗就永远关不掉。
+   * 最典型的触发场景：她在你关掉游戏期间回来了，你重新打开游戏 ——
+   * 启动时 `settleIfDue()` 直接弹出明信片，而 `replaceHistory()` 把这条
+   * 唯一的历史项写成了 `modal:'result'`，于是"关闭"按钮点了毫无反应。
+   */
   app.closeModal = function () {
-    if (root.history && root.history.state && root.history.state.columbinaTravel && root.history.state.modal) {
-      root.history.back(); return;
+    var popped = false;
+    if (app._modalHistory && root.history && root.history.length > 1) {
+      popped = true;
+      root.history.back();              // 平衡历史栈：Android 返回键仍能"先关弹窗"
     }
-    app.modal = null; app.fieldSheet = null; app.render(); app.replaceHistory();
+    app._modalHistory = false;
+    app.modal = null; app.fieldSheet = null;
+    app.render();
+    if (!popped) app.replaceHistory();  // 没有可回退的历史项：就地改写当前项
   };
 
   /**
@@ -394,7 +420,7 @@
     var s = app.save;
     switch (act) {
       case 'go': app.go(arg); break;
-      case 'modal': app.modal = arg; app.fieldSheet = null; app.render(); app.pushHistory(); break;
+      case 'modal': app.modal = arg; app.fieldSheet = null; app.render(); app.pushModalHistory(); break;
       case 'close-modal': app.closeModal(); break;
       case 'noop': break;
       case 'fullscreen': app.toggleFullscreen(); break;
@@ -656,7 +682,7 @@
   app.viewTrip = function (id) {
     var list = app.save.album;
     for (var i = 0; i < list.length; i++) {
-      if (list[i].id === id) { app.viewing = list[i]; app.modal = 'result'; app.render(); app.pushHistory(); return; }
+      if (list[i].id === id) { app.viewing = list[i]; app.modal = 'result'; app.render(); app.pushModalHistory(); return; }
     }
   };
 
@@ -2202,11 +2228,12 @@
       '<div class="label" style="text-align:left">旅途日志</div>' +
       '<div class="steps">' + (steps || '<div class="muted small">这次没走远。</div>') + '</div>' +
       '<div class="label" style="text-align:left">明信片内容</div>' +
-      '<div class="events">' + res.events.map(function (e) {
+      '<div class="events">' + (res.events.length ? res.events.map(function (e) {
         return '<div class="event"><span class="ev-cat">' + (e.categoryLabel || '') + '</span>' +
           '<span class="ev-name">' + esc(e.name) + '</span>' +
           '<span class="ev-desc">' + esc(e.desc) + '</span></div>';
-      }).join('') + '</div>' +
+      }).join('') : '<div class="muted small">' +
+        (j.reached ? '这次没什么特别的。' : '没走到，那边的事下次再说。') + '</div>') + '</div>' +
       '<div class="btn-row">' +
       '<button class="btn btn-primary" data-act="close-modal">继续</button>' +
       '<button class="btn-ghost" data-act="modal" data-arg="album">明信片册</button>' +
