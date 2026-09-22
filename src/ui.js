@@ -1232,22 +1232,22 @@
     var s = app.save;
     var now = Date.now();
     var readyCount = 0;
+    // 小绿芽：在田地的格子上画一株萌芽
+    var sproutSvg = '<svg class="farm-sprout" viewBox="0 0 24 24" width="1em" height="1em">' +
+      '<path d="M12 22V12M12 12C12 9 9 6 6 6M12 12C12 9 15 6 18 6" ' +
+      'stroke="#5cb85c" stroke-width="2" fill="none" stroke-linecap="round"/>' +
+      '</svg>';
     var plots = NT.data.fields.map(function (field) {
       var status = NT.farm.status(s, field.id, now);
       if (status.state === 'ready') readyCount++;
-      var cropImg = status.crop && NT.assets && NT.assets.crop(status.crop.id);
-      var cropArt = cropImg
-        ? '<img class="farm-crop" src="' + esc(cropImg.src) + '" alt="">'
-        : '';
-      var stateText = status.state === 'empty' ? '种植' :
-        (status.state === 'ready' ? status.crop.name + ' · 可收获' :
-          status.crop.name + ' · ' + Math.round(status.progress * 100) + '%');
+      // 有作物（种植中/已成熟）时画绿芽；空地什么都不画
+      var cropArt = (status.state !== 'empty') ? sproutSvg : '';
       return '<button class="farm-plot ' + field.type + ' ' + status.state + '"' +
         ' data-act="open-field" data-arg="' + field.id + '"' +
-        ' aria-label="' + esc(field.name + '，' + stateText) + '"' +
+        ' aria-label="' + esc(field.name) + '"' +
         ' style="left:' + (field.x * 100) + '%;top:' + (field.y * 100) + '%;' +
         'width:' + (field.w * 100) + '%;height:' + (field.h * 100) + '%">' +
-        cropArt + '<span>' + esc(stateText) + '</span></button>';
+        cropArt + '</button>';
     }).join('');
 
     return '<div class="stage-wrap farm-wrap">' +
