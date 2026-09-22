@@ -1346,6 +1346,9 @@
     var phase = 0, last = performance.now();
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
     var fields = NT.data.fields;
+    // "一个汉字的大小" = 田地场景实际用的字号（上面刚设过），换算到画布像素。
+    // 绿芽微调都以它为单位，这样换屏幕尺寸也不会失真。
+    var charUnit = (parseFloat(stage.style.fontSize) || 16) * dpr;
 
     /**
      * 一株小绿芽。种下去就长出来，收获后地块变空自然就不画了。
@@ -1378,9 +1381,11 @@
       g.restore();
     }
 
-    /** 所有非空地：每块田按 2×2 垄各画一株芽 */
+    /** 所有非空地：每块田按 2×2 垄各画一株芽（可按象限微调，见 farm.js 的 sproutOffsets） */
     function drawFieldSprouts(g, t) {
       var nowMs = Date.now();
+      // 象限顺序与 tl/tr/bl/br 对应：sx/sy 是 ±1 的方向
+      var QUADS = [['tl', -1, -1], ['tr', 1, -1], ['bl', -1, 1], ['br', 1, 1]];
       for (var i = 0; i < fields.length; i++) {
         var fld = fields[i];
         var stt = NT.farm.status(app.save, fld.id, nowMs);
@@ -1389,10 +1394,12 @@
         var size = Math.min(pw, ph) * 0.34;
         var grow = stt.state === 'ready' ? 1 : stt.progress;
         var baseX = W * fld.x, baseY = H * fld.y;
-        for (var sx = -1; sx <= 1; sx += 2) {
-          for (var sy = -1; sy <= 1; sy += 2) {
-            drawSprout(g, baseX + sx * pw * 0.24, baseY + sy * ph * 0.24, size, grow, t);
-          }
+        var off = fld.sproutOffsets || {};
+        for (var qi = 0; qi < QUADS.length; qi++) {
+          var q = QUADS[qi], adj = off[q[0]];
+          var ox = adj ? adj[0] * charUnit : 0;
+          var oy = adj ? adj[1] * charUnit : 0;
+          drawSprout(g, baseX + q[1] * pw * 0.24 + ox, baseY + q[2] * ph * 0.24 + oy, size, grow, t);
         }
       }
     }
