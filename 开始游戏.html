@@ -111,8 +111,6 @@
   .scene-title span{font-size:.78em;color:#e9e3d6}
   .scene-actions{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);display:flex;gap:.55em;
                  flex-wrap:wrap;justify-content:center;z-index:4}
-  .bedroom-note{position:absolute;left:50%;top:16%;transform:translateX(-50%);padding:.38em .8em;border-radius:.55em;
-                background:rgba(14,13,11,.58);color:#f0e6d6;font-size:.72em;pointer-events:none}
   .backyard-note{position:absolute;left:50%;top:16%;transform:translateX(-50%);padding:.38em .8em;border-radius:.55em;
                  background:rgba(8,18,42,.60);color:#e7f0ff;font-size:.72em;pointer-events:none}
 
@@ -167,10 +165,11 @@
                 border-right:.42em solid transparent;border-top:.48em solid rgba(252,249,242,.97)}
   .bubble.left:after{left:auto;right:1.1em}
 
-  /* 卧室睡觉场景：睡觉图里她躺在画面右侧，所以台词气泡固定放在左上角的空地，
-     不跟随人物坐标；z-index 高于场景图（canvas）与按钮层，保证不被图片盖住；
+  /* 卧室睡觉场景：睡觉图里她躺在画面右侧，所以台词气泡放在上方居中的空地
+     （原来那行"她只会在卧室的床上睡觉"提示的位置）；
+     z-index 高于场景图（canvas）与按钮层，保证不被图片盖住；
      pointer-events:none 让点击穿透到画面，点哪儿都能戳她。 */
-  .bubble.sleep{left:5%;top:20%;max-width:30%;z-index:6}
+  .bubble.sleep{left:50%;top:16%;transform:translateX(-50%);max-width:34%;z-index:6}
 
   /* 田地就地操作面板：小一点、放到田的上方，别挡住人物 */
   .stage-sheet{position:absolute;left:50%;top:15%;transform:translateX(-50%);
