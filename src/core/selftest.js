@@ -239,6 +239,35 @@
     }
     ok('能产出半路折返的行程', backCount > 0, backCount + '/200');
 
+    // 半路折返：没走到，就不该有"那边的见闻"，也不该出现"想去 X 却停在 X"
+    ok('半路折返的行程不带目的地的见闻', (function () {
+      var back = facts.filter(function (f) { return !f.journey.reached; });
+      if (!back.length) return false;
+      return back.every(function (f) { return (f.events || []).length === 0; });
+    })());
+    ok('半路折返的日记里"想去的地方"和"停下的地方"不会是同一个', (function () {
+      var bad = 0;
+      facts.forEach(function (f) {
+        if (f.journey.reached) return;
+        var m = /本来想去(.+?)的，最后停在了(.+?)。/.exec(NT.text.templateRender(f).diary);
+        if (m && m[1] === m[2]) bad++;
+      });
+      return bad === 0;
+    })());
+    ok('计划目的地 == 落脚点时，直接不写"本来想去…"那句', (function () {
+      var f = null;
+      for (var i = 0; i < facts.length; i++) if (!facts[i].journey.reached) { f = facts[i]; break; }
+      if (!f) return false;
+      var clone = JSON.parse(JSON.stringify(f));
+      clone.journey.targetId = clone.destinationId;      // 就停在想去的那个地区
+      var hit = 0;
+      for (var s = 0; s < 40; s++) {
+        clone.seed = String(f.seed) + ':dup' + s;
+        if (/本来想去(.+?)的，最后停在了(.+?)。/.test(NT.text.templateRender(clone).diary)) hit++;
+      }
+      return hit === 0;
+    })());
+
     /* ---------- 6. 种植 ---------- */
     section('种植系统');
     ok('独立田地共有六个种植槽', NT.config.farm.plots.length === 6 &&
@@ -407,6 +436,31 @@
       var okAll = !err && h && h.indexOf('postcard-canvas') >= 0;
       NT.app.save = bak; NT.app.modal = bm; NT.app.viewing = bv;
       return okAll;
+    })());
+
+    // 明信片弹窗的"关闭"按钮：以前只要 history.state.modal 有值就 history.back() 然后
+    // return。可当这条历史项本身就是最后一条时（典型场景：她在你关掉游戏期间回来了，
+    // 重新打开时启动结算直接弹出明信片，replaceHistory 又把它写成了 modal:'result'），
+    // back() 是空操作、popstate 也不会来 —— 按钮点了毫无反应。
+    ok('只剩一条历史项时，明信片"关闭"也能关掉', (function () {
+      var app = NT.app;
+      var bak = { modal: app.modal, viewing: app.viewing, field: app.fieldSheet, mh: app._modalHistory };
+      var closed = false;
+      try {
+        app.modal = 'result';
+        app.viewing = (app.save && app.save.album && app.save.album[0]) || null;
+        app._modalHistory = false;                       // 启动自动弹出：不是为弹窗推的历史项
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(app.historyState(), '', window.location.href);
+        }
+        app.closeModal();
+        closed = app.modal === null && app._modalHistory === false;
+      } catch (e) {
+        closed = false;
+      }
+      app.modal = bak.modal; app.viewing = bak.viewing; app.fieldSheet = bak.field;
+      app._modalHistory = bak.mh;
+      return closed;
     })());
 
     /* ---------- 8. 时间循环 ---------- */

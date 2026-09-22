@@ -82,9 +82,12 @@
     }
 
     // ---- 3. 明信片内容（地区自带 + 通用） ----
-    var events = NT.gacha.pickEvents(rand, {
+    // 半路折返 / 落汤鸡：她根本没走到那个地方，那边的风景、食物、玩乐都不该出现在
+    // 明信片和日记里（以前照样抽目的地内容，日记就会一边说"没走到"一边写"在那儿
+    // 尝了什么、捡了什么"，自相矛盾）。
+    var events = jr.reached ? NT.gacha.pickEvents(rand, {
       destination: dest, luck: eff.luck, scoreBonus: eff.scoreBonus
-    });
+    }) : [];
     if (o.forceEventId) {
       // 通用事件允许跨地区检查；地区专属事件仍只从当前地区池中查找。
       var forcedEvent = NT.data.eventById(o.forceEventId);
