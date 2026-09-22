@@ -304,12 +304,21 @@
         h.stateId = 'play'; h.since = now; h.until = now + 6 * 60e3; h.prevSpotId = 'lawn';
         h.sceneState = 'backyard';
         NT.store.save(app.save);
+      } else if (s === 'bath') {
+        // 沐浴场景：纯风景展示，没有立绘也没有戳一下互动
+        h.sceneState = 'bath';
+        NT.store.save(app.save);
       } else if (h.sceneState === 'backyard') {
         // 离开后院：把进来时切的状态收回去
         h.sceneState = null;
         if (h.stateId === 'play') {
           h.stateId = 'idle'; h.since = now; h.until = now + 150e3; h.prevSpotId = 'yard';
         }
+        NT.store.save(app.save);
+      } else if (h.sceneState === 'bath') {
+        // 离开沐浴：回到 idle
+        h.sceneState = null;
+        h.stateId = 'idle'; h.since = now; h.until = now + 150e3; h.prevSpotId = 'yard';
         NT.store.save(app.save);
       } else if (h.stateId === 'sleep') {
         // 离开卧室：醒来
@@ -752,7 +761,8 @@
         (app.screen === 'hall' ? app.viewHall :
           (app.screen === 'bedroom' ? app.viewBedroom :
             (app.screen === 'backyard' ? app.viewBackyard :
-              app.viewHome)));
+              (app.screen === 'bath' ? app.viewBath :
+                app.viewHome))));
     // 渲染函数一旦抛异常，innerHTML 就什么都不会被写入 —— 表现是"点了没反应"。
     // 所以这里必须捕获并把错误显示出来，否则问题完全静默。
     var html;
@@ -828,6 +838,7 @@
     else if (app.screen === 'hall') app.mountHall();
     else if (app.screen === 'bedroom') app.mountBedroom();
     else if (app.screen === 'backyard') app.mountBackyard();
+    else if (app.screen === 'bath') app.mountBath();
     else if (app.screen === 'chooseHome') app.mountHome();
     else app.mountHome();
     var m = app.activeModal();
@@ -917,6 +928,7 @@
       (ready ? '<i>可收获</i>' : '') + '</button>' +
       '<button class="sbtn" data-act="go" data-arg="bedroom">卧室</button>' +
       '<button class="sbtn" data-act="go" data-arg="backyard">后院</button>' +
+      '<button class="sbtn" data-act="go" data-arg="bath">沐浴</button>' +
       '<button class="sbtn" data-act="modal" data-arg="kitchen">厨房' + badge(cookable) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="toys">玩具' + badge((s.toys || []).length) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="store">仓库' + badge(storeCount(s)) + '</button>' +
@@ -1095,6 +1107,42 @@
       app._raf = requestAnimationFrame(draw);
     }
     app._raf = requestAnimationFrame(draw);
+  };
+
+  /* ---------- 沐浴场景 ---------- */
+
+  app.viewBath = function () {
+    return '<div class="stage-wrap scene-wrap bath-wrap">' +
+      '<div class="stage-box"><div class="stage scene-stage" id="bath-stage">' +
+      '<canvas id="bath-bg"></canvas>' +
+      '<div class="stage-top"><span class="state-badge">沐浴</span><span class="state-spot">温泉时光</span></div>' +
+      '<div class="scene-actions"><button class="sbtn go" data-act="go" data-arg="home">返回庭院</button></div>' +
+      '</div></div></div>';
+  };
+
+  app.mountBath = function () {
+    var stage = $('bath-stage'), bg = $('bath-bg');
+    var baths = (NT.assets && NT.assets.bathSleeps) ? NT.assets.bathSleeps() : [];
+    var bathKey = 'bath:' + ((app.save && app.save.home && app.save.home.nahida) ? app.save.home.nahida.since : 0);
+    if (app._bathKey !== bathKey) {
+      app._bathKey = bathKey;
+      app._bathPick = baths.length ? Math.floor(Math.random() * baths.length) : 0;
+    }
+    var bathImg = baths.length ? baths[app._bathPick % baths.length] : null;
+    mountSceneCanvas(stage, bg, bathImg, '#2a3a2a', '#151f15', 0, 0, 1);
+
+    // 浴室图还没加载完：等到位再重画一次
+    if (!bathImg && (NT.assetManifest || {}).bath) {
+      var waits = 0;
+      var waitBath = function () {
+        if (app.screen !== 'bath') return;
+        if ((NT.assets.bathSleeps() || []).length) { app.render(); return; }
+        var stat = NT.assets.status();
+        if (stat.ready + stat.error >= stat.total || ++waits > 80) return;
+        setTimeout(waitBath, 120);
+      };
+      setTimeout(waitBath, 120);
+    }
   };
 
   app.viewBackyard = function () {

@@ -208,6 +208,11 @@
       var sleepNames = Array.isArray(m.bedroomSleep) ? m.bedroomSleep : [m.bedroomSleep];
       for (k = 0; k < sleepNames.length; k++) register('scene', 'bedroomSleep' + k, sleepNames[k]);
     }
+    // 沐浴场景同理：进沐浴时随机挑一张。
+    if (m.bath) {
+      var bathNames = Array.isArray(m.bath) ? m.bath : [m.bath];
+      for (k = 0; k < bathNames.length; k++) register('scene', 'bath' + k, bathNames[k]);
+    }
     for (k in (m.icons || {})) register('icon', k, m.icons[k]);
     return stats.total;
   };
@@ -244,6 +249,20 @@
     return out;
   };
   assets.backyard = function () { return ready('scene', 'backyard'); };
+  /**
+   * 沐浴场景的候选图，只返回**已经加载好**的那些（保持清单顺序）。
+   * 返回空数组 = 一张都没有，调用方应退回旧表现（庭院背景，无立绘无互动）。
+   */
+  assets.bathSleeps = function () {
+    var m = NT.assetManifest || {};
+    var names = m.bath ? (Array.isArray(m.bath) ? m.bath : [m.bath]) : [];
+    var out = [];
+    for (var i = 0; i < names.length; i++) {
+      var img = ready('scene', 'bath' + i);
+      if (img) out.push(img);
+    }
+    return out;
+  };
   assets.nahida = function (mood) { return ready('nahida', mood); };
   /** 主角任意一张可用立绘（方法名保留用于旧版兼容） */
   assets.nahidaAny = function (mood) {
