@@ -272,6 +272,8 @@
    * 但不同角色的身体比例不一样，有些（比如带大帽子的）横向会更宽。
    */
   var HER_HALF_W = 0.24 * 0.25 * (9 / 16);
+  /** 家园场景里她的立绘高度（归一化到画面高）：ui.js 里 chH = H * 0.25 */
+  var HER_H = 0.25;
 
   /**
    * 一件玩具的横向半径（归一化到画面宽）。
@@ -282,11 +284,20 @@
     return NT.data.toySize(toyId) * 0.25 * 1.55 * (9 / 16) / 2;
   }
 
+  /** 一件玩具的高度（归一化到画面高）：和绘制时的 chH * toySize 一致 */
+  function toyHeight(toyId) {
+    return NT.data.toySize(toyId) * 0.25;
+  }
+
   /**
    * 这个位置和"除 excludeToy 之外"的玩具之间还剩多少横向余量。
    * >= 0 表示不重叠；负数表示压上去了。
    *
-   * 判定用"地盘"模型：她踩在一件玩具上，指的是**脚落在那件玩具的占地里**。
+   * 两条都算不合格：
+   *   1) "踩上去" —— 脚落在那件玩具的占地里（同排、横向也不够）；
+   *   2) "压上去" —— 立绘矩形和玩具矩形相交。摆满玩具时最容易在这里露馅：
+   *      脚明明站在旁边，上半身却盖住了隔壁那件（尤其吊床这种又高又宽的）。
+   *
    * 这个视角是从斜上方看的，玩具在地上的占地是一条扁扁的椭圆 ——
    * 所以纵向只要差开一点点（站到它前面或后面）就不算踩上去，
    * 并不是"纵向重叠就算"。不这样理解的话，院子里根本站不下人。
@@ -297,9 +308,13 @@
       if (p.toyId === excludeToyId) return;
       var s2 = NT.data.toySlots[p.slot];
       if (!s2) return;
-      if (Math.abs(y - s2.y) >= 0.042) return;        // 站到它前后去了，不算踩
-      var need = HER_HALF_W + toyHalfW(p.toyId);
-      worst = Math.min(worst, Math.abs(x - s2.x) - need);
+      var half = HER_HALF_W + toyHalfW(p.toyId);
+      var dxAbs = Math.abs(x - s2.x);
+      // 1) 脚落进它的地盘：同排且横向不够
+      if (Math.abs(y - s2.y) < 0.042) worst = Math.min(worst, dxAbs - half);
+      // 2) 立绘矩形和它相交：纵向确实有重叠时，横向也必须让开
+      var oy = Math.min(y, s2.y) - Math.max(y - HER_H, s2.y - toyHeight(p.toyId));
+      if (oy > 0) worst = Math.min(worst, dxAbs - half);
     });
     return worst;
   };
@@ -335,6 +350,102 @@
     }
     if (best) return { x: best.x, y: best.y, area: slot.area, slot: slot };
     return { x: slot.x, y: slot.y + 0.014, area: slot.area, slot: slot };
+  };
+
+  /* ---------------- 后院：玩具落点与她的站位 ----------------
+   * 后院有自己的一张背景和一套槽位（NT.data.backyardSlots）。
+   * 判据比庭院严一档：
+   *   1) 她的**脚**不能落进任何其它玩具的地盘里 —— 不能踩上去；
+   *   2) 她的矩形和别的玩具矩形不能相交 —— 后院里玩具排成一排、个头差别又大
+   *      （吊床快赶上她高了），只按脚下椭圆判，画面上仍会看见她压在别的玩具上。
+   * 玩的那件玩具本身不算（她就站在它跟前玩）。
+   */
+
+  /** 后院每件玩具画在哪：按摆放顺序对到后院槽位 */
+  home.backyardLayout = function (save) {
+    var slots = NT.data.backyardSlots || [];
+    if (!slots.length) return [];
+    var out = [];
+    home.placed(save).forEach(function (p, i) {
+      var slot = slots[i % slots.length];
+      if (slot) out.push({ toyId: p.toyId, x: slot.x, y: slot.y });
+    });
+    return out;
+  };
+
+  /** 后院玩具的横向半宽 / 高度（归一化；保守估计，宁可算宽） */
+  function backyardToyHalfW(toyId, chH, W) {
+    return 0.775 * NT.data.toySize(toyId) * chH / W;
+  }
+  function backyardToyH(toyId, chH, H) {
+    return NT.data.toySize(toyId) * chH / H;
+  }
+
+  /** 两个"脚底在 (x,y)、宽 2*half、高 h"的矩形重叠面积；0 = 不相交 */
+  function overlapArea(ax, ay, aHalf, aH, bx, by, bHalf, bH) {
+    var ox = Math.min(ax + aHalf, bx + bHalf) - Math.max(ax - aHalf, bx - bHalf);
+    var oy = Math.min(ay, by) - Math.max(ay - aH, by - bH);
+    return (ox > 0 && oy > 0) ? ox * oy : 0;
+  }
+
+  /**
+   * 后院玩某件玩具时她站哪里（归一化坐标）。
+   * 候选顺序：偏好那一侧 → 另一侧 → 正前方 → 再往外/更靠前。
+   * 每个候选都要求"和别的玩具矩形不相交"；都不行时取重叠最小的那个。
+   * 候选点都让她比玩具**更靠近镜头**（y 稍大），所以不会踩进同排玩具的地盘。
+   *
+   * @param geom {W,H,chH} 画布像素尺寸（必须和绘制时用的一致）
+   * @param preferSign +1 优先站右边，-1 优先站左边
+   */
+  home.backyardSpot = function (save, toyId, geom, preferSign) {
+    var list = home.backyardLayout(save);
+    var mine = null;
+    for (var i = 0; i < list.length; i++) if (list[i].toyId === toyId) mine = list[i];
+    if (!mine) return { x: 0.52, y: 0.860 };
+
+    var W = (geom && geom.W) || 1280;
+    var H = (geom && geom.H) || 720;
+    var chH = (geom && geom.chH) || H * 0.23;
+    var herHalf = 0.24 * chH / W;          // 立绘半宽 ≈ 0.24 身高（保守）
+    var herH = chH / H;
+
+    // 往旁边挪多少：受最近的邻居槽位限制（别越到邻居身上），并留一点缝
+    var near = null;
+    for (var k = 0; k < list.length; k++) {
+      if (list[k] === mine) continue;
+      if (near === null || Math.abs(list[k].x - mine.x) < Math.abs(near.x - mine.x)) near = list[k];
+    }
+    var dx = 0.085;
+    if (near) {
+      var room = Math.abs(near.x - mine.x) - backyardToyHalfW(near.toyId, chH, W) - herHalf - 0.006;
+      dx = U.clamp(room, 0.025, 0.085);
+    }
+    var dy = 0.052;                        // 站到玩具跟前一点（同排玩具就不会被她踩到）
+
+    var sign = preferSign < 0 ? -1 : 1;
+    var cands = [
+      { x: mine.x + sign * dx, y: mine.y + dy },
+      { x: mine.x - sign * dx, y: mine.y + dy },
+      { x: mine.x, y: mine.y + dy },
+      { x: mine.x + sign * dx * 0.6, y: mine.y + dy + 0.03 },
+      { x: mine.x - sign * dx * 0.6, y: mine.y + dy + 0.03 }
+    ];
+
+    var best = null, bestScore = null;
+    for (var c = 0; c < cands.length; c++) {
+      var p = cands[c];
+      if (p.x < 0.055 || p.x > 0.945 || p.y > 0.945) continue;
+      var worst = 0;
+      for (var q = 0; q < list.length; q++) {
+        if (list[q].toyId === toyId) continue;                  // 玩的那件不算
+        var area = overlapArea(p.x, p.y, herHalf, herH,
+          list[q].x, list[q].y, backyardToyHalfW(list[q].toyId, chH, W), backyardToyH(list[q].toyId, chH, H));
+        if (area > worst) worst = area;
+      }
+      if (worst === 0) return { x: p.x, y: p.y };               // 第一个干净的
+      if (bestScore === null || worst < bestScore) { bestScore = worst; best = p; }
+    }
+    return best || { x: mine.x, y: mine.y + dy };
   };
 
   /* ==================== 来访的同伴 ====================

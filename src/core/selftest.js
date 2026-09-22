@@ -447,6 +447,109 @@
       return okIn && okOut;
     })());
 
+    // 玩具摆满（数量上限 = NT.data.toySlots.length）时，她在后院玩任何一件都不能
+    // 踩到/压住别的玩具，玩具之间也不能互相压住。用的是一套保守几何模型
+    // （立绘半宽 0.24 身高、玩具按 1.55:1 估宽），和 home.backyardSpot 里的判据一致。
+    // 取最宽的四件当"最坏情况"（上限就是 4）。
+    ok('后院摆满玩具时，她玩任何一件都不踩/不压别的玩具', (function () {
+      var cap = NT.data.toySlots.length;
+      var toys = ['hammock', 'moon_harp', 'moon_canvas', 'moon_chess', 'moon_mosaic'].slice(0, cap);
+      var W = 1280, H = 720, chH = H * 0.23;
+      var herHalf = 0.24 * chH / W, herH = chH / H;
+      function toyHalf(id) { return 0.775 * NT.data.toySize(id) * chH / W; }
+      function toyTall(id) { return NT.data.toySize(id) * chH / H; }
+      function hit(a, b) {
+        var ox = Math.min(a.x + a.half, b.x + b.half) - Math.max(a.x - a.half, b.x - b.half);
+        var oy = Math.min(a.y, b.y) - Math.max(a.y - a.h, b.y - b.h);
+        return ox > 0 && oy > 0;
+      }
+      var slots = NT.data.backyardSlots;
+      if (!slots || slots.length < cap) return false;   // 槽位不够就会绕回来重叠
+      var bad = 0;
+      for (var rot = 0; rot < toys.length; rot++) {
+        var order = toys.slice(rot).concat(toys.slice(0, rot));
+        var s = NT.store.defaultSave();
+        s.homeChosen = true;
+        s.home.placed = order.map(function (id, i) { return { toyId: id, slot: i }; });
+        for (var a = 0; a < order.length; a++) {
+          for (var b = a + 1; b < order.length; b++) {
+            if (hit({ x: slots[a].x, y: slots[a].y, half: toyHalf(order[a]), h: toyTall(order[a]) },
+                    { x: slots[b].x, y: slots[b].y, half: toyHalf(order[b]), h: toyTall(order[b]) })) bad++;
+          }
+        }
+        order.forEach(function (played) {
+          var p = NT.home.backyardSpot(s, played, { W: W, H: H, chH: chH }, 1);
+          var me = { x: p.x, y: p.y, half: herHalf, h: herH };
+          order.forEach(function (other, oi) {
+            if (other === played) return;
+            if (hit(me, { x: slots[oi].x, y: slots[oi].y, half: toyHalf(other), h: toyTall(other) })) bad++;
+          });
+        });
+      }
+      return bad === 0;
+    })());
+
+    ok('庭院摆满玩具时，她玩任何一件都不踩/不压别的玩具', (function () {
+      var cap = NT.data.toySlots.length;
+      var toys = ['hammock', 'moon_harp', 'moon_canvas', 'moon_chess', 'moon_mosaic'].slice(0, cap);
+      var W = 1280, H = 720, chH = H * 0.25;
+      var herHalf = 0.24 * chH / W, herH = chH / H;
+      function toyHalf(id) { return 0.775 * NT.data.toySize(id) * chH / W; }
+      function toyTall(id) { return NT.data.toySize(id) * chH / H; }
+      function hit(a, b) {
+        var ox = Math.min(a.x + a.half, b.x + b.half) - Math.max(a.x - a.half, b.x - b.half);
+        var oy = Math.min(a.y, b.y) - Math.max(a.y - a.h, b.y - b.h);
+        return ox > 0 && oy > 0;
+      }
+      var slots = NT.data.toySlots;
+      var bad = 0, step = 0;
+      for (var rot = 0; rot < toys.length; rot++) {
+        var order = toys.slice(rot).concat(toys.slice(0, rot));
+        var s = NT.store.defaultSave();
+        s.homeChosen = true;
+        s.home.placed = order.map(function (id, i) { return { toyId: id, slot: i }; });
+        for (var a = 0; a < order.length; a++) {
+          for (var b = a + 1; b < order.length; b++) {
+            if (hit({ x: slots[a].x, y: slots[a].y, half: toyHalf(order[a]), h: toyTall(order[a]) },
+                    { x: slots[b].x, y: slots[b].y, half: toyHalf(order[b]), h: toyTall(order[b]) })) bad++;
+          }
+        }
+        order.forEach(function (played, pi) {
+          var p = NT.home.playSpot(s, pi, played, 1);
+          var me = { x: p.x, y: p.y, half: herHalf, h: herH };
+          order.forEach(function (other, oi) {
+            if (other === played) return;
+            // 游戏自己的"踩上去"判据：脚落进别人的地盘（同排 ±0.042 且横向不够）
+            if (Math.abs(p.y - slots[oi].y) < 0.042 &&
+                Math.abs(p.x - slots[oi].x) < herHalf + toyHalf(other)) step++;
+            if (hit(me, { x: slots[oi].x, y: slots[oi].y, half: toyHalf(other), h: toyTall(other) })) bad++;
+          });
+        });
+      }
+      return step === 0 && bad === 0;
+    })());
+
+    // 玩具的摆放/收起是动态的：不指定槽位就塞进第一个空位，收起后那个位子会空出来
+    ok('玩具摆放动态填空位、收起后槽位会空出来', (function () {
+      var cap = NT.data.toySlots.length;
+      var s = NT.store.defaultSave();
+      s.homeChosen = true;
+      var ids = [];
+      for (var i = 0; i < NT.data.toys.length && ids.length < cap + 1; i++) ids.push(NT.data.toys[i].id);
+      for (var k = 0; k < cap; k++) NT.home.addToy(s, ids[k]);
+      var auto = [];
+      for (var p = 0; p < cap; p++) {
+        var r = NT.home.placeToy(s, ids[p]);       // 不指定槽位 -> 自动找空位
+        if (!r.ok) return false;
+        auto.push(r.slot);
+      }
+      var full = NT.home.placeToy(s, ids[cap]);    // 第 cap+1 件应被上限挡住
+      var usedAll = auto.slice().sort().join(',') === auto.map(function (_, i) { return i; }).sort().join(',');
+      NT.home.removeToy(s, ids[1]);                // 收起中间一件
+      var back = NT.home.placeToy(s, ids[1]);      // 再放回来应该补上刚空出来的那个槽位
+      return usedAll && !full.ok && back.ok && back.slot === auto[1];
+    })());
+
     ok('结算后能正常渲染明信片本身', (function () {
       var bak = NT.app.save, bm = NT.app.modal, bv = NT.app.viewing;
       var s = NT.store.defaultSave();
