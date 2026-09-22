@@ -292,6 +292,15 @@
    * 离开这两个场景时再把状态收回发呆，免得"人在田里却显示正在玩玩具"。
    */
   app.go = function (s) {
+    // 切场景时把戳一下的冷却和气泡都清掉，不要带到下一个场景
+    app._react = { at: 0, until: 0, kind: null, line: '' };
+    clearTimeout(app._bubbleTimer);
+    clearTimeout(app._sleepBubbleTimer);
+    var bub = $('nahida-bubble');
+    if (bub) bub.classList.remove('show');
+    var sbub = $('sleep-bubble');
+    if (sbub) sbub.classList.remove('show');
+
     var h = app.save && app.save.home && app.save.home.nahida;
     if (h) {
       var now = Date.now();
