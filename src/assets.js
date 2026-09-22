@@ -203,6 +203,16 @@
     if (m.hall) register('scene', 'hall', m.hall);
     if (m.bedroom) register('scene', 'bedroom', m.bedroom);
     if (m.backyard) register('scene', 'backyard', m.backyard);
+    // 睡觉场景是"多选一"：每一张都按顺序登记，进卧室时随机挑一张已经加载好的。
+    if (m.bedroomSleep) {
+      var sleepNames = Array.isArray(m.bedroomSleep) ? m.bedroomSleep : [m.bedroomSleep];
+      for (k = 0; k < sleepNames.length; k++) register('scene', 'bedroomSleep' + k, sleepNames[k]);
+    }
+    // 沐浴场景同理：进沐浴时随机挑一张。
+    if (m.bath) {
+      var bathNames = Array.isArray(m.bath) ? m.bath : [m.bath];
+      for (k = 0; k < bathNames.length; k++) register('scene', 'bath' + k, bathNames[k]);
+    }
     for (k in (m.icons || {})) register('icon', k, m.icons[k]);
     return stats.total;
   };
@@ -224,7 +234,35 @@
   assets.farm = function () { return ready('farm', 'background'); };
   assets.hall = function () { return ready('scene', 'hall'); };
   assets.bedroom = function () { return ready('scene', 'bedroom'); };
+  /**
+   * 睡觉场景的候选图，只返回**已经加载好**的那些（保持清单顺序）。
+   * 返回空数组 = 一张都没有，调用方应退回旧表现（卧室背景 + 立绘）。
+   */
+  assets.bedroomSleeps = function () {
+    var m = NT.assetManifest || {};
+    var names = m.bedroomSleep ? (Array.isArray(m.bedroomSleep) ? m.bedroomSleep : [m.bedroomSleep]) : [];
+    var out = [];
+    for (var i = 0; i < names.length; i++) {
+      var img = ready('scene', 'bedroomSleep' + i);
+      if (img) out.push(img);
+    }
+    return out;
+  };
   assets.backyard = function () { return ready('scene', 'backyard'); };
+  /**
+   * 沐浴场景的候选图，只返回**已经加载好**的那些（保持清单顺序）。
+   * 返回空数组 = 一张都没有，调用方应退回旧表现（庭院背景，无立绘无互动）。
+   */
+  assets.bathSleeps = function () {
+    var m = NT.assetManifest || {};
+    var names = m.bath ? (Array.isArray(m.bath) ? m.bath : [m.bath]) : [];
+    var out = [];
+    for (var i = 0; i < names.length; i++) {
+      var img = ready('scene', 'bath' + i);
+      if (img) out.push(img);
+    }
+    return out;
+  };
   assets.nahida = function (mood) { return ready('nahida', mood); };
   /** 主角任意一张可用立绘（方法名保留用于旧版兼容） */
   assets.nahidaAny = function (mood) {
@@ -275,6 +313,13 @@
       return String(m.farm || '田地-全景').replace(/^.*\//, '');
     }
     if (group === 'scene') {
+      // 睡觉场景是数组里的第 N 张，名字要回到数组里查
+      if (id.indexOf('bedroomSleep') === 0) {
+        var sleepNames = m.bedroomSleep;
+        var si = parseInt(id.slice('bedroomSleep'.length), 10);
+        var sleepName = Array.isArray(sleepNames) ? sleepNames[si] : (si === 0 ? sleepNames : null);
+        if (sleepName) return String(sleepName).replace(/^.*\//, '');
+      }
       return String(m[id] || id).replace(/^.*\//, '');
     }
     var map = {

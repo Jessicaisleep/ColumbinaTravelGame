@@ -1,5 +1,8 @@
 /* 纳西妲旅行 · 文案模板（L1 纯模板渲染层）
- * 占位符：{dest} {destDesc} {companion} {call} {event} {eventDesc} {weather} {timeOfDay}
+ * 占位符：{dest} {destDesc} {target} {actual} {companion} {call} {event} {eventDesc} {weather} {timeOfDay}
+ *   dest    实际落脚 / 抵达的地区（"今天走到了{dest}"）
+ *   target  出发时打算去的地区（只有"本来想去…"这类句子才用它）
+ *   actual  实际抵达的地区（改道句用；等价于 dest，保留旧名字兼容）
  * 组合力：8 开场 × 6 独行 × 事件描述 × 8 收尾 ≈ 数千种，无需 AI 也有足够变化。
  */
 (function (root) {
@@ -86,7 +89,10 @@
     turnedBackOpen: [
       '没走到。带的吃的吃完了，只能往回走。',
       '走到一半就发现算错了，剩下的路走不完。',
-      '本来想去{dest}的，最后停在了{actual}。',
+      // {target} = 出发时打算去的地方，{dest} = 实际停下的地方。
+      // 这两个**必须分开**：以前两个占位符填的是同一个值，于是会出现
+      // "本来想去枫丹的，最后停在了枫丹"这种自相矛盾的话。
+      '本来想去{target}的，最后停在了{dest}。',
       '出门的时候想得很好，路上才知道不够。'
     ],
     turnedBackClose: [

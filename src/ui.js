@@ -13,6 +13,8 @@
   app.screen = 'hall';
   app.loading = false;
   app.viewing = null;
+  /** 当前这条历史项是不是"为了打开弹窗"推的（关闭弹窗时据此决定要不要 back()） */
+  app._modalHistory = false;
   app.outMode = 'random';
   app.outRegion = null;
   app.outBearing = 'any';
@@ -178,6 +180,7 @@
     // Android 返回手势和浏览器返回键优先回到上一个游戏界面，而不是意外离开游戏。
     window.addEventListener('popstate', function (event) {
       var state = event.state;
+      app._modalHistory = false;        // 这一项是历史回退来的，不再属于"待 pop 的弹窗项"
       if (state && state.columbinaTravel) {
         app.screen = state.screen || 'home';
         app.modal = state.modal || null;
@@ -193,16 +196,39 @@
     return { columbinaTravel: true, screen: app.screen || 'home', modal: app.modal || null };
   };
   app.replaceHistory = function () {
+    app._modalHistory = false;          // replace 出来的历史项不是"为弹窗推的"
     if (root.history && root.history.replaceState) root.history.replaceState(app.historyState(), '', root.location.href);
   };
   app.pushHistory = function () {
+    app._modalHistory = false;
     if (root.history && root.history.pushState) root.history.pushState(app.historyState(), '', root.location.href);
   };
+  /** 打开弹窗时用它推历史：关闭弹窗时才知道"这条历史项该不该被 back() 掉" */
+  app.pushModalHistory = function () {
+    app.pushHistory();
+    app._modalHistory = true;
+  };
+  /**
+   * 关闭当前弹窗。
+   *
+   * 关键：**先本地关掉，再考虑历史栈**。关闭是一个本地动作，不能依赖
+   * `history.back()` 真的发生 —— 旧实现只要 `history.state.modal` 有值就
+   * `back()` 然后 `return`，可如果当前这条历史项本身就是最后一条，back() 是
+   * 空操作、也不会触发 popstate，弹窗就永远关不掉。
+   * 最典型的触发场景：她在你关掉游戏期间回来了，你重新打开游戏 ——
+   * 启动时 `settleIfDue()` 直接弹出明信片，而 `replaceHistory()` 把这条
+   * 唯一的历史项写成了 `modal:'result'`，于是"关闭"按钮点了毫无反应。
+   */
   app.closeModal = function () {
-    if (root.history && root.history.state && root.history.state.columbinaTravel && root.history.state.modal) {
-      root.history.back(); return;
+    var popped = false;
+    if (app._modalHistory && root.history && root.history.length > 1) {
+      popped = true;
+      root.history.back();              // 平衡历史栈：Android 返回键仍能"先关弹窗"
     }
-    app.modal = null; app.fieldSheet = null; app.render(); app.replaceHistory();
+    app._modalHistory = false;
+    app.modal = null; app.fieldSheet = null;
+    app.render();
+    if (!popped) app.replaceHistory();  // 没有可回退的历史项：就地改写当前项
   };
 
   /**
@@ -259,18 +285,56 @@
     app.toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2600);
   };
 
+  /**
+   * 切场景。卧室与后院是"有主题的独立场景"，进去就把她的状态切到对应的事件上：
+   *   卧室 -> sleep（睡觉，画面上换成整幅睡眠图）
+   *   后院 -> play（玩玩具，她会走到某件玩具旁边，而不是站在中间发呆）
+   * 离开这两个场景时再把状态收回发呆，免得"人在田里却显示正在玩玩具"。
+   */
   app.go = function (s) {
-    if (s === 'bedroom' && app.save && app.save.home && app.save.home.nahida) {
-      var h = app.save.home.nahida;
+    // 切场景时把戳一下的冷却和气泡都清掉，不要带到下一个场景
+    app._react = { at: 0, until: 0, kind: null, line: '' };
+    clearTimeout(app._bubbleTimer);
+    clearTimeout(app._sleepBubbleTimer);
+    var bub = $('nahida-bubble');
+    if (bub) bub.classList.remove('show');
+    var sbub = $('sleep-bubble');
+    if (sbub) sbub.classList.remove('show');
+
+    var h = app.save && app.save.home && app.save.home.nahida;
+    if (h) {
       var now = Date.now();
-      h.stateId = 'sleep'; h.since = now; h.until = now + 6 * 60e3; h.prevSpotId = 'bed';
-      NT.store.save(app.save);
-    } else if (s !== 'bedroom' && app.save && app.save.home && app.save.home.nahida &&
-      app.save.home.nahida.stateId === 'sleep') {
-      var awake = app.save.home.nahida;
-      var awakeNow = Date.now();
-      awake.stateId = 'idle'; awake.since = awakeNow; awake.until = awakeNow + 150000; awake.prevSpotId = 'yard';
-      NT.store.save(app.save);
+      if (s === 'bedroom') {
+        h.stateId = 'sleep'; h.since = now; h.until = now + 6 * 60e3; h.prevSpotId = 'bed';
+        h.sceneState = 'bedroom';
+        NT.store.save(app.save);
+      } else if (s === 'backyard') {
+        // 后院就是玩玩具的地方：切到 useToy 的状态，配合 home.playingToy 挑一件玩具
+        h.stateId = 'play'; h.since = now; h.until = now + 6 * 60e3; h.prevSpotId = 'lawn';
+        h.sceneState = 'backyard';
+        NT.store.save(app.save);
+      } else if (s === 'bath') {
+        // 沐浴场景：纯风景展示，没有立绘也没有戳一下互动
+        h.sceneState = 'bath';
+        NT.store.save(app.save);
+      } else if (h.sceneState === 'backyard') {
+        // 离开后院：把进来时切的状态收回去
+        h.sceneState = null;
+        if (h.stateId === 'play') {
+          h.stateId = 'idle'; h.since = now; h.until = now + 150e3; h.prevSpotId = 'yard';
+        }
+        NT.store.save(app.save);
+      } else if (h.sceneState === 'bath') {
+        // 离开沐浴：回到 idle
+        h.sceneState = null;
+        h.stateId = 'idle'; h.since = now; h.until = now + 150e3; h.prevSpotId = 'yard';
+        NT.store.save(app.save);
+      } else if (h.stateId === 'sleep') {
+        // 离开卧室：醒来
+        h.sceneState = null;
+        h.stateId = 'idle'; h.since = now; h.until = now + 150e3; h.prevSpotId = 'yard';
+        NT.store.save(app.save);
+      }
     }
     app.screen = s; app.modal = null; app.fieldSheet = null; app.render(); app.pushHistory();
   };
@@ -329,7 +393,17 @@
     bub.classList.add('show');
   };
 
-  app.poke = function () {
+  app.poke = function () { pokeReaction('home'); };
+
+  /** 卧室（睡觉场景）里戳她：只出一行字，不画立绘动作 —— 她已经在睡觉图里了。 */
+  app.pokeSleep = function () { pokeReaction('bedroom'); };
+
+  /**
+   * 戳她的公共流程：选台词 -> 记成就 -> 响一声 -> 出气泡。
+   * @param where 'home' = 庭院画布上的立绘（气泡跟着人物走）；
+   *              'bedroom' = 睡觉场景（气泡固定在左上角的空地，层级压在场景图之上）。
+   */
+  function pokeReaction(where) {
     var s = app.save;
     var now = Date.now();
     if (now < app._react.until) return;                  // 冷却：反应没结束就不再触发
@@ -342,7 +416,28 @@
     NT.achievements.recordPoke(s);
     NT.store.save(s);
     NT.sfx.play('poke');
-    app.setBubble(line, 5200, 'poke');
+    if (where === 'bedroom') app.setSleepBubble(line, 5200);
+    else app.setBubble(line, 5200, 'poke');
+  }
+
+  /**
+   * 睡觉场景的台词气泡。位置交给 CSS（左上角的空地），不跟随人物坐标 ——
+   * 睡觉图里她躺在右侧，气泡放左边就不会压住她；z-index 也在图片之上。
+   */
+  app.setSleepBubble = function (text, ms) {
+    app._bubble = { text: text, until: Date.now() + (ms || 6000), kind: 'poke' };
+    var bub = $('sleep-bubble');
+    if (!bub) return;
+    bub.textContent = text;
+    bub.setAttribute('data-txt', text);
+    bub.classList.add('show');
+    clearTimeout(app._sleepBubbleTimer);
+    app._sleepBubbleTimer = setTimeout(function () {
+      if (app._bubble && Date.now() >= app._bubble.until) {
+        var b = $('sleep-bubble');
+        if (b) b.classList.remove('show');
+      }
+    }, (ms || 6000) + 60);
   };
 
   /* ---------------- 聊天（可选 AI 角色扮演） ---------------- */
@@ -363,7 +458,7 @@
     var s = app.save;
     switch (act) {
       case 'go': app.go(arg); break;
-      case 'modal': app.modal = arg; app.fieldSheet = null; app.render(); app.pushHistory(); break;
+      case 'modal': app.modal = arg; app.fieldSheet = null; app.render(); app.pushModalHistory(); break;
       case 'close-modal': app.closeModal(); break;
       case 'noop': break;
       case 'fullscreen': app.toggleFullscreen(); break;
@@ -625,7 +720,7 @@
   app.viewTrip = function (id) {
     var list = app.save.album;
     for (var i = 0; i < list.length; i++) {
-      if (list[i].id === id) { app.viewing = list[i]; app.modal = 'result'; app.render(); app.pushHistory(); return; }
+      if (list[i].id === id) { app.viewing = list[i]; app.modal = 'result'; app.render(); app.pushModalHistory(); return; }
     }
   };
 
@@ -675,7 +770,8 @@
         (app.screen === 'hall' ? app.viewHall :
           (app.screen === 'bedroom' ? app.viewBedroom :
             (app.screen === 'backyard' ? app.viewBackyard :
-              app.viewHome)));
+              (app.screen === 'bath' ? app.viewBath :
+                app.viewHome))));
     // 渲染函数一旦抛异常，innerHTML 就什么都不会被写入 —— 表现是"点了没反应"。
     // 所以这里必须捕获并把错误显示出来，否则问题完全静默。
     var html;
@@ -751,6 +847,7 @@
     else if (app.screen === 'hall') app.mountHall();
     else if (app.screen === 'bedroom') app.mountBedroom();
     else if (app.screen === 'backyard') app.mountBackyard();
+    else if (app.screen === 'bath') app.mountBath();
     else if (app.screen === 'chooseHome') app.mountHome();
     else app.mountHome();
     var m = app.activeModal();
@@ -840,6 +937,7 @@
       (ready ? '<i>可收获</i>' : '') + '</button>' +
       '<button class="sbtn" data-act="go" data-arg="bedroom">卧室</button>' +
       '<button class="sbtn" data-act="go" data-arg="backyard">后院</button>' +
+      '<button class="sbtn" data-act="go" data-arg="bath">沐浴</button>' +
       '<button class="sbtn" data-act="modal" data-arg="kitchen">厨房' + badge(cookable) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="toys">玩具' + badge((s.toys || []).length) + '</button>' +
       '<button class="sbtn" data-act="modal" data-arg="store">仓库' + badge(storeCount(s)) + '</button>' +
@@ -920,7 +1018,8 @@
       '<div class="stage-box"><div class="stage scene-stage" id="bedroom-stage">' +
       '<canvas id="bedroom-bg"></canvas><canvas id="bedroom-fg"></canvas>' +
       '<div class="stage-top"><span class="state-badge">卧室</span><span class="state-spot">哥伦比娅正在床上休息</span></div>' +
-      '<div class="bedroom-note">她只会在卧室的床上睡觉</div>' +
+      // 戳她的台词：单独一个气泡，位置就是原来那行"她只会在卧室的床上睡觉"提示的位置
+      '<div class="bubble sleep" id="sleep-bubble"></div>' +
       '<div class="scene-actions"><button class="sbtn go" data-act="go" data-arg="home">返回庭院</button></div>' +
       '</div></div></div>';
   };
@@ -947,15 +1046,58 @@
 
   app.mountBedroom = function () {
     var stage = $('bedroom-stage'), bg = $('bedroom-bg'), fg = $('bedroom-fg');
-    // 卧室重点在左侧床铺：移动裁剪窗口但仍保持等比，不拉伸图片。
-    mountSceneCanvas(stage, bg, NT.assets && NT.assets.bedroom(), '#392b2a', '#171113', 0.10, 0, 1);
-    if (!stage || !fg) return;
+    var s = app.save;
+    var m = NT.assetManifest || {};
+
+    // 睡觉场景：每次睡着（since 变化）从候选图里随机挑一张，直接当**背景层**用 ——
+    // 也就是替换原来的 卧室.png，UI（按钮、角标、说明）照旧浮在它上面。
+    // 这些图里已经画好了"她躺在床上睡着"，所以这一场**不再画立绘**，免得出现两个她。
+    var sleeps = (NT.assets && NT.assets.bedroomSleeps) ? NT.assets.bedroomSleeps() : [];
+    var sleepKey = 'sleep:' + ((s && s.home && s.home.nahida) ? s.home.nahida.since : 0);
+    if (app._sleepKey !== sleepKey) {
+      app._sleepKey = sleepKey;
+      app._sleepPick = sleeps.length ? Math.floor(Math.random() * sleeps.length) : 0;
+    }
+    var sleepImg = sleeps.length ? sleeps[app._sleepPick % sleeps.length] : null;
+
+    if (sleepImg) {
+      // 整幅睡觉图铺满背景层：等比裁剪（cover），不拉伸，不改素材比例。
+      mountSceneCanvas(stage, bg, sleepImg, '#392b2a', '#171113', 0, 0, 1);
+    } else {
+      // 没有睡觉图（清单为空 / 全部加载失败）时退回旧表现：卧室背景 + 立绘。
+      // 卧室重点在左侧床铺：移动裁剪窗口但仍保持等比，不拉伸图片。
+      mountSceneCanvas(stage, bg, NT.assets && NT.assets.bedroom(), '#392b2a', '#171113', 0.10, 0, 1);
+    }
+    if (!stage) return;
+
+    // 睡觉图还没加载完（例如带 ?screen=bedroom 直接进卧室）：它一旦到位就重画场景。
+    if (!sleepImg && m.bedroomSleep) {
+      var waits = 0;
+      var waitSleep = function () {
+        if (app.screen !== 'bedroom') return;                 // 已经离开卧室，别再管
+        if ((NT.assets.bedroomSleeps() || []).length) { app.render(); return; }
+        var stat = NT.assets.status();
+        if (stat.ready + stat.error >= stat.total || ++waits > 80) return;   // 没在加载了 / 等够了就放弃
+        setTimeout(waitSleep, 120);
+      };
+      setTimeout(waitSleep, 120);
+    }
+
+    // 点画面任意位置都能戳她：不额外盖一层按钮或热区，免得挡住她。
+    stage.onclick = function () { app.pokeSleep(); };
+
+    if (!fg) return;
     var rect = stage.getBoundingClientRect();
     var dpr = Math.min(root.devicePixelRatio || 1, 2);
     var W = Math.max(640, Math.round((rect.width || 1280) * dpr));
     var H = Math.max(360, Math.round((rect.height || 720) * dpr));
     fg.width = W; fg.height = H;
     var ctx = fg.getContext('2d');
+    ctx.clearRect(0, 0, W, H);         // 前景层这一场不用（睡觉图里已经有人物）
+
+    if (sleepImg) return;
+
+    // ---- 退回旧表现：在背景上手绘她不动的睡姿 ----
     // 以床垫右侧为脚底锚点：人物略微放大并右移，仍完整落在床面，不随窗口比例漂移。
     var chH = H * 0.75, cx = W * 0.47, feetY = H * 0.70;
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
@@ -974,6 +1116,42 @@
       app._raf = requestAnimationFrame(draw);
     }
     app._raf = requestAnimationFrame(draw);
+  };
+
+  /* ---------- 沐浴场景 ---------- */
+
+  app.viewBath = function () {
+    return '<div class="stage-wrap scene-wrap bath-wrap">' +
+      '<div class="stage-box"><div class="stage scene-stage" id="bath-stage">' +
+      '<canvas id="bath-bg"></canvas>' +
+      '<div class="stage-top"><span class="state-badge">沐浴</span><span class="state-spot">温泉时光</span></div>' +
+      '<div class="scene-actions"><button class="sbtn go" data-act="go" data-arg="home">返回庭院</button></div>' +
+      '</div></div></div>';
+  };
+
+  app.mountBath = function () {
+    var stage = $('bath-stage'), bg = $('bath-bg');
+    var baths = (NT.assets && NT.assets.bathSleeps) ? NT.assets.bathSleeps() : [];
+    var bathKey = 'bath:' + ((app.save && app.save.home && app.save.home.nahida) ? app.save.home.nahida.since : 0);
+    if (app._bathKey !== bathKey) {
+      app._bathKey = bathKey;
+      app._bathPick = baths.length ? Math.floor(Math.random() * baths.length) : 0;
+    }
+    var bathImg = baths.length ? baths[app._bathPick % baths.length] : null;
+    mountSceneCanvas(stage, bg, bathImg, '#2a3a2a', '#151f15', 0, 0, 1);
+
+    // 浴室图还没加载完：等到位再重画一次
+    if (!bathImg && (NT.assetManifest || {}).bath) {
+      var waits = 0;
+      var waitBath = function () {
+        if (app.screen !== 'bath') return;
+        if ((NT.assets.bathSleeps() || []).length) { app.render(); return; }
+        var stat = NT.assets.status();
+        if (stat.ready + stat.error >= stat.total || ++waits > 80) return;
+        setTimeout(waitBath, 120);
+      };
+      setTimeout(waitBath, 120);
+    }
   };
 
   app.viewBackyard = function () {
@@ -1003,39 +1181,46 @@
     fg.width = W; fg.height = H;
     var ctx = fg.getContext('2d');
     var chH = H * 0.23, now = Date.now(), phase = 0, last = performance.now();
-    // 后院使用自己的居中槽位，手机竖屏裁剪时仍能看到玩具和人物。
-    var backyardSlots = [
-      { x: 0.20, y: 0.62 }, { x: 0.38, y: 0.73 }, { x: 0.62, y: 0.73 },
-      { x: 0.80, y: 0.62 }, { x: 0.28, y: 0.84 }, { x: 0.50, y: 0.86 },
-      { x: 0.72, y: 0.84 }
-    ];
-    var backyardToyPositions = {};
-    (s.home.placed || []).forEach(function (p, i) {
-      backyardToyPositions[p.toyId] = backyardSlots[i % backyardSlots.length];
-    });
+    // 后院有自己的玩具槽位表（NT.data.backyardSlots）：同一排、行距 0.19，
+    // 手机竖屏裁剪时也能同时看到玩具和她。
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
     function draw() {
       var t = performance.now(), dt = U.clamp((t - last) / 1000, 0, 0.1); last = t; phase += dt * 1.6;
       ctx.clearRect(0, 0, W, H);
-      var placed = s.home.placed || [];
-      placed.forEach(function (p, i) {
-        var slot = backyardSlots[i % backyardSlots.length];
-        if (!slot) return;
-        var th = chH * NT.data.toySize(p.toyId);
-        if (!(NT.assets && NT.assets.drawToy(ctx, W * slot.x, H * slot.y, th, p.toyId))) {
-          NT.placeholder.toy(ctx, p.toyId, W * slot.x, H * slot.y, th, NT.rng.mulberry32(p.slot + 31));
-        }
+
+      var layout = NT.home.backyardLayout(s);
+      var items = layout.map(function (it) {
+        return { kind: 'toy', x: it.x, y: it.y, toyId: it.toyId };
       });
-      // 只要没有出门，后院始终能看到哥伦比娅；玩耍时再靠近当前玩具。
+      // 只要没有出门，后院始终能看到哥伦比娅；玩耍时站到那件玩具跟前。
       if (!s.activeTrip) {
         var st = NT.home.state(s), playing = st.useToy && NT.home.playingToy(s);
-        var target = (playing && backyardToyPositions[playing.id]) ? backyardToyPositions[playing.id] : { x: 0.52, y: 0.84 };
-        var cx = W * target.x, feetY = H * target.y, bob = Math.sin(phase) * chH * 0.012;
+        // 站位由 home.backyardSpot 算：它保证她不会踩到/压住**别的**玩具
+        var spot = playing
+          ? NT.home.backyardSpot(s, playing.id, { W: W, H: H, chH: chH }, 1)
+          : { x: 0.52, y: 0.86 };
+        items.push({ kind: 'her', x: spot.x, y: spot.y, mood: st.mood });
+      }
+
+      // 按脚底 y 排序（远的先画）：她站在玩具前面时才正确地挡住玩具，
+      // 也不会出现"她在后面却被画在玩具上面"。
+      items.sort(function (a, b) { return a.y - b.y; });
+
+      items.forEach(function (it) {
+        if (it.kind === 'toy') {
+          var th = chH * NT.data.toySize(it.toyId);
+          if (!(NT.assets && NT.assets.drawToy(ctx, W * it.x, H * it.y, th, it.toyId))) {
+            NT.placeholder.toy(ctx, it.toyId, W * it.x, H * it.y, th, NT.rng.mulberry32(31));
+          }
+          return;
+        }
+        var cx = W * it.x, feetY = H * it.y, bob = Math.sin(phase) * chH * 0.012;
         ctx.save(); ctx.globalAlpha = 0.2; ctx.fillStyle = '#000'; ctx.beginPath();
         ctx.ellipse(cx, feetY + H * 0.004, chH * 0.26, chH * 0.07, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-        var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY - bob, chH, false, st.mood);
-        if (!ok) NT.placeholder.chibi(ctx, cx, feetY - bob, chH, sprite, st.mood, false);
-      }
+        var ok = NT.assets && NT.assets.drawNahida(ctx, cx, feetY - bob, chH, false, it.mood);
+        if (!ok) NT.placeholder.chibi(ctx, cx, feetY - bob, chH, sprite, it.mood, false);
+      });
+
       app._raf = requestAnimationFrame(draw);
     }
     app._raf = requestAnimationFrame(draw);
@@ -1050,19 +1235,17 @@
     var plots = NT.data.fields.map(function (field) {
       var status = NT.farm.status(s, field.id, now);
       if (status.state === 'ready') readyCount++;
-      var cropImg = status.crop && NT.assets && NT.assets.crop(status.crop.id);
-      var cropArt = cropImg
-        ? '<img class="farm-crop" src="' + esc(cropImg.src) + '" alt="">'
-        : '';
-      var stateText = status.state === 'empty' ? '种植' :
-        (status.state === 'ready' ? status.crop.name + ' · 可收获' :
-          status.crop.name + ' · ' + Math.round(status.progress * 100) + '%');
+      // 田块上不再放作物图片和文字：种植/成熟的样子由绿芽画在画布上（见 mountFarm）。
+      // 这里只留一个透明热区，点它打开这块田的操作面板。
+      var label = field.name + (status.state === 'empty' ? '，空地' :
+        '，' + status.crop.name + (status.state === 'ready' ? '，可收获' :
+          '，生长 ' + Math.round(status.progress * 100) + '%'));
       return '<button class="farm-plot ' + field.type + ' ' + status.state + '"' +
         ' data-act="open-field" data-arg="' + field.id + '"' +
-        ' aria-label="' + esc(field.name + '，' + stateText) + '"' +
+        ' aria-label="' + esc(label) + '"' +
         ' style="left:' + (field.x * 100) + '%;top:' + (field.y * 100) + '%;' +
         'width:' + (field.w * 100) + '%;height:' + (field.h * 100) + '%">' +
-        cropArt + '<span>' + esc(stateText) + '</span></button>';
+        '</button>';
     }).join('');
 
     return '<div class="stage-wrap farm-wrap">' +
@@ -1154,7 +1337,7 @@
       bctx.fillStyle = grad; bctx.fillRect(0, 0, W, H);
     }
 
-    if (app.save.activeTrip) return;
+    if (app.save.activeTrip) { /* 她出门了：不画人，但田里的绿芽照常显示 */ }
 
     var fctx = fg.getContext('2d');
     var chH = H * 0.23;
@@ -1162,17 +1345,75 @@
     var cx = W * 0.54, feetY = H * 0.86;
     var phase = 0, last = performance.now();
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
+    var fields = NT.data.fields;
+
+    /**
+     * 一株小绿芽。种下去就长出来，收获后地块变空自然就不画了。
+     * grow: 0..1 生长进度（成熟 = 1，会更大更亮一点）。
+     */
+    function drawSprout(g, x, y, size, grow, t) {
+      var sway = Math.sin(t * 1.7 + x * 0.013 + y * 0.007) * size * 0.10;
+      var h = size * (0.72 + 0.34 * grow);
+      g.save();
+      g.translate(x, y);
+      // 落在土上的淡影
+      g.globalAlpha = 0.16; g.fillStyle = '#000';
+      g.beginPath(); g.ellipse(0, 0, h * 0.42, h * 0.13, 0, 0, Math.PI * 2); g.fill();
+      g.globalAlpha = 1;
+      // 茎
+      g.lineCap = 'round';
+      g.strokeStyle = '#4d9a46';
+      g.lineWidth = Math.max(1.6, h * 0.11);
+      g.beginPath();
+      g.moveTo(0, 0);
+      g.quadraticCurveTo(sway * 0.4, -h * 0.55, sway, -h);
+      g.stroke();
+      // 左右两片叶子
+      g.fillStyle = '#6cc25c';
+      g.beginPath(); g.ellipse(sway - h * 0.30, -h * 0.60, h * 0.32, h * 0.16, -0.55, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.ellipse(sway + h * 0.30, -h * 0.78, h * 0.32, h * 0.16, 0.55, 0, Math.PI * 2); g.fill();
+      // 顶芽（成熟时偏亮）
+      g.fillStyle = grow >= 0.999 ? '#a8e88f' : '#83d472';
+      g.beginPath(); g.arc(sway, -h, h * 0.14, 0, Math.PI * 2); g.fill();
+      g.restore();
+    }
+
+    /** 所有非空地：每块田按 2×2 垄各画一株芽 */
+    function drawFieldSprouts(g, t) {
+      var nowMs = Date.now();
+      for (var i = 0; i < fields.length; i++) {
+        var fld = fields[i];
+        var stt = NT.farm.status(app.save, fld.id, nowMs);
+        if (stt.state === 'empty') continue;                 // 空地不长芽
+        var pw = W * fld.w, ph = H * fld.h;
+        var size = Math.min(pw, ph) * 0.34;
+        var grow = stt.state === 'ready' ? 1 : stt.progress;
+        var baseX = W * fld.x, baseY = H * fld.y;
+        for (var sx = -1; sx <= 1; sx += 2) {
+          for (var sy = -1; sy <= 1; sy += 2) {
+            drawSprout(g, baseX + sx * pw * 0.24, baseY + sy * ph * 0.24, size, grow, t);
+          }
+        }
+      }
+    }
 
     function drawFarmNahida(t) {
       var dt = U.clamp((t - last) / 1000, 0, 0.1); last = t; phase += dt * 1.6;
-      var bob = Math.sin(phase) * chH * 0.012;
       fctx.clearRect(0, 0, W, H);
-      fctx.save();
-      fctx.globalAlpha = 0.22; fctx.fillStyle = '#000'; fctx.beginPath();
-      fctx.ellipse(cx, feetY + H * 0.004, chH * 0.26, chH * 0.07, 0, 0, Math.PI * 2); fctx.fill();
-      fctx.restore();
-      var ok = NT.assets && NT.assets.drawNahida(fctx, cx, feetY - bob, chH, true, 'idle');
-      if (!ok) NT.placeholder.chibi(fctx, cx, feetY - bob, chH, sprite, 'idle', true);
+
+      // 先画田里的芽，再画人：她站在前景，会压住离镜头近的芽
+      drawFieldSprouts(fctx, phase);
+
+      if (!app.save.activeTrip) {
+        var bob = Math.sin(phase) * chH * 0.012;
+        fctx.save();
+        fctx.globalAlpha = 0.22; fctx.fillStyle = '#000'; fctx.beginPath();
+        fctx.ellipse(cx, feetY + H * 0.004, chH * 0.26, chH * 0.07, 0, 0, Math.PI * 2); fctx.fill();
+        fctx.restore();
+        var ok = NT.assets && NT.assets.drawNahida(fctx, cx, feetY - bob, chH, true, 'idle');
+        if (!ok) NT.placeholder.chibi(fctx, cx, feetY - bob, chH, sprite, 'idle', true);
+      }
+
       app._raf = requestAnimationFrame(drawFarmNahida);
     }
     app._raf = requestAnimationFrame(drawFarmNahida);
@@ -2126,11 +2367,12 @@
       '<div class="label" style="text-align:left">旅途日志</div>' +
       '<div class="steps">' + (steps || '<div class="muted small">这次没走远。</div>') + '</div>' +
       '<div class="label" style="text-align:left">明信片内容</div>' +
-      '<div class="events">' + res.events.map(function (e) {
+      '<div class="events">' + (res.events.length ? res.events.map(function (e) {
         return '<div class="event"><span class="ev-cat">' + (e.categoryLabel || '') + '</span>' +
           '<span class="ev-name">' + esc(e.name) + '</span>' +
           '<span class="ev-desc">' + esc(e.desc) + '</span></div>';
-      }).join('') + '</div>' +
+      }).join('') : '<div class="muted small">' +
+        (j.reached ? '这次没什么特别的。' : '没走到，那边的事下次再说。') + '</div>') + '</div>' +
       '<div class="btn-row">' +
       '<button class="btn btn-primary" data-act="close-modal">继续</button>' +
       '<button class="btn-ghost" data-act="modal" data-arg="album">明信片册</button>' +

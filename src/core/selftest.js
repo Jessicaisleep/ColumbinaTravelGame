@@ -239,6 +239,35 @@
     }
     ok('能产出半路折返的行程', backCount > 0, backCount + '/200');
 
+    // 半路折返：没走到，就不该有"那边的见闻"，也不该出现"想去 X 却停在 X"
+    ok('半路折返的行程不带目的地的见闻', (function () {
+      var back = facts.filter(function (f) { return !f.journey.reached; });
+      if (!back.length) return false;
+      return back.every(function (f) { return (f.events || []).length === 0; });
+    })());
+    ok('半路折返的日记里"想去的地方"和"停下的地方"不会是同一个', (function () {
+      var bad = 0;
+      facts.forEach(function (f) {
+        if (f.journey.reached) return;
+        var m = /本来想去(.+?)的，最后停在了(.+?)。/.exec(NT.text.templateRender(f).diary);
+        if (m && m[1] === m[2]) bad++;
+      });
+      return bad === 0;
+    })());
+    ok('计划目的地 == 落脚点时，直接不写"本来想去…"那句', (function () {
+      var f = null;
+      for (var i = 0; i < facts.length; i++) if (!facts[i].journey.reached) { f = facts[i]; break; }
+      if (!f) return false;
+      var clone = JSON.parse(JSON.stringify(f));
+      clone.journey.targetId = clone.destinationId;      // 就停在想去的那个地区
+      var hit = 0;
+      for (var s = 0; s < 40; s++) {
+        clone.seed = String(f.seed) + ':dup' + s;
+        if (/本来想去(.+?)的，最后停在了(.+?)。/.test(NT.text.templateRender(clone).diary)) hit++;
+      }
+      return hit === 0;
+    })());
+
     /* ---------- 6. 种植 ---------- */
     section('种植系统');
     ok('独立田地共有六个种植槽', NT.config.farm.plots.length === 6 &&
@@ -395,6 +424,132 @@
       return okAll;
     })());
 
+    // 卧室 -> 睡觉、后院 -> 玩玩具：进场景就把她的状态切到对应事件，离开时收回
+    ok('切到后院会切到"玩玩具"状态（useToy），回庭院时收回', (function () {
+      var app = NT.app;
+      var bakScreen = app.screen, bakSave = app.save;
+      var s = NT.store.defaultSave();
+      s.homeChosen = true;
+      NT.home.addToy(s, 'moon_chess');
+      NT.home.repair(s);
+      app.save = s;
+      var okIn = false, okOut = false;
+      try {
+        app.go('backyard');
+        var stIn = NT.home.state(s);
+        okIn = app.screen === 'backyard' && stIn.id === 'play' && !!stIn.useToy &&
+          !!NT.home.playingToy(s) && s.home.nahida.sceneState === 'backyard';
+        app.go('home');
+        okOut = app.screen === 'home' && NT.home.state(s).id === 'idle' &&
+          !s.home.nahida.sceneState;
+      } catch (e) { okIn = false; okOut = false; }
+      app.screen = bakScreen; app.save = bakSave;
+      return okIn && okOut;
+    })());
+
+    // 玩具摆满（数量上限 = NT.data.toySlots.length）时，她在后院玩任何一件都不能
+    // 踩到/压住别的玩具，玩具之间也不能互相压住。用的是一套保守几何模型
+    // （立绘半宽 0.24 身高、玩具按 1.55:1 估宽），和 home.backyardSpot 里的判据一致。
+    // 取最宽的四件当"最坏情况"（上限就是 4）。
+    ok('后院摆满玩具时，她玩任何一件都不踩/不压别的玩具', (function () {
+      var cap = NT.data.toySlots.length;
+      var toys = ['hammock', 'moon_harp', 'moon_canvas', 'moon_chess', 'moon_mosaic'].slice(0, cap);
+      var W = 1280, H = 720, chH = H * 0.23;
+      var herHalf = 0.24 * chH / W, herH = chH / H;
+      function toyHalf(id) { return 0.775 * NT.data.toySize(id) * chH / W; }
+      function toyTall(id) { return NT.data.toySize(id) * chH / H; }
+      function hit(a, b) {
+        var ox = Math.min(a.x + a.half, b.x + b.half) - Math.max(a.x - a.half, b.x - b.half);
+        var oy = Math.min(a.y, b.y) - Math.max(a.y - a.h, b.y - b.h);
+        return ox > 0 && oy > 0;
+      }
+      var slots = NT.data.backyardSlots;
+      if (!slots || slots.length < cap) return false;   // 槽位不够就会绕回来重叠
+      var bad = 0;
+      for (var rot = 0; rot < toys.length; rot++) {
+        var order = toys.slice(rot).concat(toys.slice(0, rot));
+        var s = NT.store.defaultSave();
+        s.homeChosen = true;
+        s.home.placed = order.map(function (id, i) { return { toyId: id, slot: i }; });
+        for (var a = 0; a < order.length; a++) {
+          for (var b = a + 1; b < order.length; b++) {
+            if (hit({ x: slots[a].x, y: slots[a].y, half: toyHalf(order[a]), h: toyTall(order[a]) },
+                    { x: slots[b].x, y: slots[b].y, half: toyHalf(order[b]), h: toyTall(order[b]) })) bad++;
+          }
+        }
+        order.forEach(function (played) {
+          var p = NT.home.backyardSpot(s, played, { W: W, H: H, chH: chH }, 1);
+          var me = { x: p.x, y: p.y, half: herHalf, h: herH };
+          order.forEach(function (other, oi) {
+            if (other === played) return;
+            if (hit(me, { x: slots[oi].x, y: slots[oi].y, half: toyHalf(other), h: toyTall(other) })) bad++;
+          });
+        });
+      }
+      return bad === 0;
+    })());
+
+    ok('庭院摆满玩具时，她玩任何一件都不踩/不压别的玩具', (function () {
+      var cap = NT.data.toySlots.length;
+      var toys = ['hammock', 'moon_harp', 'moon_canvas', 'moon_chess', 'moon_mosaic'].slice(0, cap);
+      var W = 1280, H = 720, chH = H * 0.25;
+      var herHalf = 0.24 * chH / W, herH = chH / H;
+      function toyHalf(id) { return 0.775 * NT.data.toySize(id) * chH / W; }
+      function toyTall(id) { return NT.data.toySize(id) * chH / H; }
+      function hit(a, b) {
+        var ox = Math.min(a.x + a.half, b.x + b.half) - Math.max(a.x - a.half, b.x - b.half);
+        var oy = Math.min(a.y, b.y) - Math.max(a.y - a.h, b.y - b.h);
+        return ox > 0 && oy > 0;
+      }
+      var slots = NT.data.toySlots;
+      var bad = 0, step = 0;
+      for (var rot = 0; rot < toys.length; rot++) {
+        var order = toys.slice(rot).concat(toys.slice(0, rot));
+        var s = NT.store.defaultSave();
+        s.homeChosen = true;
+        s.home.placed = order.map(function (id, i) { return { toyId: id, slot: i }; });
+        for (var a = 0; a < order.length; a++) {
+          for (var b = a + 1; b < order.length; b++) {
+            if (hit({ x: slots[a].x, y: slots[a].y, half: toyHalf(order[a]), h: toyTall(order[a]) },
+                    { x: slots[b].x, y: slots[b].y, half: toyHalf(order[b]), h: toyTall(order[b]) })) bad++;
+          }
+        }
+        order.forEach(function (played, pi) {
+          var p = NT.home.playSpot(s, pi, played, 1);
+          var me = { x: p.x, y: p.y, half: herHalf, h: herH };
+          order.forEach(function (other, oi) {
+            if (other === played) return;
+            // 游戏自己的"踩上去"判据：脚落进别人的地盘（同排 ±0.042 且横向不够）
+            if (Math.abs(p.y - slots[oi].y) < 0.042 &&
+                Math.abs(p.x - slots[oi].x) < herHalf + toyHalf(other)) step++;
+            if (hit(me, { x: slots[oi].x, y: slots[oi].y, half: toyHalf(other), h: toyTall(other) })) bad++;
+          });
+        });
+      }
+      return step === 0 && bad === 0;
+    })());
+
+    // 玩具的摆放/收起是动态的：不指定槽位就塞进第一个空位，收起后那个位子会空出来
+    ok('玩具摆放动态填空位、收起后槽位会空出来', (function () {
+      var cap = NT.data.toySlots.length;
+      var s = NT.store.defaultSave();
+      s.homeChosen = true;
+      var ids = [];
+      for (var i = 0; i < NT.data.toys.length && ids.length < cap + 1; i++) ids.push(NT.data.toys[i].id);
+      for (var k = 0; k < cap; k++) NT.home.addToy(s, ids[k]);
+      var auto = [];
+      for (var p = 0; p < cap; p++) {
+        var r = NT.home.placeToy(s, ids[p]);       // 不指定槽位 -> 自动找空位
+        if (!r.ok) return false;
+        auto.push(r.slot);
+      }
+      var full = NT.home.placeToy(s, ids[cap]);    // 第 cap+1 件应被上限挡住
+      var usedAll = auto.slice().sort().join(',') === auto.map(function (_, i) { return i; }).sort().join(',');
+      NT.home.removeToy(s, ids[1]);                // 收起中间一件
+      var back = NT.home.placeToy(s, ids[1]);      // 再放回来应该补上刚空出来的那个槽位
+      return usedAll && !full.ok && back.ok && back.slot === auto[1];
+    })());
+
     ok('结算后能正常渲染明信片本身', (function () {
       var bak = NT.app.save, bm = NT.app.modal, bv = NT.app.viewing;
       var s = NT.store.defaultSave();
@@ -407,6 +562,31 @@
       var okAll = !err && h && h.indexOf('postcard-canvas') >= 0;
       NT.app.save = bak; NT.app.modal = bm; NT.app.viewing = bv;
       return okAll;
+    })());
+
+    // 明信片弹窗的"关闭"按钮：以前只要 history.state.modal 有值就 history.back() 然后
+    // return。可当这条历史项本身就是最后一条时（典型场景：她在你关掉游戏期间回来了，
+    // 重新打开时启动结算直接弹出明信片，replaceHistory 又把它写成了 modal:'result'），
+    // back() 是空操作、popstate 也不会来 —— 按钮点了毫无反应。
+    ok('只剩一条历史项时，明信片"关闭"也能关掉', (function () {
+      var app = NT.app;
+      var bak = { modal: app.modal, viewing: app.viewing, field: app.fieldSheet, mh: app._modalHistory };
+      var closed = false;
+      try {
+        app.modal = 'result';
+        app.viewing = (app.save && app.save.album && app.save.album[0]) || null;
+        app._modalHistory = false;                       // 启动自动弹出：不是为弹窗推的历史项
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(app.historyState(), '', window.location.href);
+        }
+        app.closeModal();
+        closed = app.modal === null && app._modalHistory === false;
+      } catch (e) {
+        closed = false;
+      }
+      app.modal = bak.modal; app.viewing = bak.viewing; app.fieldSheet = bak.field;
+      app._modalHistory = bak.mh;
+      return closed;
     })());
 
     /* ---------- 8. 时间循环 ---------- */
@@ -1410,6 +1590,20 @@
         return !!m && !!m.backgrounds && !!m.nahida && !!m.companions && !!m.toys &&
           !!m.crops && !!m.dishes && !!m.stickers;
       })());
+      // 睡觉场景是"多选一"：进卧室时从这几张里随机挑一张当背景，且不再叠画立绘。
+      ok('睡觉场景候选图在清单里，且每张都能查到名字', (function () {
+        var m = NT.assetManifest;
+        var list = m && m.bedroomSleep;
+        if (!list) return false;
+        list = Array.isArray(list) ? list : [list];
+        return list.length >= 1 && list.every(function (name, i) {
+          if (!name) return false;
+          var base = String(name).replace(/^.*\//, '');
+          return NT.assets.displayName('scene', 'bedroomSleep' + i) === base;
+        });
+      })());
+      ok('睡觉场景候选图查询接口返回数组', typeof NT.assets.bedroomSleeps === 'function' &&
+        Object.prototype.toString.call(NT.assets.bedroomSleeps()) === '[object Array]');
       ok('清单为空时查询返回 null', NT.assets.bg('__none__') === null &&
         NT.assets.nahida('__none__') === null && NT.assets.companion('__none__') === null &&
         NT.assets.crop('__none__') === null && NT.assets.dish('__none__') === null);
