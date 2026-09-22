@@ -116,6 +116,12 @@
     img.src = candidates[0];
   }
 
+  /** 注册需要在不同场景进入时随机挑选的候选素材。 */
+  function registerVariants(group, prefix, names) {
+    var list = Array.isArray(names) ? names : [names];
+    for (var i = 0; i < list.length; i++) register(group, prefix + i, list[i]);
+  }
+
   /**
    * 找出图片里非透明内容的边界（在缩略图上扫，很快）。
    * @returns {x0,y0,x1,y1} 归一化比例，或 null
@@ -198,9 +204,9 @@
     for (k in (m.crops || {})) register('crop', k, m.crops[k]);
     for (k in (m.dishes || {})) register('dish', k, m.dishes[k]);
     for (k in (m.stickers || {})) register('sticker', k, m.stickers[k]);
-    if (m.home) register('home', 'home', m.home);
+    if (m.home) registerVariants('home', 'home', m.home);
     if (m.farm) register('farm', 'background', m.farm);
-    if (m.hall) register('scene', 'hall', m.hall);
+    if (m.hall) registerVariants('scene', 'hall', m.hall);
     if (m.bedroom) register('scene', 'bedroom', m.bedroom);
     if (m.backyard) register('scene', 'backyard', m.backyard);
     // 睡觉场景是"多选一"：每一张都按顺序登记，进卧室时随机挑一张已经加载好的。
@@ -230,9 +236,30 @@
   }
 
   assets.bg = function (destId) { return ready('bg', destId); };
-  assets.home = function () { return ready('home', 'home'); };
+  function sceneVariant(group, prefix, manifestValue, index) {
+    var list = Array.isArray(manifestValue) ? manifestValue : [manifestValue];
+    if (!list.length) return null;
+    var i = Number.isFinite(index) ? Math.abs(Math.floor(index)) % list.length : 0;
+    return ready(group, prefix + i);
+  }
+
+  assets.home = function (index) {
+    var m = NT.assetManifest || {};
+    return sceneVariant('home', 'home', m.home, index);
+  };
+  assets.homeVariantCount = function () {
+    var m = NT.assetManifest || {};
+    return m.home ? (Array.isArray(m.home) ? m.home.length : 1) : 0;
+  };
   assets.farm = function () { return ready('farm', 'background'); };
-  assets.hall = function () { return ready('scene', 'hall'); };
+  assets.hall = function (index) {
+    var m = NT.assetManifest || {};
+    return sceneVariant('scene', 'hall', m.hall, index);
+  };
+  assets.hallVariantCount = function () {
+    var m = NT.assetManifest || {};
+    return m.hall ? (Array.isArray(m.hall) ? m.hall.length : 1) : 0;
+  };
   assets.bedroom = function () { return ready('scene', 'bedroom'); };
   /**
    * 睡觉场景的候选图，只返回**已经加载好**的那些（保持清单顺序）。
@@ -307,6 +334,9 @@
   assets.displayName = function (group, id) {
     var m = NT.assetManifest || {};
     if (group === 'home') {
+      if (Array.isArray(m.home)) return m.home.map(function (x) {
+        return String(x).replace(/^.*\//, '');
+      }).join('、');
       return String(m.home || '家-全景').replace(/^.*\//, '');
     }
     if (group === 'farm') {

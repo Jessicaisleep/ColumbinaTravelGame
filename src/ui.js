@@ -29,6 +29,16 @@
   app._anim = null;
   app._raf = null;
   app._bubble = null;         // { text, until } 人物旁边的气泡
+  app._homeBackgroundIndex = null;
+  app._hallBackgroundIndex = null;
+
+  function pickBackgroundVariant(count, previous) {
+    if (count <= 1) return 0;
+    var next = Math.floor(Math.random() * count);
+    // 主页再次打开时避免连续两次看到同一张，两个候选时即为交替显示。
+    if (next === previous) next = (next + 1) % count;
+    return next;
+  }
 
   var $ = function (id) { return document.getElementById(id); };
 
@@ -302,6 +312,14 @@
     if (sbub) sbub.classList.remove('show');
 
     var h = app.save && app.save.home && app.save.home.nahida;
+    if (s === 'home' && NT.assets && NT.assets.homeVariantCount) {
+      var homeCount = NT.assets.homeVariantCount();
+      app._homeBackgroundIndex = pickBackgroundVariant(homeCount, app._homeBackgroundIndex);
+    }
+    if (s === 'hall' && NT.assets && NT.assets.hallVariantCount) {
+      var hallCount = NT.assets.hallVariantCount();
+      app._hallBackgroundIndex = pickBackgroundVariant(hallCount, app._hallBackgroundIndex);
+    }
     if (h) {
       var now = Date.now();
       if (s === 'bedroom') {
@@ -1041,7 +1059,11 @@
   }
 
   app.mountHall = function () {
-    mountSceneCanvas($('hall-stage'), $('hall-bg'), NT.assets && NT.assets.hall(), '#253d37', '#101714', 0, 0, 1);
+    if (app._hallBackgroundIndex === null && NT.assets && NT.assets.hallVariantCount) {
+      var count = NT.assets.hallVariantCount();
+      app._hallBackgroundIndex = pickBackgroundVariant(count, null);
+    }
+    mountSceneCanvas($('hall-stage'), $('hall-bg'), NT.assets && NT.assets.hall(app._hallBackgroundIndex), '#253d37', '#101714', 0, 0, 1);
   };
 
   app.mountBedroom = function () {
@@ -1506,6 +1528,11 @@
     var bg = $('world-bg'), fg = $('world-fg'), stage = $('stage');
     if (!bg || !fg || !stage) return;
 
+    if (app._homeBackgroundIndex === null && NT.assets && NT.assets.homeVariantCount) {
+      var homeCount = NT.assets.homeVariantCount();
+      app._homeBackgroundIndex = pickBackgroundVariant(homeCount, null);
+    }
+
     // 手机上画面比屏幕宽、靠 .stage-wrap 横向拖。render 会重建 DOM，
     // 滚动位置会被清零 —— 手感就是"怎么滑都滑不过去"。所以位置要跨渲染保住。
     // 注意：mountHome 是在 innerHTML 之后同步跑的，这时还没布局，
@@ -1566,7 +1593,7 @@
     var bgEpoch = -1;
     function drawStageBg() {
       bgEpoch = NT.assets ? NT.assets.epoch() : 0;
-      var homeImg = NT.assets && NT.assets.home();
+      var homeImg = NT.assets && NT.assets.home(app._homeBackgroundIndex);
       if (!(homeImg && NT.assets.drawCover(bctx, homeImg, W, H))) {
         var assetState = NT.assets && NT.assets.status ? NT.assets.status() : null;
         var assetPending = !!(NT.assets && NT.assets.anyDeclared && NT.assets.anyDeclared() && assetState &&
