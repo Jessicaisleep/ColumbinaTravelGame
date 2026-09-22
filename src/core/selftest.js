@@ -424,6 +424,29 @@
       return okAll;
     })());
 
+    // 卧室 -> 睡觉、后院 -> 玩玩具：进场景就把她的状态切到对应事件，离开时收回
+    ok('切到后院会切到"玩玩具"状态（useToy），回庭院时收回', (function () {
+      var app = NT.app;
+      var bakScreen = app.screen, bakSave = app.save;
+      var s = NT.store.defaultSave();
+      s.homeChosen = true;
+      NT.home.addToy(s, 'moon_chess');
+      NT.home.repair(s);
+      app.save = s;
+      var okIn = false, okOut = false;
+      try {
+        app.go('backyard');
+        var stIn = NT.home.state(s);
+        okIn = app.screen === 'backyard' && stIn.id === 'play' && !!stIn.useToy &&
+          !!NT.home.playingToy(s) && s.home.nahida.sceneState === 'backyard';
+        app.go('home');
+        okOut = app.screen === 'home' && NT.home.state(s).id === 'idle' &&
+          !s.home.nahida.sceneState;
+      } catch (e) { okIn = false; okOut = false; }
+      app.screen = bakScreen; app.save = bakSave;
+      return okIn && okOut;
+    })());
+
     ok('结算后能正常渲染明信片本身', (function () {
       var bak = NT.app.save, bm = NT.app.modal, bv = NT.app.viewing;
       var s = NT.store.defaultSave();

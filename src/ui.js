@@ -285,18 +285,38 @@
     app.toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2600);
   };
 
+  /**
+   * 切场景。卧室与后院是"有主题的独立场景"，进去就把她的状态切到对应的事件上：
+   *   卧室 -> sleep（睡觉，画面上换成整幅睡眠图）
+   *   后院 -> play（玩玩具，她会走到某件玩具旁边，而不是站在中间发呆）
+   * 离开这两个场景时再把状态收回发呆，免得"人在田里却显示正在玩玩具"。
+   */
   app.go = function (s) {
-    if (s === 'bedroom' && app.save && app.save.home && app.save.home.nahida) {
-      var h = app.save.home.nahida;
+    var h = app.save && app.save.home && app.save.home.nahida;
+    if (h) {
       var now = Date.now();
-      h.stateId = 'sleep'; h.since = now; h.until = now + 6 * 60e3; h.prevSpotId = 'bed';
-      NT.store.save(app.save);
-    } else if (s !== 'bedroom' && app.save && app.save.home && app.save.home.nahida &&
-      app.save.home.nahida.stateId === 'sleep') {
-      var awake = app.save.home.nahida;
-      var awakeNow = Date.now();
-      awake.stateId = 'idle'; awake.since = awakeNow; awake.until = awakeNow + 150000; awake.prevSpotId = 'yard';
-      NT.store.save(app.save);
+      if (s === 'bedroom') {
+        h.stateId = 'sleep'; h.since = now; h.until = now + 6 * 60e3; h.prevSpotId = 'bed';
+        h.sceneState = 'bedroom';
+        NT.store.save(app.save);
+      } else if (s === 'backyard') {
+        // 后院就是玩玩具的地方：切到 useToy 的状态，配合 home.playingToy 挑一件玩具
+        h.stateId = 'play'; h.since = now; h.until = now + 6 * 60e3; h.prevSpotId = 'lawn';
+        h.sceneState = 'backyard';
+        NT.store.save(app.save);
+      } else if (h.sceneState === 'backyard') {
+        // 离开后院：把进来时切的状态收回去
+        h.sceneState = null;
+        if (h.stateId === 'play') {
+          h.stateId = 'idle'; h.since = now; h.until = now + 150e3; h.prevSpotId = 'yard';
+        }
+        NT.store.save(app.save);
+      } else if (h.stateId === 'sleep') {
+        // 离开卧室：醒来
+        h.sceneState = null;
+        h.stateId = 'idle'; h.since = now; h.until = now + 150e3; h.prevSpotId = 'yard';
+        NT.store.save(app.save);
+      }
     }
     app.screen = s; app.modal = null; app.fieldSheet = null; app.render(); app.pushHistory();
   };
@@ -1127,10 +1147,16 @@
           NT.placeholder.toy(ctx, p.toyId, W * slot.x, H * slot.y, th, NT.rng.mulberry32(p.slot + 31));
         }
       });
-      // 只要没有出门，后院始终能看到哥伦比娅；玩耍时再靠近当前玩具。
+      // 只要没有出门，后院始终能看到哥伦比娅；玩耍时站到那件玩具的**旁边**。
       if (!s.activeTrip) {
         var st = NT.home.state(s), playing = st.useToy && NT.home.playingToy(s);
         var target = (playing && backyardToyPositions[playing.id]) ? backyardToyPositions[playing.id] : { x: 0.52, y: 0.84 };
+        // 玩具就画在槽位上，她要是也站槽位就会把玩具挡住 —— 往场地中间那一侧让开半步，
+        // 看起来才是"在旁边玩"。最左/最右的槽位则往另一侧让。
+        if (playing && backyardToyPositions[playing.id]) {
+          var shift = target.x < 0.5 ? 0.09 : -0.09;
+          target = { x: U.clamp(target.x + shift, 0.07, 0.93), y: target.y };
+        }
         var cx = W * target.x, feetY = H * target.y, bob = Math.sin(phase) * chH * 0.012;
         ctx.save(); ctx.globalAlpha = 0.2; ctx.fillStyle = '#000'; ctx.beginPath();
         ctx.ellipse(cx, feetY + H * 0.004, chH * 0.26, chH * 0.07, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
