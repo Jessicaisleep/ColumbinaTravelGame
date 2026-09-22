@@ -1232,22 +1232,20 @@
     var s = app.save;
     var now = Date.now();
     var readyCount = 0;
-    // 小绿芽：在田地的格子上画一株萌芽
-    var sproutSvg = '<svg class="farm-sprout" viewBox="0 0 24 24" width="1em" height="1em">' +
-      '<path d="M12 22V12M12 12C12 9 9 6 6 6M12 12C12 9 15 6 18 6" ' +
-      'stroke="#5cb85c" stroke-width="2" fill="none" stroke-linecap="round"/>' +
-      '</svg>';
     var plots = NT.data.fields.map(function (field) {
       var status = NT.farm.status(s, field.id, now);
       if (status.state === 'ready') readyCount++;
-      // 有作物（种植中/已成熟）时画绿芽；空地什么都不画
-      var cropArt = (status.state !== 'empty') ? sproutSvg : '';
+      // 田块上不再放作物图片和文字：种植/成熟的样子由绿芽画在画布上（见 mountFarm）。
+      // 这里只留一个透明热区，点它打开这块田的操作面板。
+      var label = field.name + (status.state === 'empty' ? '，空地' :
+        '，' + status.crop.name + (status.state === 'ready' ? '，可收获' :
+          '，生长 ' + Math.round(status.progress * 100) + '%'));
       return '<button class="farm-plot ' + field.type + ' ' + status.state + '"' +
         ' data-act="open-field" data-arg="' + field.id + '"' +
-        ' aria-label="' + esc(field.name) + '"' +
+        ' aria-label="' + esc(label) + '"' +
         ' style="left:' + (field.x * 100) + '%;top:' + (field.y * 100) + '%;' +
         'width:' + (field.w * 100) + '%;height:' + (field.h * 100) + '%">' +
-        cropArt + '</button>';
+        '</button>';
     }).join('');
 
     return '<div class="stage-wrap farm-wrap">' +
@@ -1339,7 +1337,7 @@
       bctx.fillStyle = grad; bctx.fillRect(0, 0, W, H);
     }
 
-    if (app.save.activeTrip) return;
+    if (app.save.activeTrip) { /* 她出门了：不画人，但田里的绿芽照常显示 */ }
 
     var fctx = fg.getContext('2d');
     var chH = H * 0.23;
@@ -1347,17 +1345,75 @@
     var cx = W * 0.54, feetY = H * 0.86;
     var phase = 0, last = performance.now();
     var sprite = { hair: '#d9d6e8', dress: '#565070', accent: '#b8c8f4', skin: '#f3d8cf', hat: 'none' };
+    var fields = NT.data.fields;
+
+    /**
+     * 一株小绿芽。种下去就长出来，收获后地块变空自然就不画了。
+     * grow: 0..1 生长进度（成熟 = 1，会更大更亮一点）。
+     */
+    function drawSprout(g, x, y, size, grow, t) {
+      var sway = Math.sin(t * 1.7 + x * 0.013 + y * 0.007) * size * 0.10;
+      var h = size * (0.72 + 0.34 * grow);
+      g.save();
+      g.translate(x, y);
+      // 落在土上的淡影
+      g.globalAlpha = 0.16; g.fillStyle = '#000';
+      g.beginPath(); g.ellipse(0, 0, h * 0.42, h * 0.13, 0, 0, Math.PI * 2); g.fill();
+      g.globalAlpha = 1;
+      // 茎
+      g.lineCap = 'round';
+      g.strokeStyle = '#4d9a46';
+      g.lineWidth = Math.max(1.6, h * 0.11);
+      g.beginPath();
+      g.moveTo(0, 0);
+      g.quadraticCurveTo(sway * 0.4, -h * 0.55, sway, -h);
+      g.stroke();
+      // 左右两片叶子
+      g.fillStyle = '#6cc25c';
+      g.beginPath(); g.ellipse(sway - h * 0.30, -h * 0.60, h * 0.32, h * 0.16, -0.55, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.ellipse(sway + h * 0.30, -h * 0.78, h * 0.32, h * 0.16, 0.55, 0, Math.PI * 2); g.fill();
+      // 顶芽（成熟时偏亮）
+      g.fillStyle = grow >= 0.999 ? '#a8e88f' : '#83d472';
+      g.beginPath(); g.arc(sway, -h, h * 0.14, 0, Math.PI * 2); g.fill();
+      g.restore();
+    }
+
+    /** 所有非空地：每块田按 2×2 垄各画一株芽 */
+    function drawFieldSprouts(g, t) {
+      var nowMs = Date.now();
+      for (var i = 0; i < fields.length; i++) {
+        var fld = fields[i];
+        var stt = NT.farm.status(app.save, fld.id, nowMs);
+        if (stt.state === 'empty') continue;                 // 空地不长芽
+        var pw = W * fld.w, ph = H * fld.h;
+        var size = Math.min(pw, ph) * 0.34;
+        var grow = stt.state === 'ready' ? 1 : stt.progress;
+        var baseX = W * fld.x, baseY = H * fld.y;
+        for (var sx = -1; sx <= 1; sx += 2) {
+          for (var sy = -1; sy <= 1; sy += 2) {
+            drawSprout(g, baseX + sx * pw * 0.24, baseY + sy * ph * 0.24, size, grow, t);
+          }
+        }
+      }
+    }
 
     function drawFarmNahida(t) {
       var dt = U.clamp((t - last) / 1000, 0, 0.1); last = t; phase += dt * 1.6;
-      var bob = Math.sin(phase) * chH * 0.012;
       fctx.clearRect(0, 0, W, H);
-      fctx.save();
-      fctx.globalAlpha = 0.22; fctx.fillStyle = '#000'; fctx.beginPath();
-      fctx.ellipse(cx, feetY + H * 0.004, chH * 0.26, chH * 0.07, 0, 0, Math.PI * 2); fctx.fill();
-      fctx.restore();
-      var ok = NT.assets && NT.assets.drawNahida(fctx, cx, feetY - bob, chH, true, 'idle');
-      if (!ok) NT.placeholder.chibi(fctx, cx, feetY - bob, chH, sprite, 'idle', true);
+
+      // 先画田里的芽，再画人：她站在前景，会压住离镜头近的芽
+      drawFieldSprouts(fctx, phase);
+
+      if (!app.save.activeTrip) {
+        var bob = Math.sin(phase) * chH * 0.012;
+        fctx.save();
+        fctx.globalAlpha = 0.22; fctx.fillStyle = '#000'; fctx.beginPath();
+        fctx.ellipse(cx, feetY + H * 0.004, chH * 0.26, chH * 0.07, 0, 0, Math.PI * 2); fctx.fill();
+        fctx.restore();
+        var ok = NT.assets && NT.assets.drawNahida(fctx, cx, feetY - bob, chH, true, 'idle');
+        if (!ok) NT.placeholder.chibi(fctx, cx, feetY - bob, chH, sprite, 'idle', true);
+      }
+
       app._raf = requestAnimationFrame(drawFarmNahida);
     }
     app._raf = requestAnimationFrame(drawFarmNahida);
